@@ -1,0 +1,78 @@
+
+
+.projetos-pessoais {
+    background-color: gray;
+    padding: 5%;
+}
+
+
+.projetos-pessoais .seccao-da-projetos-pessoais {
+    font-size: 240%;
+    margin-bottom: 5%;
+    margin-left: -6%;
+    color: rgb(243, 213, 82);
+}
+
+.projetos-pessoais .escolaLogo{
+    width: 100%;
+    float: left;
+}
+
+.projetos-pessoais .info-div-unicamp, .info-div-unesp{
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: rgb(106, 117, 76);
+}
+
+.projetos-pessoais .info-div-unicamp{
+    border-left: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.projetos-pessoais .info-div-unesp{
+    border-right: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.row-info{
+    margin-bottom: 5%;
+}
+
+.projetos-pessoais .info{
+    color: rgb(196, 184, 18);
+}
+
+.projetos-pessoais .titulo-info{
+    color: rgb(250, 220, 49);
+}
+
+.nav-div{
+    margin-bottom: 10%;
+}
+
+.projetos-pessoais .typewriter{
+    background-color: rgb(29, 29, 29);
+    padding-left: -10%;
+}
+
+.projetos-pessoais .typewriter h1 {
+    padding-left: 10%;
+    overflow: hidden; 
+    border-right: .15em solid orange;
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}

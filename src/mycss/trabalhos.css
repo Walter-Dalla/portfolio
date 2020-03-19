@@ -1,0 +1,78 @@
+
+
+.trabalhos {
+    background-color: gray;
+    padding: 5%;
+}
+
+
+.trabalhos .seccao-de-trabalhos {
+    font-size: 240%;
+    margin-bottom: 5%;
+    margin-left: -6%;
+    color: rgb(243, 213, 82);
+}
+
+.trabalhos .escolaLogo{
+    width: 100%;
+    float: left;
+}
+
+.trabalhos .info-div-unicamp, .info-div-unesp{
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: rgb(106, 117, 76);
+}
+
+.trabalhos .info-div-unicamp{
+    border-left: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.trabalhos .info-div-unesp{
+    border-right: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.row-info{
+    margin-bottom: 5%;
+}
+
+.trabalhos .info{
+    color: rgb(196, 184, 18);
+}
+
+.trabalhos .titulo-info{
+    color: rgb(250, 220, 49);
+}
+
+.nav-div{
+    margin-bottom: 10%;
+}
+
+.trabalhos .typewriter{
+    background-color: rgb(29, 29, 29);
+    padding-left: -10%;
+}
+
+.trabalhos .typewriter h1 {
+    padding-left: 10%;
+    overflow: hidden; 
+    border-right: .15em solid orange;
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}

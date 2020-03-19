@@ -1,0 +1,76 @@
+.escolaridade{
+    background-color: black;
+    padding: 5%;
+}
+
+
+.escolaridade .seccao-da-escolaridade {
+    font-size: 240%;
+    margin-bottom: 5%;
+    margin-left: -6%;
+    color: rgb(243, 213, 82);
+}
+
+.escolaridade .escolaLogo{
+    width: 100%;
+    float: left;
+}
+
+.escolaridade .info-div-unicamp, .info-div-unesp{
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: rgb(106, 117, 76);
+}
+
+.escolaridade .info-div-unicamp{
+    border-left: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.escolaridade .info-div-unesp{
+    border-right: solid;
+    border-color: rgb(106, 117, 76);
+}
+
+.row-info{
+    margin-bottom: 5%;
+}
+
+.escolaridade .info{
+    color: rgb(196, 184, 18);
+}
+
+.escolaridade .titulo-info{
+    color: rgb(250, 220, 49);
+}
+
+.nav-div{
+    margin-bottom: 10%;
+}
+
+.escolaridade .typewriter{
+    background-color: rgb(29, 29, 29);
+    padding-left: -10%;
+}
+
+.escolaridade .typewriter h1 {
+    padding-left: 10%;
+    overflow: hidden; 
+    border-right: .15em solid orange;
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}
