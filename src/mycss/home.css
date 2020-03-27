@@ -2,7 +2,10 @@
 
 }
 
-
+.img-home-div{
+    width: 100%;
+    height: 100%;
+}
 
 .img-home {
     position: fixed;
@@ -11,15 +14,37 @@
 
     width: 100%;
     height: 100%;
+    
 }
 
 
 .home .colver-div{
-    margin-top: 20%;
+    margin-top: 10%;
+    padding-top: 5%;
+    padding-bottom: 25%;
     background-color: rgba(0, 0, 0, 0.4);
 
     width: 100%;
     height: 400px;
+}
+
+.arrow-down-div{
+    margin-top: 10%;
+}
+
+.arrow-down{
+    width: 140px;
+    height: 70px;
+
+    opacity: 0.4;
+}
+
+.arrow-hidden{
+    opacity: 0.2
+}
+
+.arrow-down-img-div{
+    margin-top: -5%;
 }
 
 
@@ -31,7 +56,7 @@
 
 
 
-.home .typewriter{
+.home .typewriter-home{
     color: cyan;
     
 }
@@ -41,27 +66,47 @@
     width: 30%;
 }
 
-.home .typewriter .programador{
+
+
+
+
+.typewriter-home{
+    color: rgb(250, 220, 49);
+    background-color: rgba(29, 29, 29, 0);
+    padding-left: -10%;
+}
+
+.typewriter-home h1 {
+    color: rgb(250, 220, 49);
+    padding-left: 10%;
+    overflow: hidden; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    font-family: Serif;
+}
+
+.home .typewriter-home .programador{
     overflow: hidden; 
     white-space: nowrap; 
     margin: 0 auto; 
     letter-spacing: .15em; 
     animation: 
-        typing 2.5s steps(30, end)
+        typing 1s steps(30, end) 0s
 }
 
 
-.home .typewriter .desenvolvedor h1 {
+.home .typewriter-home .desenvolvedor h1 {
     overflow: hidden; 
     white-space: nowrap; 
     margin: 0 auto; 
     
     letter-spacing: .15em; 
     animation:
-        typing 2.5s steps(30, end) 2s,
-        hide-animation 2s steps(30, end)
+        typing 1.5s steps(30, end) .5s,
+        hide-animation .5s steps(30, end)
 }
-.home .typewriter .e-comercial h1{
+.home .typewriter-home .e-comercial h1{
     overflow: hidden; 
     white-space: nowrap; 
     margin: 0 auto; 
@@ -69,18 +114,28 @@
     width: 92%;
 
     animation: 
-        typing .5s steps(30, end) 4.5s,
-        hide-animation 4.5s steps(30, end)
+        typing .5s steps(30, end) 1.3s,
+        hide-animation 1.3s steps(30, end)
 }
 
-.home .typewriter .freelancer h1 {
+.home .typewriter-home .freelancer h1 {
     overflow: hidden; 
     white-space: nowrap; 
     margin: 0 auto; 
     letter-spacing: .15em; 
     animation: 
-        typing 2s steps(30, end) 4.5s,
-        hide-animation 4.5s steps(30, end)
+        typing 1s steps(30, end) 1.4s,
+        hide-animation 1.4s steps(30, end)
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes hide-all{
+    from {width: 0;}
+    to {width: 0;}
 }
 
 @keyframes typing {
@@ -90,5 +145,26 @@
 
 @keyframes hide-animation {
     from,
-    to { width: 0% }
+    to { width: 0%}
+}
+
+.home .typewriter-div {
+    background-color: rgba(49, 49, 49, 0.7); 
+}
+
+.typewriter h1 {
+    padding-left: 10%;
+    overflow: hidden; 
+    border-right: .15em solid orange;
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
 }

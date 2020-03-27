@@ -10,13 +10,15 @@ export default class Escolaridade extends Component{
 
     render(){
         return(
-        <div className="escolaridade">
+        <div className="escolaridade" id="Formações-academicas">
             <div className="container">
                 <div>
-                    <div className={this.props.className}>
-                        <h1 className="seccao-da-escolaridade">
-                            {this.props.titulo}
-                        </h1>
+                    <div className="typewriter-div">
+                        <div className={this.props.className}>
+                            <h1 className="seccao-da-escolaridade">
+                                {this.props.titulo}
+                            </h1>
+                        </div>
                     </div>
 
                     <div className="row row-info">
@@ -26,12 +28,18 @@ export default class Escolaridade extends Component{
                         </div>
                         <div className="col-8 info-div-unicamp">
                             <h2 className="titulo-info">
-                                Cotil - Unicamp
+                                COTIL - UNICAMP
                                 <br/>
-                                Colégio Técnico de Limeira - Universidade estadual de campinas
+                                Colégio Técnico de Limeira - Universidade Estadual de Campinas
                             </h2>
                             <p className="info">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Estudei no COTIL no período  de 2017 ~ 2019, lá cursei médio + técnico em informática.
+                                <br/>
+                                Durante esse período participei de iniciações científicas, aulas extra curriculares, ministrei aulas sobre Java Spring Boot.
+                                <br/>
+                                Para concluir o meu técnico, tive que realizar 600 horas de estágio e fazer um projeto de conclusão de curso (TCC).
+                                <br/>
+                                O COTIL é o colégio de ensino médio e técnico da UNICAMP, por isso possui a mesma qualidade da universidade.
                             </p>
                         </div>
                     </div>
@@ -40,12 +48,15 @@ export default class Escolaridade extends Component{
 
                         <div className="col-8 info-div-unesp">
                             <h2 className="titulo-info">
-                                Unesp - Bauru
+                                UNESP - Bauru
                                 <br/>
-                                Universidade estadual de são paulo - Bauru / sp
+                                Universidade Estadual de São Paulo - Bauru / SP
                             </h2>
                             <p className="info">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Entrei na UNESP em 2020 no curso de Bacharelado em Sistemas de Informação, com previsão de concluir em 2025.
+                                <br/>
+                                A grade de matérias incluem todos os aspectos do desenvolvimento e análise de sistemas de informação.
+                                
                             </p>
                         </div>
 

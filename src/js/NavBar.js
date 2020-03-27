@@ -8,7 +8,7 @@ export default class NavBar extends Component{
         return(
         <div className="my-nav-full-div">
             <nav className="navbar navbar-expand-lg navbar-dark bd-navbar my-nav-div" >
-                <div className="mycss-nav-logo col-8">
+                <div className="mycss-nav-logo col-5">
                     <a className="navbar-brand" href="#">Walter Dalla</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -24,13 +24,21 @@ export default class NavBar extends Component{
                             (current)</span></a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#escolaridade">Escolaridade</a>
+                        <a className="nav-link" href="#escolaridade-div">Formações</a>
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Serviços</a>
+                        <a className="nav-link" href="#trabalhos-div">Experiencia</a>
                     </li>
                     
+                    <li className="nav-item">
+                        <a className="nav-link" href="#projetos-pessoais-div">Projetos</a>
+                    </li>
+                    
+                    <li className="nav-item">
+                        <a className="nav-link" href="#contato-div">Contato</a>
+                    </li>
+
                     <li className="nav-item">
                         <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
                     </li>

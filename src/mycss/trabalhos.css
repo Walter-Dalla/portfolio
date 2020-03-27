@@ -1,7 +1,7 @@
 
 
 .trabalhos {
-    background-color: gray;
+    background-color: rgb(26, 26, 26);
     padding: 5%;
 }
 
@@ -18,18 +18,18 @@
     float: left;
 }
 
-.trabalhos .info-div-unicamp, .info-div-unesp{
+.trabalhos .info-div-trabalho-1, .info-div-trabalho-2{
     border-width: 1px;
     border-radius: 10px;
     border-color: rgb(106, 117, 76);
 }
 
-.trabalhos .info-div-unicamp{
+.trabalhos .info-div-trabalho-1{
     border-left: solid;
     border-color: rgb(106, 117, 76);
 }
 
-.trabalhos .info-div-unesp{
+.trabalhos .info-div-trabalho-2{
     border-right: solid;
     border-color: rgb(106, 117, 76);
 }
@@ -39,7 +39,7 @@
 }
 
 .trabalhos .info{
-    color: rgb(196, 184, 18);
+    color: rgb(253, 253, 253);
 }
 
 .trabalhos .titulo-info{
@@ -55,24 +55,13 @@
     padding-left: -10%;
 }
 
-.trabalhos .typewriter h1 {
-    padding-left: 10%;
-    overflow: hidden; 
-    border-right: .15em solid orange;
-    white-space: nowrap; 
-    margin: 0 auto; 
-    letter-spacing: .15em; 
-    animation: 
-        typing 3.5s steps(30, end),
-        blink-caret .5s step-end infinite;
+.trabalhos .paragrafo-desc-trabalho{
+    margin: 0px;
+    
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange }
+.trabalhos .paragrafo-desc-trabalho-titulo{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }

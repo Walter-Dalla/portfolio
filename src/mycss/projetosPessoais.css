@@ -1,7 +1,7 @@
 
 
 .projetos-pessoais {
-    background-color: gray;
+    background-color: rgb(61, 61, 61);
     padding: 5%;
 }
 
@@ -18,18 +18,18 @@
     float: left;
 }
 
-.projetos-pessoais .info-div-unicamp, .info-div-unesp{
+.projetos-pessoais .info-div-projeto-par, .info-div-projeto-impar{
     border-width: 1px;
     border-radius: 10px;
     border-color: rgb(106, 117, 76);
 }
 
-.projetos-pessoais .info-div-unicamp{
+.projetos-pessoais .info-div-projeto-par{
     border-left: solid;
     border-color: rgb(106, 117, 76);
 }
 
-.projetos-pessoais .info-div-unesp{
+.projetos-pessoais .info-div-projeto-impar{
     border-right: solid;
     border-color: rgb(106, 117, 76);
 }
@@ -55,16 +55,58 @@
     padding-left: -10%;
 }
 
-.projetos-pessoais .typewriter h1 {
+.projetos-pessoais .typewriter, .meu-portfolio-div{
+    background-color: rgba(0, 0, 0, 1);
+}
+.projetos-pessoais .meu-portfolio-div{
+    border-style: solid;
+    border-color: gray;
+    
+}
+.projetos-pessoais .typewriter-portfolio{
+    padding-top: 10%;
+    margin-bottom: 10%;
+}
+
+.projetos-pessoais .logo-div-tcc{
+    padding-top: 10%;
+}
+.projetos-pessoais .logo-div-github{
+    padding-top: 5%;
+}
+
+
+.projetos-pessoais .p-meu-portfolio-1, .p-meu-portfolio-2{
+    color: white;
+    width: 100%;
+    height: 100%;
+    border-right: .15em solid transparent;
+    font-size: 20px;
     padding-left: 10%;
     overflow: hidden; 
-    border-right: .15em solid orange;
     white-space: nowrap; 
     margin: 0 auto; 
     letter-spacing: .15em; 
+}
+
+.projetos-pessoais .p-meu-portfolio-1{
+    
     animation: 
-        typing 3.5s steps(30, end),
-        blink-caret .5s step-end infinite;
+        typing 2.5s steps(30, end),
+        blink-caret .5s step-end 0s 5;
+}
+
+.projetos-pessoais .p-meu-portfolio-2{
+    
+    animation: 
+        typing 2.5s steps(30, end) 2.5s,
+        hide-animation 2.5s steps(30, end),
+        blink-caret .5s step-end 2.5s infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
 }
 
 @keyframes typing {
@@ -72,7 +114,7 @@
     to { width: 100% }
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange }
+@keyframes hide-animation {
+    from,
+    to { width: 0%}
 }
