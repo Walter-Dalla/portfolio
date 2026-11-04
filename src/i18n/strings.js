@@ -1,0 +1,125 @@
+// Textos de interface. Conteúdo (experiências, projetos…) mora em src/content/.
+export const strings = {
+  siteName: { pt: 'Walter Dalla', en: 'Walter Dalla' },
+  skipToContent: { pt: 'Pular para o conteúdo', en: 'Skip to content' },
+  navLabel: { pt: 'Principal', en: 'Main' },
+  navHome: { pt: 'Início', en: 'Home' },
+  navResume: { pt: 'Currículo', en: 'Resume' },
+  navProjects: { pt: 'Projetos', en: 'Projects' },
+  navAchievements: { pt: 'Conquistas', en: 'Achievements' },
+  navAbout: { pt: 'Sobre', en: 'About' },
+  navContact: { pt: 'Contato', en: 'Contact' },
+  langLabel: { pt: 'Idioma', en: 'Language' },
+  themeToggle: { pt: 'Alternar tema claro/escuro', en: 'Toggle light/dark theme' },
+  footerRights: { pt: 'São Paulo, Brasil', en: 'São Paulo, Brazil' },
+  email: { pt: 'e-mail', en: 'e-mail' },
+
+  // Início
+  homeTitle: { pt: 'Início', en: 'Home' },
+  downloadResume: { pt: 'Baixar currículo', en: 'Download resume' },
+  resumeShort: { pt: 'Currículo', en: 'Resume' },
+  metricsLabel: { pt: 'Métricas de impacto', en: 'Impact metrics' },
+  featuredEyebrow: { pt: '01 · projetos em destaque', en: '01 · featured projects' },
+  featuredTitle: { pt: 'Coisas que eu construí', en: 'Things I built' },
+  seeAllProjects: { pt: 'ver todos os projetos →', en: 'see all projects →' },
+  exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
+  exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
+  exploreResume: {
+    pt: '7 experiências desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx/Stone.',
+    en: '7 roles since 2018 — from intern to architect, including BTG Pactual and Linx/Stone.',
+  },
+  exploreAchievements: {
+    pt: 'Patente, software adotado pela UNICAMP, UNESP e COTIL.',
+    en: 'A patent, software adopted by UNICAMP, UNESP and COTIL.',
+  },
+  exploreAbout: {
+    pt: 'O lado fora do terminal: história, hobbies e fotos.',
+    en: 'Life outside the terminal: story, hobbies and photos.',
+  },
+  exploreContact: { pt: 'E-mail, LinkedIn e GitHub.', en: 'E-mail, LinkedIn and GitHub.' },
+
+  // Projetos
+  readCaseStudy: { pt: 'ler estudo de caso →', en: 'read case study →' },
+  repository: { pt: 'repositório ↗', en: 'repository ↗' },
+  patented: { pt: 'patenteado', en: 'patented' },
+  projectsTitle: { pt: 'Projetos', en: 'Projects' },
+  projectsLead: {
+    pt: 'Projetos pessoais e de pesquisa — do software patenteado usado na UNICAMP a benchmarks de infraestrutura.',
+    en: 'Personal and research projects — from patented software used at UNICAMP to infrastructure benchmarks.',
+  },
+  filterLabel: { pt: 'Filtrar por tecnologia', en: 'Filter by technology' },
+  filterAll: { pt: 'todos', en: 'all' },
+  noProjects: { pt: 'Nenhum projeto nesta categoria.', en: 'No projects in this category.' },
+  backToProjects: { pt: '← ~/projetos', en: '← ~/projects' },
+  allProjects: { pt: '← todos os projetos', en: '← all projects' },
+  nextProject: { pt: 'próximo', en: 'next' },
+  factSheet: { pt: '// ficha', en: '// fact sheet' },
+  factSheetLabel: { pt: 'Ficha do projeto', en: 'Project fact sheet' },
+  factPeriod: { pt: 'período', en: 'period' },
+  factRole: { pt: 'papel', en: 'role' },
+  factStatus: { pt: 'status', en: 'status' },
+  factAdoption: { pt: 'adoção', en: 'adoption' },
+  factTech: { pt: 'tecnologias', en: 'technologies' },
+  repositoryButton: { pt: 'Repositório', en: 'Repository' },
+  patentButton: { pt: 'Registro da patente', en: 'Patent record' },
+  gallery: { pt: 'Galeria', en: 'Gallery' },
+  projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
+
+  // Currículo
+  resumeTitle: { pt: 'Currículo', en: 'Resume' },
+  resumeLead: {
+    pt: 'Arquiteto de software e engenheiro DevOps com sólida experiência em backend, otimização de sistemas de alta performance e nuvem (AWS e Azure). Histórico de redução de custos, melhoria de SLA e liderança técnica em ambientes críticos do setor financeiro.',
+    en: 'Software architect and DevOps engineer with solid experience in backend development, high-performance systems optimization and cloud (AWS and Azure). Track record of cutting costs, improving SLAs and leading teams in critical financial-sector environments.',
+  },
+  resumePdfEyebrow: { pt: '// currículo completo em PDF', en: '// full resume as PDF' },
+  resumePdfPt: { pt: 'Baixar em português', en: 'Download in Portuguese' },
+  resumePdfEn: { pt: 'Download in English', en: 'Download in English' },
+  resumePdfUpdated: { pt: 'PDF · atualizado em', en: 'PDF · updated' },
+  experienceEyebrow: { pt: '01 · experiência', en: '01 · experience' },
+  experienceTitle: { pt: 'Linha do tempo', en: 'Timeline' },
+  skillsEyebrow: { pt: '02 · habilidades', en: '02 · skills' },
+  skillsTitle: { pt: 'Stack', en: 'Stack' },
+  resumeCtaTitle: { pt: 'Quer levar o currículo com você?', en: 'Want to take the resume with you?' },
+  resumeCtaText: {
+    pt: 'Versões em PDF, prontas para enviar ao seu time.',
+    en: 'PDF versions, ready to share with your team.',
+  },
+  pdfPt: { pt: 'Baixar PDF · PT', en: 'Download PDF · PT' },
+  pdfEn: { pt: 'Download PDF · EN', en: 'Download PDF · EN' },
+
+  // Conquistas
+  achievementsTitle: { pt: 'Conquistas acadêmicas', en: 'Academic achievements' },
+  achievementsLead: {
+    pt: 'Formação, pesquisa e reconhecimentos — cada item com comprovante.',
+    en: 'Education, research and recognition — each with its proof.',
+  },
+  seeProof: { pt: 'ver comprovante ↗', en: 'see proof ↗' },
+  seeDiploma: { pt: 'ver diploma ↗', en: 'see diploma ↗' },
+  aboutProject: { pt: 'sobre o projeto →', en: 'about the project →' },
+
+  // Sobre
+  aboutTitle: { pt: 'Oi, eu sou o Walter.', en: "Hi, I'm Walter." },
+  quickFacts: { pt: '// fatos rápidos', en: '// quick facts' },
+  quickFactsLabel: { pt: 'Fatos rápidos', en: 'Quick facts' },
+  galleryEyebrow: { pt: '01 · galeria', en: '01 · gallery' },
+  galleryTitle: { pt: 'Fora do terminal', en: 'Outside the terminal' },
+  storyEyebrow: { pt: '02 · história', en: '02 · story' },
+  storyTitle: { pt: 'Como cheguei aqui', en: 'How I got here' },
+
+  // Contato
+  contactTitle: { pt: 'Vamos conversar.', en: "Let's talk." },
+  emailEyebrow: { pt: 'e-mail · o caminho mais rápido', en: 'e-mail · the fastest way' },
+  sendEmail: { pt: 'Enviar e-mail →', en: 'Send e-mail →' },
+  locationTz: { pt: 'local · fuso', en: 'location · time zone' },
+  preferResume: { pt: 'Prefere o currículo direto?', en: 'Prefer the resume itself?' },
+  pdfPtLink: { pt: 'baixar PDF · PT ↓', en: 'download PDF · PT ↓' },
+  pdfEnLink: { pt: 'download PDF · EN ↓', en: 'download PDF · EN ↓' },
+
+  // 404
+  notFoundTitle: { pt: 'Página não encontrada', en: 'Page not found' },
+  notFoundText: {
+    pt: 'O caminho que você abriu não existe aqui.',
+    en: "The path you opened doesn't exist here.",
+  },
+  backHome: { pt: '← voltar ao início', en: '← back home' },
+}

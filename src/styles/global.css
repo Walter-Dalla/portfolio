@@ -1,0 +1,356 @@
+/* Tokens do design (Portfólio — Walter Dalla). O tema vive em <html data-theme>. */
+:root,
+:root[data-theme='dark'] {
+  --bg: #0b0d10;
+  --surface: #121418;
+  --surface2: #1c1f25;
+  --border: #262a31;
+  --strong: #383d46;
+  --text: #e6e8eb;
+  --muted: #a9afb8;
+  --faint: #8a919b;
+  --accent: #f5a524;
+  --btn-bg: #f5a524;
+  --btn-fg: #0b0d10;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface2: #efede7;
+  --border: #dedcd5;
+  --strong: #c9c6bd;
+  --text: #15171a;
+  --muted: #5b6169;
+  --faint: #666c73;
+  --accent: #9a5b0b;
+  --btn-bg: #15171a;
+  --btn-fg: #f7f6f2;
+  color-scheme: light;
+}
+
+:root {
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --gutter: clamp(20px, 5cqi, 48px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Raiz do site: as medidas em cqi do design se referem à largura dela. */
+.site {
+  container-type: inline-size;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+.site > main {
+  flex: 1;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 10;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(40px, 5.4cqi, 68px);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin: 0;
+  font-size: clamp(16px, 1.5cqi, 19px);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(28px, 3.2cqi, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(48px, 7cqi, 96px);
+}
+
+.page-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--surface2);
+}
+
+.tag--accent {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+
+.btn--secondary {
+  border-color: var(--strong);
+  color: var(--text);
+}
+
+.btn--block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn__hint {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.btn--secondary .btn__hint {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Links em mono com área de toque de 44px */
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.link--muted {
+  color: var(--muted);
+}
+
+.link--text {
+  color: var(--text);
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+/* Cartões */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.card--accent {
+  border-color: var(--accent);
+}
+
+.card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.card__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.card__links {
+  margin-top: auto;
+}
+
+/* Mídia: imagem quando há, senão um bloco decorativo no lugar */
+.media {
+  position: relative;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media__label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+  text-align: center;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.accent-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.hl {
+  color: var(--accent);
+  font-family: var(--mono);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.card__badge { color: var(--accent); }

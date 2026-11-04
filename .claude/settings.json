@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "wh-harness": {
+      "source": { "source": "github", "repo": "Walter-Dalla/wh-harness" }
+    }
+  },
+  "enabledPlugins": {
+    "wh@wh-harness": true
+  }
+}
