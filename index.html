@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Walter Dalla</title>
+    <meta
+      name="description"
+      content="Walter Dalla Torre Neto — desenvolvedor backend sênior, arquiteto de software e DevOps."
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Aplica o tema salvo antes do primeiro paint (evita piscar o tema errado).
+      try {
+        var t = localStorage.getItem('wd-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+        var l = localStorage.getItem('wd-lang')
+        if (l === 'en') document.documentElement.lang = 'en'
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
