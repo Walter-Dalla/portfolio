@@ -1,4 +1,5 @@
 import { useI18n } from '../i18n/context.js'
+import { assetUrl } from '../assetUrl.js'
 
 /**
  * Bloco de mídia na proporção do design. Com `src`, mostra a imagem;
@@ -9,7 +10,7 @@ export function Media({ src, alt, label, ratio, className = '', style }) {
   return (
     <div className={`media ${className}`} style={{ aspectRatio: ratio, ...style }}>
       {src ? (
-        <img src={src} alt={l(alt) ?? ''} loading="lazy" />
+        <img src={assetUrl(src)} alt={l(alt) ?? ''} loading="lazy" />
       ) : (
         <span className="media__label" aria-hidden="true">
           {label}

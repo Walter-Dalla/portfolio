@@ -1,4 +1,5 @@
 import { resumePdf } from '../content/profile.js'
+import { assetUrl } from '../assetUrl.js'
 
 /** Só os idiomas cujo PDF existe. */
 export function availableResumes() {
@@ -6,7 +7,7 @@ export function availableResumes() {
 }
 
 export function resumeHref(lang) {
-  return resumePdf[lang]
+  return assetUrl(resumePdf[lang])
 }
 
 export function resumeFileName(lang) {
