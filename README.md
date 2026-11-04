@@ -34,5 +34,9 @@ fazer o bloco surgir.
 
 ## Publicar
 
-`dist/` é estático. Como é uma SPA com rotas (`/curriculo`, `/projetos/<slug>`…), o servidor
-precisa devolver `index.html` para caminhos desconhecidos (fallback de SPA).
+Publicado no GitHub Pages: https://walter-dalla.github.io/portfolio/
+
+Todo push na `master` roda `.github/workflows/ci.yml` (lint, testes, build) e, se passar,
+publica `dist/`. O build usa `base: '/portfolio/'` (`vite.config.js`); caminhos de `public/`
+no conteúdo (ex.: `/cv/...`, `/img/...`) ganham esse prefixo sozinhos. Como é uma SPA, o CI
+copia `index.html` para `404.html` para as rotas diretas (`/curriculo`…) funcionarem.
