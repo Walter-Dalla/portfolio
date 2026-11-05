@@ -1,4 +1,4 @@
-import { profile } from '../content/profile.js'
+import { company, profile } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
 import { availableResumes, resumeFileName, resumeHref } from '../components/resume.js'
 import { usePageTitle } from '../components/usePageTitle.js'
@@ -43,6 +43,13 @@ export function Contact() {
             {profile.location} · {profile.timezone}
           </span>
         </div>
+        {company && (
+          <div className="contact__card">
+            <span className="mono contact__card-label">{t('companyLabel')}</span>
+            <span className="contact__card-value">{company.name}</span>
+            <span className="mono contact__card-meta">CNPJ {company.cnpj}</span>
+          </div>
+        )}
       </div>
 
       {resumes.length > 0 && (

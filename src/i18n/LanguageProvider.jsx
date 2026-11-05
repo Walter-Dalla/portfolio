@@ -7,7 +7,8 @@ export const LANG_KEY = 'wd-lang'
 
 function initialLang() {
   const stored = readStored(LANG_KEY)
-  return LANGS.includes(stored) ? stored : 'pt'
+  // Sem escolha salva, o site abre em inglês.
+  return LANGS.includes(stored) ? stored : 'en'
 }
 
 export function LanguageProvider({ children }) {

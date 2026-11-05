@@ -8,7 +8,7 @@ E-mail em destaque, LinkedIn, GitHub, local e links para o currículo. Sem formu
 
 ## Símbolos de entrada
 
-`Contact` (`src/pages/Contact.jsx`), `profile` (`src/content/profile.js`).
+`Contact` (`src/pages/Contact.jsx`), `profile`, `company` (`src/content/profile.js`).
 
 ## Interações
 

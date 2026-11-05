@@ -1,6 +1,7 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
+import { projects } from './content/projects.js'
 import { renderApp } from './test/renderApp.jsx'
 
 describe('rotas', () => {
@@ -10,6 +11,7 @@ describe('rotas', () => {
     ['/projetos', 'Projetos'],
     ['/projetos/analise-comportamental-insetos', 'Análise comportamental de insetos'],
     ['/projetos/mongodb-benchmark', 'MongoDB Benchmark'],
+    ['/projetos/wh-harness', 'wh-harness'],
     ['/conquistas', 'Conquistas acadêmicas'],
     ['/sobre', 'Oi, eu sou o Walter.'],
     ['/contato', 'Vamos conversar.'],
@@ -38,6 +40,13 @@ describe('tema', () => {
 })
 
 describe('idioma', () => {
+  it('abre em inglês quando não há escolha salva', () => {
+    localStorage.removeItem('wd-lang')
+    renderApp('/contato')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent("Let's talk.")
+    expect(document.documentElement.lang).toBe('en')
+  })
+
   it('troca a interface e o conteúdo para inglês', async () => {
     renderApp('/contato')
     await userEvent.click(screen.getByRole('button', { name: 'EN' }))
@@ -50,27 +59,28 @@ describe('idioma', () => {
   it('traduz o conteúdo do currículo', async () => {
     localStorage.setItem('wd-lang', 'en')
     renderApp('/curriculo')
-    expect(screen.getByText('Mentored 4 developers.')).toBeInTheDocument()
+    expect(screen.getByText('Equivalent to Computer Science.')).toBeInTheDocument()
   })
 })
 
 describe('projetos', () => {
   it('filtra por categoria', async () => {
     renderApp('/projetos')
-    expect(screen.getAllByRole('article')).toHaveLength(2)
+    expect(screen.getAllByRole('article')).toHaveLength(projects.length)
     await userEvent.click(screen.getByRole('button', { name: 'pesquisa' }))
     const cards = screen.getAllByRole('article')
     expect(cards).toHaveLength(1)
     expect(cards[0]).toHaveTextContent('Análise comportamental de insetos')
-    await userEvent.click(screen.getByRole('button', { name: 'todos · 2' }))
-    expect(screen.getAllByRole('article')).toHaveLength(2)
+    await userEvent.click(screen.getByRole('button', { name: `todos · ${projects.length}` }))
+    expect(screen.getAllByRole('article')).toHaveLength(projects.length)
   })
 
   it('só mostra link de repositório quando ele existe', () => {
     renderApp('/projetos')
     const repos = screen.getAllByRole('link', { name: 'repositório ↗' })
-    expect(repos).toHaveLength(1)
-    expect(repos[0]).toHaveAttribute('href', 'https://github.com/Walter-Dalla/MongoDBBenchmark')
+    const withRepo = projects.filter((p) => p.repo)
+    expect(repos).toHaveLength(withRepo.length)
+    expect(repos.map((a) => a.getAttribute('href'))).toEqual(withRepo.map((p) => p.repo))
   })
 })
 

@@ -4,7 +4,7 @@ aliases: [Tema, Idioma, i18n, Dark mode]
 
 # Tema e idioma
 
-Tema escuro (padrão) e claro, idioma PT (padrão) e EN, ambos lembrados no `localStorage`.
+Tema escuro (padrão) e claro, idioma EN (padrão) e PT, ambos lembrados no `localStorage`.
 
 ## Símbolos de entrada
 

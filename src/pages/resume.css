@@ -119,6 +119,13 @@
   color: var(--muted);
 }
 
+.xp__note {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--faint);
+  max-width: 760px;
+}
+
 .xp__bullets {
   margin: 0;
   padding-left: 20px;
@@ -208,4 +215,50 @@
 .resume-cta__sub {
   font-size: 15px;
   color: var(--muted);
+}
+
+.education {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.education__item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resume__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.resume__list-meta {
+  color: var(--muted);
+}
+
+.company {
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: clamp(24px, 4cqi, 40px);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.company__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 760px;
 }

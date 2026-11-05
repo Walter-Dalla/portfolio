@@ -23,6 +23,21 @@ export const profile = {
   availability: null,
 }
 
+// Empresa pela qual presto serviços como PJ. `null` esconde os blocos em Currículo e Contato.
+export const company = {
+  name: 'Walter Serviços de Arquitetura de Software LTDA',
+  cnpj: '62.427.598/0001-57',
+  location: 'São Paulo-SP',
+  activity: {
+    pt: 'Desenvolvimento e licenciamento de programas de computador customizáveis (CNAE 6202-3/00).',
+    en: 'Development and licensing of customizable software (CNAE 6202-3/00).',
+  },
+  text: {
+    pt: 'Minha empresa de arquitetura de software, pela qual atendo clientes como PJ — no Brasil e no exterior — em arquitetura, backend, DevOps e engenharia orientada por IA. Clientes: Qyon e AgileEngine (EUA).',
+    en: 'My software architecture company, through which I serve clients as a contractor — in Brazil and abroad — in architecture, backend, DevOps and AI-driven engineering. Clients: Qyon and AgileEngine (USA).',
+  },
+}
+
 // PDFs do currículo, servidos de public/cv/.
 export const resumePdf = {
   pt: null,
@@ -38,18 +53,18 @@ export const metrics = [
     source: 'Qyon · 2025–26',
   },
   {
-    value: '+216%',
-    label: { pt: 'de eficiência com observabilidade', en: 'efficiency through observability' },
-    source: 'BTG Pactual · 2025',
+    value: '8→1',
+    label: { pt: 'pods após consolidar 8 microsserviços', en: 'pods after consolidating 8 microservices' },
+    source: 'Qyon · 2025–26',
   },
   {
     value: '7→1',
-    label: { pt: 'dias de SLA (fallback PIX/TED)', en: 'days of SLA (PIX/TED fallback)' },
-    source: 'BTG Pactual · 2025',
+    label: { pt: 'dias de SLA de entrega do time', en: 'days of team delivery SLA' },
+    source: 'BTG Pactual · 2023–25',
   },
   {
-    value: '<1s',
-    label: { pt: 'de latência (antes 2s)', en: 'latency (down from 2s)' },
-    source: 'Act Digital / BTG · 2023–25',
+    value: '~4,5s',
+    label: { pt: 'P95 do antifraude PIX (antes ~7s)', en: 'PIX fraud-check P95 (down from ~7s)' },
+    source: 'BTG Pactual · 2023–25',
   },
 ]
