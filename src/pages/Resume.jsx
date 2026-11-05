@@ -74,7 +74,7 @@ export function Resume() {
     <div className="container page resume">
       <section className="resume__intro">
         <div className="page-intro resume__intro-text">
-          <span className="eyebrow">$ cat curriculo.md</span>
+          <span className="eyebrow">$ cat resume.md</span>
           <h1 className="page-title">{t('resumeTitle')}</h1>
           <p className="lead">{t('resumeLead')}</p>
         </div>

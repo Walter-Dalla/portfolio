@@ -12,7 +12,7 @@ export const featuredAchievement = {
   },
   photo: null,
   proofUrl: null,
-  projectSlug: 'analise-comportamental-insetos',
+  projectSlug: 'insect-behavioral-analysis',
 }
 
 export const achievements = [

@@ -18,7 +18,7 @@ export function About() {
     <div className="container page about">
       <section className="about__intro">
         <div className="about__text">
-          <span className="eyebrow">$ open sobre-mim</span>
+          <span className="eyebrow">$ open about-me</span>
           <h1 className="page-title">{t('aboutTitle')}</h1>
           <p className="about__lede">{l(about.intro)}</p>
           {about.paragraphs.map((p, i) => (

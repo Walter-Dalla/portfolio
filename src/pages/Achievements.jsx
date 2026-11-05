@@ -14,13 +14,13 @@ export function Achievements() {
   return (
     <div className="container page achievements">
       <section className="page-intro">
-        <span className="eyebrow">$ ls conquistas/</span>
+        <span className="eyebrow">$ ls achievements/</span>
         <h1 className="page-title">{t('achievementsTitle')}</h1>
         <p className="lead">{t('achievementsLead')}</p>
       </section>
 
       <article className="feature">
-        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/conquistas/patente" />
+        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/achievements/patente" />
         <div className="feature__body">
           <span className="mono feature__label">{l(featured.label)}</span>
           <h2 className="feature__title">{l(featured.title)}</h2>
@@ -32,7 +32,7 @@ export function Achievements() {
               </a>
             )}
             {featured.projectSlug && (
-              <Link to={`/projetos/${featured.projectSlug}`} className="link link--muted">
+              <Link to={`/projects/${featured.projectSlug}`} className="link link--muted">
                 {t('aboutProject')}
               </Link>
             )}

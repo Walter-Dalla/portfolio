@@ -50,7 +50,7 @@ export const strings = {
   filterLabel: { pt: 'Filtrar por tecnologia', en: 'Filter by technology' },
   filterAll: { pt: 'todos', en: 'all' },
   noProjects: { pt: 'Nenhum projeto nesta categoria.', en: 'No projects in this category.' },
-  backToProjects: { pt: '← ~/projetos', en: '← ~/projects' },
+  backToProjects: { pt: '← ~/projects', en: '← ~/projects' },
   allProjects: { pt: '← todos os projetos', en: '← all projects' },
   nextProject: { pt: 'próximo', en: 'next' },
   factSheet: { pt: '// ficha', en: '// fact sheet' },
@@ -62,6 +62,7 @@ export const strings = {
   factTech: { pt: 'tecnologias', en: 'technologies' },
   repositoryButton: { pt: 'Repositório', en: 'Repository' },
   patentButton: { pt: 'Registro da patente', en: 'Patent record' },
+  thesisButton: { pt: 'TCC (UNESP)', en: 'Thesis (UNESP)' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
 

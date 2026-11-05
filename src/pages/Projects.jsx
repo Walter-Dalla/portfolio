@@ -19,7 +19,7 @@ export function Projects() {
   return (
     <div className="container page projects">
       <section className="page-intro">
-        <span className="eyebrow">$ ls ~/projetos</span>
+        <span className="eyebrow">$ ls ~/projects</span>
         <h1 className="page-title">{t('projectsTitle')}</h1>
         <p className="lead">{t('projectsLead')}</p>
       </section>

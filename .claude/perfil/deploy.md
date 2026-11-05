@@ -1,8 +1,8 @@
 # Perfil do /wh:deploy
 
 ## Alvo
-GitHub Pages: `https://walter-dalla.github.io/portfolio/` (sem domínio próprio) [dono]
-Site estático (SPA Vite) servido em `/portfolio/`; `base` em `vite.config.js` e `basename` do router em `src/main.jsx` [vite.config.js]
+GitHub Pages com domínio próprio: `https://walterdalla.uk/` (`public/CNAME`); `https://walter-dalla.github.io/portfolio/` responde `301` para ele [dono; verificado 2026-11-05]
+Site estático (SPA Vite) servido na raiz: `base: '/'` em `vite.config.js`, `basename` do router em `src/main.jsx` vem de `BASE_URL` [vite.config.js]
 Orquestra: GitHub Actions, `.github/workflows/ci.yml`, job `deploy` [ci: ci.yml]
 
 ## Acesso
@@ -11,7 +11,7 @@ Agente: `gh` autenticado como `Walter-Dalla` (repo, Actions, Pages API); nenhum 
 ## Artefato
 `dist/` + `dist/404.html` (cópia do `index.html`, fallback da SPA), enviado como artifact de Pages pelo `actions/upload-pages-artifact@v3` [ci: ci.yml]
 Sem registro nem tag: cada deploy é o commit da `master` [ci: ci.yml]
-Assets fora do bundle: só o que está em `public/` (favicon, `public/cv/*.pdf`) [vite.config.js]
+Assets fora do bundle: só o que está em `public/` (favicon, `CNAME`, `public/cv/*.pdf`) [vite.config.js]
 
 ## Pré-condições
 Pages ligado com `build_type: workflow`: `gh api repos/Walter-Dalla/portfolio/pages -q .build_type` → `workflow` [gh api]
@@ -27,13 +27,14 @@ Reexecutar sem novo commit: `gh run rerun <id>` [gh]
 Agente: automático pelo job `deploy` (`actions/deploy-pages@v4`, ambiente `github-pages`) [ci: ci.yml]
 
 ## Verificar
-`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/` → `200` [verificado: deploy 2026-11-04]
-`curl -s https://walter-dalla.github.io/portfolio/ | grep -o '/portfolio/assets/index-[^"]*\.js'` → mesmo hash do `dist/index.html` do commit [verificado: deploy 2026-11-04]
-`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/cv/walter-dalla-cv-en.pdf` → `200` [verificado: deploy 2026-11-04]
-Rota profunda `https://walter-dalla.github.io/portfolio/curriculo` → `404` com o HTML do app (renderiza a página certa no navegador) [verificado: deploy 2026-11-04]
+`curl -s -o /dev/null -w "%{http_code}" https://walterdalla.uk/` → `200` [verificado 2026-11-05]
+`curl -s https://walterdalla.uk/ | grep -o '/assets/index-[^"]*\.js'` → mesmo hash do `dist/index.html` do commit [verificado 2026-11-05]
+`curl -s -o /dev/null -w "%{http_code}" https://walterdalla.uk/cv/walter-dalla-cv-en.pdf` → `200` [verificado 2026-11-05]
+Rota profunda `https://walterdalla.uk/curriculo` → `404` com o HTML do app (renderiza a página certa no navegador) [verificado 2026-11-05]
 
 ## Falhas
-Página em branco, assets 404 → `base` diferente de `/portfolio/` → conferir `vite.config.js` [inferido]
+Página em branco, assets 404 → `base` diferente de `/` → conferir `vite.config.js` [inferido]
+Domínio não resolve ou cai no github.io → `CNAME` fora do artifact ou DNS → conferir `public/CNAME` e Settings › Pages (dono) [inferido]
 Rota profunda mostra 404 do GitHub → falta `404.html` no artifact → passo `cp` do `ci.yml` [inferido]
 Job `deploy` `Branch "x" is not allowed to deploy` → regra do ambiente `github-pages` → Settings › Environments (dono) [inferido]
 Site antigo após deploy verde → cache do CDN do Pages (até ~10 min) → esperar e refazer o `curl` [inferido]
@@ -48,7 +49,7 @@ Site antigo após deploy verde → cache do CDN do Pages (até ~10 min) → espe
 — (o deploy usa o `GITHUB_TOKEN`/OIDC do Actions; nenhum segredo próprio) [ci: ci.yml]
 
 ## Configurações externas
-— (sem DNS nem CDN próprios) [dono]
+DNS de `walterdalla.uk` apontando para o GitHub Pages; domínio fixado por `public/CNAME` (dono) [README.md]
 
 ## Clientes extras
 —

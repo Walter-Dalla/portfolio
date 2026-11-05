@@ -11,10 +11,10 @@ import { usePageTitle } from '../components/usePageTitle.js'
 import './home.css'
 
 const EXPLORE = [
-  { to: '/curriculo', cmd: 'cat curriculo.md', title: 'navResume', text: 'exploreResume' },
-  { to: '/conquistas', cmd: 'ls conquistas/', title: 'navAchievements', text: 'exploreAchievements' },
-  { to: '/sobre', cmd: 'open sobre-mim', title: 'navAbout', text: 'exploreAbout' },
-  { to: '/contato', cmd: 'ping walter', title: 'navContact', text: 'exploreContact' },
+  { to: '/resume', cmd: 'cat resume.md', title: 'navResume', text: 'exploreResume' },
+  { to: '/achievements', cmd: 'ls achievements/', title: 'navAchievements', text: 'exploreAchievements' },
+  { to: '/about', cmd: 'open about-me', title: 'navAbout', text: 'exploreAbout' },
+  { to: '/contact', cmd: 'ping walter', title: 'navContact', text: 'exploreContact' },
 ]
 
 export function Home() {
@@ -92,7 +92,7 @@ export function Home() {
       <section className="container home-section">
         <div className="home-section__head">
           <SectionHeading eyebrow={t('featuredEyebrow')} title={t('featuredTitle')} />
-          <Link to="/projetos" className="link">
+          <Link to="/projects" className="link">
             {t('seeAllProjects')}
           </Link>
         </div>

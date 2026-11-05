@@ -5,11 +5,11 @@ import { MoonIcon, SunIcon } from './Icons.jsx'
 
 const NAV_ITEMS = [
   { to: '/', key: 'navHome', end: true },
-  { to: '/curriculo', key: 'navResume' },
-  { to: '/projetos', key: 'navProjects' },
-  { to: '/conquistas', key: 'navAchievements' },
-  { to: '/sobre', key: 'navAbout' },
-  { to: '/contato', key: 'navContact' },
+  { to: '/resume', key: 'navResume' },
+  { to: '/projects', key: 'navProjects' },
+  { to: '/achievements', key: 'navAchievements' },
+  { to: '/about', key: 'navAbout' },
+  { to: '/contact', key: 'navContact' },
 ]
 
 export function Header() {
