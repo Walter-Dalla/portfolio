@@ -32,7 +32,7 @@ export function ProjectDetail() {
 
   return (
     <div className="container page project">
-      <Link to="/projetos" className="link link--muted project__back">
+      <Link to="/projects" className="link link--muted project__back">
         {t('backToProjects')}
       </Link>
 
@@ -51,7 +51,7 @@ export function ProjectDetail() {
         alt={project.title}
         ratio="21 / 9"
         className="project__cover"
-        label={`~/projetos/${project.slug}`}
+        label={`~/projects/${project.slug}`}
       />
 
       <div className="project__layout">
@@ -83,11 +83,11 @@ export function ProjectDetail() {
           )}
 
           <nav className="project__pager mono">
-            <Link to="/projetos" className="link link--muted">
+            <Link to="/projects" className="link link--muted">
               {t('allProjects')}
             </Link>
             {next && (
-              <Link to={`/projetos/${next.slug}`} className="link">
+              <Link to={`/projects/${next.slug}`} className="link">
                 {t('nextProject')}: {l(next.title)} →
               </Link>
             )}
@@ -107,11 +107,21 @@ export function ProjectDetail() {
               </Fact>
             )}
           </dl>
-          {(project.repo || project.patentUrl) && (
+          {(project.repo || project.patentUrl || project.thesisUrl) && (
             <div className="facts__links">
               {project.repo && (
                 <a href={project.repo} className="btn btn--primary btn--block" target="_blank" rel="noreferrer">
                   {t('repositoryButton')} <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {project.thesisUrl && (
+                <a
+                  href={project.thesisUrl}
+                  className="btn btn--secondary btn--block"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t('thesisButton')} <span aria-hidden="true">↗</span>
                 </a>
               )}
               {project.patentUrl && (

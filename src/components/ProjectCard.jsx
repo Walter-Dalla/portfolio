@@ -18,7 +18,7 @@ export function ProjectCard({ project, compact = false }) {
         src={project.cover}
         alt={project.title}
         ratio={compact ? '16 / 9' : '16 / 10'}
-        label={`~/projetos/${project.slug}`}
+        label={`~/projects/${project.slug}`}
       />
       <div className="card__body">
         {compact ? (
@@ -37,7 +37,7 @@ export function ProjectCard({ project, compact = false }) {
         <p className="card__text">{l(project.summary)}</p>
         <Tags items={project.tags} />
         <div className="link-row card__links">
-          <Link to={`/projetos/${project.slug}`} className="link">
+          <Link to={`/projects/${project.slug}`} className="link">
             {t('readCaseStudy')}
           </Link>
           {project.repo && (

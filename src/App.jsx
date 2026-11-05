@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes, useParams } from 'react-router'
 import { Layout } from './components/Layout.jsx'
 import { LanguageProvider } from './i18n/LanguageProvider.jsx'
 import { About } from './pages/About.jsx'
@@ -11,6 +11,15 @@ import { Projects } from './pages/Projects.jsx'
 import { Resume } from './pages/Resume.jsx'
 import { ThemeProvider } from './theme/ThemeProvider.jsx'
 
+// Caminhos antigos em português (links já compartilhados) redirecionam para os atuais, em inglês.
+const LEGACY_PATHS = { curriculo: 'resume', projetos: 'projects', conquistas: 'achievements', sobre: 'about', contato: 'contact' }
+const LEGACY_PROJECT_SLUGS = { 'analise-comportamental-insetos': 'insect-behavioral-analysis' }
+
+function LegacyProjectRedirect() {
+  const { slug } = useParams()
+  return <Navigate to={`/projects/${LEGACY_PROJECT_SLUGS[slug] ?? slug}`} replace />
+}
+
 export function App() {
   return (
     <ThemeProvider>
@@ -18,12 +27,16 @@ export function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="curriculo" element={<Resume />} />
-            <Route path="projetos" element={<Projects />} />
-            <Route path="projetos/:slug" element={<ProjectDetail />} />
-            <Route path="conquistas" element={<Achievements />} />
-            <Route path="sobre" element={<About />} />
-            <Route path="contato" element={<Contact />} />
+            <Route path="resume" element={<Resume />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="projects/:slug" element={<ProjectDetail />} />
+            <Route path="achievements" element={<Achievements />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            {Object.entries(LEGACY_PATHS).map(([pt, en]) => (
+              <Route key={pt} path={pt} element={<Navigate to={`/${en}`} replace />} />
+            ))}
+            <Route path="projetos/:slug" element={<LegacyProjectRedirect />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

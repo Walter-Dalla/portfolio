@@ -4,11 +4,11 @@ aliases: [Cabeçalho, Navegação, Rodapé, Rotas]
 
 # Layout do site
 
-Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 404.
+Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 404. As rotas são em inglês nos dois idiomas; os caminhos antigos em português redirecionam para elas.
 
 ## Símbolos de entrada
 
-`App` (`src/App.jsx`), `Layout`, `Header`, `Footer` (`src/components/`), `NotFound`, `usePageTitle`.
+`App`, `LEGACY_PATHS`, `LEGACY_PROJECT_SLUGS`, `LegacyProjectRedirect` (`src/App.jsx`), `Layout`, `Header`, `Footer` (`src/components/`), `NotFound`, `usePageTitle`.
 
 ## Interações
 

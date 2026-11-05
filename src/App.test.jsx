@@ -7,23 +7,31 @@ import { renderApp } from './test/renderApp.jsx'
 describe('rotas', () => {
   it.each([
     ['/', 'Walter Dalla Torre Neto'],
+    ['/resume', 'Currículo'],
+    ['/projects', 'Projetos'],
+    ['/projects/insect-behavioral-analysis', 'Análise comportamental de insetos'],
+    ['/projects/wh-harness', 'wh-harness'],
+    ['/achievements', 'Conquistas acadêmicas'],
+    ['/about', 'Oi, eu sou o Walter.'],
+    ['/contact', 'Vamos conversar.'],
+    ['/nao-existe', 'Página não encontrada'],
+    ['/projects/nao-existe', 'Página não encontrada'],
+    ['/projects/mongodb-benchmark', 'Página não encontrada'],
+    // Caminhos antigos em português redirecionam para os atuais.
     ['/curriculo', 'Currículo'],
     ['/projetos', 'Projetos'],
     ['/projetos/analise-comportamental-insetos', 'Análise comportamental de insetos'],
-    ['/projetos/mongodb-benchmark', 'MongoDB Benchmark'],
     ['/projetos/wh-harness', 'wh-harness'],
     ['/conquistas', 'Conquistas acadêmicas'],
     ['/sobre', 'Oi, eu sou o Walter.'],
     ['/contato', 'Vamos conversar.'],
-    ['/nao-existe', 'Página não encontrada'],
-    ['/projetos/nao-existe', 'Página não encontrada'],
   ])('%s mostra o título "%s"', (path, title) => {
     renderApp(path)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(title)
   })
 
   it('marca o item ativo da navegação', () => {
-    renderApp('/sobre')
+    renderApp('/about')
     const nav = screen.getByRole('navigation', { name: 'Principal' })
     expect(within(nav).getByRole('link', { name: 'Sobre' })).toHaveAttribute('aria-current', 'page')
   })
@@ -42,13 +50,13 @@ describe('tema', () => {
 describe('idioma', () => {
   it('abre em inglês quando não há escolha salva', () => {
     localStorage.removeItem('wd-lang')
-    renderApp('/contato')
+    renderApp('/contact')
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent("Let's talk.")
     expect(document.documentElement.lang).toBe('en')
   })
 
   it('troca a interface e o conteúdo para inglês', async () => {
-    renderApp('/contato')
+    renderApp('/contact')
     await userEvent.click(screen.getByRole('button', { name: 'EN' }))
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent("Let's talk.")
     expect(screen.getByRole('button', { name: 'EN' })).toHaveAttribute('aria-pressed', 'true')
@@ -58,14 +66,14 @@ describe('idioma', () => {
 
   it('traduz o conteúdo do currículo', async () => {
     localStorage.setItem('wd-lang', 'en')
-    renderApp('/curriculo')
+    renderApp('/resume')
     expect(screen.getByText('Equivalent to Computer Science.')).toBeInTheDocument()
   })
 })
 
 describe('projetos', () => {
   it('filtra por categoria', async () => {
-    renderApp('/projetos')
+    renderApp('/projects')
     expect(screen.getAllByRole('article')).toHaveLength(projects.length)
     await userEvent.click(screen.getByRole('button', { name: 'pesquisa' }))
     const cards = screen.getAllByRole('article')
@@ -75,8 +83,16 @@ describe('projetos', () => {
     expect(screen.getAllByRole('article')).toHaveLength(projects.length)
   })
 
+  it('liga o estudo de caso de insetos ao TCC', () => {
+    renderApp('/projects/insect-behavioral-analysis')
+    expect(screen.getByRole('link', { name: 'TCC (UNESP)' })).toHaveAttribute(
+      'href',
+      'https://hdl.handle.net/11449/258670',
+    )
+  })
+
   it('só mostra link de repositório quando ele existe', () => {
-    renderApp('/projetos')
+    renderApp('/projects')
     const repos = screen.getAllByRole('link', { name: 'repositório ↗' })
     const withRepo = projects.filter((p) => p.repo)
     expect(repos).toHaveLength(withRepo.length)
@@ -86,7 +102,7 @@ describe('projetos', () => {
 
 describe('conteúdo pendente', () => {
   it('não mostra textos de placeholder do design', () => {
-    for (const path of ['/', '/curriculo', '/projetos', '/conquistas', '/sobre', '/contato']) {
+    for (const path of ['/', '/resume', '/projects', '/achievements', '/about', '/contact']) {
       const { container, unmount } = renderApp(path)
       expect(container.textContent).not.toMatch(/\[[A-ZÀ-Ú][A-ZÀ-Ú ]+/)
       unmount()
@@ -94,7 +110,7 @@ describe('conteúdo pendente', () => {
   })
 
   it('oferece só os PDFs que existem', () => {
-    renderApp('/curriculo')
+    renderApp('/resume')
     expect(screen.getByRole('link', { name: /Download in English/ })).toHaveAttribute(
       'href',
       '/cv/walter-dalla-cv-en.pdf',
