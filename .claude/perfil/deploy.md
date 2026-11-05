@@ -27,10 +27,10 @@ Reexecutar sem novo commit: `gh run rerun <id>` [gh]
 Agente: automático pelo job `deploy` (`actions/deploy-pages@v4`, ambiente `github-pages`) [ci: ci.yml]
 
 ## Verificar
-`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/` → `200` [inferido]
-`curl -s https://walter-dalla.github.io/portfolio/ | grep -o '/portfolio/assets/index-[^"]*\.js'` → mesmo hash do `dist/index.html` do commit [inferido]
-`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/cv/walter-dalla-cv-en.pdf` → `200` [inferido]
-Rota profunda `https://walter-dalla.github.io/portfolio/curriculo` → `404` com o HTML do app (renderiza no navegador) [inferido]
+`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/` → `200` [verificado: deploy 2026-11-04]
+`curl -s https://walter-dalla.github.io/portfolio/ | grep -o '/portfolio/assets/index-[^"]*\.js'` → mesmo hash do `dist/index.html` do commit [verificado: deploy 2026-11-04]
+`curl -s -o /dev/null -w "%{http_code}" https://walter-dalla.github.io/portfolio/cv/walter-dalla-cv-en.pdf` → `200` [verificado: deploy 2026-11-04]
+Rota profunda `https://walter-dalla.github.io/portfolio/curriculo` → `404` com o HTML do app (renderiza a página certa no navegador) [verificado: deploy 2026-11-04]
 
 ## Falhas
 Página em branco, assets 404 → `base` diferente de `/portfolio/` → conferir `vite.config.js` [inferido]
