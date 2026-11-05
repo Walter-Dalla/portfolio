@@ -34,9 +34,9 @@ fazer o bloco surgir.
 
 ## Publicar
 
-Publicado no GitHub Pages: https://walter-dalla.github.io/portfolio/
+Publicado no GitHub Pages com domínio próprio: https://walterdalla.uk/ (o domínio fica em `public/CNAME`).
 
 Todo push na `master` roda `.github/workflows/ci.yml` (lint, testes, build) e, se passar,
-publica `dist/`. O build usa `base: '/portfolio/'` (`vite.config.js`); caminhos de `public/`
-no conteúdo (ex.: `/cv/...`, `/img/...`) ganham esse prefixo sozinhos. Como é uma SPA, o CI
+publica `dist/`. O build usa `base: '/'` (`vite.config.js`); caminhos de `public/`
+no conteúdo (ex.: `/cv/...`, `/img/...`) passam por `assetUrl` e acompanham o `base` se ele mudar. Como é uma SPA, o CI
 copia `index.html` para `404.html` para as rotas diretas (`/curriculo`…) funcionarem.

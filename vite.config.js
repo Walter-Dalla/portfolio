@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Build publicado no GitHub Pages em /portfolio/; dev e testes ficam na raiz.
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/portfolio/' : '/',
+// Publicado no GitHub Pages com domínio próprio (walterdalla.uk), servido na raiz.
+export default defineConfig({
+  base: '/',
   plugins: [react()],
   server: { port: 3000 },
   test: {
@@ -11,4 +11,4 @@ export default defineConfig(({ command }) => ({
     setupFiles: ['./src/test/setup.js'],
     css: false,
   },
-}))
+})
