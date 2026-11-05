@@ -8,7 +8,7 @@ Lista filtrável de projetos e uma página por projeto com estudo de caso, ficha
 
 ## Símbolos de entrada
 
-`Projects`, `ProjectDetail` (`src/pages/`), `ProjectCard`, `projects`, `projectCategories`, `findProject` (`src/content/projects.js`).
+`Projects`, `ProjectDetail` (`src/pages/`), `ProjectCard`, `projects`, `projectCategories`, `simpleProject`, `findProject` (`src/content/projects.js`). `simpleProject` monta o card de um projeto ainda sem estudo de caso.
 
 ## Interações
 

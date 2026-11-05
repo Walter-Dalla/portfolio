@@ -88,3 +88,8 @@ a.contact__card:hover {
   font-size: 15px;
   color: var(--muted);
 }
+
+.contact__card-meta {
+  font-size: 13px;
+  color: var(--muted);
+}

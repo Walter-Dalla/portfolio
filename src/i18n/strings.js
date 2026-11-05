@@ -68,8 +68,8 @@ export const strings = {
   // Currículo
   resumeTitle: { pt: 'Currículo', en: 'Resume' },
   resumeLead: {
-    pt: 'Arquiteto de software e engenheiro DevOps com sólida experiência em backend, otimização de sistemas de alta performance e nuvem (AWS e Azure). Histórico de redução de custos, melhoria de SLA e liderança técnica em ambientes críticos do setor financeiro.',
-    en: 'Software architect and DevOps engineer with solid experience in backend development, high-performance systems optimization and cloud (AWS and Azure). Track record of cutting costs, improving SLAs and leading teams in critical financial-sector environments.',
+    pt: 'Arquiteto de software e engenheiro backend com mais de 6 anos construindo sistemas de alta performance em .NET, Java e Node.js, gerindo infraestrutura em AWS e Azure e implantando observabilidade em ambientes financeiros regulados. Histórico de cortar 23% dos custos de AWS, levar o SLA de entrega de 7 para 1 dia e mentorar desenvolvedores. Hoje aplico workflows de engenharia orientados por IA (Claude, Codex) para acelerar a entrega de software.',
+    en: 'Software architect and backend engineer with 6+ years building high-performance systems in .NET, Java and Node.js, managing cloud infrastructure on AWS and Azure, and implementing observability in regulated financial environments. Track record of cutting AWS costs by 23%, reducing delivery SLA from 7 to 1 day, and mentoring developers. Currently applying AI-driven engineering workflows (Claude, Codex) to accelerate software delivery.',
   },
   resumePdfEyebrow: { pt: '// currículo completo em PDF', en: '// full resume as PDF' },
   resumePdfPt: { pt: 'Baixar em português', en: 'Download in Portuguese' },
@@ -79,6 +79,13 @@ export const strings = {
   experienceTitle: { pt: 'Linha do tempo', en: 'Timeline' },
   skillsEyebrow: { pt: '02 · habilidades', en: '02 · skills' },
   skillsTitle: { pt: 'Stack', en: 'Stack' },
+  educationEyebrow: { pt: '03 · formação', en: '03 · education' },
+  educationTitle: { pt: 'Formação', en: 'Education' },
+  languagesLabel: { pt: 'idiomas/', en: 'languages/' },
+  companyEyebrow: { pt: '04 · empresa', en: '04 · company' },
+  companyTitle: { pt: 'Atendimento como PJ', en: 'Contracting through my company' },
+  companyLabel: { pt: 'empresa (PJ)', en: 'company' },
+  certificationsLabel: { pt: 'certificações/', en: 'certifications/' },
   resumeCtaTitle: { pt: 'Quer levar o currículo com você?', en: 'Want to take the resume with you?' },
   resumeCtaText: {
     pt: 'Versões em PDF, prontas para enviar ao seu time.',

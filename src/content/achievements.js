@@ -19,8 +19,8 @@ export const achievements = [
   {
     label: { pt: 'adoção · 2024 – atual', en: 'adoption · 2024 – present' },
     title: {
-      pt: 'Software adotado por 2 laboratórios da UNICAMP',
-      en: 'Software adopted by 2 UNICAMP labs',
+      pt: 'Software adotado por 3 laboratórios da UNICAMP',
+      en: 'Software adopted by 3 UNICAMP labs',
     },
     text: { pt: 'Em uso por laboratórios de farmacologia.', en: 'In use by pharmacology labs.' },
     photo: null,

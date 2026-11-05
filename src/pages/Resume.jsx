@@ -1,5 +1,5 @@
-import { experiences, skillGroups } from '../content/experiences.js'
-import { resumePdf } from '../content/profile.js'
+import { certifications, education, experiences, languages, skillGroups } from '../content/experiences.js'
+import { company, resumePdf } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
 import { DownloadIcon } from '../components/Icons.jsx'
 import { Media } from '../components/Media.jsx'
@@ -48,6 +48,7 @@ function Experience({ xp, last }) {
           {xp.company}
           {place && ` · ${place}`}
         </span>
+        {xp.note && <span className="xp__note">{l(xp.note)}</span>}
         {xp.bullets.length > 0 && (
           <ul className="xp__bullets">
             {xp.bullets.map((b, i) => (
@@ -120,6 +121,59 @@ export function Resume() {
           ))}
         </div>
       </section>
+
+      <section className="resume__section" aria-labelledby="formacao">
+        <SectionHeading id="formacao" eyebrow={t('educationEyebrow')} title={t('educationTitle')} />
+        <div className="education">
+          {education.map((ed) => (
+            <article key={l(ed.title)} className="education__item">
+              <span className="xp__period mono">{ed.period}</span>
+              <h3 className="xp__role">{l(ed.title)}</h3>
+              <span className="xp__company">
+                {l(ed.school)}
+                {ed.place && ` · ${ed.place}`}
+              </span>
+              {ed.note && <span className="xp__note">{l(ed.note)}</span>}
+            </article>
+          ))}
+        </div>
+        {(languages.length > 0 || certifications.length > 0) && (
+          <div className="skills">
+            {languages.length > 0 && (
+              <div className="skills__group">
+                <span className="eyebrow">{t('languagesLabel')}</span>
+                <ul className="resume__list">
+                  {languages.map((lang) => (
+                    <li key={l(lang.name)}>
+                      {l(lang.name)} <span className="resume__list-meta">· {l(lang.level)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {certifications.length > 0 && (
+              <div className="skills__group">
+                <span className="eyebrow">{t('certificationsLabel')}</span>
+                <Tags items={certifications} className="skills__tags" />
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+
+      {company && (
+        <section className="resume__section" aria-labelledby="empresa">
+          <SectionHeading id="empresa" eyebrow={t('companyEyebrow')} title={t('companyTitle')} />
+          <div className="company card--accent">
+            <h3 className="xp__role">{company.name}</h3>
+            <span className="xp__company">
+              CNPJ <span className="mono">{company.cnpj}</span> · {company.location}
+            </span>
+            <p className="company__text">{l(company.text)}</p>
+            <span className="xp__note">{l(company.activity)}</span>
+          </div>
+        </section>
+      )}
 
       {resumes.length > 0 && (
         <section className="resume-cta">
