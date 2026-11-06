@@ -8,7 +8,7 @@ Lista filtrável de projetos e uma página por projeto com estudo de caso, ficha
 
 ## Símbolos de entrada
 
-`Projects`, `ProjectDetail` (`src/pages/`), `ProjectCard`, `projects`, `projectCategories`, `simpleProject`, `findProject` (`src/content/projects.js`). `simpleProject` monta o card de um projeto ainda sem estudo de caso completo, com a seção opcional "Como foi feito com IA" (`ai`). `thesisUrl` (opcional) vira o botão do TCC na ficha. Slugs em inglês; slug renomeado entra em `LEGACY_PROJECT_SLUGS` (`src/App.jsx`).
+`Projects`, `ProjectDetail` (`src/pages/`), `ProjectCard`, `projects`, `projectCategories`, `simpleProject`, `findProject` (`src/content/projects.js`). `simpleProject` monta o card de um projeto ainda sem estudo de caso completo, com a seção opcional "Como foi feito com IA" (`ai`). `cover` e `gallery` (também em `simpleProject`) apontam para `public/img/projects/<slug>/`: capturas reais do projeto rodando com dados fictícios. `thesisUrl` (opcional) vira o botão do TCC na ficha. Slugs em inglês; slug renomeado entra em `LEGACY_PROJECT_SLUGS` (`src/App.jsx`).
 
 ## Interações
 
