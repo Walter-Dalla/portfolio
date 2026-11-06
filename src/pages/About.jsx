@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { about } from '../content/about.js'
 import { useI18n } from '../i18n/context.js'
 import { Media } from '../components/Media.jsx'
@@ -22,9 +23,16 @@ export function About() {
           <h1 className="page-title">{t('aboutTitle')}</h1>
           <p className="about__lede">{l(about.intro)}</p>
           {about.paragraphs.map((p, i) => (
-            <p key={i} className="about__p">
-              {l(p)}
-            </p>
+            <div key={i} className="about__block">
+              <p className="about__p">{l(p.text)}</p>
+              <div className="link-row">
+                {p.links.map((link) => (
+                  <Link key={link.to} to={link.to} className="link">
+                    {l(link.label)}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         <aside aria-label={t('quickFactsLabel')} className="quick-facts mono">
@@ -59,6 +67,11 @@ export function About() {
             <li key={step.year} className="story__step">
               <span className="story__year mono">{step.year}</span>
               <span className="story__text">{l(step.text)}</span>
+              {step.link && (
+                <Link to={step.link.to} className="link story__link">
+                  {l(step.link.label)}
+                </Link>
+              )}
             </li>
           ))}
         </ol>
