@@ -143,7 +143,7 @@ export const experiences = [
         en: 'Designed the offline-first architecture of the new Point of Sale platform (local persistence when offline, sync on reconnection), integrated with Brazilian electronic tax-invoice systems (NFe, SAT) and built for high availability.',
       },
       {
-        pt: 'Levantei requisitos diretamente com CEOs e CTOs dos clientes e visitei as operações para entender o dia a dia, transformando necessidades de negócio no desenho técnico da nova plataforma de PDV.',
+        pt: 'Levantei requisitos diretamente com CEOs e CTOs dos clientes e visitei suas unidades para entender o dia a dia das operações, transformando necessidades de negócio no desenho técnico da nova plataforma de PDV.',
         en: 'Gathered requirements directly with client CEOs and CTOs and visited customer sites to understand day-to-day operations, turning business needs into the technical design of the new POS platform.',
       },
       {
