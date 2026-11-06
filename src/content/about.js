@@ -2,8 +2,8 @@
 // a galeria só aparece com pelo menos uma foto.
 export const about = {
   intro: {
-    pt: 'Comecei a programar no técnico do COTIL/UNICAMP, segui para Sistemas de Informação na UNESP de Bauru e, desde 2018, trabalho com backend — hoje construindo com agentes de IA.',
-    en: 'I started coding at the COTIL/UNICAMP technical school, went on to Information Systems at UNESP Bauru and, since 2018, I have worked on backend — today building with AI agents.',
+    pt: 'Comecei a programar no técnico do COTIL/UNICAMP, segui para Sistemas de Informação na UNESP de Bauru e, desde 2018, construo software — hoje com agentes de IA.',
+    en: 'I started coding at the COTIL/UNICAMP technical school, went on to Information Systems at UNESP Bauru and, since 2018, I have been building software — today with AI agents.',
   },
   // Texto em primeira pessoa: o que te levou à tecnologia, hobbies… [{ pt, en }]
   paragraphs: [],

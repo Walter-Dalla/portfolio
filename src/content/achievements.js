@@ -40,7 +40,7 @@ export const achievements = [
   },
   {
     label: { pt: 'técnico · 2017 – 2019', en: 'technical · 2017 – 2019' },
-    title: { pt: 'Técnico em Informática', en: 'IT Technician' },
+    title: { pt: 'Curso Técnico em Informática (Software)', en: 'Technical Degree in IT (Software)' },
     text: 'COTIL — UNICAMP',
     photo: null,
     proofUrl: null,
