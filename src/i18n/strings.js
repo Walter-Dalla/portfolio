@@ -25,8 +25,8 @@ export const strings = {
   exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
   exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
   exploreResume: {
-    pt: '7 experiências desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx/Stone.',
-    en: '7 roles since 2018 — from intern to architect, including BTG Pactual and Linx/Stone.',
+    pt: '6 experiências desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
+    en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
   },
   exploreAchievements: {
     pt: 'Patente, software adotado pela UNICAMP, UNESP e COTIL.',
@@ -69,8 +69,8 @@ export const strings = {
   // Currículo
   resumeTitle: { pt: 'Currículo', en: 'Resume' },
   resumeLead: {
-    pt: 'Arquiteto de software e engenheiro backend com mais de 6 anos construindo sistemas de alta performance em .NET, Java e Node.js, gerindo infraestrutura em AWS e Azure e implantando observabilidade em ambientes financeiros regulados. Histórico de cortar 23% dos custos de AWS, levar o SLA de entrega de 7 para 1 dia e mentorar desenvolvedores. Hoje aplico workflows de engenharia orientados por IA (Claude, Codex) para acelerar a entrega de software.',
-    en: 'Software architect and backend engineer with 6+ years building high-performance systems in .NET, Java and Node.js, managing cloud infrastructure on AWS and Azure, and implementing observability in regulated financial environments. Track record of cutting AWS costs by 23%, reducing delivery SLA from 7 to 1 day, and mentoring developers. Currently applying AI-driven engineering workflows (Claude, Codex) to accelerate software delivery.',
+    pt: 'Arquiteto de Software e Engenheiro Fullstack com mais de 7 anos construindo sistemas de alto desempenho em .NET, Java e Node.js na AWS e Azure, incluindo ambientes financeiros regulados. No BTG Pactual, fui o ponto focal técnico na redução de ~36% da latência da análise antifraude do banco no PIX, enquadrando-a no novo limite do Banco Central. Atualmente desenvolvo software em produção com agentes de IA (Claude, Codex), com base em arquitetura robusta e padrões de engenharia.',
+    en: "Software Architect and Fullstack Engineer with 7+ years building high-performance systems in .NET, Java and Node.js on AWS and Azure, including regulated financial environments. At BTG Pactual, was the technical focal point for cutting the bank's fraud-screening latency on PIX (Brazil's instant-payment system) by ~36%, bringing it within the Central Bank's new limit. Now building production software with AI agents (Claude, Codex), grounded in robust architecture and engineering standards.",
   },
   resumePdfEyebrow: { pt: '// currículo completo em PDF', en: '// full resume as PDF' },
   resumePdfPt: { pt: 'Baixar em português', en: 'Download in Portuguese' },

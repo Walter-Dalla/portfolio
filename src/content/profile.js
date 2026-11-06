@@ -12,8 +12,8 @@ export const profile = {
   // Retrato 4:5, ex.: '/img/walter.jpg'.
   photo: null,
   tagline: {
-    pt: 'Desenvolvedor backend sênior, arquiteto de software e DevOps. Hoje construo com IA — Claude, Codex e orquestração de agentes.',
-    en: 'Senior backend developer, software architect and DevOps engineer. Today I build with AI — Claude, Codex and agent orchestration.',
+    pt: 'Engenheiro de Software Sênior & Arquiteto de Sistemas',
+    en: 'Senior Software Engineer & Systems Architect',
   },
   pitch: {
     pt: 'Construo sistemas que custam menos, respondem mais rápido e não param.',
@@ -40,10 +40,10 @@ export const company = {
 
 // PDFs do currículo, servidos de public/cv/.
 export const resumePdf = {
-  pt: null,
+  pt: '/cv/walter-dalla-cv-pt.pdf',
   en: '/cv/walter-dalla-cv-en.pdf',
   // Data da última atualização dos PDFs, ex.: { pt: '05/2026', en: '05/2026' }.
-  updated: null,
+  updated: { pt: '11/2026', en: '11/2026' },
 }
 
 export const metrics = [
@@ -54,7 +54,7 @@ export const metrics = [
   },
   {
     value: '8→1',
-    label: { pt: 'pods após consolidar 8 microsserviços', en: 'pods after consolidating 8 microservices' },
+    label: { pt: 'microsserviços consolidados em um único serviço', en: 'microservices consolidated into a single service' },
     source: 'Qyon · 2025–26',
   },
   {
@@ -63,8 +63,8 @@ export const metrics = [
     source: 'BTG Pactual · 2023–25',
   },
   {
-    value: '~4,5s',
-    label: { pt: 'P95 do antifraude PIX (antes ~7s)', en: 'PIX fraud-check P95 (down from ~7s)' },
+    value: '~36%',
+    label: { pt: 'menos latência P95 na análise antifraude do PIX (~7s → ~4,5s)', en: 'lower P95 fraud-screening latency on PIX (~7s → ~4.5s)' },
     source: 'BTG Pactual · 2023–25',
   },
 ]

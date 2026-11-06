@@ -6,6 +6,8 @@ aliases: [Resume, CV]
 
 Resumo profissional, PDFs para baixar, linha do tempo das experiências, grupos de habilidades, formação (com idiomas e certificações) e a empresa PJ.
 
+O CV é a fonte da verdade: cargos, datas, descrições, resumo (`resumeLead`) e habilidades seguem o texto dele. Ao atualizar o CV, troque também os PDFs em `public/cv/` e `resumePdf.updated`.
+
 ## Símbolos de entrada
 
 `Resume` (`src/pages/Resume.jsx`), `experiences`, `skillGroups`, `education`, `languages`, `certifications` (`src/content/experiences.js`), `resumePdf`, `company` (`src/content/profile.js`), `Rich`.

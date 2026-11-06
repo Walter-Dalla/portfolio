@@ -45,7 +45,7 @@ function Experience({ xp, last }) {
         <span className={`xp__period mono${xp.stage ? ' xp__period--accent' : ''}`}>{l(xp.period)}</span>
         <h3 className="xp__role">{l(xp.role)}</h3>
         <span className="xp__company">
-          {xp.company}
+          {l(xp.company)}
           {place && ` · ${place}`}
         </span>
         {xp.note && <span className="xp__note">{l(xp.note)}</span>}
@@ -105,7 +105,7 @@ export function Resume() {
         <SectionHeading id="experiencia" eyebrow={t('experienceEyebrow')} title={t('experienceTitle')} />
         <div className="timeline">
           {experiences.map((xp, i) => (
-            <Experience key={`${xp.company}-${i}`} xp={xp} last={i === experiences.length - 1} />
+            <Experience key={`${l(xp.company)}-${i}`} xp={xp} last={i === experiences.length - 1} />
           ))}
         </div>
       </section>
@@ -133,7 +133,19 @@ export function Resume() {
                 {l(ed.school)}
                 {ed.place && ` · ${ed.place}`}
               </span>
-              {ed.note && <span className="xp__note">{l(ed.note)}</span>}
+              {ed.note && (
+                <span className="xp__note">
+                  {l(ed.note)}
+                  {ed.noteLink && (
+                    <>
+                      {' '}
+                      <a href={ed.noteLink.href} className="link link--text" target="_blank" rel="noreferrer">
+                        {l(ed.noteLink.label)} ↗
+                      </a>
+                    </>
+                  )}
+                </span>
+              )}
             </article>
           ))}
         </div>

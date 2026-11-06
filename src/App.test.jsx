@@ -9,7 +9,7 @@ describe('rotas', () => {
     ['/', 'Walter Dalla Torre Neto'],
     ['/resume', 'Currículo'],
     ['/projects', 'Projetos'],
-    ['/projects/insect-behavioral-analysis', 'Análise comportamental de insetos'],
+    ['/projects/insect-behavioral-analysis', 'Ferramenta para Análise Comportamental de Insetos'],
     ['/projects/wh-harness', 'wh-harness'],
     ['/achievements', 'Conquistas acadêmicas'],
     ['/about', 'Oi, eu sou o Walter.'],
@@ -20,7 +20,7 @@ describe('rotas', () => {
     // Caminhos antigos em português redirecionam para os atuais.
     ['/curriculo', 'Currículo'],
     ['/projetos', 'Projetos'],
-    ['/projetos/analise-comportamental-insetos', 'Análise comportamental de insetos'],
+    ['/projetos/analise-comportamental-insetos', 'Ferramenta para Análise Comportamental de Insetos'],
     ['/projetos/wh-harness', 'wh-harness'],
     ['/conquistas', 'Conquistas acadêmicas'],
     ['/sobre', 'Oi, eu sou o Walter.'],
@@ -67,7 +67,8 @@ describe('idioma', () => {
   it('traduz o conteúdo do currículo', async () => {
     localStorage.setItem('wd-lang', 'en')
     renderApp('/resume')
-    expect(screen.getByText('Equivalent to Computer Science.')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Senior Software Engineer & Systems Architect' })).toBeInTheDocument()
+    expect(screen.getByText(/BTG Pactual \(Brazilian Investment Bank\)/)).toBeInTheDocument()
   })
 })
 
@@ -78,7 +79,7 @@ describe('projetos', () => {
     await userEvent.click(screen.getByRole('button', { name: 'pesquisa' }))
     const cards = screen.getAllByRole('article')
     expect(cards).toHaveLength(1)
-    expect(cards[0]).toHaveTextContent('Análise comportamental de insetos')
+    expect(cards[0]).toHaveTextContent('Ferramenta para Análise Comportamental de Insetos')
     await userEvent.click(screen.getByRole('button', { name: `todos · ${projects.length}` }))
     expect(screen.getAllByRole('article')).toHaveLength(projects.length)
   })
@@ -109,12 +110,15 @@ describe('conteúdo pendente', () => {
     }
   })
 
-  it('oferece só os PDFs que existem', () => {
+  it('oferece os PDFs em inglês e português', () => {
     renderApp('/resume')
     expect(screen.getByRole('link', { name: /Download in English/ })).toHaveAttribute(
       'href',
       '/cv/walter-dalla-cv-en.pdf',
     )
-    expect(screen.queryByRole('link', { name: /Baixar em português/ })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Baixar em português/ })).toHaveAttribute(
+      'href',
+      '/cv/walter-dalla-cv-pt.pdf',
+    )
   })
 })

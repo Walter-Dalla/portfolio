@@ -57,15 +57,15 @@ function simpleProject({
 export const projects = [
   {
     slug: 'insect-behavioral-analysis',
-    title: { pt: 'Análise comportamental de insetos', en: 'Insect behavioral analysis' },
+    title: { pt: 'Ferramenta para Análise Comportamental de Insetos', en: 'Tool for Insect Behavioral Analysis' },
     period: { pt: '2024 – atual', en: '2024 – present' },
     patented: true,
     kind: { pt: 'pesquisa · UNICAMP', en: 'research · UNICAMP' },
     featured: true,
     categories: ['research'],
     summary: {
-      pt: 'Software de análise de imagens que automatiza a observação de comportamento de insetos, usado por 3 laboratórios de farmacologia da UNICAMP.',
-      en: 'Image-analysis software that automates the observation of insect behavior, used by 3 pharmacology labs at UNICAMP.',
+      pt: 'Software de análise de imagens para comportamento de insetos, em uso em produção por 3 laboratórios de farmacologia da UNICAMP.',
+      en: 'Image analysis software for insect behavior, in production use by 3 pharmacology labs at UNICAMP.',
     },
     lede: {
       pt: 'Um software de análise de imagens que transforma horas de observação manual em dados — hoje patenteado e em uso por 3 laboratórios de farmacologia da UNICAMP.',
@@ -146,8 +146,8 @@ export const projects = [
     kind: { pt: 'plugin · Claude Code', en: 'plugin · Claude Code' },
     categories: ['ai'],
     summary: {
-      pt: 'Plugin para o Claude Code que conduz uma tarefa de software do pedido ao pull request — análise, plano, agentes em paralelo, QA e retrospectiva — em qualquer repositório.',
-      en: 'A Claude Code plugin that takes a software task from request to pull request — analysis, plan, parallel agents, QA and retrospective — in any repository.',
+      pt: 'Plugin open source que leva uma tarefa de software da solicitação ao pull request (análise, plano, agentes em paralelo, QA, retrospectiva) em qualquer repositório.',
+      en: 'Open-source plugin that takes a software task from request to pull request (analysis, plan, parallel agents, QA, retrospective) in any repository.',
     },
     about: {
       pt: 'A regra central é "a skill tem o procedimento, o perfil tem os fatos": o plugin guarda dez skills genéricas (implementation, adotar, deploy, qa-visual, retro, limpeza…), subagentes e um hook, e cada projeto guarda só os seus fatos — comandos, portas, glossário, mapa de features — em .claude/perfil/. O /wh:implementation enriquece a tarefa, divide em faixas, roda cada faixa num subagente em worktree git própria, faz QA do código e final e abre o PR. Um hook em Python puro injeta em cada prompt ponteiros do glossário, do mapa de features e do índice CodeGraph. Foi extraído do KittyCafé e hoje roda também no GoPrint, no Nesse Capítulo e neste portfólio.',
@@ -210,8 +210,8 @@ export const projects = [
     kind: 'SaaS B2B',
     categories: ['dotnet', 'web'],
     summary: {
-      pt: 'Plataforma SaaS B2B de chamados de assistência técnica para impressoras: a assistência atende várias empresas clientes, que abrem e acompanham chamados dos seus equipamentos.',
-      en: 'B2B SaaS for printer repair tickets: a service provider serves several client companies, which open and track tickets for their equipment.',
+      pt: 'SaaS B2B para chamados de manutenção de impressoras, em que um prestador de serviço atende múltiplas empresas clientes.',
+      en: 'B2B SaaS for printer-repair tickets, where a service provider serves multiple client companies.',
     },
     about: {
       pt: 'Cada cliente abre chamados, anexa fotos, vídeos ou PDF como evidência e acompanha os dez status do ciclo de vida com histórico de cada mudança; a assistência cadastra empresas, usuários e impressoras (com QR Code pelo número de série) e acompanha um painel por fase. API em ASP.NET Core (.NET 10) com Dapper e PostgreSQL, anexos em S3 (MinIO) e e-mail por SendGrid; o isolamento entre clientes vem da empresa contida no token. O front em React + Vite + TypeScript é servido pela própria API numa única imagem Docker, com testes de integração em xUnit e Testcontainers.',
@@ -250,8 +250,8 @@ export const projects = [
     kind: { pt: 'infra · self-hosted', en: 'infra · self-hosted' },
     categories: ['infra'],
     summary: {
-      pt: 'Servidor Linux em casa que roda meus projetos em produção com Docker, publicado na internet só por Cloudflare Tunnel, sem nenhuma porta aberta.',
-      en: 'A Linux server at home running my projects in production with Docker, exposed to the internet only through Cloudflare Tunnel, with no open ports.',
+      pt: 'Servidor self-hosted que roda meus projetos em produção, exposto apenas por um túnel, sem portas abertas.',
+      en: 'Self-hosted server running my projects in production, exposed only through a tunnel with no open ports.',
     },
     about: {
       pt: 'Cada aplicação é uma stack Docker gerida por um painel self-hosted, com imagens num registry privado. As imagens são construídas na máquina de desenvolvimento e passam por scan de vulnerabilidades com Trivy antes do push: falha HIGH/CRITICAL com correção disponível bloqueia a publicação. Os containers rodam sem usuário root e sem porta publicada — só o cloudflared os alcança pela rede Docker —, e os bancos SQLite têm backup diário com cópia fora do servidor e ensaio de restauração. Hoje hospeda o KittyCafé e o GoPrint.',
