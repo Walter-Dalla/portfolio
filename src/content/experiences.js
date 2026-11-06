@@ -1,21 +1,19 @@
 // Linha do tempo do currículo, da mais recente para a mais antiga.
-// O CV é a fonte da verdade: cargos, datas e descrições seguem o texto dele (PT: PDF em português).
+// O CV é a fonte da verdade: cargos, datas e descrições seguem o texto dele, em cada idioma.
 // `**texto**` em um item vira destaque (número em mono, cor de acento).
 // `stage`: 'current' (marcador cheio), 'recent' (contorno de acento) ou ausente (contorno neutro).
 // `note` (opcional): linha curta abaixo da empresa, ex.: como entrou, cargos anteriores.
 // `extra` (opcional): { photos: [{ src, alt }], text: { pt, en } } — bloco de fotos e texto extra.
-const CONTRACT_NOTE = {
-  pt: 'Contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA).',
-  en: 'Contract, via own consultancy (Walter Serviços de Arquitetura de Software LTDA).',
-}
-
 export const experiences = [
   {
     period: { pt: '07/2026 — atual', en: '07/2026 — present' },
     role: { pt: 'Desenvolvedor Fullstack Sênior Orientado a IA', en: 'Senior AI-Oriented Fullstack Developer' },
     company: { pt: 'AgileEngine (EUA)', en: 'AgileEngine (US)' },
     place: { pt: 'Remoto', en: 'Remote' },
-    note: CONTRACT_NOTE,
+    note: {
+      pt: 'Contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA); detalhes do cliente sob NDA.',
+      en: 'Contract, via own consultancy (Walter Serviços de Arquitetura de Software LTDA); client details under NDA.',
+    },
     stage: 'current',
     bullets: [
       {
@@ -39,7 +37,10 @@ export const experiences = [
     role: { pt: 'Arquiteto de Sistemas & DevOps', en: 'Systems Architect & DevOps' },
     company: 'Qyon',
     place: { pt: 'Remoto', en: 'Remote' },
-    note: CONTRACT_NOTE,
+    note: {
+      pt: 'Arquiteto único, atuando também em DevOps e FinOps; contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA).',
+      en: 'Sole architect, also covering DevOps and FinOps; contract via own consultancy (Walter Serviços de Arquitetura de Software LTDA).',
+    },
     stage: 'recent',
     bullets: [
       {
@@ -87,8 +88,8 @@ export const experiences = [
     stage: 'recent',
     bullets: [
       {
-        pt: 'Liderei a frente de prevenção a fraudes da iniciativa de redução de latência do PIX no BTG como ponto focal técnico: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude em ~36%, de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
-        en: "Led the fraud-prevention side of BTG's PIX latency-reduction effort (PIX is Brazil's instant-payment system) as technical focal point: designed the architecture, validated it with the bank's architecture team and delivered it with 2 mid-level developers, cutting P95 latency of the fraud-screening flow by ~36%, from **~7s to ~4.5s**, within the Central Bank's (BACEN) new 5s limit.",
+        pt: 'Liderei a frente de prevenção a fraudes da iniciativa de redução de latência do PIX no BTG como ponto focal técnico: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
+        en: "Led the fraud-prevention side of BTG's PIX latency-reduction effort (PIX is Brazil's instant-payment system) as technical focal point: designed the architecture, validated it with the bank's architecture team and delivered it with 2 mid-level developers, cutting P95 latency of the fraud-screening flow from **~7s to ~4.5s**, within the Central Bank's (BACEN) new 5s limit.",
       },
       {
         pt: 'Projetei um mecanismo customizado de timeout/fallback que garante uma resposta determinística dentro do prazo mesmo quando um fornecedor externo trava, viabilizando caminhos de degradação controlada para transações PIX e TED.',
@@ -159,7 +160,7 @@ export const experiences = [
       },
       {
         pt: 'Treinei 4 novos desenvolvedores e defini padrões de código, revisão de PRs e práticas de Git Flow.',
-        en: 'Mentored 4 new developers and defined coding standards, PR review and Git Flow practices.',
+        en: 'Trained 4 new developers and defined coding standards, PR review and Git Flow practices.',
       },
     ],
     tags: [{ label: 'C#' }, { label: 'AKS' }, { label: 'SQL Server' }, { label: 'MongoDB' }],
