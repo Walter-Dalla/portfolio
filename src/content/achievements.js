@@ -1,32 +1,23 @@
+import { certifications } from './experiences.js'
+
 // Conquistas. `proofUrl` (comprovante/diploma) e `photo` são opcionais: `null` esconde o link
 // e mostra um bloco decorativo no lugar da foto.
 export const featuredAchievement = {
-  label: { pt: 'patente', en: 'patent' },
+  label: { pt: 'adoção · 2024 – atual', en: 'adoption · 2024 – present' },
   title: {
-    pt: 'Patente do software de análise comportamental de insetos',
-    en: 'Patent for the insect behavioral analysis software',
+    pt: 'Software adotado por 3 laboratórios da UNICAMP',
+    en: 'Software adopted by 3 UNICAMP labs',
   },
   text: {
-    pt: 'Registro de patente do software de análise de imagens desenvolvido para pesquisas de farmacologia.',
-    en: 'Patent record for the image-analysis software built for pharmacology research.',
+    pt: 'Meu TCC na UNESP virou a ferramenta de análise comportamental de insetos em uso por laboratórios de farmacologia.',
+    en: 'My undergraduate thesis at UNESP became the insect behavioral analysis tool in use by pharmacology labs.',
   },
-  photo: null,
+  photo: '/img/projects/insect-behavioral-analysis/cover.webp',
   proofUrl: null,
   projectSlug: 'insect-behavioral-analysis',
 }
 
 export const achievements = [
-  {
-    label: { pt: 'adoção · 2024 – atual', en: 'adoption · 2024 – present' },
-    title: {
-      pt: 'Software adotado por 3 laboratórios da UNICAMP',
-      en: 'Software adopted by 3 UNICAMP labs',
-    },
-    text: { pt: 'Em uso por laboratórios de farmacologia.', en: 'In use by pharmacology labs.' },
-    photo: null,
-    proofUrl: null,
-    proofKind: 'proof',
-  },
   {
     label: { pt: 'graduação · 2020 – 2024', en: 'degree · 2020 – 2024' },
     title: {
@@ -45,5 +36,13 @@ export const achievements = [
     photo: null,
     proofUrl: null,
     proofKind: 'diploma',
+  },
+  {
+    label: { pt: 'certificações', en: 'certifications' },
+    title: { pt: 'Cursos e certificações', en: 'Courses and certifications' },
+    text: certifications.map((c) => c.en ?? c).join(' · '),
+    photo: null,
+    proofUrl: null,
+    proofKind: 'proof',
   },
 ]

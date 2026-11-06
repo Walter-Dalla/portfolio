@@ -5,12 +5,12 @@ import { Tags } from './Tags.jsx'
 
 /**
  * Cartão de projeto. `compact` (Início): capa 16:9, título h3, meta numa linha.
- * Padrão (Projetos): capa 16:10, título h2, selo de patente à direita.
+ * Padrão (Projetos): capa 16:10, título h2, tipo à direita.
  */
 export function ProjectCard({ project, compact = false }) {
   const { t, l } = useI18n()
   const Title = compact ? 'h3' : 'h2'
-  const kind = project.patented ? t('patented') : l(project.kind)
+  const kind = l(project.kind)
 
   return (
     <article className="card">
@@ -28,9 +28,7 @@ export function ProjectCard({ project, compact = false }) {
         ) : (
           <div className="card__meta">
             <span>{l(project.period)}</span>
-            <span className={project.patented ? 'card__badge' : undefined}>
-              {project.patented ? `● ${kind}` : kind}
-            </span>
+            <span>{kind}</span>
           </div>
         )}
         <Title className="card__title">{l(project.title)}</Title>

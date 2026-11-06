@@ -38,7 +38,6 @@ export function ProjectDetail() {
 
       <div className="project__intro">
         <div className="project__meta mono">
-          {project.patented && <span className="project__badge">● {t('patented')}</span>}
           <span>{l(project.period)}</span>
           <span>{l(project.kind)}</span>
         </div>
@@ -98,6 +97,7 @@ export function ProjectDetail() {
           <span className="eyebrow">{t('factSheet')}</span>
           <dl className="facts__list">
             <Fact label={t('factPeriod')}>{l(project.period)}</Fact>
+            {facts.client && <Fact label={t('factClient')}>{l(facts.client)}</Fact>}
             {facts.role && <Fact label={t('factRole')}>{l(facts.role)}</Fact>}
             {facts.status && <Fact label={t('factStatus')}>{l(facts.status)}</Fact>}
             {facts.adoption && <Fact label={t('factAdoption')}>{l(facts.adoption)}</Fact>}
@@ -107,7 +107,7 @@ export function ProjectDetail() {
               </Fact>
             )}
           </dl>
-          {(project.repo || project.patentUrl || project.thesisUrl) && (
+          {(project.repo || project.thesisUrl) && (
             <div className="facts__links">
               {project.repo && (
                 <a href={project.repo} className="btn btn--primary btn--block" target="_blank" rel="noreferrer">
@@ -122,16 +122,6 @@ export function ProjectDetail() {
                   rel="noreferrer"
                 >
                   {t('thesisButton')} <span aria-hidden="true">↗</span>
-                </a>
-              )}
-              {project.patentUrl && (
-                <a
-                  href={project.patentUrl}
-                  className="btn btn--secondary btn--block"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t('patentButton')} <span aria-hidden="true">↗</span>
                 </a>
               )}
             </div>

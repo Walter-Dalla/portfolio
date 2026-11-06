@@ -22,10 +22,6 @@
   color: var(--muted);
 }
 
-.project__badge {
-  color: var(--accent);
-}
-
 .project__title {
   margin: 0;
   font-size: clamp(36px, 5cqi, 64px);

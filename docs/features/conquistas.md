@@ -1,10 +1,10 @@
 ---
-aliases: [Achievements, Patente]
+aliases: [Achievements]
 ---
 
 # Conquistas
 
-Patente em destaque e cartões de formação e reconhecimento, com link de comprovante quando houver.
+Adoção do software pela UNICAMP em destaque e cartões de formação e certificações, com link de comprovante quando houver. As certificações vêm de `certifications` (`src/content/experiences.js`).
 
 ## Símbolos de entrada
 
