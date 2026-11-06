@@ -1,6 +1,7 @@
 // Projetos: a lista alimenta Início (os `featured`), Projetos e a página de cada projeto.
 // Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos não entra.
-// `cover`: imagem 16:10 em public/, ex.: '/img/projects/insects.jpg'. `thesisUrl`: link do TCC (opcional).
+// `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
+// `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -30,6 +31,8 @@ function simpleProject({
   repo = null,
   featured = false,
   status = IN_DEVELOPMENT,
+  cover = null,
+  gallery = [],
 }) {
   return {
     slug,
@@ -42,7 +45,7 @@ function simpleProject({
     summary,
     lede: summary,
     tags,
-    cover: null,
+    cover,
     repo,
     patentUrl: null,
     facts: { role: null, status, adoption: null },
@@ -50,7 +53,7 @@ function simpleProject({
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
       { title: { pt: 'Como foi feito com IA', en: 'How it was built with AI' }, paragraphs: ai ? [ai] : [] },
     ],
-    gallery: [],
+    gallery,
   }
 }
 
@@ -159,6 +162,20 @@ export const projects = [
     },
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
+    cover: '/img/projects/wh-harness/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/wh-harness/run.webp',
+        alt: {
+          pt: 'Linha do tempo de uma execução real do orquestrador, com ferramentas e agentes usados',
+          en: 'Timeline of a real orchestrator run, with the tools and agents it used',
+        },
+      },
+      {
+        src: '/img/projects/wh-harness/tests.webp',
+        alt: { pt: 'Suíte de testes do plugin passando: 32 testes', en: 'The plugin test suite passing: 32 tests' },
+      },
+    ],
   }),
   simpleProject({
     slug: 'kittycafe',
@@ -181,6 +198,25 @@ export const projects = [
       en: 'This is where my agent workflow was born: 1,594 of its 1,822 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
     },
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
+    cover: '/img/projects/kittycafe/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/kittycafe/menu.webp',
+        alt: { pt: 'Cardápio com receitas, tempo de preparo e lucro por cliente', en: 'Menu with recipes, cooking time and profit per customer' },
+      },
+      {
+        src: '/img/projects/kittycafe/staff.webp',
+        alt: { pt: 'Equipe de gatos: garçom, cozinheiro e gerente', en: 'Cat staff: waiter, cook and manager' },
+      },
+      {
+        src: '/img/projects/kittycafe/farm.webp',
+        alt: { pt: 'Fazenda com canteiros, galinheiro e quadro de encomendas', en: 'Farm with crop plots, a chicken coop and an orders board' },
+      },
+      {
+        src: '/img/projects/kittycafe/minigame.webp',
+        alt: { pt: 'Minijogo de cozinha "Mexa no ritmo"', en: 'The "Stir to the rhythm" cooking minigame' },
+      },
+    ],
   }),
   simpleProject({
     slug: 'nesse-capitulo',
@@ -202,6 +238,21 @@ export const projects = [
     },
     tags: ['React', 'TypeScript', 'Hono', 'SQLite', 'PWA'],
     repo: 'https://github.com/Walter-Dalla/nesse-capitulo',
+    cover: '/img/projects/nesse-capitulo/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/nesse-capitulo/desktop.webp',
+        alt: { pt: 'Estante de lidos no navegador, com capas, notas e resenhas', en: 'The read shelf in the browser, with covers, ratings and reviews' },
+      },
+      {
+        src: '/img/projects/nesse-capitulo/book.webp',
+        alt: { pt: 'Página de um livro com nota e status de leitura', en: 'A book page with its rating and reading status' },
+      },
+      {
+        src: '/img/projects/nesse-capitulo/stats.webp',
+        alt: { pt: 'Estatísticas de leitura por ano: livros, páginas e nota média', en: 'Yearly reading stats: books, pages and average rating' },
+      },
+    ],
   }),
   simpleProject({
     slug: 'goprint',
@@ -222,6 +273,21 @@ export const projects = [
       en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 30 of the 43 commits have Claude as co-author and 12 are merges of those worktrees.',
     },
     tags: ['.NET 10', 'PostgreSQL', 'React', 'Docker'],
+    cover: '/img/projects/goprint/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/goprint/ticket.webp',
+        alt: { pt: 'Chamado com etapa do ciclo de vida, anexos e linha do tempo', en: 'A ticket with its lifecycle step, attachments and timeline' },
+      },
+      {
+        src: '/img/projects/goprint/client.webp',
+        alt: { pt: 'Chamados vistos pela empresa cliente (dados fictícios)', en: 'Tickets as seen by the client company (sample data)' },
+      },
+      {
+        src: '/img/projects/goprint/qrcode.webp',
+        alt: { pt: 'Impressora com QR Code gerado pelo número de série', en: 'A printer with the QR code generated from its serial number' },
+      },
+    ],
   }),
   simpleProject({
     slug: 'cartas-malfaladas',
@@ -242,6 +308,21 @@ export const projects = [
       en: 'It has 717 commits in three weeks, 628 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
     },
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
+    cover: '/img/projects/cartas-malfaladas/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/cartas-malfaladas/lobby.webp',
+        alt: { pt: 'Sala de espera com código da mesa, link e jogadores', en: 'Waiting room with the table code, invite link and players' },
+      },
+      {
+        src: '/img/projects/cartas-malfaladas/vote.webp',
+        alt: { pt: 'Votação anônima na resposta mais engraçada', en: 'Anonymous vote for the funniest answer' },
+      },
+      {
+        src: '/img/projects/cartas-malfaladas/results.webp',
+        alt: { pt: 'Resultado da rodada com votos e placar', en: 'Round result with votes and scoreboard' },
+      },
+    ],
   }),
   simpleProject({
     slug: 'homelab',
@@ -280,6 +361,17 @@ export const projects = [
     },
     tags: ['React', 'Vite', 'Vitest', 'GitHub Actions'],
     repo: 'https://github.com/Walter-Dalla/portfolio',
+    cover: '/img/projects/portfolio/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/portfolio/projects-light.webp',
+        alt: { pt: 'Lista de projetos no tema claro', en: 'The project list in the light theme' },
+      },
+      {
+        src: '/img/projects/portfolio/case-study-en.webp',
+        alt: { pt: 'Página de projeto em inglês', en: 'A project page in English' },
+      },
+    ],
   }),
 ]
 
