@@ -121,4 +121,17 @@ describe('conteúdo pendente', () => {
       '/cv/walter-dalla-cv-pt.pdf',
     )
   })
+
+  it('destaca o PDF do idioma atual no currículo', () => {
+    localStorage.setItem('wd-lang', 'en')
+    renderApp('/resume')
+    expect(screen.getByRole('link', { name: /Download in English/ })).toHaveClass('btn--primary')
+    expect(screen.getByRole('link', { name: /Download in Portuguese/ })).toHaveClass('btn--secondary')
+  })
+
+  it('mantém o PDF em português em destaque na página em português', () => {
+    renderApp('/resume')
+    expect(screen.getByRole('link', { name: /Baixar em português/ })).toHaveClass('btn--primary')
+    expect(screen.getByRole('link', { name: /Download in English/ })).toHaveClass('btn--secondary')
+  })
 })

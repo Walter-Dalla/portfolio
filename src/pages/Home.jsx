@@ -21,8 +21,7 @@ export function Home() {
   const { t, l, lang } = useI18n()
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
-  // O PDF do idioma atual vem primeiro, como botão principal.
-  const resumes = availableResumes().sort((a, b) => (a === lang ? -1 : b === lang ? 1 : 0))
+  const resumes = availableResumes(lang)
 
   return (
     <>

@@ -66,9 +66,9 @@ function Experience({ xp, last }) {
 }
 
 export function Resume() {
-  const { t, l } = useI18n()
+  const { t, l, lang } = useI18n()
   usePageTitle(t('resumeTitle'))
-  const resumes = availableResumes()
+  const resumes = availableResumes(lang)
 
   return (
     <div className="container page resume">
