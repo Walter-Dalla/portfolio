@@ -29,7 +29,7 @@ fazer o bloco surgir.
 | Foto do retrato, disponibilidade, PDFs do currículo | `src/content/profile.js` (arquivos em `public/`) |
 | Experiências e habilidades | `src/content/experiences.js` |
 | Projetos, capas, estudos de caso, galeria | `src/content/projects.js` |
-| Patente, diplomas, comprovantes | `src/content/achievements.js` |
+| Conquistas, diplomas, comprovantes | `src/content/achievements.js` |
 | Texto pessoal, fatos rápidos, galeria, história | `src/content/about.js` |
 
 ## Publicar

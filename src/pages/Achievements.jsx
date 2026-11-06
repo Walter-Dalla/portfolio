@@ -20,7 +20,7 @@ export function Achievements() {
       </section>
 
       <article className="feature">
-        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/achievements/patente" />
+        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/achievements" />
         <div className="feature__body">
           <span className="mono feature__label">{l(featured.label)}</span>
           <h2 className="feature__title">{l(featured.title)}</h2>

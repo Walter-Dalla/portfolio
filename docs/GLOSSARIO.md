@@ -21,7 +21,7 @@
 | Métricas de impacto | `metrics` | |
 | Projeto em destaque | `projects[].featured` | |
 | Categoria de projeto (filtro) | `projectCategories` | |
-| Conquista em destaque (patente) | `featuredAchievement` | |
+| Conquista em destaque | `featuredAchievement` | |
 | Fatos rápidos | `about.facts` | |
 | PDF do currículo | `resumePdf`, `public/cv/` | |
 

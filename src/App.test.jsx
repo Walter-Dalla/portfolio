@@ -122,6 +122,35 @@ describe('conteúdo pendente', () => {
     )
   })
 
+  it('mostra o cliente e a tag de projeto de cliente no GoPrint', () => {
+    renderApp('/projects/goprint')
+    expect(screen.getByText('cliente')).toBeInTheDocument()
+    expect(screen.getByText('Andelph Group')).toBeInTheDocument()
+    expect(screen.getByText('Projeto de cliente')).toBeInTheDocument()
+  })
+
+  it('liga a página Sobre ao currículo, aos projetos e às conquistas', () => {
+    renderApp('/about')
+    expect(screen.getByRole('link', { name: 'ver currículo completo →' })).toHaveAttribute('href', '/resume')
+    expect(screen.getByRole('link', { name: 'todos os projetos →' })).toHaveAttribute('href', '/projects')
+    expect(screen.getByRole('link', { name: 'ver conquistas →' })).toHaveAttribute('href', '/achievements')
+    expect(screen.getByRole('link', { name: 'GoPrint →' })).toHaveAttribute('href', '/projects/goprint')
+  })
+
+  it('não menciona patente em nenhuma página', () => {
+    for (const path of ['/', '/resume', '/projects', '/projects/insect-behavioral-analysis', '/achievements', '/about']) {
+      const { container, unmount } = renderApp(path)
+      expect(container.textContent).not.toMatch(/patent/i)
+      unmount()
+    }
+  })
+
+  it('mostra a adoção em destaque e as certificações em Conquistas', () => {
+    renderApp('/achievements')
+    expect(screen.getByRole('heading', { name: 'Software adotado por 3 laboratórios da UNICAMP' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Cursos e certificações' })).toBeInTheDocument()
+  })
+
   it('destaca o PDF do idioma atual no currículo', () => {
     localStorage.setItem('wd-lang', 'en')
     renderApp('/resume')
