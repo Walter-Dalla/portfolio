@@ -20,10 +20,16 @@ export function Achievements() {
       </section>
 
       <article className="feature">
-        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/achievements" />
+        <Media src={featured.photo} alt={featured.title} className="feature__media" label="~/achievements" priority />
         <div className="feature__body">
           <span className="mono feature__label">{l(featured.label)}</span>
-          <h2 className="feature__title">{l(featured.title)}</h2>
+          <h2 className="feature__title">
+            {featured.projectSlug ? (
+              <Link to={`/projects/${featured.projectSlug}`}>{l(featured.title)}</Link>
+            ) : (
+              l(featured.title)
+            )}
+          </h2>
           <p className="feature__text">{l(featured.text)}</p>
           <div className="link-row">
             {featured.proofUrl && (
@@ -42,8 +48,16 @@ export function Achievements() {
 
       <div className="grid achievements__grid">
         {achievements.map((item) => (
-          <article key={l(item.title)} className="card">
-            <Media src={item.photo} alt={item.title} ratio="16 / 9" label={l(item.text)} />
+          <article key={l(item.title)} className={`card${item.proofUrl ? ' card--link' : ''}`}>
+            {item.photo ? (
+              <Media src={item.photo} alt={item.title} ratio="16 / 9" />
+            ) : (
+              item.mark && (
+                <span className="achievement__mark mono" aria-hidden="true">
+                  {item.mark}
+                </span>
+              )
+            )}
             <div className="card__body achievement__body">
               <span className="mono achievement__label">{l(item.label)}</span>
               <h3 className="achievement__title">{l(item.title)}</h3>

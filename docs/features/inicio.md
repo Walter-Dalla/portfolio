@@ -4,7 +4,7 @@ aliases: [Home, Página inicial]
 
 # Início
 
-Apresentação: nome, frase de efeito, botões de currículo, métricas de impacto, projetos em destaque e atalhos para as outras páginas.
+Apresentação: nome, frase de efeito, botão "ver projetos" (ação principal) e botões de currículo, métricas de impacto, projetos em destaque e atalhos para as outras páginas. No celular o retrato vira um avatar redondo acima do nome, para o nome e os botões ficarem na primeira tela (`home.css`).
 
 ## Símbolos de entrada
 

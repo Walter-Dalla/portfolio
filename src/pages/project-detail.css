@@ -95,15 +95,15 @@
   gap: 12px;
 }
 
-.project__shot {
+.project__shot,
+.project__shot .media {
   border-radius: 8px;
 }
 
 .project__pager {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 8px 16px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
 }
@@ -112,9 +112,41 @@
   font-size: 14px;
 }
 
+.project__pager-prev {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.project__pager-all {
+  grid-column: 2;
+}
+
+.project__pager-next {
+  grid-column: 3;
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 599px) {
+  .project__pager {
+    grid-template-columns: 1fr;
+  }
+
+  .project__pager-prev,
+  .project__pager-all,
+  .project__pager-next {
+    grid-column: 1;
+    justify-self: start;
+    text-align: left;
+  }
+}
+
 .facts {
   flex: 1 1 280px;
   max-width: 360px;
+  /* No desktop a ficha acompanha a leitura (abaixo do cabeçalho fixo). */
+  position: sticky;
+  top: 84px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);

@@ -6,6 +6,10 @@ aliases: [Projects, Estudo de caso]
 
 Lista filtrável de projetos e uma página por projeto com estudo de caso, ficha e links.
 
+- O filtro vive na URL (`/projects?cat=<id>`), lido ao abrir e gravado com `replace`; ids inválidos caem em "todos".
+- `ProjectCard` é clicável inteiro (capa e título levam ao estudo de caso; `card--link` dá o hover). Sem `cover`, mostra uma faixa baixa com o caminho em vez do bloco vazio.
+- `ProjectDetail`: sem `cover` não há bloco de capa; a capa carrega com prioridade (`Media priority`); a ficha acompanha a rolagem no desktop; a galeria abre no `Lightbox`; o rodapé do texto tem "anterior", "todos" e "próximo".
+
 ## Símbolos de entrada
 
 `Projects`, `ProjectDetail` (`src/pages/`), `ProjectCard`, `projects`, `projectCategories`, `simpleProject`, `findProject` (`src/content/projects.js`). `simpleProject` monta o card de um projeto ainda sem estudo de caso completo, com a seção opcional "Como foi feito com IA" (`ai`). `cover` e `gallery` (também em `simpleProject`) apontam para `public/img/projects/<slug>/`: capturas reais do projeto rodando com dados fictícios. `thesisUrl` (opcional) vira o botão do TCC na ficha. `client` (opcional em `simpleProject`) vira a linha "cliente" da ficha. Slugs em inglês; slug renomeado entra em `LEGACY_PROJECT_SLUGS` (`src/App.jsx`).

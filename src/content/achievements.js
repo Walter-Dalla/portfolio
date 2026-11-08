@@ -1,7 +1,7 @@
 import { certifications } from './experiences.js'
 
-// Conquistas. `proofUrl` (comprovante/diploma) e `photo` são opcionais: `null` esconde o link
-// e mostra um bloco decorativo no lugar da foto.
+// Conquistas. `proofUrl` (comprovante/diploma) e `photo` são opcionais: `null` esconde o link.
+// Sem `photo`, o cartão mostra `mark` (sigla curta, ex.: 'UNESP') numa faixa baixa; sem os dois, só o texto.
 export const featuredAchievement = {
   label: { pt: 'adoção · 2024 – atual', en: 'adoption · 2024 – present' },
   title: {
@@ -26,6 +26,7 @@ export const achievements = [
     },
     text: 'UNESP — Bauru',
     photo: null,
+    mark: 'UNESP',
     proofUrl: null,
     proofKind: 'diploma',
   },
@@ -34,6 +35,7 @@ export const achievements = [
     title: { pt: 'Curso Técnico em Informática (Software)', en: 'Technical Degree in IT (Software)' },
     text: 'COTIL — UNICAMP',
     photo: null,
+    mark: 'COTIL',
     proofUrl: null,
     proofKind: 'diploma',
   },
@@ -42,6 +44,7 @@ export const achievements = [
     title: { pt: 'Cursos e certificações', en: 'Courses and certifications' },
     text: certifications.map((c) => c.en ?? c).join(' · '),
     photo: null,
+    mark: 'AWS · DDD · Spring',
     proofUrl: null,
     proofKind: 'proof',
   },

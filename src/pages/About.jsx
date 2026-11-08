@@ -1,6 +1,8 @@
 import { Link } from 'react-router'
 import { about } from '../content/about.js'
 import { useI18n } from '../i18n/context.js'
+import { Zoom } from '../components/Lightbox.jsx'
+import { useLightbox } from '../components/useLightbox.jsx'
 import { Media } from '../components/Media.jsx'
 import { SectionHeading } from '../components/SectionHeading.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
@@ -14,6 +16,7 @@ export function About() {
   // Sem galeria, a história vira a seção 01.
   const storyNumber = gallery.length > 0 ? '02' : '01'
   const storyEyebrow = t('storyEyebrow').replace(/^\d+/, storyNumber)
+  const { open, lightbox } = useLightbox(gallery.map((photo) => ({ src: photo.src, alt: photo.caption })))
 
   return (
     <div className="container page about">
@@ -50,13 +53,16 @@ export function About() {
         <section className="about__section">
           <SectionHeading eyebrow={t('galleryEyebrow')} title={t('galleryTitle')} />
           <div className="about-gallery">
-            {gallery.map((photo) => (
+            {gallery.map((photo, i) => (
               <figure key={photo.src} className={`about-gallery__item about-gallery__item--${photo.size ?? 'normal'}`}>
-                <Media src={photo.src} alt={photo.caption} className="about-gallery__media" />
+                <Zoom onClick={() => open(i)} className="about-gallery__zoom">
+                  <Media src={photo.src} alt={photo.caption} className="about-gallery__media" />
+                </Zoom>
                 {photo.caption && <figcaption className="mono">{l(photo.caption)}</figcaption>}
               </figure>
             ))}
           </div>
+          {lightbox}
         </section>
       )}
 

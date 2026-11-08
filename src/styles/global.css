@@ -12,6 +12,7 @@
   --accent: #f5a524;
   --btn-bg: #f5a524;
   --btn-fg: #0b0d10;
+  --shadow: 0 12px 32px rgb(0 0 0 / 0.35);
   color-scheme: dark;
 }
 
@@ -27,6 +28,7 @@
   --accent: #9a5b0b;
   --btn-bg: #15171a;
   --btn-fg: #f7f6f2;
+  --shadow: 0 12px 32px rgb(20 18 10 / 0.12);
   color-scheme: light;
 }
 
@@ -47,6 +49,24 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Quem pediu menos movimento no sistema não vê transições nem rolagem animada. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 body {
@@ -191,9 +211,12 @@ a {
   min-height: 48px;
   padding: 0 20px;
   border-radius: 8px;
+  font-family: inherit;
   font-size: 15px;
   font-weight: 600;
   border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -266,6 +289,55 @@ a {
 
 .card--accent {
   border-color: var(--accent);
+}
+
+/* Cartão que leva a uma página: capa e título são links e o cartão reage ao mouse. */
+.card--link {
+  transition:
+    border-color 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.card--link:hover,
+.card--link:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.card--link:hover .card__title {
+  color: var(--accent);
+}
+
+.card__cover {
+  display: block;
+  color: inherit;
+}
+
+.card__cover .media img {
+  transition: transform 0.3s;
+}
+
+.card--link:hover .card__cover .media img {
+  transform: scale(1.03);
+}
+
+.card__title a {
+  color: inherit;
+}
+
+.card__title a:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Projeto ainda sem capa: faixa baixa com o caminho, em vez de um bloco vazio. */
+.card__path {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+  font-size: 12px;
+  color: var(--faint);
 }
 
 .card__body {
@@ -343,6 +415,11 @@ a {
 .hl {
   color: var(--accent);
   font-family: var(--mono);
+}
+
+.not-found__hint {
+  margin-top: 16px;
+  font-size: 15px;
 }
 
 .visually-hidden {

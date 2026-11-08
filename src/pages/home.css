@@ -79,6 +79,41 @@
   color: var(--muted);
 }
 
+/* No celular o retrato vira um avatar redondo ao lado da localização, acima do nome:
+   nome, cargo e botões ficam na primeira tela. */
+@media (max-width: 759px) {
+  .hero {
+    flex-wrap: wrap;
+    padding-top: 32px;
+    gap: 24px;
+  }
+
+  .hero__aside {
+    order: -1;
+    flex-basis: 100%;
+    max-width: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero__photo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+
+  .hero__photo .media__label {
+    font-size: 20px;
+    padding: 0;
+  }
+
+  .hero__text {
+    gap: 18px;
+  }
+}
+
 .metrics {
   border-block: 1px solid var(--border);
   background: var(--surface);

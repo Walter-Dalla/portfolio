@@ -1,14 +1,20 @@
+/* Cabeçalho fixo ao rolar, com fundo translúcido. */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .site-header__inner {
-  padding-block: 10px;
+  padding-block: 8px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 4px 24px;
+  gap: 12px 24px;
 }
 
 .site-header__brand {
@@ -82,7 +88,8 @@
   font-weight: 600;
 }
 
-.theme-toggle {
+.theme-toggle,
+.menu-toggle {
   width: 44px;
   height: 42px;
   display: inline-flex;
@@ -95,6 +102,95 @@
   cursor: pointer;
 }
 
+/* No desktop a navegação fica na linha; o botão de menu não existe. */
+.menu-toggle {
+  display: none;
+}
+
+/* No celular: uma linha (marca + botões) e a navegação num menu que desce do cabeçalho. */
+@media (max-width: 759px) {
+  .site-header__tools {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .lang-toggle__btn {
+    min-width: 40px;
+    min-height: 38px;
+  }
+
+  .theme-toggle,
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 4px var(--gutter) 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    font-size: 17px;
+  }
+
+  .site-header--open .site-nav {
+    display: flex;
+  }
+
+  .site-nav__link {
+    min-height: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav__link:last-child {
+    border-bottom: 0;
+  }
+
+  .site-nav__link.active {
+    box-shadow: none;
+    color: var(--accent);
+  }
+}
+
+/* Âncoras param abaixo do cabeçalho fixo. */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 15;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--strong);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.back-to-top:hover {
+  border-color: var(--accent);
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   margin-top: clamp(64px, 10cqi, 120px);
@@ -103,18 +199,41 @@
 .site-footer__inner {
   padding-block: 24px;
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+
+.site-footer__nav .link.active {
+  color: var(--text);
+}
+
+.site-footer__row {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 8px 16px;
-  font-size: 13px;
-  color: var(--muted);
 }
 
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
   gap: 0 20px;
+}
+
+.site-footer__copy {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
 }
 
 #conteudo:focus {

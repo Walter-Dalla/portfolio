@@ -47,6 +47,40 @@
   gap: 32px;
 }
 
+/* Índice das seções: chips com âncora; a da seção visível fica em destaque. */
+.page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: calc(-1 * clamp(24px, 4cqi, 56px));
+}
+
+.page-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: var(--muted);
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.page-nav__link b {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.page-nav__link:hover,
+.page-nav__link[aria-current='true'] {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -154,7 +188,8 @@
   gap: 12px;
 }
 
-.xp__photo {
+.xp__photo,
+.xp__photo .media {
   border-radius: 8px;
 }
 
