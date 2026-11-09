@@ -1,0 +1,5 @@
+# https://walterdalla.uk — site público; tudo pode ser indexado, por buscadores e por agentes de IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://walterdalla.uk/sitemap.xml
