@@ -32,7 +32,7 @@ Quando a tarefa toca uma área: o arquivo de `_common § Docs` correspondente [i
 Print headless do Chromium (`_common § Toolchain`) contra o serviço descartável, desktop `1440x900` e mobile `390x844`, temas claro e escuro [inferred]
 
 ## Closing docs
-Changelog: — · Status de features: — · Pendências do dono: — · Mapa de features: `/wh:feature-docs` [inferred]
+Changelog: — · Status de features: — · Pendências do dono: `docs/PENDENCIAS.md` · Mapa de features: `/wh:feature-docs` [inferred]
 
 ## Report
 `docs/relatorios/<data>-<slug>.md` [skill default]

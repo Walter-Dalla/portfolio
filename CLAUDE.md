@@ -29,4 +29,5 @@ Site de portfólio pessoal, só frontend (sem backend): SPA React 19 + Vite, tem
 - `README.md` — visão geral e onde editar o conteúdo.
 - `docs/GLOSSARIO.md` — termos do site ↔ código.
 - `docs/features/README.md` — mapa de features; leia o arquivo da feature que a tarefa toca.
+- `docs/PENDENCIAS.md` — pendências do dono (tarefas em aberto).
 - `.github/workflows/ci.yml` — CI e deploy no GitHub Pages (push na `master`).
