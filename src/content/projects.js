@@ -2,6 +2,7 @@
 // Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos não entra.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
+// `demoUrl`: página estática em public/ que mostra o projeto funcionando (opcional), ex.: '/wh-harness/flow.html'.
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -34,6 +35,7 @@ function simpleProject({
   client = null,
   cover = null,
   gallery = [],
+  demoUrl = null,
 }) {
   return {
     slug,
@@ -47,6 +49,7 @@ function simpleProject({
     tags,
     cover,
     repo,
+    demoUrl,
     facts: { client, role: null, status, adoption: null },
     sections: [
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
@@ -77,6 +80,7 @@ export const projects = [
     },
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
+    demoUrl: '/wh-harness/flow.html',
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {

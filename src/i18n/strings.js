@@ -77,6 +77,7 @@ export const strings = {
   factTech: { pt: 'tecnologias', en: 'technologies' },
   repositoryButton: { pt: 'Repositório', en: 'Repository' },
   thesisButton: { pt: 'TCC (UNESP)', en: 'Thesis (UNESP)' },
+  demoButton: { pt: 'Ver o fluxo interativo', en: 'See the interactive flow' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
 

@@ -92,6 +92,14 @@ describe('projetos', () => {
     )
   })
 
+  it('liga o wh-harness ao fluxo interativo estático', () => {
+    renderApp('/projects/wh-harness')
+    expect(screen.getByRole('link', { name: 'Ver o fluxo interativo' })).toHaveAttribute(
+      'href',
+      '/wh-harness/flow.html',
+    )
+  })
+
   it('só mostra link de repositório quando ele existe', () => {
     renderApp('/projects')
     const repos = screen.getAllByRole('link', { name: 'repositório ↗' })
