@@ -109,8 +109,13 @@ function Project({ project }) {
               </Fact>
             )}
           </dl>
-          {(project.repo || project.thesisUrl) && (
+          {(project.repo || project.thesisUrl || project.demoUrl) && (
             <div className="facts__links">
+              {project.demoUrl && (
+                <a href={project.demoUrl} className="btn btn--secondary btn--block">
+                  {t('demoButton')} <span aria-hidden="true">→</span>
+                </a>
+              )}
               {project.repo && (
                 <a href={project.repo} className="btn btn--primary btn--block" target="_blank" rel="noreferrer">
                   {t('repositoryButton')} <span aria-hidden="true">↗</span>
