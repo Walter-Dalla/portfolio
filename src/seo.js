@@ -6,7 +6,7 @@ import { strings } from './i18n/strings.js'
 
 export const SITE_URL = 'https://walterdalla.uk'
 export const SITE_NAME = 'Walter Dalla'
-export const DEFAULT_IMAGE = '/img/projects/portfolio/cover.webp'
+export const DEFAULT_IMAGE = '/og.png'
 
 const en = (content) => (content && typeof content === 'object' ? content.en : content)
 

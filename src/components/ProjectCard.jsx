@@ -4,22 +4,27 @@ import { Media } from './Media.jsx'
 import { Tags } from './Tags.jsx'
 
 /**
- * Cartão de projeto. `compact` (Início): capa 16:9, título h3, meta numa linha.
- * Padrão (Projetos): capa 16:10, título h2, tipo à direita.
+ * Cartão de projeto. Capa e título levam ao estudo de caso; o cartão inteiro reage ao mouse.
+ * `compact` (Início): capa 16:9, título h3, meta numa linha. Padrão (Projetos): capa 16:10, título h2, tipo à direita.
+ * Sem `cover`, uma faixa baixa com o caminho substitui a capa.
  */
 export function ProjectCard({ project, compact = false }) {
   const { t, l } = useI18n()
   const Title = compact ? 'h3' : 'h2'
   const kind = l(project.kind)
+  const href = `/projects/${project.slug}`
 
   return (
-    <article className="card">
-      <Media
-        src={project.cover}
-        alt={project.title}
-        ratio={compact ? '16 / 9' : '16 / 10'}
-        label={`~/projects/${project.slug}`}
-      />
+    <article className="card card--link">
+      {project.cover ? (
+        <Link to={href} className="card__cover" tabIndex={-1} aria-hidden="true">
+          <Media src={project.cover} alt={project.title} ratio={compact ? '16 / 9' : '16 / 10'} />
+        </Link>
+      ) : (
+        <span className="card__path mono" aria-hidden="true">
+          ~/projects/{project.slug} · {t('noCover')}
+        </span>
+      )}
       <div className="card__body">
         {compact ? (
           <span className="card__meta">
@@ -31,11 +36,13 @@ export function ProjectCard({ project, compact = false }) {
             <span>{kind}</span>
           </div>
         )}
-        <Title className="card__title">{l(project.title)}</Title>
+        <Title className="card__title">
+          <Link to={href}>{l(project.title)}</Link>
+        </Title>
         <p className="card__text">{l(project.summary)}</p>
         <Tags items={project.tags} />
         <div className="link-row card__links">
-          <Link to={`/projects/${project.slug}`} className="link">
+          <Link to={href} className="link" tabIndex={-1}>
             {t('readCaseStudy')}
           </Link>
           {project.repo && (

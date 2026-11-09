@@ -1,5 +1,6 @@
 import { company, profile } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
+import { CopyButton } from '../components/CopyButton.jsx'
 import { availableResumes, resumeFileName, resumeHref } from '../components/resume.js'
 import { usePageTitle } from '../components/usePageTitle.js'
 import './contact.css'
@@ -20,13 +21,20 @@ export function Contact() {
         {availability && <p className="lead">{availability}</p>}
       </section>
 
-      <a href={`mailto:${profile.email}`} className="contact__email">
-        <span className="contact__email-text">
+      <div className="contact__email">
+        <div className="contact__email-text">
           <span className="mono contact__email-eyebrow">{t('emailEyebrow')}</span>
-          <span className="mono contact__address">{profile.email}</span>
-        </span>
-        <span className="btn btn--primary">{t('sendEmail')}</span>
-      </a>
+          <a href={`mailto:${profile.email}`} className="mono contact__address">
+            {profile.email}
+          </a>
+        </div>
+        <div className="btn-row contact__actions">
+          <a href={`mailto:${profile.email}`} className="btn btn--primary">
+            {t('sendEmail')}
+          </a>
+          <CopyButton text={profile.email} label={t('copyEmail')} />
+        </div>
+      </div>
 
       <div className="contact__grid">
         <a href={profile.linkedin} className="contact__card" target="_blank" rel="noreferrer">

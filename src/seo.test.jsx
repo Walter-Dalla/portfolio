@@ -18,7 +18,7 @@ describe('seo', () => {
       expect(r.title).toMatch(/Walter Dalla/)
       expect(r.description.length).toBeGreaterThan(20)
       expect(r.description.length).toBeLessThanOrEqual(161)
-      expect(r.image).toMatch(/^\/img\//)
+      expect(r.image).toMatch(/^\/(img\/|og\.png$)/)
     }
   })
 

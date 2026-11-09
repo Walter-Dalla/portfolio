@@ -31,22 +31,23 @@ export function Home() {
           <h1 className="hero__title">{profile.name}</h1>
           <p className="hero__tagline">{l(profile.tagline)}</p>
           <p className="hero__pitch">{l(profile.pitch)}</p>
-          {resumes.length > 0 && (
-            <div className="btn-row">
-              {resumes.map((code, i) => (
-                <a
-                  key={code}
-                  href={resumeHref(code)}
-                  download={resumeFileName(code)}
-                  className={`btn ${i === 0 ? 'btn--primary' : 'btn--secondary'}`}
-                >
-                  <DownloadIcon />
-                  {code === 'en' ? 'Resume' : t('downloadResume')}{' '}
-                  <span className="btn__hint">{code.toUpperCase()}</span>
-                </a>
-              ))}
-            </div>
-          )}
+          <div className="btn-row">
+            <Link to="/projects" className="btn btn--primary">
+              {t('seeProjects')}
+            </Link>
+            {resumes.map((code) => (
+              <a
+                key={code}
+                href={resumeHref(code)}
+                download={resumeFileName(code)}
+                className="btn btn--secondary"
+              >
+                <DownloadIcon />
+                {code === 'en' ? 'Resume' : t('downloadResume')}{' '}
+                <span className="btn__hint">{code.toUpperCase()}</span>
+              </a>
+            ))}
+          </div>
           <div className="hero__social mono">
             <a href={profile.linkedin} className="link link--text" target="_blank" rel="noreferrer">
               linkedin ↗
@@ -66,6 +67,7 @@ export function Home() {
             ratio="4 / 5"
             className="hero__photo"
             label="WD"
+            priority
           />
           <span className="hero__location mono">
             <span className="accent-dot" />

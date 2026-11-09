@@ -1,18 +1,30 @@
-import { useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { projectCategories, projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
 import { ProjectCard } from '../components/ProjectCard.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
 import './projects.css'
 
+// O filtro vive na URL (?cat=web): o link é compartilhável e "voltar" do estudo de caso o preserva.
+const FILTER_PARAM = 'cat'
+
 export function Projects() {
   const { t, l } = useI18n()
   usePageTitle(t('projectsTitle'))
-  const [filter, setFilter] = useState('all')
+  const [searchParams, setSearchParams] = useSearchParams()
 
   // Só categorias com pelo menos um projeto viram filtro.
   const categories = projectCategories.filter((c) => projects.some((p) => p.categories.includes(c.id)))
+  const requested = searchParams.get(FILTER_PARAM)
+  const filter = categories.some((c) => c.id === requested) ? requested : 'all'
   const visible = filter === 'all' ? projects : projects.filter((p) => p.categories.includes(filter))
+
+  function setFilter(id) {
+    const next = new URLSearchParams(searchParams)
+    if (id === 'all') next.delete(FILTER_PARAM)
+    else next.set(FILTER_PARAM, id)
+    setSearchParams(next, { replace: true })
+  }
 
   const chips = [{ id: 'all', label: `${t('filterAll')} · ${projects.length}` }, ...categories]
 

@@ -1,18 +1,15 @@
-import { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router'
+import { Outlet } from 'react-router'
 import { useI18n } from '../i18n/context.js'
+import { BackToTop } from './BackToTop.jsx'
 import { Footer } from './Footer.jsx'
 import { Header } from './Header.jsx'
+import { useScrollRestoration } from './useScrollRestoration.js'
 import './layout.css'
 
 export function Layout() {
   const { t } = useI18n()
-  const { pathname } = useLocation()
-
-  // Cada rota abre no topo, como uma página nova.
-  useEffect(() => {
-    window.scrollTo?.(0, 0)
-  }, [pathname])
+  // Rota nova abre no topo; "voltar" restaura a posição anterior.
+  useScrollRestoration()
 
   return (
     <div className="site">
@@ -24,6 +21,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   )
 }

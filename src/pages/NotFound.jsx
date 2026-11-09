@@ -14,6 +14,18 @@ export function NotFound() {
         <Link to="/" className="link">
           {t('backHome')}
         </Link>
+        <p className="lead not-found__hint">{t('notFoundHint')}</p>
+        <nav aria-label={t('notFoundHint')} className="link-row">
+          <Link to="/projects" className="link link--text">
+            {t('navProjects')} →
+          </Link>
+          <Link to="/resume" className="link link--text">
+            {t('navResume')} →
+          </Link>
+          <Link to="/contact" className="link link--text">
+            {t('navContact')} →
+          </Link>
+        </nav>
       </section>
     </div>
   )

@@ -4,10 +4,15 @@ import { readStored, writeStored } from '../storage.js'
 
 export const THEME_KEY = 'wd-theme'
 const DEFAULT_THEME = 'dark'
+// Cor da barra do navegador no celular (<meta name="theme-color">), igual ao --bg de cada tema.
+const THEME_COLOR = { dark: '#0b0d10', light: '#f7f6f2' }
 
+/** Tema salvo; sem escolha, segue a preferência do sistema (escuro se não houver). */
 function initialTheme() {
   const stored = readStored(THEME_KEY)
-  return stored === 'light' || stored === 'dark' ? stored : DEFAULT_THEME
+  if (stored === 'light' || stored === 'dark') return stored
+  if (typeof window === 'undefined') return DEFAULT_THEME
+  return window.matchMedia?.('(prefers-color-scheme: light)')?.matches ? 'light' : DEFAULT_THEME
 }
 
 export function ThemeProvider({ children }) {
@@ -15,6 +20,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLOR[theme])
   }, [theme])
 
   const toggleTheme = useCallback(() => {

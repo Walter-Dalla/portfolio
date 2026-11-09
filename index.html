@@ -10,10 +10,33 @@
       content="I build systems that cost less, respond faster and don't go down. Portfolio of Walter Dalla Torre Neto: resume, projects, achievements and contact."
     />
     <link rel="canonical" href="https://walterdalla.uk/" />
+    <!-- Prévia do link no LinkedIn, WhatsApp, Slack… (Open Graph e Twitter Card). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Walter Dalla" />
+    <meta property="og:url" content="https://walterdalla.uk/" />
+    <meta property="og:title" content="Walter Dalla — Senior Software Engineer &amp; Systems Architect" />
+    <meta
+      property="og:description"
+      content="I build systems that cost less, respond faster and don't go down. Resume, projects and case studies."
+    />
+    <meta property="og:image" content="https://walterdalla.uk/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Walter Dalla Torre Neto — Senior Software Engineer &amp; Systems Architect" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Walter Dalla — Senior Software Engineer &amp; Systems Architect" />
+    <meta
+      name="twitter:description"
+      content="I build systems that cost less, respond faster and don't go down. Resume, projects and case studies."
+    />
+    <meta name="twitter:image" content="https://walterdalla.uk/og.png" />
     <!-- seo:end -->
     <meta name="author" content="Walter Dalla Torre Neto" />
     <meta name="theme-color" content="#0b0d10" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,10 +44,16 @@
       rel="stylesheet"
     />
     <script>
-      // Aplica o tema salvo antes do primeiro paint (evita piscar o tema errado).
+      // Aplica o tema antes do primeiro paint (evita piscar o tema errado):
+      // o salvo ou, sem escolha, o do sistema.
       try {
         var t = localStorage.getItem('wd-theme')
-        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        }
+        document.documentElement.dataset.theme = t
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.content = t === 'light' ? '#f7f6f2' : '#0b0d10'
         var l = localStorage.getItem('wd-lang')
         if (l === 'pt') document.documentElement.lang = 'pt-BR'
       } catch (e) {}
