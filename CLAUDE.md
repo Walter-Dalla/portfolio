@@ -9,7 +9,7 @@ Site de portfólio pessoal, só frontend (sem backend): SPA React 19 + Vite, tem
 - `src/pages/` — uma página por rota, cada uma com seu `.css`.
 - `src/components/` — layout (`Header`, `Footer`, `Layout`) e peças comuns (`ProjectCard`, `Media`, `Tags`).
 - `src/content/` — todo o conteúdo do site, bilíngue `{ pt, en }`; `null` esconde o bloco.
-- `src/i18n/` — idioma (`useI18n`) e textos de interface (`strings.js`).
+- `src/i18n/` — idioma (`useI18n`) e textos de interface (`src/i18n/strings.js`).
 - `src/theme/` — tema claro/escuro (`useTheme`).
 - `src/styles/global.css` — tokens de cor do design e classes comuns.
 - `src/test/` — setup do Vitest; testes em `src/*.test.jsx`.
