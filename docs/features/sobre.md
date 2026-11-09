@@ -6,6 +6,8 @@ aliases: [About, Sobre mim]
 
 Texto pessoal ligado ao currículo, aos projetos e às conquistas, fatos rápidos, galeria de fotos (só com fotos) e linha da história com links. Os fatos seguem `experiences`, `projects` e o LinkedIn: ao mudar o CV ou um projeto, confira o texto aqui.
 
+A galeria (quando houver fotos) abre no `Lightbox`.
+
 ## Símbolos de entrada
 
 `About` (`src/pages/About.jsx`), `about` (`src/content/about.js`).

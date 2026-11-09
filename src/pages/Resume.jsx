@@ -1,7 +1,10 @@
+import { useEffect, useState } from 'react'
 import { certifications, education, experiences, languages, skillGroups } from '../content/experiences.js'
 import { company, resumePdf } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
 import { DownloadIcon } from '../components/Icons.jsx'
+import { Zoom } from '../components/Lightbox.jsx'
+import { useLightbox } from '../components/useLightbox.jsx'
 import { Media } from '../components/Media.jsx'
 import { Rich } from '../components/Rich.jsx'
 import { SectionHeading } from '../components/SectionHeading.jsx'
@@ -17,18 +20,69 @@ function ExperienceExtra({ extra }) {
   const { l } = useI18n()
   const photos = extra?.photos ?? []
   const text = l(extra?.text)
+  const { open, lightbox } = useLightbox(photos)
   if (!photos.length && !text) return null
   return (
     <div className="xp__extra">
       {photos.length > 0 && (
         <div className="xp__photos">
-          {photos.map((photo) => (
-            <Media key={photo.src} src={photo.src} alt={photo.alt} ratio="4 / 3" className="xp__photo" />
+          {photos.map((photo, i) => (
+            <Zoom key={photo.src} onClick={() => open(i)} className="xp__photo">
+              <Media src={photo.src} alt={photo.alt} ratio="4 / 3" />
+            </Zoom>
           ))}
         </div>
       )}
       {text && <p className="xp__extra-text">{text}</p>}
+      {lightbox}
     </div>
+  )
+}
+
+// Seções do currículo: âncora, texto do eyebrow ("01 · experiência") e se existe nesta página.
+const SECTIONS = [
+  { id: 'experiencia', key: 'experienceEyebrow' },
+  { id: 'stack', key: 'skillsEyebrow' },
+  { id: 'formacao', key: 'educationEyebrow' },
+  { id: 'empresa', key: 'companyEyebrow', when: () => Boolean(company) },
+]
+
+/** Id da seção que ocupa o topo da tela, para destacar a chip do índice. */
+function useActiveSection(ids) {
+  const [active, setActive] = useState(null)
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return undefined
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.find((e) => e.isIntersecting)
+        if (hit) setActive(hit.target.id)
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    )
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [ids])
+  return active
+}
+
+function ResumeIndex() {
+  const { t } = useI18n()
+  const sections = SECTIONS.filter((s) => !s.when || s.when())
+  const active = useActiveSection(sections.map((s) => s.id))
+  return (
+    <nav aria-label={t('resumeIndexLabel')} className="page-nav mono">
+      {sections.map((s) => {
+        const [num, label] = t(s.key).split(' · ')
+        return (
+          <a key={s.id} href={`#${s.id}`} className="page-nav__link" aria-current={active === s.id ? 'true' : undefined}>
+            <b>{num}</b> {label}
+          </a>
+        )
+      })}
+    </nav>
   )
 }
 
@@ -101,8 +155,10 @@ export function Resume() {
         )}
       </section>
 
-      <section className="resume__section" aria-labelledby="experiencia">
-        <SectionHeading id="experiencia" eyebrow={t('experienceEyebrow')} title={t('experienceTitle')} />
+      <ResumeIndex />
+
+      <section id="experiencia" className="resume__section" aria-labelledby="experiencia-titulo">
+        <SectionHeading id="experiencia-titulo" eyebrow={t('experienceEyebrow')} title={t('experienceTitle')} />
         <div className="timeline">
           {experiences.map((xp, i) => (
             <Experience key={`${l(xp.company)}-${i}`} xp={xp} last={i === experiences.length - 1} />
@@ -110,8 +166,8 @@ export function Resume() {
         </div>
       </section>
 
-      <section className="resume__section" aria-labelledby="stack">
-        <SectionHeading id="stack" eyebrow={t('skillsEyebrow')} title={t('skillsTitle')} />
+      <section id="stack" className="resume__section" aria-labelledby="stack-titulo">
+        <SectionHeading id="stack-titulo" eyebrow={t('skillsEyebrow')} title={t('skillsTitle')} />
         <div className="skills">
           {skillGroups.map((group) => (
             <div key={l(group.label)} className={`skills__group${group.featured ? ' card--accent' : ''}`}>
@@ -122,8 +178,8 @@ export function Resume() {
         </div>
       </section>
 
-      <section className="resume__section" aria-labelledby="formacao">
-        <SectionHeading id="formacao" eyebrow={t('educationEyebrow')} title={t('educationTitle')} />
+      <section id="formacao" className="resume__section" aria-labelledby="formacao-titulo">
+        <SectionHeading id="formacao-titulo" eyebrow={t('educationEyebrow')} title={t('educationTitle')} />
         <div className="education">
           {education.map((ed) => (
             <article key={l(ed.title)} className="education__item">
@@ -174,8 +230,8 @@ export function Resume() {
       </section>
 
       {company && (
-        <section className="resume__section" aria-labelledby="empresa">
-          <SectionHeading id="empresa" eyebrow={t('companyEyebrow')} title={t('companyTitle')} />
+        <section id="empresa" className="resume__section" aria-labelledby="empresa-titulo">
+          <SectionHeading id="empresa-titulo" eyebrow={t('companyEyebrow')} title={t('companyTitle')} />
           <div className="company card--accent">
             <h3 className="xp__role">{company.name}</h3>
             <span className="xp__company">

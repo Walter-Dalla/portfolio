@@ -55,6 +55,29 @@
   gap: 10px;
 }
 
+/* Sem foto: faixa baixa com a sigla da instituição, em vez de um bloco vazio repetindo o texto. */
+.achievement__mark {
+  display: flex;
+  align-items: center;
+  min-height: 84px;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--surface2), var(--surface));
+  font-size: clamp(18px, 2cqi, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.feature__title a {
+  color: inherit;
+}
+
+.feature__title a:hover {
+  color: var(--accent);
+}
+
 .achievement__title {
   margin: 0;
   font-size: 19px;

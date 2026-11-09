@@ -31,6 +31,7 @@ fazer o bloco surgir.
 | Projetos, capas, estudos de caso, galeria | `src/content/projects.js` |
 | Conquistas, diplomas, comprovantes | `src/content/achievements.js` |
 | Texto pessoal, fatos rápidos, galeria, história | `src/content/about.js` |
+| Prévia do link ao compartilhar (título, descrição, imagem 1200×630) | `index.html` (tags `og:`/`twitter:`) e `public/og.png` |
 
 ## Publicar
 

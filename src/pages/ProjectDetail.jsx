@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router'
 import { findProject, projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
+import { Zoom } from '../components/Lightbox.jsx'
+import { useLightbox } from '../components/useLightbox.jsx'
 import { Media } from '../components/Media.jsx'
 import { Tags } from '../components/Tags.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
@@ -16,19 +18,16 @@ function Fact({ label, children }) {
   )
 }
 
-export function ProjectDetail() {
-  const { slug } = useParams()
+function Project({ project }) {
   const { t, l } = useI18n()
-  const project = findProject(slug)
-  usePageTitle(project ? l(project.title) : t('notFoundTitle'))
-
-  if (!project) return <NotFound />
-
   const index = projects.indexOf(project)
-  const next = projects.length > 1 ? projects[(index + 1) % projects.length] : null
+  const many = projects.length > 1
+  const next = many ? projects[(index + 1) % projects.length] : null
+  const prev = many ? projects[(index - 1 + projects.length) % projects.length] : null
   const sections = project.sections.filter((s) => s.paragraphs.length > 0)
   const gallery = project.gallery ?? []
   const { facts } = project
+  const { open, lightbox } = useLightbox(gallery)
 
   return (
     <div className="container page project">
@@ -45,13 +44,9 @@ export function ProjectDetail() {
         <p className="project__lede">{l(project.lede)}</p>
       </div>
 
-      <Media
-        src={project.cover}
-        alt={project.title}
-        ratio="21 / 9"
-        className="project__cover"
-        label={`~/projects/${project.slug}`}
-      />
+      {project.cover && (
+        <Media src={project.cover} alt={project.title} ratio="21 / 9" className="project__cover" priority />
+      )}
 
       <div className="project__layout">
         <article className="project__body">
@@ -74,19 +69,26 @@ export function ProjectDetail() {
                 {t('gallery')}
               </h2>
               <div className="project__gallery">
-                {gallery.map((img) => (
-                  <Media key={img.src} src={img.src} alt={img.alt} ratio="4 / 3" className="project__shot" />
+                {gallery.map((img, i) => (
+                  <Zoom key={img.src} onClick={() => open(i)} className="project__shot">
+                    <Media src={img.src} alt={img.alt} ratio="4 / 3" />
+                  </Zoom>
                 ))}
               </div>
             </section>
           )}
 
-          <nav className="project__pager mono">
-            <Link to="/projects" className="link link--muted">
+          <nav aria-label={t('allProjects')} className="project__pager mono">
+            {prev && (
+              <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
+                ← {t('prevProject')}: {l(prev.title)}
+              </Link>
+            )}
+            <Link to="/projects" className="link link--muted project__pager-all">
               {t('allProjects')}
             </Link>
             {next && (
-              <Link to={`/projects/${next.slug}`} className="link">
+              <Link to={`/projects/${next.slug}`} className="link project__pager-next">
                 {t('nextProject')}: {l(next.title)} →
               </Link>
             )}
@@ -128,6 +130,18 @@ export function ProjectDetail() {
           )}
         </aside>
       </div>
+      {lightbox}
     </div>
   )
+}
+
+export function ProjectDetail() {
+  const { slug } = useParams()
+  const { t, l } = useI18n()
+  const project = findProject(slug)
+  usePageTitle(project ? l(project.title) : t('notFoundTitle'))
+
+  if (!project) return <NotFound />
+  // `key` zera o estado (visualizador, índice) ao navegar entre projetos.
+  return <Project key={project.slug} project={project} />
 }

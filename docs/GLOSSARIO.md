@@ -31,8 +31,12 @@
 |---|---|---|
 | Tema claro/escuro | `ThemeProvider`, `useTheme`, `data-theme` | "dark mode" só no tema escuro |
 | Idioma PT/EN | `LanguageProvider`, `useI18n`, `strings` | |
-| Cabeçalho / navegação | `Header` | |
-| Rodapé | `Footer` | |
+| Cabeçalho / navegação | `Header`, `NAV_ITEMS` | fixo ao rolar; menu no celular |
+| Rodapé | `Footer` | repete a navegação |
+| Visualizador de imagem (ampliar) | `Lightbox`, `useLightbox`, `Zoom` | |
+| Botão copiar e-mail | `CopyButton` | |
+| Voltar ao topo | `BackToTop` | |
+| Prévia do link (LinkedIn, WhatsApp) | tags Open Graph em `index.html`, `public/og.png` | |
 
 ## Armadilhas
 

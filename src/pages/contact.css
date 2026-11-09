@@ -43,10 +43,20 @@
 }
 
 .contact__address {
-  font-size: clamp(17px, 3cqi, 36px);
+  /* Em 390px cabe numa linha (~15px em mono); cresce com a tela. */
+  font-size: clamp(14px, 3.8cqi, 36px);
   font-weight: 500;
   letter-spacing: -0.01em;
   overflow-wrap: anywhere;
+  color: var(--text);
+}
+
+.contact__address:hover {
+  color: var(--accent);
+}
+
+.contact__actions {
+  flex-shrink: 0;
 }
 
 .contact__grid {
