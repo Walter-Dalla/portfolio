@@ -12,3 +12,4 @@ Leia só o arquivo da feature que a tarefa toca.
 | [contato.md](contato.md) | Contato | contato, e-mail, linkedin, github, disponibilidade, `Contact` |
 | [tema-idioma.md](tema-idioma.md) | Tema e idioma | tema, claro, escuro, idioma, tradução, inglês, PT, EN, i18n, `useI18n` |
 | [layout.md](layout.md) | Layout do site | cabeçalho, navegação, menu, rodapé, rotas, 404, `Layout` |
+| [seo.md](seo.md) | SEO e pré-render | SEO, Google, buscador, sitemap, robots.txt, llms.txt, Open Graph, meta, pré-render, hidratação, `seoRoutes` |

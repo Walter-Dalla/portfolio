@@ -1,0 +1,24 @@
+# Walter Dalla Torre Neto
+
+> Senior Software Engineer & Systems Architect based in São Paulo, Brazil. Personal portfolio: resume, projects with case studies, academic achievements and contact. Content is available in English (default) and Portuguese.
+
+Walter builds systems that cost less, respond faster and don't go down: architecture, backend (.NET), DevOps and AI-driven engineering. Clients include BTG Pactual, Linx (Stone Group), Qyon and AgileEngine (USA). He also works through his own software architecture company.
+
+## Pages
+
+- [Home](https://walterdalla.uk/): introduction and impact metrics
+- [Resume](https://walterdalla.uk/resume): experience timeline, stack and education
+- [Projects](https://walterdalla.uk/projects): personal and research projects with case studies
+- [Achievements](https://walterdalla.uk/achievements): education, research and certifications
+- [About](https://walterdalla.uk/about): how he works and how he got here
+- [Contact](https://walterdalla.uk/contact): e-mail, LinkedIn and GitHub
+
+## Resume (PDF)
+
+- [English](https://walterdalla.uk/cv/walter-dalla-cv-en.pdf)
+- [Portuguese](https://walterdalla.uk/cv/walter-dalla-cv-pt.pdf)
+
+## Elsewhere
+
+- [LinkedIn](https://linkedin.com/in/walter-dalla)
+- [GitHub](https://github.com/Walter-Dalla)

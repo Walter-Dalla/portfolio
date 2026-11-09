@@ -11,6 +11,7 @@ const THEME_COLOR = { dark: '#0b0d10', light: '#f7f6f2' }
 function initialTheme() {
   const stored = readStored(THEME_KEY)
   if (stored === 'light' || stored === 'dark') return stored
+  if (typeof window === 'undefined') return DEFAULT_THEME
   return window.matchMedia?.('(prefers-color-scheme: light)')?.matches ? 'light' : DEFAULT_THEME
 }
 

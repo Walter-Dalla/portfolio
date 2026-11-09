@@ -39,5 +39,8 @@ Publicado no GitHub Pages com domínio próprio: https://walterdalla.uk/ (o dom�
 
 Todo push na `master` roda `.github/workflows/ci.yml` (lint, testes, build) e, se passar,
 publica `dist/`. O build usa `base: '/'` (`vite.config.js`); caminhos de `public/`
-no conteúdo (ex.: `/cv/...`, `/img/...`) passam por `assetUrl` e acompanham o `base` se ele mudar. Como é uma SPA, o CI
-copia `index.html` para `404.html` para as rotas diretas (`/resume`…) funcionarem.
+no conteúdo (ex.: `/cv/...`, `/img/...`) passam por `assetUrl` e acompanham o `base` se ele mudar.
+
+O build pré-renderiza cada rota num `.html` próprio (título, descrição, Open Graph, conteúdo em inglês),
+gera `404.html` (rotas desconhecidas e caminhos antigos) e `sitemap.xml` — ver `docs/features/seo.md`.
+`public/robots.txt` e `public/llms.txt` orientam buscadores e agentes de IA.

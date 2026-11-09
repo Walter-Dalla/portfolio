@@ -4,10 +4,10 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist', 'src/contactform'] },
+  { ignores: ['dist', 'dist-ssr', 'src/contactform'] },
   js.configs.recommended,
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -21,4 +21,6 @@ export default [
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  // Entrada do pré-render: não é um componente, não participa do fast refresh.
+  { files: ['src/entry-server.jsx'], rules: { 'react-refresh/only-export-components': 'off' } },
 ]

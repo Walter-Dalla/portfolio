@@ -21,3 +21,4 @@ Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 40
 ## Interações
 
 - [tema-idioma.md](tema-idioma.md): `Header` usa `useTheme` e `useI18n`.
+- [seo.md](seo.md): no GitHub Pages, rota desconhecida e caminho antigo caem no `404.html` gerado pelo pré-render; cada rota pública tem seu `.html`.

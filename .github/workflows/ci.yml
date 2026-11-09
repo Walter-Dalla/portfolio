@@ -21,9 +21,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      # O build pré-renderiza cada rota (SEO) e gera 404.html e sitemap.xml (scripts/prerender.mjs).
       - run: npm run build
-      # SPA no GitHub Pages: caminho desconhecido cai no 404.html, que é o próprio app.
-      - run: cp dist/index.html dist/404.html
       - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
         with:
