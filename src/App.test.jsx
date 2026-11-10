@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react'
+import { act, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { projects } from './content/projects.js'
@@ -92,12 +92,39 @@ describe('projetos', () => {
     )
   })
 
-  it('liga o wh-harness ao fluxo interativo estático', () => {
+  it('liga o wh-harness ao fluxo interativo no GitHub Pages, em nova aba', () => {
     renderApp('/projects/wh-harness')
-    expect(screen.getByRole('link', { name: 'Ver a demonstração interativa' })).toHaveAttribute(
+    const link = screen.getByRole('link', { name: 'Ver a demonstração interativa' })
+    expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/flow.html')
+    expect(link).toHaveAttribute('target', '_blank')
+  })
+
+  it('embute o fluxo do wh-harness com o tema atual', () => {
+    renderApp('/projects/wh-harness')
+    const frame = screen.getByTitle('wh-harness — Demonstração interativa')
+    const src = new URL(frame.getAttribute('src'))
+    expect(src.origin + src.pathname).toBe('https://walter-dalla.github.io/wh-harness/flow.html')
+    expect(src.searchParams.get('embed')).toBe('1')
+    expect(src.searchParams.get('theme')).toBe('dark')
+    expect(screen.getByRole('link', { name: 'abrir em tela cheia' })).toHaveAttribute(
       'href',
-      '/wh-harness/flow.html',
+      'https://walter-dalla.github.io/wh-harness/flow.html',
     )
+  })
+
+  it('ajusta a altura do fluxo só com mensagens da origem dele', () => {
+    renderApp('/projects/wh-harness')
+    const frame = screen.getByTitle('wh-harness — Demonstração interativa')
+    const send = (origin, data) => act(() => window.dispatchEvent(new MessageEvent('message', { origin, data })))
+    send('https://evil.example', { type: 'wh-flow:height', height: 900 })
+    expect(frame.style.height).toBe('')
+    send('https://walter-dalla.github.io', { type: 'wh-flow:height', height: 1234.2 })
+    expect(frame.style.height).toBe('1235px')
+  })
+
+  it('só embute página quando o projeto tem embedUrl', () => {
+    renderApp('/projects/insect-behavioral-analysis')
+    expect(screen.queryByText('Demonstração interativa')).not.toBeInTheDocument()
   })
 
   it('só mostra link de repositório quando ele existe', () => {

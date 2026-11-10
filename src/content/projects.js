@@ -2,7 +2,9 @@
 // Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos não entra.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
-// `demoUrl`: página estática em public/ que mostra o projeto funcionando (opcional), ex.: '/wh-harness/flow.html'.
+// `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
+// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
+// src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -17,6 +19,9 @@ export const projectCategories = [
 
 // Projeto pessoal ainda sem estudo de caso completo: card, um parágrafo e, se houver, como foi feito com IA.
 // `repo` só para repositórios públicos.
+// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages.
+const WH_FLOW_URL = 'https://walter-dalla.github.io/wh-harness/flow.html'
+
 const IN_DEVELOPMENT = { pt: 'Em desenvolvimento', en: 'In development' }
 
 function simpleProject({
@@ -36,6 +41,7 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
+  embedUrl = null,
 }) {
   return {
     slug,
@@ -50,6 +56,7 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
+    embedUrl,
     facts: { client, role: null, status, adoption: null },
     sections: [
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
@@ -80,7 +87,8 @@ export const projects = [
     },
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
-    demoUrl: '/wh-harness/flow.html',
+    demoUrl: WH_FLOW_URL,
+    embedUrl: WH_FLOW_URL,
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {

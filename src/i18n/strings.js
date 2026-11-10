@@ -78,6 +78,8 @@ export const strings = {
   repositoryButton: { pt: 'Repositório', en: 'Repository' },
   thesisButton: { pt: 'TCC (UNESP)', en: 'Thesis (UNESP)' },
   demoButton: { pt: 'Ver a demonstração interativa', en: 'See the interactive demo' },
+  embedTitle: { pt: 'Demonstração interativa', en: 'Interactive demo' },
+  embedFullscreen: { pt: 'abrir em tela cheia', en: 'open full screen' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
 
