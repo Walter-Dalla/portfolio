@@ -4,191 +4,223 @@
 // `stage`: 'current' (marcador cheio), 'recent' (contorno de acento) ou ausente (contorno neutro).
 // `note` (opcional): linha curta abaixo da empresa, ex.: como entrou, cargos anteriores.
 // `extra` (opcional): { photos: [{ src, alt }], text: { pt, en } } — bloco de fotos e texto extra.
+// `positions` (opcional): a entrada vira um grupo de vínculos com a mesma empresa. `company` é o título
+// do grupo, `note` diz como os vínculos se ligam e cada item de `positions` é um cargo com o texto do CV.
+// Título, período e nota do grupo não vêm do CV. `stage` vale só na entrada (o marcador do trilho).
 export const experiences = [
   {
-    period: { pt: '07/2026 — atual', en: '07/2026 — present' },
-    role: { pt: 'Desenvolvedor Fullstack Sênior Orientado a IA', en: 'Senior AI-Oriented Fullstack Developer' },
-    company: { pt: 'AgileEngine (EUA)', en: 'AgileEngine (US)' },
-    place: { pt: 'Remoto', en: 'Remote' },
+    period: { pt: '09/2025 — atual', en: '09/2025 — present' },
+    company: 'Walter Serviços de Arquitetura de Software LTDA',
     note: {
-      pt: 'Contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA); detalhes do cliente sob NDA.',
-      en: 'Contract, via own consultancy (Walter Serviços de Arquitetura de Software LTDA); client details under NDA.',
+      pt: 'Minha empresa (PJ), pela qual atendi a Qyon e atendo a AgileEngine.',
+      en: 'My own company, through which I served Qyon and now serve AgileEngine.',
     },
     stage: 'current',
-    bullets: [
+    positions: [
       {
-        pt: 'Projetei e implementei um harness customizado de orquestração de IA que executa skills programáticas de forma concorrente em múltiplas tarefas, viabilizando o desenvolvimento paralelizado.',
-        en: 'Designed and implemented a custom AI orchestration harness that runs programmatic skills concurrently across multiple tasks, enabling parallelized development.',
+        period: { pt: '07/2026 — atual', en: '07/2026 — present' },
+        role: { pt: 'Desenvolvedor Fullstack Sênior Orientado a IA', en: 'Senior AI-Oriented Fullstack Developer' },
+        company: { pt: 'AgileEngine (EUA)', en: 'AgileEngine (US)' },
+        place: { pt: 'Remoto', en: 'Remote' },
+        note: {
+          pt: 'Contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA); detalhes do cliente sob NDA.',
+          en: 'Contract, via own consultancy (Walter Serviços de Arquitetura de Software LTDA); client details under NDA.',
+        },
+        bullets: [
+          {
+            pt: 'Projetei e implementei um harness customizado de orquestração de IA que executa skills programáticas de forma concorrente em múltiplas tarefas, viabilizando o desenvolvimento paralelizado.',
+            en: 'Designed and implemented a custom AI orchestration harness that runs programmatic skills concurrently across multiple tasks, enabling parallelized development.',
+          },
+          {
+            pt: 'Construí fluxos de engenharia orientados por IA de ponta a ponta (análise, planejamento, implementação, testes, deploy) com agentes Claude e Codex, em Azure DevOps e Azure Cloud.',
+            en: 'Built end-to-end AI-driven engineering workflows (analysis, planning, implementation, testing, deployment) with Claude and Codex agents, on Azure DevOps and Azure Cloud.',
+          },
+        ],
+        tags: [
+          { label: 'Claude', accent: true },
+          { label: 'Codex', accent: true },
+          { label: 'Azure DevOps' },
+          { label: 'Azure' },
+        ],
       },
       {
-        pt: 'Construí fluxos de engenharia orientados por IA de ponta a ponta (análise, planejamento, implementação, testes, deploy) com agentes Claude e Codex, em Azure DevOps e Azure Cloud.',
-        en: 'Built end-to-end AI-driven engineering workflows (analysis, planning, implementation, testing, deployment) with Claude and Codex agents, on Azure DevOps and Azure Cloud.',
+        period: '09/2025 — 05/2026',
+        role: { pt: 'Arquiteto de Sistemas & DevOps', en: 'Systems Architect & DevOps' },
+        company: 'Qyon',
+        place: { pt: 'Remoto', en: 'Remote' },
+        note: {
+          pt: 'Arquiteto único, atuando também em DevOps e FinOps; contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA).',
+          en: 'Sole architect, also covering DevOps and FinOps; contract via own consultancy (Walter Serviços de Arquitetura de Software LTDA).',
+        },
+        bullets: [
+          {
+            pt: 'Consolidei **8 microsserviços** quase idênticos em um único serviço (padrões Strategy e Template Method) e o migrei do .NET Core 3.1 para o .NET 10, **mais que dobrando** a vazão das filas e reduzindo o uso de memória.',
+            en: 'Consolidated **8 near-identical microservices** into a single service (Strategy and Template Method patterns) and migrated it from .NET Core 3.1 to .NET 10, **more than doubling** queue throughput and reducing memory usage.',
+          },
+          {
+            pt: 'Redesenhei a arquitetura de processamento, introduzindo o RabbitMQ Shovel no fluxo de mensageria, para absorver um novo cliente cujo volume diário superava **o dobro** do total anterior da empresa.',
+            en: "Redesigned the processing architecture, introducing RabbitMQ Shovel into the messaging workflow, to absorb a new client whose daily volume exceeded **twice** the company's previous total.",
+          },
+          {
+            pt: 'Gerenciei toda a infraestrutura AWS e 6 bancos de dados RDS em um ambiente regulado de alta segurança, reduzindo os custos de AWS em **23%**.',
+            en: 'Managed the full AWS infrastructure and 6 RDS databases in a high-security regulated environment, cutting AWS costs by **23%**.',
+          },
+          {
+            pt: 'Otimizei aplicações críticas em Java e C# e fiz o tuning de PostgreSQL/MySQL, reduzindo o uso de memória e CPU.',
+            en: 'Optimized critical Java and C# applications and tuned PostgreSQL/MySQL, reducing memory and CPU usage.',
+          },
+          {
+            pt: 'Estabeleci conjuntos de regras para Claude Code e Cursor (CLAUDE.md, padrões de código) adotados por um time de **mais de 20 desenvolvedores**.',
+            en: 'Established Claude Code and Cursor rule sets (CLAUDE.md, coding standards) adopted by a team of **20+ developers**.',
+          },
+        ],
+        tags: [
+          { label: '.NET 10' },
+          { label: 'AWS' },
+          { label: 'RabbitMQ' },
+          { label: 'PostgreSQL' },
+          { label: 'MySQL' },
+          { label: 'Claude Code', accent: true },
+        ],
       },
-    ],
-    tags: [
-      { label: 'Claude', accent: true },
-      { label: 'Codex', accent: true },
-      { label: 'Azure DevOps' },
-      { label: 'Azure' },
-    ],
-  },
-  {
-    period: '09/2025 — 05/2026',
-    role: { pt: 'Arquiteto de Sistemas & DevOps', en: 'Systems Architect & DevOps' },
-    company: 'Qyon',
-    place: { pt: 'Remoto', en: 'Remote' },
-    note: {
-      pt: 'Arquiteto único, atuando também em DevOps e FinOps; contrato via consultoria própria (Walter Serviços de Arquitetura de Software LTDA).',
-      en: 'Sole architect, also covering DevOps and FinOps; contract via own consultancy (Walter Serviços de Arquitetura de Software LTDA).',
-    },
-    stage: 'recent',
-    bullets: [
-      {
-        pt: 'Consolidei **8 microsserviços** quase idênticos em um único serviço (padrões Strategy e Template Method) e o migrei do .NET Core 3.1 para o .NET 10, **mais que dobrando** a vazão das filas e reduzindo o uso de memória.',
-        en: 'Consolidated **8 near-identical microservices** into a single service (Strategy and Template Method patterns) and migrated it from .NET Core 3.1 to .NET 10, **more than doubling** queue throughput and reducing memory usage.',
-      },
-      {
-        pt: 'Redesenhei a arquitetura de processamento, introduzindo o RabbitMQ Shovel no fluxo de mensageria, para absorver um novo cliente cujo volume diário superava **o dobro** do total anterior da empresa.',
-        en: "Redesigned the processing architecture, introducing RabbitMQ Shovel into the messaging workflow, to absorb a new client whose daily volume exceeded **twice** the company's previous total.",
-      },
-      {
-        pt: 'Gerenciei toda a infraestrutura AWS e 6 bancos de dados RDS em um ambiente regulado de alta segurança, reduzindo os custos de AWS em **23%**.',
-        en: 'Managed the full AWS infrastructure and 6 RDS databases in a high-security regulated environment, cutting AWS costs by **23%**.',
-      },
-      {
-        pt: 'Otimizei aplicações críticas em Java e C# e fiz o tuning de PostgreSQL/MySQL, reduzindo o uso de memória e CPU.',
-        en: 'Optimized critical Java and C# applications and tuned PostgreSQL/MySQL, reducing memory and CPU usage.',
-      },
-      {
-        pt: 'Estabeleci conjuntos de regras para Claude Code e Cursor (CLAUDE.md, padrões de código) adotados por um time de **mais de 20 desenvolvedores**.',
-        en: 'Established Claude Code and Cursor rule sets (CLAUDE.md, coding standards) adopted by a team of **20+ developers**.',
-      },
-    ],
-    tags: [
-      { label: '.NET 10' },
-      { label: 'AWS' },
-      { label: 'RabbitMQ' },
-      { label: 'PostgreSQL' },
-      { label: 'MySQL' },
-      { label: 'Claude Code', accent: true },
     ],
   },
   {
     period: '11/2023 — 08/2025',
-    role: {
-      pt: 'Engenheiro de Software Sênior & Arquiteto de Sistemas',
-      en: 'Senior Software Engineer & Systems Architect',
-    },
-    company: { pt: 'BTG Pactual (Banco de Investimentos)', en: 'BTG Pactual (Brazilian Investment Bank)' },
-    place: 'São Paulo-SP',
+    company: { pt: 'BTG Pactual e Act Digital', en: 'BTG Pactual and Act Digital' },
     note: {
-      pt: 'Desenvolvedor Backend Pleno, prevenção a fraudes (via Act Digital), a partir de nov/2023; contratado diretamente pelo banco e promovido ao time de arquitetura em mar/2025 após entregar a frente de prevenção a fraudes do projeto de latência do PIX.',
-      en: 'Mid-Level Backend Developer, fraud prevention (via Act Digital), from Nov 2023; hired directly by the bank and promoted to the architecture team in Mar 2025 after delivering the fraud-prevention side of the PIX latency project.',
+      pt: 'Comecei como terceiro pela Act Digital e depois fui contratado diretamente pelo banco.',
+      en: 'Started as a contractor through Act Digital, then was hired directly by the bank.',
     },
     stage: 'recent',
-    bullets: [
+    positions: [
       {
-        pt: 'Liderei a frente de prevenção a fraudes da iniciativa de redução de latência do PIX no BTG como ponto focal técnico: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
-        en: "Led the fraud-prevention side of BTG's PIX latency-reduction effort (PIX is Brazil's instant-payment system) as technical focal point: designed the architecture, validated it with the bank's architecture team and delivered it with 2 mid-level developers, cutting P95 latency of the fraud-screening flow from **~7s to ~4.5s**, within the Central Bank's (BACEN) new 5s limit.",
+        period: '11/2023 — 08/2025',
+        role: {
+          pt: 'Engenheiro de Software Sênior & Arquiteto de Sistemas',
+          en: 'Senior Software Engineer & Systems Architect',
+        },
+        company: { pt: 'BTG Pactual (Banco de Investimentos)', en: 'BTG Pactual (Brazilian Investment Bank)' },
+        place: 'São Paulo-SP',
+        note: {
+          pt: 'Desenvolvedor Backend Pleno, prevenção a fraudes (via Act Digital), a partir de nov/2023; contratado diretamente pelo banco e promovido ao time de arquitetura em mar/2025 após entregar a frente de prevenção a fraudes do projeto de latência do PIX.',
+          en: 'Mid-Level Backend Developer, fraud prevention (via Act Digital), from Nov 2023; hired directly by the bank and promoted to the architecture team in Mar 2025 after delivering the fraud-prevention side of the PIX latency project.',
+        },
+        bullets: [
+          {
+            pt: 'Liderei a frente de prevenção a fraudes da iniciativa de redução de latência do PIX no BTG como ponto focal técnico: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
+            en: "Led the fraud-prevention side of BTG's PIX latency-reduction effort (PIX is Brazil's instant-payment system) as technical focal point: designed the architecture, validated it with the bank's architecture team and delivered it with 2 mid-level developers, cutting P95 latency of the fraud-screening flow from **~7s to ~4.5s**, within the Central Bank's (BACEN) new 5s limit.",
+          },
+          {
+            pt: 'Projetei um mecanismo customizado de timeout/fallback que garante uma resposta determinística dentro do prazo mesmo quando um fornecedor externo trava, viabilizando caminhos de degradação controlada para transações PIX e TED.',
+            en: 'Designed a custom timeout/fallback mechanism that guarantees a deterministic response within the deadline even when an external vendor hangs, enabling controlled degradation paths for PIX and TED (wire transfer) transactions.',
+          },
+          {
+            pt: 'Migrei AWS Lambdas para CronJobs nativos do EKS, substituí um job de relay de filas pelo RabbitMQ Shovel e adicionei cache em Redis para eliminar chamadas HTTP redundantes, reduzindo custo de infraestrutura e latência.',
+            en: 'Migrated AWS Lambdas to native EKS CronJobs, replaced a queue relay job with RabbitMQ Shovel and added Redis caching to eliminate redundant HTTP calls, cutting infrastructure cost and latency.',
+          },
+          {
+            pt: 'Implementei observabilidade completa com DataDog (dashboards, alertas, Command Center), reduzindo o MTTR de incidentes em sistemas críticos.',
+            en: 'Implemented full observability with DataDog (dashboards, alerts, Command Center), reducing incident MTTR in critical systems.',
+          },
+          {
+            pt: 'Desenvolvi serviços backend em .NET para a área de prevenção a fraudes, migrando a stack do .NET Core 3.1 para o 6 e, posteriormente, para o 8.',
+            en: 'Developed .NET backend services for the fraud-prevention department, migrating the stack from .NET Core 3.1 to 6 and later 8.',
+          },
+          {
+            pt: 'Otimizei e automatizei o processo de entrega do time, reduzindo o SLA de entrega de **7 dias para 1**.',
+            en: "Optimized and automated the team's delivery process, reducing delivery SLA from **7 days to 1**.",
+          },
+          {
+            pt: 'Mentorei 4 novos desenvolvedores e estabeleci uma cultura de testes unitários, reduzindo defeitos em produção.',
+            en: 'Mentored 4 new developers and established a unit testing culture, reducing production defects.',
+          },
+        ],
+        tags: [
+          { label: 'PIX' },
+          { label: '.NET 8' },
+          { label: 'EKS' },
+          { label: 'RabbitMQ' },
+          { label: 'Redis' },
+          { label: 'DataDog' },
+        ],
       },
-      {
-        pt: 'Projetei um mecanismo customizado de timeout/fallback que garante uma resposta determinística dentro do prazo mesmo quando um fornecedor externo trava, viabilizando caminhos de degradação controlada para transações PIX e TED.',
-        en: 'Designed a custom timeout/fallback mechanism that guarantees a deterministic response within the deadline even when an external vendor hangs, enabling controlled degradation paths for PIX and TED (wire transfer) transactions.',
-      },
-      {
-        pt: 'Migrei AWS Lambdas para CronJobs nativos do EKS, substituí um job de relay de filas pelo RabbitMQ Shovel e adicionei cache em Redis para eliminar chamadas HTTP redundantes, reduzindo custo de infraestrutura e latência.',
-        en: 'Migrated AWS Lambdas to native EKS CronJobs, replaced a queue relay job with RabbitMQ Shovel and added Redis caching to eliminate redundant HTTP calls, cutting infrastructure cost and latency.',
-      },
-      {
-        pt: 'Implementei observabilidade completa com DataDog (dashboards, alertas, Command Center), reduzindo o MTTR de incidentes em sistemas críticos.',
-        en: 'Implemented full observability with DataDog (dashboards, alerts, Command Center), reducing incident MTTR in critical systems.',
-      },
-      {
-        pt: 'Desenvolvi serviços backend em .NET para a área de prevenção a fraudes, migrando a stack do .NET Core 3.1 para o 6 e, posteriormente, para o 8.',
-        en: 'Developed .NET backend services for the fraud-prevention department, migrating the stack from .NET Core 3.1 to 6 and later 8.',
-      },
-      {
-        pt: 'Otimizei e automatizei o processo de entrega do time, reduzindo o SLA de entrega de **7 dias para 1**.',
-        en: "Optimized and automated the team's delivery process, reducing delivery SLA from **7 days to 1**.",
-      },
-      {
-        pt: 'Mentorei 4 novos desenvolvedores e estabeleci uma cultura de testes unitários, reduzindo defeitos em produção.',
-        en: 'Mentored 4 new developers and established a unit testing culture, reducing production defects.',
-      },
-    ],
-    tags: [
-      { label: 'PIX' },
-      { label: '.NET 8' },
-      { label: 'EKS' },
-      { label: 'RabbitMQ' },
-      { label: 'Redis' },
-      { label: 'DataDog' },
     ],
   },
   {
-    period: '10/2021 — 11/2023',
-    role: { pt: 'Engenheiro de Software Pleno (Backend C#)', en: 'Mid-Level Software Engineer (C# Backend)' },
-    company: {
-      pt: 'Linx (Grupo Stone) - Software para Varejo e Food Service',
-      en: 'Linx (Stone Group) - Retail & Food Software',
-    },
-    place: { pt: 'Remoto/Bauru-SP/São Paulo-SP', en: 'Remote/Bauru-SP/São Paulo-SP' },
+    period: '09/2020 — 11/2023',
+    company: { pt: 'Linx (Grupo Stone) e Ez.Devs', en: 'Linx (Stone Group) and Ez.Devs' },
     note: {
-      pt: "Promovido de Engenheiro de Software I para II; ponto focal do time de backend no novo ecossistema de PDV para redes de alimentação (Habib's, Bob's, Rei do Mate).",
-      en: "Promoted from Software Engineer I to II; focal point of the backend team on the new POS ecosystem for Brazilian food chains (Habib's, Bob's, Rei do Mate).",
+      pt: 'Comecei alocado na Linx pela Ez.Devs e depois fui contratado diretamente.',
+      en: 'Started embedded at Linx through Ez.Devs, then was hired directly.',
     },
-    bullets: [
+    positions: [
       {
-        pt: 'Projetei a arquitetura offline-first da nova plataforma de Ponto de Venda (persistência local quando offline, sincronização na reconexão), integrada aos sistemas de documentos fiscais eletrônicos (NFe, SAT) e construída para alta disponibilidade.',
-        en: 'Designed the offline-first architecture of the new Point of Sale platform (local persistence when offline, sync on reconnection), integrated with Brazilian electronic tax-invoice systems (NFe, SAT) and built for high availability.',
+        period: '10/2021 — 11/2023',
+        role: { pt: 'Engenheiro de Software Pleno (Backend C#)', en: 'Mid-Level Software Engineer (C# Backend)' },
+        company: {
+          pt: 'Linx (Grupo Stone) - Software para Varejo e Food Service',
+          en: 'Linx (Stone Group) - Retail & Food Software',
+        },
+        place: { pt: 'Remoto/Bauru-SP/São Paulo-SP', en: 'Remote/Bauru-SP/São Paulo-SP' },
+        note: {
+          pt: "Promovido de Engenheiro de Software I para II; ponto focal do time de backend no novo ecossistema de PDV para redes de alimentação (Habib's, Bob's, Rei do Mate).",
+          en: "Promoted from Software Engineer I to II; focal point of the backend team on the new POS ecosystem for Brazilian food chains (Habib's, Bob's, Rei do Mate).",
+        },
+        bullets: [
+          {
+            pt: 'Projetei a arquitetura offline-first da nova plataforma de Ponto de Venda (persistência local quando offline, sincronização na reconexão), integrada aos sistemas de documentos fiscais eletrônicos (NFe, SAT) e construída para alta disponibilidade.',
+            en: 'Designed the offline-first architecture of the new Point of Sale platform (local persistence when offline, sync on reconnection), integrated with Brazilian electronic tax-invoice systems (NFe, SAT) and built for high availability.',
+          },
+          {
+            pt: 'Levantei requisitos diretamente com CEOs e CTOs dos clientes e visitei suas unidades para entender o dia a dia das operações, transformando necessidades de negócio no desenho técnico da nova plataforma de PDV.',
+            en: 'Gathered requirements directly with client CEOs and CTOs and visited customer sites to understand day-to-day operations, turning business needs into the technical design of the new POS platform.',
+          },
+          {
+            pt: 'Rearquitetei o backend em C#, removendo uma máquina de estados pouco confiável, racionalizando o uso de filas de mensagens e padronizando design patterns, e o atualizei do .NET Core 3.1 para o .NET 5.',
+            en: 'Re-architected the C# backend, removing an unreliable state machine, rationalizing message-queue usage and standardizing design patterns, and upgraded it from .NET Core 3.1 to .NET 5.',
+          },
+          {
+            pt: 'Modelei e gerenciei toda a infraestrutura Azure: SQL Database, AKS (Kubernetes), Application Insights e pipelines de CI/CD para desenvolvimento, testes e produção.',
+            en: 'Modeled and managed the full Azure infrastructure: SQL Database, AKS (Kubernetes), Application Insights and CI/CD pipelines for dev, test and production.',
+          },
+          {
+            pt: 'Implementei regras de negócio complexas, incluindo roteirização baseada em grafos (VRP), e integrações com terceiros (cupons promocionais, APIs fiscais) usando .NET e MongoDB.',
+            en: 'Implemented complex business rules, including graph-based routing (VRP), and third-party integrations (promo codes, fiscal APIs) using .NET and MongoDB.',
+          },
+          {
+            pt: 'Treinei 4 novos desenvolvedores e defini padrões de código, revisão de PRs e práticas de Git Flow.',
+            en: 'Trained 4 new developers and defined coding standards, PR review and Git Flow practices.',
+          },
+        ],
+        tags: [{ label: 'C#' }, { label: 'AKS' }, { label: 'SQL Server' }, { label: 'MongoDB' }],
       },
       {
-        pt: 'Levantei requisitos diretamente com CEOs e CTOs dos clientes e visitei suas unidades para entender o dia a dia das operações, transformando necessidades de negócio no desenho técnico da nova plataforma de PDV.',
-        en: 'Gathered requirements directly with client CEOs and CTOs and visited customer sites to understand day-to-day operations, turning business needs into the technical design of the new POS platform.',
-      },
-      {
-        pt: 'Rearquitetei o backend em C#, removendo uma máquina de estados pouco confiável, racionalizando o uso de filas de mensagens e padronizando design patterns, e o atualizei do .NET Core 3.1 para o .NET 5.',
-        en: 'Re-architected the C# backend, removing an unreliable state machine, rationalizing message-queue usage and standardizing design patterns, and upgraded it from .NET Core 3.1 to .NET 5.',
-      },
-      {
-        pt: 'Modelei e gerenciei toda a infraestrutura Azure: SQL Database, AKS (Kubernetes), Application Insights e pipelines de CI/CD para desenvolvimento, testes e produção.',
-        en: 'Modeled and managed the full Azure infrastructure: SQL Database, AKS (Kubernetes), Application Insights and CI/CD pipelines for dev, test and production.',
-      },
-      {
-        pt: 'Implementei regras de negócio complexas, incluindo roteirização baseada em grafos (VRP), e integrações com terceiros (cupons promocionais, APIs fiscais) usando .NET e MongoDB.',
-        en: 'Implemented complex business rules, including graph-based routing (VRP), and third-party integrations (promo codes, fiscal APIs) using .NET and MongoDB.',
-      },
-      {
-        pt: 'Treinei 4 novos desenvolvedores e defini padrões de código, revisão de PRs e práticas de Git Flow.',
-        en: 'Trained 4 new developers and defined coding standards, PR review and Git Flow practices.',
+        period: '09/2020 — 10/2021',
+        role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
+        company: { pt: 'Ez.Devs (Outsourcing de Software)', en: 'Ez.Devs (Software Outsourcing)' },
+        place: { pt: 'Remoto', en: 'Remote' },
+        note: {
+          pt: 'Entreguei projetos para 3 clientes diferentes, incluindo 7 meses alocado no time de P&D da Linx.',
+          en: "Delivered projects for 3 different clients, including 7 months embedded in Linx's R&D team.",
+        },
+        bullets: [
+          {
+            pt: 'Linx (P&D, divisão Food): desenvolvi um Kitchen Display System (KDS), painéis de pedidos e regras de negócio em C# ASP.NET MVC com MongoDB, integrando APIs de terceiros.',
+            en: 'Linx (R&D, Food division): developed a Kitchen Display System (KDS), order panels and business rules in C# ASP.NET MVC with MongoDB, integrating third-party APIs.',
+          },
+          {
+            pt: 'Cliente de treinamento corporativo: construí uma plataforma interna de treinamentos como aplicação web fullstack com Node.js, React e PostgreSQL.',
+            en: 'Corporate training client: built an internal training platform as a fullstack web application with Node.js, React and PostgreSQL.',
+          },
+          {
+            pt: 'Governo do Estado de Mato Grosso do Sul: estabilizei um frontend Angular em fase final, corrigindo defeitos e padronizando a base de código.',
+            en: 'State government of Mato Grosso do Sul (Brazil): stabilized a late-stage Angular frontend, fixing defects and standardizing the codebase.',
+          },
+        ],
+        tags: [{ label: 'Node.js' }, { label: 'React' }, { label: 'Angular' }, { label: 'ASP.NET MVC' }],
       },
     ],
-    tags: [{ label: 'C#' }, { label: 'AKS' }, { label: 'SQL Server' }, { label: 'MongoDB' }],
-  },
-  {
-    period: '09/2020 — 10/2021',
-    role: { pt: 'Desenvolvedor de Software', en: 'Software Developer' },
-    company: { pt: 'Ez.Devs (Outsourcing de Software)', en: 'Ez.Devs (Software Outsourcing)' },
-    place: { pt: 'Remoto', en: 'Remote' },
-    note: {
-      pt: 'Entreguei projetos para 3 clientes diferentes, incluindo 7 meses alocado no time de P&D da Linx.',
-      en: "Delivered projects for 3 different clients, including 7 months embedded in Linx's R&D team.",
-    },
-    bullets: [
-      {
-        pt: 'Linx (P&D, divisão Food): desenvolvi um Kitchen Display System (KDS), painéis de pedidos e regras de negócio em C# ASP.NET MVC com MongoDB, integrando APIs de terceiros.',
-        en: 'Linx (R&D, Food division): developed a Kitchen Display System (KDS), order panels and business rules in C# ASP.NET MVC with MongoDB, integrating third-party APIs.',
-      },
-      {
-        pt: 'Cliente de treinamento corporativo: construí uma plataforma interna de treinamentos como aplicação web fullstack com Node.js, React e PostgreSQL.',
-        en: 'Corporate training client: built an internal training platform as a fullstack web application with Node.js, React and PostgreSQL.',
-      },
-      {
-        pt: 'Governo do Estado de Mato Grosso do Sul: estabilizei um frontend Angular em fase final, corrigindo defeitos e padronizando a base de código.',
-        en: 'State government of Mato Grosso do Sul (Brazil): stabilized a late-stage Angular frontend, fixing defects and standardizing the codebase.',
-      },
-    ],
-    tags: [{ label: 'Node.js' }, { label: 'React' }, { label: 'Angular' }, { label: 'ASP.NET MVC' }],
   },
   {
     period: '10/2018 — 09/2019',

@@ -124,7 +124,19 @@ function Experience({ xp, last }) {
       </div>
       <div className={`xp__body${last ? '' : ' xp__body--spaced'}`}>
         <span className={`xp__period mono${xp.stage ? ' xp__period--accent' : ''}`}>{l(xp.period)}</span>
-        <Position xp={xp} />
+        {xp.positions ? (
+          <>
+            <h3 className="xp__group-title">{l(xp.company)}</h3>
+            {xp.note && <span className="xp__note">{l(xp.note)}</span>}
+            {xp.positions.map((pos, i) => (
+              <div key={`${l(pos.company)}-${i}`} className="xp__position">
+                <Position xp={pos} as="h4" showPeriod={xp.positions.length > 1} />
+              </div>
+            ))}
+          </>
+        ) : (
+          <Position xp={xp} />
+        )}
       </div>
     </article>
   )
