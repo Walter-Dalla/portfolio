@@ -41,4 +41,4 @@ Changelog: — · Status de features: — · Pendências do dono: `docs/PENDENCI
 — [skill default]
 
 ## Worktree commands
-—
+O worktree não tem `node_modules`: `npx vitest` e `npm run lint` resolvem pelo do clone; `npm run build` também roda (medido 2026-11-10) [enricher retro]
