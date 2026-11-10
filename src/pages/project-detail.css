@@ -195,3 +195,33 @@
 .facts__links .btn--secondary {
   font-weight: 400;
 }
+
+/* Demonstração embutida (embedUrl): largura toda do container, abaixo do texto e da ficha. */
+.project__embed {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: clamp(48px, 6cqi, 80px);
+}
+
+.project__embed-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+.project__embed-head .link {
+  font-size: 14px;
+}
+
+.project__embed-frame {
+  display: block;
+  width: 100%;
+  /* Sem a altura vinda da página embutida, uma altura fixa. */
+  height: min(1400px, 160vh);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+}

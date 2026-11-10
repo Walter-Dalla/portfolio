@@ -16,7 +16,8 @@
 
 | Negócio | Código | Evite / nota |
 |---|---|---|
-| Experiência (item da linha do tempo) | `experiences` | |
+| Experiência (item da linha do tempo) | `experiences` | pode ser um grupo de vínculos |
+| Vínculo (cargo dentro de um grupo) | `experiences[].positions`, `Position` | "experiência" para o cargo de dentro do grupo |
 | Habilidades / stack | `skillGroups` | |
 | Métricas de impacto | `metrics` | |
 | Projeto em destaque | `projects[].featured` | |

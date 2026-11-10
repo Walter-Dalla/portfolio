@@ -38,7 +38,7 @@ export const strings = {
   exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
   exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
   exploreResume: {
-    pt: '6 experiências desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
+    pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
     en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
   },
   exploreAchievements: {
@@ -77,7 +77,9 @@ export const strings = {
   factTech: { pt: 'tecnologias', en: 'technologies' },
   repositoryButton: { pt: 'Repositório', en: 'Repository' },
   thesisButton: { pt: 'TCC (UNESP)', en: 'Thesis (UNESP)' },
-  demoButton: { pt: 'Ver o fluxo interativo', en: 'See the interactive flow' },
+  demoButton: { pt: 'Ver a demonstração interativa', en: 'See the interactive demo' },
+  embedTitle: { pt: 'Demonstração interativa', en: 'Interactive demo' },
+  embedFullscreen: { pt: 'abrir em tela cheia', en: 'open full screen' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
 

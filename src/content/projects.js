@@ -2,7 +2,9 @@
 // Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos não entra.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
-// `demoUrl`: página estática em public/ que mostra o projeto funcionando (opcional), ex.: '/wh-harness/flow.html'.
+// `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
+// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
+// src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -17,6 +19,9 @@ export const projectCategories = [
 
 // Projeto pessoal ainda sem estudo de caso completo: card, um parágrafo e, se houver, como foi feito com IA.
 // `repo` só para repositórios públicos.
+// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages.
+const WH_FLOW_URL = 'https://walter-dalla.github.io/wh-harness/flow.html'
+
 const IN_DEVELOPMENT = { pt: 'Em desenvolvimento', en: 'In development' }
 
 function simpleProject({
@@ -36,6 +41,7 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
+  embedUrl = null,
 }) {
   return {
     slug,
@@ -50,6 +56,7 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
+    embedUrl,
     facts: { client, role: null, status, adoption: null },
     sections: [
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
@@ -71,8 +78,8 @@ export const projects = [
       en: 'Open-source plugin that takes a software task from request to pull request (analysis, plan, parallel agents, QA, retrospective) in any repository.',
     },
     about: {
-      pt: 'A regra central é "a skill tem o procedimento, o perfil tem os fatos": o plugin guarda dez skills genéricas (implementation, adotar, deploy, qa-visual, retro, limpeza…), subagentes e um hook, e cada projeto guarda só os seus fatos — comandos, portas, glossário, mapa de features — em .claude/perfil/. O /wh:implementation enriquece a tarefa, divide em faixas, roda cada faixa num subagente em worktree git própria, faz QA do código e final e abre o PR. Um hook em Python puro injeta em cada prompt ponteiros do glossário, do mapa de features e do índice CodeGraph. Foi extraído do KittyCafé e hoje roda também no GoPrint, no Nesse Capítulo e neste portfólio.',
-      en: 'Its core rule is "the skill holds the procedure, the profile holds the facts": the plugin ships ten generic skills (implementation, adopt, deploy, visual QA, retro, cleanup…), subagents and a hook, and each project keeps only its facts — commands, ports, glossary, feature map — in .claude/perfil/. /wh:implementation enriches the task, splits it into lanes, runs each lane in a subagent on its own git worktree, does code and final QA and opens the PR. A pure-Python hook adds pointers from the glossary, the feature map and the CodeGraph index to every prompt. It was extracted from KittyCafé and now also runs in GoPrint, Nesse Capítulo and this portfolio.',
+      pt: 'A regra central é "a skill tem o procedimento, o perfil tem os fatos": o plugin guarda dez skills genéricas (implementation, adotar, deploy, qa-visual, retro, limpeza…), subagentes e um hook, e cada projeto guarda só os seus fatos — comandos, portas, glossário, mapa de features — em .claude/profile/. O /wh:implementation enriquece a tarefa, divide em faixas, roda cada faixa num subagente em worktree git própria, faz QA do código e final e abre o PR. Um hook em Python puro injeta em cada prompt ponteiros do glossário, do mapa de features e do índice CodeGraph. Foi extraído do KittyCafé e hoje roda também no GoPrint, no Nesse Capítulo e neste portfólio.',
+      en: 'Its core rule is "the skill holds the procedure, the profile holds the facts": the plugin ships ten generic skills (implementation, adopt, deploy, visual QA, retro, cleanup…), subagents and a hook, and each project keeps only its facts — commands, ports, glossary, feature map — in .claude/profile/. /wh:implementation enriches the task, splits it into lanes, runs each lane in a subagent on its own git worktree, does code and final QA and opens the PR. A pure-Python hook adds pointers from the glossary, the feature map and the CodeGraph index to every prompt. It was extracted from KittyCafé and now also runs in GoPrint, Nesse Capítulo and this portfolio.',
     },
     ai: {
       pt: 'O harness foi construído com o próprio Claude Code e testado contra si mesmo: execuções headless do /wh:implementation num repositório de teste, com tempo, custo e commits medidos, geraram uma lista numerada de falhas, corrigidas em rodadas de revisão crítica em que eu defino os critérios e aprovo as correções. Todos os commits têm o Claude como coautor.',
@@ -80,7 +87,8 @@ export const projects = [
     },
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
-    demoUrl: '/wh-harness/flow.html',
+    demoUrl: WH_FLOW_URL,
+    embedUrl: WH_FLOW_URL,
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {

@@ -4,10 +4,13 @@ import { useI18n } from '../i18n/context.js'
 import { Zoom } from '../components/Lightbox.jsx'
 import { useLightbox } from '../components/useLightbox.jsx'
 import { Media } from '../components/Media.jsx'
+import { ProjectEmbed } from '../components/ProjectEmbed.jsx'
 import { Tags } from '../components/Tags.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
 import { NotFound } from './NotFound.jsx'
 import './project-detail.css'
+
+const isExternal = (url) => /^https?:\/\//.test(url)
 
 function Fact({ label, children }) {
   return (
@@ -112,8 +115,12 @@ function Project({ project }) {
           {(project.repo || project.thesisUrl || project.demoUrl) && (
             <div className="facts__links">
               {project.demoUrl && (
-                <a href={project.demoUrl} className="btn btn--secondary btn--block">
-                  {t('demoButton')} <span aria-hidden="true">→</span>
+                <a
+                  href={project.demoUrl}
+                  className="btn btn--secondary btn--block"
+                  {...(isExternal(project.demoUrl) && { target: '_blank', rel: 'noreferrer' })}
+                >
+                  {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
                 </a>
               )}
               {project.repo && (
@@ -135,6 +142,7 @@ function Project({ project }) {
           )}
         </aside>
       </div>
+      {project.embedUrl && <ProjectEmbed url={project.embedUrl} title={l(project.title)} />}
       {lightbox}
     </div>
   )
