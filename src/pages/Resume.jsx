@@ -86,9 +86,36 @@ function ResumeIndex() {
   )
 }
 
-function Experience({ xp, last }) {
+// Um cargo: título, empresa (com local e, num grupo, o período), nota, bullets, tags e extras.
+function Position({ xp, as: Heading = 'h3', showPeriod = false }) {
   const { l } = useI18n()
   const place = l(xp.place)
+  return (
+    <>
+      <Heading className="xp__role">{l(xp.role)}</Heading>
+      <span className="xp__company">
+        {l(xp.company)}
+        {place && ` · ${place}`}
+        {showPeriod && ` · ${l(xp.period)}`}
+      </span>
+      {xp.note && <span className="xp__note">{l(xp.note)}</span>}
+      {xp.bullets.length > 0 && (
+        <ul className="xp__bullets">
+          {xp.bullets.map((b, i) => (
+            <li key={i}>
+              <Rich text={l(b)} />
+            </li>
+          ))}
+        </ul>
+      )}
+      <Tags items={xp.tags} />
+      <ExperienceExtra extra={xp.extra} />
+    </>
+  )
+}
+
+function Experience({ xp, last }) {
+  const { l } = useI18n()
   return (
     <article className="xp">
       <div className="xp__rail">
@@ -97,23 +124,7 @@ function Experience({ xp, last }) {
       </div>
       <div className={`xp__body${last ? '' : ' xp__body--spaced'}`}>
         <span className={`xp__period mono${xp.stage ? ' xp__period--accent' : ''}`}>{l(xp.period)}</span>
-        <h3 className="xp__role">{l(xp.role)}</h3>
-        <span className="xp__company">
-          {l(xp.company)}
-          {place && ` · ${place}`}
-        </span>
-        {xp.note && <span className="xp__note">{l(xp.note)}</span>}
-        {xp.bullets.length > 0 && (
-          <ul className="xp__bullets">
-            {xp.bullets.map((b, i) => (
-              <li key={i}>
-                <Rich text={l(b)} />
-              </li>
-            ))}
-          </ul>
-        )}
-        <Tags items={xp.tags} />
-        <ExperienceExtra extra={xp.extra} />
+        <Position xp={xp} />
       </div>
     </article>
   )
