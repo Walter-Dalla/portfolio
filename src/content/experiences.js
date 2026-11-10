@@ -108,7 +108,7 @@ export const experiences = [
         },
         bullets: [
           {
-            pt: 'Liderei a frente de prevenção a fraudes da iniciativa de redução de latência do PIX no BTG como ponto focal técnico: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
+            pt: 'Liderei, como ponto focal técnico, a frente antifraude do projeto de redução de latência do PIX no BTG: desenhei a arquitetura, validei-a com o time de arquitetura do banco e a entreguei com 2 desenvolvedores plenos, reduzindo a latência P95 do fluxo de análise antifraude de **~7s para ~4,5s**, dentro do novo limite de 5s do Banco Central (BACEN).',
             en: "Led the fraud-prevention side of BTG's PIX latency-reduction effort (PIX is Brazil's instant-payment system) as technical focal point: designed the architecture, validated it with the bank's architecture team and delivered it with 2 mid-level developers, cutting P95 latency of the fraud-screening flow from **~7s to ~4.5s**, within the Central Bank's (BACEN) new 5s limit.",
           },
           {
@@ -279,7 +279,10 @@ export const skillGroups = [
 export const education = [
   {
     period: '01/2020 — 12/2024',
-    title: { pt: 'Bacharelado em Sistemas de Informação', en: "Bachelor's Degree in Information Systems" },
+    title: {
+      pt: 'Bacharelado em Sistemas de Informação (equivalente a Ciência da Computação)',
+      en: "Bachelor's Degree in Information Systems (Computer Science-equivalent)",
+    },
     school: { pt: 'UNESP (Universidade Estadual Paulista)', en: 'UNESP (São Paulo State University)' },
     place: 'Bauru-SP',
     note: {
@@ -298,7 +301,7 @@ export const education = [
       pt: 'COTIL / UNICAMP (Universidade Estadual de Campinas)',
       en: 'COTIL / UNICAMP (State University of Campinas)',
     },
-    place: null,
+    place: 'Limeira-SP',
     note: null,
   },
 ]

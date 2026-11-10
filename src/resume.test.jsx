@@ -74,3 +74,23 @@ describe('linha do tempo por vínculo', () => {
     )
   })
 })
+
+describe('formação', () => {
+  it('segue o CV em português', () => {
+    renderApp('/resume')
+    screen.getByRole('heading', {
+      level: 3,
+      name: 'Bacharelado em Sistemas de Informação (equivalente a Ciência da Computação)',
+    })
+    screen.getByText('COTIL / UNICAMP (Universidade Estadual de Campinas) · Limeira-SP')
+  })
+
+  it('segue o CV em inglês', () => {
+    localStorage.setItem('wd-lang', 'en')
+    renderApp('/resume')
+    screen.getByRole('heading', {
+      level: 3,
+      name: "Bachelor's Degree in Information Systems (Computer Science-equivalent)",
+    })
+  })
+})
