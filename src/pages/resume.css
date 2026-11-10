@@ -157,6 +157,7 @@
 }
 
 .xp__position {
+  max-width: 760px;
   display: flex;
   flex-direction: column;
   gap: 12px;
