@@ -152,6 +152,17 @@ export const strings = {
   pdfPtLink: { pt: 'baixar PDF · PT ↓', en: 'download PDF · PT ↓' },
   pdfEnLink: { pt: 'download PDF · EN ↓', en: 'download PDF · EN ↓' },
 
+  // IA
+  aiTitle: { pt: 'Como trabalho com IA', en: 'How I work with AI' },
+  aiWorkEyebrow: { pt: '01 · trabalho', en: '01 · work' },
+  aiWorkTitle: { pt: 'Com clientes', en: 'With clients' },
+  aiHarnessEyebrow: { pt: '02 · harness', en: '02 · harness' },
+  aiHarnessTitle: { pt: 'wh-harness', en: 'wh-harness' },
+  aiProjectsEyebrow: { pt: '03 · projetos', en: '03 · projects' },
+  aiProjectsTitle: { pt: 'Nos meus projetos', en: 'In my projects' },
+  aiSeeResume: { pt: 'ver no currículo →', en: 'see in resume →' },
+  aiSeeProject: { pt: 'ver o projeto →', en: 'see the project →' },
+
   // 404
   notFoundTitle: { pt: 'Página não encontrada', en: 'Page not found' },
   notFoundText: {

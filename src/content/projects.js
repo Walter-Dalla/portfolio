@@ -3,6 +3,7 @@
 // Seção: { title, paragraphs } e, opcionais, `steps: [{ label, text }]` (lista numerada),
 // `links: [{ href, label }]` (abrem em nova aba) e `excerpt: { caption, lines }` (trecho em fonte mono).
 // Em `simpleProject`, `extraSections` entra depois das duas seções padrão.
+// `ai` (só em `simpleProject`): o texto de "Como foi feito com IA", também lido pela página /ai; null quando não há.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
@@ -65,6 +66,7 @@ function simpleProject({
     categories,
     summary,
     lede: summary,
+    ai,
     brief,
     tags,
     cover,
