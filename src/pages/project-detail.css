@@ -128,6 +128,43 @@
   margin-right: 10px;
 }
 
+.project__steps {
+  margin: 0;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.project__steps strong {
+  color: var(--text);
+}
+
+.project__excerpt {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project__excerpt figcaption {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.project__excerpt pre {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .decisions {
   list-style: none;
   margin: 0;

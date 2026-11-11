@@ -29,13 +29,51 @@ function Fact({ label, children }) {
   )
 }
 
+// Corpo de uma seção do estudo de caso: parágrafos e, se houver, passos numerados, links e um trecho.
+function SectionBody({ section }) {
+  const { l } = useI18n()
+  const { paragraphs, steps = [], links = [], excerpt = null } = section
+
+  return (
+    <>
+      {paragraphs.map((p, j) => (
+        <p key={j}>{l(p)}</p>
+      ))}
+      {steps.length > 0 && (
+        <ol className="project__steps">
+          {steps.map((step) => (
+            <li key={l(step.label)}>
+              <strong>{l(step.label)}</strong> {l(step.text)}
+            </li>
+          ))}
+        </ol>
+      )}
+      {links.length > 0 && (
+        <div className="link-row">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="link" target="_blank" rel="noreferrer">
+              {l(link.label)} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+      {excerpt && (
+        <figure className="project__excerpt">
+          <figcaption className="mono">{l(excerpt.caption)}</figcaption>
+          <pre className="mono">{excerpt.lines.join('\n')}</pre>
+        </figure>
+      )}
+    </>
+  )
+}
+
 function Project({ project }) {
   const { t, l } = useI18n()
   const index = projects.indexOf(project)
   const many = projects.length > 1
   const next = many ? projects[(index + 1) % projects.length] : null
   const prev = many ? projects[(index - 1 + projects.length) % projects.length] : null
-  const sections = project.sections.filter((s) => s.paragraphs.length > 0)
+  const sections = project.sections.filter((s) => s.paragraphs.length > 0 || s.steps?.length > 0)
   const gallery = project.gallery ?? []
   const { facts } = project
   const demoNote = l(project.demoNote)
@@ -48,7 +86,7 @@ function Project({ project }) {
     ...sections.map((section) => ({
       key: `section-${l(section.title)}`,
       title: l(section.title),
-      body: section.paragraphs.map((p, j) => <p key={j}>{l(p)}</p>),
+      body: <SectionBody section={section} />,
     })),
     decisions.length > 0 && {
       key: 'decisions',

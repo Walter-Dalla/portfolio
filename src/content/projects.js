@@ -1,5 +1,8 @@
 // Projetos: a lista alimenta Início (os `featured`), Projetos e a página de cada projeto.
-// Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos não entra.
+// Campos `null` não aparecem. `sections` é o estudo de caso; seção sem parágrafos nem passos não entra.
+// Seção: { title, paragraphs } e, opcionais, `steps: [{ label, text }]` (lista numerada),
+// `links: [{ href, label }]` (abrem em nova aba) e `excerpt: { caption, lines }` (trecho em fonte mono).
+// Em `simpleProject`, `extraSections` entra depois das duas seções padrão.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
@@ -51,6 +54,7 @@ function simpleProject({
   numbers = {},
   brief = null,
   decisions = [],
+  extraSections = [],
 }) {
   return {
     slug,
@@ -72,6 +76,7 @@ function simpleProject({
     sections: [
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
       { title: { pt: 'Como foi feito com IA', en: 'How it was built with AI' }, paragraphs: ai ? [ai] : [] },
+      ...extraSections,
     ],
     decisions,
     gallery,
@@ -115,6 +120,65 @@ export const projects = [
         en: 'Extracted from KittyCafé, it now also runs in GoPrint, Nesse Capítulo and this portfolio.',
       },
     },
+    extraSections: [
+      {
+        title: { pt: 'Como eu planejo', en: 'How I plan' },
+        paragraphs: [],
+        steps: [
+          {
+            label: { pt: 'Solicitação', en: 'Request' },
+            text: {
+              pt: 'O trabalho entra como uma lista de pendências numeradas.',
+              en: 'Work comes in as a numbered punch list.',
+            },
+          },
+          {
+            label: { pt: 'Análise', en: 'Analysis' },
+            text: { pt: 'O /wh:implementation enriquece a tarefa.', en: '/wh:implementation enriches the task.' },
+          },
+          {
+            label: { pt: 'Plano em faixas', en: 'Plan in lanes' },
+            text: {
+              pt: 'Cada tarefa vira um plano com itens numerados, dividido em faixas; cada faixa roda num subagente em worktree git própria, com um commit por item.',
+              en: 'Each task becomes a plan with numbered items, split into lanes; each lane runs in a subagent on its own git worktree, with one commit per item.',
+            },
+          },
+          {
+            label: 'QA',
+            text: {
+              pt: 'O harness faz QA do código e QA final e abre o PR.',
+              en: 'The harness does code QA and final QA and opens the PR.',
+            },
+          },
+          {
+            label: { pt: 'Retrospectiva', en: 'Retrospective' },
+            text: {
+              pt: 'Cada execução termina numa retrospectiva, registrada no relatório.',
+              en: 'Every run ends in a retrospective, recorded in the report.',
+            },
+          },
+        ],
+        links: [
+          {
+            href: 'https://github.com/Walter-Dalla/portfolio/blob/master/docs/relatorios/2026-11-10-curriculo-vinculos.md',
+            label: { pt: 'relatório de uma execução (em português)', en: 'report of a run (in Portuguese)' },
+          },
+        ],
+        excerpt: {
+          caption: {
+            pt: 'Trecho do plano que gerou esta seção (itens numerados)',
+            en: 'Excerpt of the plan that produced this section (numbered items)',
+          },
+          // Literal do plano desta execução, em inglês nos dois idiomas.
+          lines: [
+            'pendencias-1 · Demo button at the top of the project page, short label "Ver demo" / "See demo"',
+            'pendencias-2 · Notice that the interactive demo is in Portuguese only, shown when the site is in English',
+            'pendencias-3 · Engineering numbers in the fact sheet (commits, tests, mutation tests)',
+            'pendencias-4 · Three-bullet summary (problem, what I did, result) at the top of each project',
+          ],
+        },
+      },
+    ],
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {
