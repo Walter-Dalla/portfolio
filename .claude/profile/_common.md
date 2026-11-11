@@ -28,6 +28,9 @@ Sem `.codegraph/`: `grep`/`Read` em `src/` [check.py]
 `docs/GLOSSARIO.md` — glossário site ↔ código [CLAUDE.md]
 `docs/features/README.md` — mapa de features [CLAUDE.md]
 
+## Pending
+`docs/pending/` — uma pendência por arquivo `P-NNN-*.md`; `docs/PENDENCIAS.md` é a lista curta do dono [retro 2026-11-11]
+
 ## Limits
 Só frontend por enquanto: nenhum backend, API ou banco [owner]
 Nenhum agente toca a porta `3000` do dono, segredos ou arquivos fora do repo e do scratchpad [inferred]
