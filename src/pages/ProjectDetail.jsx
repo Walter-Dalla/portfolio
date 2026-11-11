@@ -30,6 +30,7 @@ function Project({ project }) {
   const sections = project.sections.filter((s) => s.paragraphs.length > 0)
   const gallery = project.gallery ?? []
   const { facts } = project
+  const demoNote = l(project.demoNote)
   const { open, lightbox } = useLightbox(gallery)
 
   return (
@@ -54,6 +55,7 @@ function Project({ project }) {
             {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
           </a>
         )}
+        {demoNote && <p className="project__demo-note mono">{demoNote}</p>}
       </div>
 
       {project.cover && (
@@ -142,7 +144,7 @@ function Project({ project }) {
           )}
         </aside>
       </div>
-      {project.embedUrl && <ProjectEmbed url={project.embedUrl} title={l(project.title)} />}
+      {project.embedUrl && <ProjectEmbed url={project.embedUrl} title={l(project.title)} note={demoNote} />}
       {lightbox}
     </div>
   )

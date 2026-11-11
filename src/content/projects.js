@@ -3,6 +3,8 @@
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
+// `demoNote`: aviso sobre a demo (ex.: idioma), sob o botão da demo e na página embutida (opcional);
+// texto vazio num idioma não mostra nada nele.
 // `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
 // src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
@@ -41,6 +43,7 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
+  demoNote = null,
   embedUrl = null,
 }) {
   return {
@@ -56,6 +59,7 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
+    demoNote,
     embedUrl,
     facts: { client, role: null, status, adoption: null },
     sections: [
@@ -88,6 +92,8 @@ export const projects = [
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
     demoUrl: WH_FLOW_URL,
+    // A página do fluxo só existe em português: o aviso aparece só no site em inglês.
+    demoNote: { pt: '', en: 'The interactive demo is available in Portuguese only.' },
     embedUrl: WH_FLOW_URL,
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
