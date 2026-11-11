@@ -88,6 +88,9 @@ export const strings = {
   embedTitle: { pt: 'Demonstração interativa', en: 'Interactive demo' },
   embedFullscreen: { pt: 'abrir em tela cheia', en: 'open full screen' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
+  decisionsTitle: { pt: 'Decisões de arquitetura', en: 'Architecture decisions' },
+  decisionAlternative: { pt: 'alternativa descartada', en: 'discarded alternative' },
+  decisionTradeoff: { pt: 'trade-off', en: 'trade-off' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
 
   // Currículo

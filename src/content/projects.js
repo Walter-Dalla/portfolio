@@ -6,6 +6,8 @@
 // `demoNote`: aviso sobre a demo (ex.: idioma), sob o botão da demo e na página embutida (opcional);
 // texto vazio num idioma não mostra nada nele.
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
+// `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
+// são opcionais (null ou ausentes não aparecem).
 // `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
 // src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
@@ -48,6 +50,7 @@ function simpleProject({
   embedUrl = null,
   numbers = {},
   brief = null,
+  decisions = [],
 }) {
   return {
     slug,
@@ -70,6 +73,7 @@ function simpleProject({
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
       { title: { pt: 'Como foi feito com IA', en: 'How it was built with AI' }, paragraphs: ai ? [ai] : [] },
     ],
+    decisions,
     gallery,
   }
 }
@@ -437,6 +441,33 @@ export const projects = [
       },
       result: null,
     },
+    decisions: [
+      {
+        decision: { pt: 'O servidor é a fonte da verdade', en: 'The server is the source of truth' },
+        why: {
+          pt: 'Sorteio, pontos e fases ficam nele, e ninguém recebe a mão dos outros.',
+          en: "Draws, points and phases live there, and nobody receives anyone else's hand.",
+        },
+      },
+      {
+        decision: {
+          pt: 'Regras como funções puras, com relógio e aleatoriedade injetados',
+          en: 'Rules as pure functions with injected clock and randomness',
+        },
+        why: { pt: 'São testadas sem rede.', en: 'They are tested without a network.' },
+      },
+      {
+        decision: { pt: 'Um pacote compartilhado de contratos', en: 'A shared contracts package' },
+        why: { pt: 'Reúne os schemas Zod, os tipos e os eventos.', en: 'It holds the Zod schemas, types and events.' },
+      },
+      {
+        decision: {
+          pt: 'Web em Vite + React 19 empacotada para Android com Capacitor',
+          en: 'A Vite + React 19 web app packaged for Android with Capacitor',
+        },
+        why: { pt: 'O jogo roda no navegador ou no Android.', en: 'The game is played in the browser or on Android.' },
+      },
+    ],
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
     cover: '/img/projects/cartas-malfaladas/cover.webp',
     gallery: [
@@ -489,6 +520,38 @@ export const projects = [
         en: 'Live at kittycafe.walterdalla.uk since September 2026.',
       },
     },
+    decisions: [
+      {
+        decision: {
+          pt: 'O backend é a fonte da verdade e não roda nada em segundo plano',
+          en: 'The backend is the source of truth and runs nothing in the background',
+        },
+        why: {
+          pt: 'Guarda timestamps e recalcula o estado a cada requisição; o progresso offline sai do tempo decorrido no próximo sync.',
+          en: 'It stores timestamps and recomputes state on each request; offline progress comes from elapsed time on the next sync.',
+        },
+      },
+      {
+        decision: {
+          pt: 'A chegada de clientes é prevista de forma determinística',
+          en: 'Customer arrivals are predicted deterministically',
+        },
+        why: {
+          pt: 'O cliente só anima o que o servidor já decidiu.',
+          en: 'The client only animates what the server has already decided.',
+        },
+      },
+      {
+        decision: {
+          pt: 'Uma imagem Docker única atrás de Cloudflare Tunnel',
+          en: 'A single Docker image behind Cloudflare Tunnel',
+        },
+        why: {
+          pt: 'Roda em produção em kittycafe.walterdalla.uk desde setembro de 2026.',
+          en: 'It has been live at kittycafe.walterdalla.uk since September 2026.',
+        },
+      },
+    ],
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
     cover: '/img/projects/kittycafe/cover.webp',
     gallery: [
