@@ -5,6 +5,7 @@
 // `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
 // `demoNote`: aviso sobre a demo (ex.: idioma), sob o botão da demo e na página embutida (opcional);
 // texto vazio num idioma não mostra nada nele.
+// `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
 // src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
@@ -46,6 +47,7 @@ function simpleProject({
   demoNote = null,
   embedUrl = null,
   numbers = {},
+  brief = null,
 }) {
   return {
     slug,
@@ -56,6 +58,7 @@ function simpleProject({
     categories,
     summary,
     lede: summary,
+    brief,
     tags,
     cover,
     repo,
@@ -97,6 +100,17 @@ export const projects = [
     demoNote: { pt: '', en: 'The interactive demo is available in Portuguese only.' },
     embedUrl: WH_FLOW_URL,
     numbers: { tests: '32' },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'Plugin com dez skills genéricas, subagentes e um hook; cada projeto guarda só os seus fatos em .claude/profile/.',
+        en: 'A plugin with ten generic skills, subagents and a hook; each project keeps only its facts in .claude/profile/.',
+      },
+      result: {
+        pt: 'Extraído do KittyCafé, hoje roda também no GoPrint, no Nesse Capítulo e neste portfólio.',
+        en: 'Extracted from KittyCafé, it now also runs in GoPrint, Nesse Capítulo and this portfolio.',
+      },
+    },
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {
@@ -131,6 +145,17 @@ export const projects = [
       en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 30 of the 43 commits have Claude as co-author and 12 are merges of those worktrees.',
     },
     client: 'Andelph Group',
+    brief: {
+      problem: {
+        pt: 'Um prestador de serviço atende múltiplas empresas clientes em chamados de manutenção de impressoras.',
+        en: 'A service provider serves multiple client companies with printer-repair tickets.',
+      },
+      action: {
+        pt: 'API em ASP.NET Core (.NET 10) com Dapper e PostgreSQL e front em React + Vite + TypeScript, numa única imagem Docker; o isolamento entre clientes vem da empresa contida no token.',
+        en: 'ASP.NET Core (.NET 10) API with Dapper and PostgreSQL and a React + Vite + TypeScript front end, in a single Docker image; tenant isolation comes from the company in the token.',
+      },
+      result: null,
+    },
     tags: [
       { label: { pt: 'Projeto de cliente', en: 'Client project' }, accent: true },
       '.NET 10',
@@ -172,6 +197,17 @@ export const projects = [
       pt: 'Feito em dois dias com o Claude Code: todos os commits têm o Claude como coautor, da base inicial às refatorações (banco enxuto, autocompletar, troca de driver SQLite). Depois o repositório adotou o wh-harness, com perfis, glossário, mapa de features e índice CodeGraph para os agentes.',
       en: 'Built in two days with Claude Code: every commit has Claude as co-author, from the initial base to the refactors (lean database, autocomplete, SQLite driver swap). The repository then adopted wh-harness, with profiles, a glossary, a feature map and a CodeGraph index for the agents.',
     },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'TypeScript de ponta a ponta — React 19 e Tailwind no front, Hono com node:sqlite na API — num único processo Node.',
+        en: 'TypeScript end to end — React 19 and Tailwind on the front, Hono with node:sqlite on the API — in a single Node process.',
+      },
+      result: {
+        pt: 'Instalável como app e pronto para a Play Store via TWA.',
+        en: 'Installable as an app and ready for the Play Store via TWA.',
+      },
+    },
     tags: ['React', 'TypeScript', 'Hono', 'SQLite', 'PWA'],
     repo: 'https://github.com/Walter-Dalla/nesse-capitulo',
     cover: '/img/projects/nesse-capitulo/cover.webp',
@@ -204,6 +240,20 @@ export const projects = [
     lede: {
       pt: 'Um software de análise de imagens que transforma horas de observação manual em dados — hoje em uso por 3 laboratórios de farmacologia da UNICAMP.',
       en: 'Image-analysis software that turns hours of manual observation into data — now in use by 3 pharmacology labs at UNICAMP.',
+    },
+    brief: {
+      problem: {
+        pt: 'Medir mudanças de comportamento de insetos a partir de vídeos, à mão, é lento e subjetivo; as alternativas são softwares proprietários, com custo por análise.',
+        en: 'Measuring insect behavioral changes from experiment videos by hand is slow and subjective; the alternatives are proprietary tools with a cost per analysis.',
+      },
+      action: {
+        pt: 'Software em Python com OpenCV e NumPy que rastreia o inseto com duas câmeras a 90° e gera a rota em 3D, quadro a quadro.',
+        en: 'Python software with OpenCV and NumPy that tracks the insect with two cameras at 90° and produces a frame-by-frame 3D route.',
+      },
+      result: {
+        pt: 'Adotado por 3 laboratórios de farmacologia da UNICAMP.',
+        en: 'Adopted by 3 pharmacology labs at UNICAMP.',
+      },
     },
     tags: [
       { pt: 'visão computacional', en: 'computer vision' },
@@ -305,6 +355,17 @@ export const projects = [
       pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado.',
       en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a reviewed pull request.',
     },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'SPA em React 19 + Vite com todo o conteúdo em arquivos bilíngues { pt, en }, testes com Vitest e CI no GitHub Actions.',
+        en: 'A React 19 + Vite SPA with all content in bilingual { pt, en } files, Vitest tests and GitHub Actions CI.',
+      },
+      result: {
+        pt: 'Publicado em walterdalla.uk a cada push na master.',
+        en: 'Published to walterdalla.uk on every push to master.',
+      },
+    },
     tags: ['React', 'Vite', 'Vitest', 'GitHub Actions'],
     repo: 'https://github.com/Walter-Dalla/portfolio',
     cover: '/img/projects/portfolio/cover.webp',
@@ -333,6 +394,17 @@ export const projects = [
       pt: 'O hardware é um kit com processador Xeon egresso de datacenter. Como a revenda entrega esses processadores com a frequência limitada, fiz a ressolda para restaurar o clock completo, o que aumenta a capacidade de processamento sem sair das especificações do fabricante. Cada aplicação é uma stack Docker gerida pelo Komodo, com imagens no registry Zot; ambos ficam restritos à rede interna. As imagens são construídas na máquina de desenvolvimento e passam por scan de vulnerabilidades com Trivy antes do push: falha HIGH/CRITICAL com correção disponível bloqueia a publicação. A comunicação com a internet passa somente pelo Cloudflare Tunnel: os containers rodam sem usuário root e sem porta publicada, e só o cloudflared os alcança pela rede Docker. Os bancos SQLite têm backup diário com cópia fora do servidor e ensaio de restauração. Hoje hospeda o KittyCafé e o GoPrint.',
       en: 'The hardware is a Xeon kit with a processor retired from a datacenter. Resellers ship these processors with their frequency limited, so I reworked the soldering to restore the full clock, which increases processing capacity while staying within the manufacturer\'s specifications. Each application is a Docker stack managed by Komodo, with images in a Zot registry; both are restricted to the internal network. Images are built on the development machine and scanned with Trivy before the push: a HIGH/CRITICAL finding with an available fix blocks the release. Internet traffic flows only through Cloudflare Tunnel: containers run as non-root users with no published ports, and only cloudflared reaches them over the Docker network. The SQLite databases get daily backups with an off-host copy and restore rehearsals. It currently hosts KittyCafé and GoPrint.',
     },
+    brief: {
+      problem: {
+        pt: 'Rodar meus projetos em produção num servidor self-hosted, sem portas abertas.',
+        en: 'Running my projects in production on a self-hosted server, with no open ports.',
+      },
+      action: {
+        pt: 'Cada aplicação é uma stack Docker gerida pelo Komodo, com imagens no registry Zot e scan com Trivy antes do push; a internet chega só pelo Cloudflare Tunnel.',
+        en: 'Each application is a Docker stack managed by Komodo, with images in a Zot registry and a Trivy scan before the push; the internet reaches it only through Cloudflare Tunnel.',
+      },
+      result: { pt: 'Hoje hospeda o KittyCafé e o GoPrint.', en: 'It currently hosts KittyCafé and GoPrint.' },
+    },
     tags: ['Docker', 'Komodo', 'Zot', 'Cloudflare Tunnel', 'Trivy', 'Linux', 'Xeon'],
   }),
   simpleProject({
@@ -356,6 +428,14 @@ export const projects = [
     numbers: {
       commits: { pt: '717 · 628 com o Claude como coautor', en: '717 · 628 with Claude as co-author' },
       mutation: { pt: 'Stryker, toda noite nos módulos críticos', en: 'Stryker, nightly on the critical modules' },
+    },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'API em NestJS + Socket.IO em que o servidor é a fonte da verdade, com regras como funções puras testadas sem rede; web em Vite + React 19 empacotada para Android com Capacitor.',
+        en: 'A NestJS + Socket.IO API where the server is the source of truth, with rules as pure functions tested without a network; a Vite + React 19 web app packaged for Android with Capacitor.',
+      },
+      result: null,
     },
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
     cover: '/img/projects/cartas-malfaladas/cover.webp',
@@ -397,6 +477,17 @@ export const projects = [
     numbers: {
       commits: { pt: '1.822 · 1.594 com o Claude como coautor', en: '1,822 · 1,594 with Claude as co-author' },
       mutation: { pt: 'job noturno no CI', en: 'nightly CI job' },
+    },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'Backend .NET 10 que é a fonte da verdade e não roda nada em segundo plano: guarda timestamps e recalcula o estado a cada requisição; cliente Godot 4 em 3D isométrico.',
+        en: 'A .NET 10 backend that is the source of truth and runs nothing in the background: it stores timestamps and recomputes state on each request; an isometric 3D Godot 4 client.',
+      },
+      result: {
+        pt: 'Em produção em kittycafe.walterdalla.uk desde setembro de 2026.',
+        en: 'Live at kittycafe.walterdalla.uk since September 2026.',
+      },
     },
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
     cover: '/img/projects/kittycafe/cover.webp',

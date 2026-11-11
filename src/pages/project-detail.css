@@ -58,6 +58,34 @@
   font-size: 13px;
 }
 
+.project__brief {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px 32px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.project__brief-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project__brief dt {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.project__brief dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .project__layout {
   display: flex;
   flex-wrap: wrap;

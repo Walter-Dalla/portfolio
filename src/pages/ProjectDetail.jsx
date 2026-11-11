@@ -12,6 +12,13 @@ import './project-detail.css'
 
 const isExternal = (url) => /^https?:\/\//.test(url)
 
+// Tópicos do resumo do topo (`brief`), na ordem em que aparecem, com a chave do rótulo.
+const BRIEF_ITEMS = [
+  ['problem', 'briefProblem'],
+  ['action', 'briefAction'],
+  ['result', 'briefResult'],
+]
+
 function Fact({ label, children }) {
   return (
     <div className="facts__item">
@@ -31,6 +38,7 @@ function Project({ project }) {
   const gallery = project.gallery ?? []
   const { facts } = project
   const demoNote = l(project.demoNote)
+  const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
   const { open, lightbox } = useLightbox(gallery)
 
   return (
@@ -60,6 +68,17 @@ function Project({ project }) {
 
       {project.cover && (
         <Media src={project.cover} alt={project.title} ratio="21 / 9" className="project__cover" priority />
+      )}
+
+      {brief.length > 0 && (
+        <dl className="project__brief" aria-label={t('briefLabel')}>
+          {brief.map(([key, label]) => (
+            <div key={key} className="project__brief-item">
+              <dt className="mono">{t(label)}</dt>
+              <dd>{l(project.brief[key])}</dd>
+            </div>
+          ))}
+        </dl>
       )}
 
       <div className="project__layout">
