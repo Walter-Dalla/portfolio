@@ -88,8 +88,9 @@ describe('decisões de arquitetura', () => {
     expect(headings()).toEqual([
       '01O projeto',
       '02Como foi feito com IA',
-      '03Decisões de arquitetura',
-      '04Galeria',
+      '03Arquitetura',
+      '04Decisões de arquitetura',
+      '05Galeria',
     ])
     const section = screen.getByRole('heading', { name: /Decisões de arquitetura/ }).closest('section')
     expect(within(section).getAllByRole('heading', { level: 3 })).toHaveLength(3)

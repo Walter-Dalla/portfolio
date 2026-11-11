@@ -58,6 +58,14 @@
   font-size: 13px;
 }
 
+/* Projeto sem capa: o diagrama de arquitetura ocupa o lugar dela. */
+.project__diagram--cover {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 16px;
+}
+
 .project__brief {
   margin: 0;
   display: grid;

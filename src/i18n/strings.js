@@ -89,6 +89,7 @@ export const strings = {
   embedFullscreen: { pt: 'abrir em tela cheia', en: 'open full screen' },
   gallery: { pt: 'Galeria', en: 'Gallery' },
   decisionsTitle: { pt: 'Decisões de arquitetura', en: 'Architecture decisions' },
+  diagramTitle: { pt: 'Arquitetura', en: 'Architecture' },
   decisionAlternative: { pt: 'alternativa descartada', en: 'discarded alternative' },
   decisionTradeoff: { pt: 'trade-off', en: 'trade-off' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
