@@ -61,6 +61,52 @@ export const diagrams = {
       },
     ],
   },
+  // AdMob, Play Billing, login Google e o servidor MCP ficam de fora: o texto não diz quem fala com quem.
+  kittycafe: {
+    title: {
+      pt: 'Arquitetura do KittyCafé: cliente Godot, túnel, backend e banco',
+      en: 'KittyCafé architecture: Godot client, tunnel, backend and database',
+    },
+    nodes: [
+      { id: 'client', label: 'Godot 4', sub: { pt: 'cliente 3D isométrico', en: 'isometric 3D client' }, col: 0, row: 0 },
+      { id: 'tunnel', label: 'Cloudflare Tunnel', col: 1, row: 0 },
+      { id: 'backend', label: '.NET 10', sub: { pt: 'backend REST', en: 'REST backend' }, col: 2, row: 0 },
+      { id: 'sqlite', label: 'SQLite', col: 3, row: 0 },
+    ],
+    edges: [
+      { from: 'client', to: 'tunnel' },
+      { from: 'tunnel', to: 'backend' },
+      { from: 'backend', to: 'sqlite' },
+    ],
+    groups: [{ id: 'image', label: { pt: 'imagem Docker única', en: 'single Docker image' }, nodes: ['backend'] }],
+  },
+  'cartas-malfaladas': {
+    title: {
+      pt: 'Arquitetura da Cartas Malfaladas: web, Android, API e contratos',
+      en: 'Cartas Malfaladas architecture: web, Android, API and contracts',
+    },
+    nodes: [
+      {
+        id: 'contracts',
+        label: { pt: 'pacote de contratos', en: 'contracts package' },
+        sub: { pt: 'Zod, tipos e eventos', en: 'Zod, types and events' },
+        col: 1,
+        row: 0,
+      },
+      { id: 'web', label: 'Vite + React 19', sub: 'web', col: 0, row: 1 },
+      { id: 'api', label: 'NestJS', sub: 'API + Socket.IO', col: 2, row: 1 },
+      { id: 'sqlite', label: 'SQLite', sub: 'Drizzle', col: 3, row: 1 },
+      { id: 'android', label: 'Android', sub: 'Capacitor', col: 0, row: 2 },
+    ],
+    edges: [
+      { from: 'contracts', to: 'web' },
+      { from: 'contracts', to: 'api' },
+      { from: 'web', to: 'api', both: true, label: 'Socket.IO' },
+      { from: 'api', to: 'sqlite' },
+      { from: 'android', to: 'web', label: { pt: 'empacota', en: 'packages' } },
+    ],
+    groups: [],
+  },
 }
 
 export const findDiagram = (slug) => diagrams[slug] ?? null
