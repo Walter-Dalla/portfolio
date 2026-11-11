@@ -77,7 +77,7 @@ export const strings = {
   factTech: { pt: 'tecnologias', en: 'technologies' },
   repositoryButton: { pt: 'Repositório', en: 'Repository' },
   thesisButton: { pt: 'TCC (UNESP)', en: 'Thesis (UNESP)' },
-  demoButton: { pt: 'Ver a demonstração interativa', en: 'See the interactive demo' },
+  demoButton: { pt: 'Ver demo', en: 'See demo' },
   embedTitle: { pt: 'Demonstração interativa', en: 'Interactive demo' },
   embedFullscreen: { pt: 'abrir em tela cheia', en: 'open full screen' },
   gallery: { pt: 'Galeria', en: 'Gallery' },

@@ -45,6 +45,15 @@ function Project({ project }) {
         </div>
         <h1 className="project__title">{l(project.title)}</h1>
         <p className="project__lede">{l(project.lede)}</p>
+        {project.demoUrl && (
+          <a
+            href={project.demoUrl}
+            className="btn btn--secondary project__demo"
+            {...(isExternal(project.demoUrl) && { target: '_blank', rel: 'noreferrer' })}
+          >
+            {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
+          </a>
+        )}
       </div>
 
       {project.cover && (
@@ -112,17 +121,8 @@ function Project({ project }) {
               </Fact>
             )}
           </dl>
-          {(project.repo || project.thesisUrl || project.demoUrl) && (
+          {(project.repo || project.thesisUrl) && (
             <div className="facts__links">
-              {project.demoUrl && (
-                <a
-                  href={project.demoUrl}
-                  className="btn btn--secondary btn--block"
-                  {...(isExternal(project.demoUrl) && { target: '_blank', rel: 'noreferrer' })}
-                >
-                  {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
-                </a>
-              )}
               {project.repo && (
                 <a href={project.repo} className="btn btn--primary btn--block" target="_blank" rel="noreferrer">
                   {t('repositoryButton')} <span aria-hidden="true">↗</span>

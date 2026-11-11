@@ -37,6 +37,10 @@
   color: var(--muted);
 }
 
+.project__demo {
+  align-self: flex-start;
+}
+
 .project__cover {
   border-radius: 12px;
   background: var(--surface);
