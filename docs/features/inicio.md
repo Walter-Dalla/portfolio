@@ -12,5 +12,5 @@ Apresentação: nome, frase de efeito, botão "ver projetos" (ação principal) 
 
 ## Interações
 
-- [projetos.md](projetos.md): mostra os `projects` com `featured`.
+- [projetos.md](projetos.md): mostra os `projects` com `featured` (hoje 4: wh-harness, Nesse Capítulo, Insetos, KittyCafé), em grade 2×2 a partir de 640px e 1 coluna abaixo (`.home-projects`).
 - [curriculo.md](curriculo.md): botões baixam os PDFs de `resumePdf`.

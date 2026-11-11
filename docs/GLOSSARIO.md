@@ -8,6 +8,7 @@
 | Currículo | `Resume`, rota `/resume` | "CV" só para o PDF |
 | Projetos | `Projects`, rota `/projects` | |
 | Projeto (estudo de caso) | `ProjectDetail`, rota `/projects/:slug` | |
+| Como trabalho com IA | `Ai`, rota `/ai` | |
 | Conquistas | `Achievements`, rota `/achievements` | "prêmios" (é só um tipo de conquista) |
 | Sobre mim | `About`, rota `/about` | |
 | Contato | `Contact`, rota `/contact` | "formulário" (não há formulário) |
@@ -21,6 +22,11 @@
 | Habilidades / stack | `skillGroups` | |
 | Métricas de impacto | `metrics` | |
 | Projeto em destaque | `projects[].featured` | |
+| Resumo do projeto (problema, o que fiz, resultado) | `projects[].brief` | |
+| Decisões de arquitetura (cartões) | `projects[].decisions`, `Decisions` | "ADR" só como referência ao formato |
+| Diagrama de arquitetura | `diagrams`, `ArchDiagram` | |
+| Aviso de idioma da demo | `projects[].demoNote` | |
+| Números de engenharia da ficha | `facts.commits`, `facts.tests`, `facts.mutation` (`numbers` de `simpleProject`) | |
 | Categoria de projeto (filtro) | `projectCategories` | |
 | Conquista em destaque | `featuredAchievement` | |
 | Fatos rápidos | `about.facts` | |
