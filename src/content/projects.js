@@ -90,6 +90,7 @@ export const projects = [
     period: { pt: '2026 – atual', en: '2026 – present' },
     kind: { pt: 'plugin · Claude Code', en: 'plugin · Claude Code' },
     categories: ['ai'],
+    featured: true,
     summary: {
       pt: 'Plugin open source que leva uma tarefa de software da solicitação ao pull request (análise, plano, agentes em paralelo, QA, retrospectiva) em qualquer repositório.',
       en: 'Open-source plugin that takes a software task from request to pull request (analysis, plan, parallel agents, QA, retrospective) in any repository.',
@@ -253,6 +254,7 @@ export const projects = [
     period: '2026',
     kind: { pt: 'app web · PWA', en: 'web app · PWA' },
     categories: ['web'],
+    featured: true,
     summary: {
       pt: 'Tracker de leituras mobile-first (PWA + API): estante, notas, resenhas e histórico por ano, com login Google.',
       en: 'Mobile-first reading tracker (PWA + API): shelves, ratings, reviews and yearly history, with Google login.',
