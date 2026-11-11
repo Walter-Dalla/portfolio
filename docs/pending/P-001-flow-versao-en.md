@@ -22,6 +22,8 @@ Decisão do dono (2026-11-10): "O iframe é só em en, adicione isso ao site do 
 - `public/wh-harness/flow.html:7-9` — hoje só redireciona para a página publicada no repo wh-harness [code public/wh-harness/flow.html:7-9]
 - `src/content/projects.js:22-23` (`WH_FLOW_URL`) e `:90-91` (`demoUrl`, `embedUrl` do wh-harness) — link "abrir em tela cheia" e botão de demo [code src/content/projects.js:22-23]
 - `site/flow.html` no repo wh-harness — a tradução da página mora lá, fora desta execução [doc docs/features/projetos.md]
+- `src/content/projects.js:27-45` (`simpleProject`) — campo de conteúdo novo `demoNote` `{ pt, en }` em vez de texto em `strings.js`: o idioma da página embutida é fato do projeto, e `ProjectEmbed` é genérico [code src/content/projects.js:27-45]
+- Página ao vivo conferida em 2026-11-10: está só em **português** (`<html lang="pt-BR">`, título "Como o wh trabalha — Walter Dalla", botões "← Anterior" / "Próximo →" / "▶ Reproduzir"; lê só `embed` e `theme` da query). Contradiz "o iframe é só em en" [doc https://walter-dalla.github.io/wh-harness/flow.html 2026-11-10]
 
 ## Code references
 - `ProjectEmbed` `src/components/ProjectEmbed.jsx:19` — iframe e protocolo `wh-flow:*` [code src/components/ProjectEmbed.jsx:19]
@@ -33,3 +35,4 @@ Decisão do dono (2026-11-10): "O iframe é só em en, adicione isso ao site do 
 
 ## Open questions
 - O que fazer com a página do fluxo, que mora no repo wh-harness? → "O iframe é só em en, adicione isso ao site do portifolio como obs": aqui só um aviso visível PT/EN de que a demo é só em inglês; a tradução da página fica no repo wh-harness, fora desta execução (owner, 2026-11-10)
+- A página ao vivo está só em português, não em inglês: o aviso diz "só em português" (visível no site em inglês), fica neutro ("a demo tem idioma próprio") ou mantém "só em inglês" à espera da tradução? → o aviso só aparece com o site em inglês: "The interactive demo is available in Portuguese only."; em PT nada aparece (owner, 2026-11-10)

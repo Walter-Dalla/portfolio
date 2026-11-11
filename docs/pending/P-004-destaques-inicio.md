@@ -20,7 +20,7 @@ related: [P-012]
 - `src/content/projects.js:190` — `featured: true` da Ferramenta de Insetos [code src/content/projects.js:190]
 - `src/content/projects.js:371` — `featured: true` do KittyCafé [code src/content/projects.js:371]
 - `src/pages/Home.jsx:23,100-104` — filtra `featured` e monta a grade `home-projects` [code src/pages/Home.jsx:23]
-- `src/pages/home.css` (`.home-projects`) — colunas da grade com 4 cards [inferred]
+- `src/pages/home.css:172-174` (`.home-projects`) — `repeat(auto-fit, minmax(300px, 1fr))` com gap 24: em 1104px úteis cabem 3 colunas, então 4 cards ficam 3 + 1; passa a 2 colunas (2×2) [code src/pages/home.css:172-174] [code src/styles/global.css:123-127,402-405]
 
 ## Code references
 - `simpleProject` `src/content/projects.js:27` — parâmetro `featured = false` [code src/content/projects.js:38]

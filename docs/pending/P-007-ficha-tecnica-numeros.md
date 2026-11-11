@@ -20,7 +20,9 @@ related: [P-005]
 - `src/content/projects.js:381-383` — `ai` do KittyCafé (1.822 commits, 1.594 com Claude, mutação noturna) [code src/content/projects.js:381-383]
 - `src/content/projects.js:102-103` — wh-harness: 32 testes (na galeria) [code src/content/projects.js:102-103]
 - `src/pages/ProjectDetail.jsx:101-114` — lista da ficha (`Fact`) [code src/pages/ProjectDetail.jsx:101-114]
-- `src/i18n/strings.js` — rótulos novos (`factTests`…) [inferred]
+- `src/i18n/strings.js:72-77` — rótulos novos (`factCommits`, `factTests`, `factMutation`) ao lado dos `fact*` [code src/i18n/strings.js:72-77]
+- Uptime: nenhum número no conteúdo (só "em produção desde setembro de 2026", `:378`); o rótulo não entra nesta execução [code src/content/projects.js:378]
+- GoPrint tem "30 dos 43 commits" em `:122`, mas não está na lista desta pendência: fica fora [code src/content/projects.js:122]
 
 ## Code references
 - `Fact` `src/pages/ProjectDetail.jsx:15` [code src/pages/ProjectDetail.jsx:15]

@@ -18,8 +18,13 @@ related: [P-014]
 - `src/content/projects.js:84-86,121-123,163-164,296,344-346,381-383` — campos `ai` de wh-harness, GoPrint, Nesse Capítulo, portfólio, Cartas Malfaladas, KittyCafé [code src/content/projects.js:84]
 - `src/content/experiences.js:73-74` — regras para Claude Code e Cursor adotadas por 20+ devs [code src/content/experiences.js:73-74]
 - `src/App.jsx:30-40` — rotas, se virar página [code src/App.jsx:30-40]
-- `src/components/nav.js` — navegação, se virar página [inferred]
-- `src/seo.js`, `scripts/prerender.mjs` — metadados e pré-render de rota nova [doc CLAUDE.md]
+- `src/content/experiences.js:31-36` — bullets de IA da AgileEngine (harness de orquestração, fluxos com Claude e Codex) [code src/content/experiences.js:31-36]
+- `src/content/about.js:23-24` — frase "Hoje, na AgileEngine, construo fluxos de engenharia com agentes de IA…", o `lede` da página [code src/content/about.js:23-24]
+- `src/components/nav.js:2-9` (`NAV_ITEMS`) — item novo, no cabeçalho e no rodapé [code src/components/nav.js:2-9]
+- `src/seo.js:21-52` (`STATIC_ROUTES`) — rota `/ai`; `scripts/prerender.mjs:51-55` itera `seoRoutes()` e não muda [code src/seo.js:21-52]
+- `src/seo.test.jsx:15` — lista de rotas esperadas [code src/seo.test.jsx:15]
+- `public/llms.txt:9-14` — lista de páginas [code public/llms.txt:9-14]
+- `src/content/projects.js:46-66` — `simpleProject` não expõe `ai` (só dentro de `sections`); passa a devolver o campo [code src/content/projects.js:46-66]
 
 ## Code references
 —

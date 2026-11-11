@@ -16,7 +16,9 @@ related: [P-001]
 
 ## Locations
 - `src/pages/ProjectDetail.jsx:115-125` — botão `demoUrl` dentro da ficha (`aside.facts`), que no celular vem depois do texto [code src/pages/ProjectDetail.jsx:115-125]
-- `src/pages/ProjectDetail.jsx:41-48` (`project__intro`) — lugar possível para o botão no celular [code src/pages/ProjectDetail.jsx:41-48] [inferred]
+- `src/pages/ProjectDetail.jsx:41-48` (`project__intro`) — o botão passa para cá, depois do `lede`, um só em todas as larguras (dois botões alternados por CSS dariam dois links com o mesmo nome) [code src/pages/ProjectDetail.jsx:41-48]
+- `src/pages/ProjectDetail.jsx:115` — a condição de `facts__links` perde `project.demoUrl` [code src/pages/ProjectDetail.jsx:115]
+- `src/App.test.jsx:97` — teste procura o link pelo nome "Ver a demonstração interativa" [code src/App.test.jsx:97]
 - `src/i18n/strings.js:80` (`demoButton`) — rótulo PT/EN [code src/i18n/strings.js:80]
 - `src/pages/project-detail.css:130,182-195` — `@media (max-width: 599px)` e `.facts__links` [code src/pages/project-detail.css:130]
 
