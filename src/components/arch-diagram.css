@@ -71,3 +71,11 @@
 .arch-diagram__edge-label {
   fill: var(--muted);
 }
+
+/* Miniatura do diagrama no lugar da capa do card (projeto sem capa). */
+.card__cover--diagram {
+  display: block;
+  padding: 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}

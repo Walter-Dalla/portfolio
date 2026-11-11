@@ -12,7 +12,7 @@ describe('seo', () => {
   it('lista todas as páginas públicas, com título e descrição', () => {
     const routes = seoRoutes()
     const paths = routes.map((r) => r.path)
-    expect(paths).toEqual(expect.arrayContaining(['/', '/resume', '/projects', '/achievements', '/about', '/contact']))
+    expect(paths).toEqual(expect.arrayContaining(['/', '/resume', '/projects', '/ai', '/achievements', '/about', '/contact']))
     for (const p of projects) expect(paths).toContain(`/projects/${p.slug}`)
     for (const r of routes) {
       expect(r.title).toMatch(/Walter Dalla/)

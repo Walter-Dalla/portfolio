@@ -1,0 +1,56 @@
+.ai {
+  gap: clamp(48px, 6cqi, 80px);
+}
+
+.ai__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 820px;
+}
+
+.ai__lede {
+  margin: 0;
+  font-size: clamp(18px, 1.7cqi, 21px);
+  line-height: 1.65;
+}
+
+.ai__section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ai__p {
+  margin: 0;
+  max-width: 820px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.ai-work {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--muted);
+}
+
+.ai-work__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.6;
+}
+
+.ai-work__company {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.ai-projects {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}

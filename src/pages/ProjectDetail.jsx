@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router'
+import { findDiagram } from '../content/diagrams.js'
 import { findProject, projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
+import { ArchDiagram } from '../components/ArchDiagram.jsx'
 import { Decisions } from '../components/Decisions.jsx'
 import { Zoom } from '../components/Lightbox.jsx'
 import { useLightbox } from '../components/useLightbox.jsx'
@@ -79,6 +81,7 @@ function Project({ project }) {
   const demoNote = l(project.demoNote)
   const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
   const decisions = project.decisions ?? []
+  const diagram = findDiagram(project.slug)
   const { open, lightbox } = useLightbox(gallery)
 
   // Blocos numerados do texto, na ordem da página; o número sai da posição na lista.
@@ -88,6 +91,17 @@ function Project({ project }) {
       title: l(section.title),
       body: <SectionBody section={section} />,
     })),
+    // Com capa, o diagrama vira a seção "Arquitetura"; sem capa, ele ocupa o lugar da capa.
+    project.cover &&
+      diagram && {
+        key: 'diagram',
+        title: t('diagramTitle'),
+        body: (
+          <div className="project__diagram">
+            <ArchDiagram diagram={diagram} />
+          </div>
+        ),
+      },
     decisions.length > 0 && {
       key: 'decisions',
       title: t('decisionsTitle'),
@@ -135,6 +149,11 @@ function Project({ project }) {
 
       {project.cover && (
         <Media src={project.cover} alt={project.title} ratio="21 / 9" className="project__cover" priority />
+      )}
+      {!project.cover && diagram && (
+        <div className="project__diagram project__diagram--cover">
+          <ArchDiagram diagram={diagram} />
+        </div>
       )}
 
       {brief.length > 0 && (

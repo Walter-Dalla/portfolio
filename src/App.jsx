@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useParams } from 'react-router'
 import { Layout } from './components/Layout.jsx'
 import { LanguageProvider } from './i18n/LanguageProvider.jsx'
 import { About } from './pages/About.jsx'
+import { Ai } from './pages/Ai.jsx'
 import { Achievements } from './pages/Achievements.jsx'
 import { Contact } from './pages/Contact.jsx'
 import { Home } from './pages/Home.jsx'
@@ -30,6 +31,7 @@ export function App() {
             <Route path="resume" element={<Resume />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/:slug" element={<ProjectDetail />} />
+            <Route path="ai" element={<Ai />} />
             <Route path="achievements" element={<Achievements />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />

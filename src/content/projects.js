@@ -3,6 +3,7 @@
 // Seção: { title, paragraphs } e, opcionais, `steps: [{ label, text }]` (lista numerada),
 // `links: [{ href, label }]` (abrem em nova aba) e `excerpt: { caption, lines }` (trecho em fonte mono).
 // Em `simpleProject`, `extraSections` entra depois das duas seções padrão.
+// `ai` (só em `simpleProject`): o texto de "Como foi feito com IA", também lido pela página /ai; null quando não há.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
@@ -65,6 +66,7 @@ function simpleProject({
     categories,
     summary,
     lede: summary,
+    ai,
     brief,
     tags,
     cover,
@@ -90,6 +92,7 @@ export const projects = [
     period: { pt: '2026 – atual', en: '2026 – present' },
     kind: { pt: 'plugin · Claude Code', en: 'plugin · Claude Code' },
     categories: ['ai'],
+    featured: true,
     summary: {
       pt: 'Plugin open source que leva uma tarefa de software da solicitação ao pull request (análise, plano, agentes em paralelo, QA, retrospectiva) em qualquer repositório.',
       en: 'Open-source plugin that takes a software task from request to pull request (analysis, plan, parallel agents, QA, retrospective) in any repository.',
@@ -253,6 +256,7 @@ export const projects = [
     period: '2026',
     kind: { pt: 'app web · PWA', en: 'web app · PWA' },
     categories: ['web'],
+    featured: true,
     summary: {
       pt: 'Tracker de leituras mobile-first (PWA + API): estante, notas, resenhas e histórico por ano, com login Google.',
       en: 'Mobile-first reading tracker (PWA + API): shelves, ratings, reviews and yearly history, with Google login.',
