@@ -45,6 +45,7 @@ function simpleProject({
   demoUrl = null,
   demoNote = null,
   embedUrl = null,
+  numbers = {},
 }) {
   return {
     slug,
@@ -61,7 +62,7 @@ function simpleProject({
     demoUrl,
     demoNote,
     embedUrl,
-    facts: { client, role: null, status, adoption: null },
+    facts: { client, role: null, status, adoption: null, commits: null, tests: null, mutation: null, ...numbers },
     sections: [
       { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
       { title: { pt: 'Como foi feito com IA', en: 'How it was built with AI' }, paragraphs: ai ? [ai] : [] },
@@ -95,6 +96,7 @@ export const projects = [
     // A página do fluxo só existe em português: o aviso aparece só no site em inglês.
     demoNote: { pt: '', en: 'The interactive demo is available in Portuguese only.' },
     embedUrl: WH_FLOW_URL,
+    numbers: { tests: '32' },
     cover: '/img/projects/wh-harness/cover.webp',
     gallery: [
       {
@@ -351,6 +353,10 @@ export const projects = [
       pt: 'São 717 commits em três semanas, 628 com o Claude como coautor. O trabalho correu em faixas paralelas (assinatura, moderação, release e CI), cada uma num agente em worktree própria, com relatório de cada rodada. A qualidade é checada pela máquina: o CI falha se a documentação citar código que não existe ou se um arquivo passar de 400 linhas, e testes de mutação (Stryker) rodam toda noite nos módulos críticos.',
       en: 'It has 717 commits in three weeks, 628 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
     },
+    numbers: {
+      commits: { pt: '717 · 628 com o Claude como coautor', en: '717 · 628 with Claude as co-author' },
+      mutation: { pt: 'Stryker, toda noite nos módulos críticos', en: 'Stryker, nightly on the critical modules' },
+    },
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
     cover: '/img/projects/cartas-malfaladas/cover.webp',
     gallery: [
@@ -387,6 +393,10 @@ export const projects = [
     ai: {
       pt: 'É o projeto onde nasceu meu fluxo com agentes: 1.594 dos 1.822 commits têm o Claude como coautor. Cada tarefa vira um plano com itens numerados; um orquestrador distribui faixas a agentes em worktrees próprias, cada um com um backend descartável numa porta reservada e um commit por item; QA de código e QA visual devolvem achados; uma etapa de limpeza atualiza changelog e docs. O CI barra o que o agente erraria em silêncio: docs que citam símbolos inexistentes, traduções órfãs, padrões proibidos, e um job noturno de testes de mutação. Agentes nunca acessam o servidor de produção.',
       en: 'This is where my agent workflow was born: 1,594 of its 1,822 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
+    },
+    numbers: {
+      commits: { pt: '1.822 · 1.594 com o Claude como coautor', en: '1,822 · 1,594 with Claude as co-author' },
+      mutation: { pt: 'job noturno no CI', en: 'nightly CI job' },
     },
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
     cover: '/img/projects/kittycafe/cover.webp',

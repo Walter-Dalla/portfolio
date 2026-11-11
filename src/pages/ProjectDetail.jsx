@@ -117,6 +117,9 @@ function Project({ project }) {
             {facts.role && <Fact label={t('factRole')}>{l(facts.role)}</Fact>}
             {facts.status && <Fact label={t('factStatus')}>{l(facts.status)}</Fact>}
             {facts.adoption && <Fact label={t('factAdoption')}>{l(facts.adoption)}</Fact>}
+            {facts.commits && <Fact label={t('factCommits')}>{l(facts.commits)}</Fact>}
+            {facts.tests && <Fact label={t('factTests')}>{l(facts.tests)}</Fact>}
+            {facts.mutation && <Fact label={t('factMutation')}>{l(facts.mutation)}</Fact>}
             {project.tags.length > 0 && (
               <Fact label={t('factTech')}>
                 <Tags items={project.tags} />
