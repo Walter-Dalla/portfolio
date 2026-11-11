@@ -70,7 +70,7 @@ describe('diagrama do Homelab', () => {
     const rects = container.querySelectorAll('rect.arch-diagram__node')
     expect(rects).toHaveLength(10)
     const cloudflared = rects[homelab.nodes.findIndex((n) => n.id === 'cloudflared')]
-    expect(cloudflared).toHaveAttribute('x', '392')
+    expect(cloudflared).toHaveAttribute('x', '432')
     expect(cloudflared).toHaveAttribute('y', '116')
   })
 })

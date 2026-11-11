@@ -26,16 +26,16 @@ function renderDiagram(ui) {
 
 describe('ArchDiagram', () => {
   it('calcula o tamanho pela grade', () => {
-    expect(GRID).toEqual({ nodeW: 148, nodeH: 56, gapX: 36, gapY: 36, pad: 24 })
-    expect(diagramSize(fixture)).toEqual({ width: 748, height: 196 })
+    expect(GRID).toEqual({ nodeW: 168, nodeH: 56, gapX: 36, gapY: 36, pad: 24 })
+    expect(diagramSize(fixture)).toEqual({ width: 828, height: 196 })
   })
 
   it('desenha o svg com viewBox, nome acessível e limites de largura', () => {
     const { container } = renderDiagram(<ArchDiagram diagram={fixture} />)
     const svg = screen.getByRole('img', { name: 'Diagrama de teste' })
-    expect(svg).toHaveAttribute('viewBox', '0 0 748 196')
-    expect(svg.style.minWidth).toBe('633px')
-    expect(svg.style.maxWidth).toBe('748px')
+    expect(svg).toHaveAttribute('viewBox', '0 0 828 196')
+    expect(svg.style.minWidth).toBe('701px')
+    expect(svg.style.maxWidth).toBe('828px')
 
     const scroll = screen.getByRole('group', { name: 'Diagrama de teste' })
     expect(scroll).toHaveClass('arch-diagram__scroll')
@@ -45,9 +45,9 @@ describe('ArchDiagram', () => {
     const rects = container.querySelectorAll('rect.arch-diagram__node')
     expect(rects).toHaveLength(4)
     const x = rects[3]
-    expect(x).toHaveAttribute('x', '392')
+    expect(x).toHaveAttribute('x', '432')
     expect(x).toHaveAttribute('y', '116')
-    expect(x).toHaveAttribute('width', '148')
+    expect(x).toHaveAttribute('width', '168')
     expect(x).toHaveAttribute('height', '56')
   })
 
@@ -62,17 +62,17 @@ describe('ArchDiagram', () => {
     const { container } = renderDiagram(<ArchDiagram diagram={fixture} />)
     const [straight, elbow] = container.querySelectorAll('polyline.arch-diagram__edge')
     // a (0,0) → b (1,0): da borda direita de a à borda esquerda de b.
-    expect(straight).toHaveAttribute('points', '172,52 208,52')
+    expect(straight).toHaveAttribute('points', '192,52 228,52')
     expect(straight).not.toHaveAttribute('marker-start')
     // b (1,0) → x (2,1): horizontal até o centro de x, depois desce até o topo dele.
-    expect(elbow).toHaveAttribute('points', '356,52 466,52 466,116')
+    expect(elbow).toHaveAttribute('points', '396,52 516,52 516,116')
     expect(elbow).toHaveAttribute('marker-start')
     expect(screen.getByText('reta')).toHaveClass('arch-diagram__edge-label')
 
     const group = container.querySelector('rect.arch-diagram__group')
     expect(group).toHaveAttribute('x', '12')
     expect(group).toHaveAttribute('y', '12')
-    expect(group).toHaveAttribute('width', `${148 * 2 + 36 + 24}`)
+    expect(group).toHaveAttribute('width', `${168 * 2 + 36 + 24}`)
     expect(group.compareDocumentPosition(container.querySelector('rect.arch-diagram__node'))).toBe(
       Node.DOCUMENT_POSITION_FOLLOWING,
     )

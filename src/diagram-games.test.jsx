@@ -43,7 +43,7 @@ describe('diagramas dos jogos', () => {
       ['backend', 'sqlite', false, null],
     ])
     expect(groupsOf(kitty)).toEqual([['image', ['imagem Docker única', 'single Docker image'], ['backend']]])
-    expect(diagramSize(kitty)).toEqual({ width: 748, height: 104 })
+    expect(diagramSize(kitty)).toEqual({ width: 828, height: 104 })
     expect(countNodes(kitty)).toBe(4)
   })
 
@@ -68,7 +68,7 @@ describe('diagramas dos jogos', () => {
       ['android', 'web', false, ['empacota', 'packages']],
     ])
     expect(cartas.groups).toEqual([])
-    expect(diagramSize(cartas)).toEqual({ width: 748, height: 288 })
+    expect(diagramSize(cartas)).toEqual({ width: 828, height: 288 })
     expect(countNodes(cartas)).toBe(5)
   })
 })

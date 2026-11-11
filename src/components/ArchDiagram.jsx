@@ -5,14 +5,14 @@ import './arch-diagram.css'
 // A geometria é exportada junto do componente para os testes e os dados usarem a mesma grade.
 /** Geometria da grade do diagrama, em px do viewBox. */
 // eslint-disable-next-line react-refresh/only-export-components
-export const GRID = { nodeW: 148, nodeH: 56, gapX: 36, gapY: 36, pad: 24 }
+export const GRID = { nodeW: 168, nodeH: 56, gapX: 36, gapY: 36, pad: 24 }
 
 const STEP_X = GRID.nodeW + GRID.gapX
 const STEP_Y = GRID.nodeH + GRID.gapY
 // Margem do grupo em volta dos nós dele.
 const GROUP_PAD = 12
 // Largura aproximada de um caractere da fonte mono a 11px (0,6em).
-const MONO_CHAR_11 = 6.6
+const MONO_CHAR_11 = 7.2
 
 /** Tamanho do viewBox: colunas e linhas contadas pelo maior `col`/`row`. */
 // eslint-disable-next-line react-refresh/only-export-components
