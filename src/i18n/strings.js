@@ -7,6 +7,7 @@ export const strings = {
   navHome: { pt: 'Início', en: 'Home' },
   navResume: { pt: 'Currículo', en: 'Resume' },
   navProjects: { pt: 'Projetos', en: 'Projects' },
+  navAi: { pt: 'IA', en: 'AI' },
   navAchievements: { pt: 'Conquistas', en: 'Achievements' },
   navAbout: { pt: 'Sobre', en: 'About' },
   navContact: { pt: 'Contato', en: 'Contact' },

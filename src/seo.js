@@ -1,5 +1,6 @@
 // Metadados de SEO por rota: título, descrição e imagem usados no pré-render (scripts/prerender.mjs),
 // no sitemap.xml e nas tags Open Graph. O HTML pré-renderizado é em inglês (idioma padrão do site).
+import { aiPage } from './content/ai.js'
 import { profile } from './content/profile.js'
 import { projects } from './content/projects.js'
 import { strings } from './i18n/strings.js'
@@ -33,6 +34,11 @@ const STATIC_ROUTES = [
     path: '/projects',
     title: `${en(strings.projectsTitle)} — ${SITE_NAME}`,
     description: en(strings.projectsLead),
+  },
+  {
+    path: '/ai',
+    title: `${en(strings.aiTitle)} — ${SITE_NAME}`,
+    description: en(aiPage.lede),
   },
   {
     path: '/achievements',
