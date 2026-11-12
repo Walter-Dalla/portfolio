@@ -155,7 +155,7 @@ export function Home() {
                   <a href={`mailto:${profile.email}`} className="link link--text home-company__email">
                     {profile.email}
                   </a>
-                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted site-footer__copy" />
+                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted copy-link" />
                 </span>
               </li>
               <li className="home-company__contact">

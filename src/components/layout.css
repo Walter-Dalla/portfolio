@@ -254,7 +254,8 @@
   white-space: nowrap;
 }
 
-.site-footer__copy {
+/* Botão de copiar com cara de link (rodapé e cartão da empresa no Início). */
+.copy-link {
   border: 0;
   padding: 0;
   background: none;

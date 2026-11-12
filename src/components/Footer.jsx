@@ -22,7 +22,7 @@ export function Footer() {
                   <a href={`mailto:${profile.email}`} className="link link--text site-footer__address">
                     {profile.email}
                   </a>
-                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted site-footer__copy" />
+                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted copy-link" />
                 </span>
               </li>
               <li className="site-footer__contact-item">
