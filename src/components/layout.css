@@ -271,6 +271,34 @@
   cursor: pointer;
 }
 
+/* Botão de copiar com largura estável: os dois textos (rótulo e "copiado ✓") ocupam a mesma
+   célula do grid, só um visível; o botão fica com a largura do maior, em qualquer idioma. */
+.copy-btn {
+  display: inline-grid;
+  align-items: center;
+  justify-items: start;
+}
+
+.copy-btn.btn {
+  justify-items: center;
+}
+
+.copy-btn > span,
+.copy-btn::before,
+.copy-btn::after {
+  grid-area: 1 / 1;
+}
+
+.copy-btn::before {
+  content: attr(data-label);
+  visibility: hidden;
+}
+
+.copy-btn::after {
+  content: attr(data-copied);
+  visibility: hidden;
+}
+
 #conteudo:focus {
   outline: none;
 }
