@@ -205,6 +205,7 @@ export const projects = [
     period: { pt: '2026 – atual', en: '2026 – present' },
     kind: 'SaaS B2B',
     categories: ['dotnet', 'web'],
+    featured: true,
     summary: {
       pt: 'SaaS B2B feito para a Andelph Group: chamados de manutenção de impressoras, em que um prestador de serviço atende múltiplas empresas clientes.',
       en: 'B2B SaaS built for Andelph Group: printer-repair tickets, where a service provider serves multiple client companies.',
@@ -593,7 +594,6 @@ export const projects = [
     period: { pt: '2023 – atual', en: '2023 – present' },
     kind: { pt: 'jogo idle', en: 'idle game' },
     categories: ['games', 'dotnet'],
-    featured: true,
     status: { pt: 'No ar na web · Android e Windows em andamento', en: 'Live on the web · Android and Windows in progress' },
     summary: {
       pt: 'Jogo idle de um café com gatos, no ar na web: monte e decore o café, cozinhe receitas e os clientes comem e pagam sozinhos, inclusive com o jogo fechado.',
