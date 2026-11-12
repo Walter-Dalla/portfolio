@@ -16,6 +16,6 @@ Página `/ai` que reúne o que já está escrito sobre IA no site: os bullets de
 ## Interações
 
 - [projetos.md](projetos.md): lê o `ai` de cada projeto e liga para o estudo de caso.
-- [curriculo.md](curriculo.md): lê os bullets com `ai: true` (o `Resume` ignora a flag).
+- [curriculo.md](curriculo.md): lê os bullets com `ai: true` (o `Resume` ignora a flag; bullet com `aiOnly: true` aparece só em `/ai`, o `Position` o pula).
 - [layout.md](layout.md): item "IA" / "AI" no cabeçalho e no rodapé, depois de Projetos.
 - [seo.md](seo.md): `/ai` é pré-renderizada e entra no sitemap.
