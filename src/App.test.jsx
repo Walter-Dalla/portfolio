@@ -94,7 +94,7 @@ describe('projetos', () => {
 
   it('liga o wh-harness ao fluxo interativo no GitHub Pages, em nova aba', () => {
     renderApp('/projects/wh-harness')
-    const link = screen.getByRole('link', { name: 'Ver a demonstração interativa' })
+    const link = screen.getByRole('link', { name: 'Ver demo' })
     expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/flow.html')
     expect(link).toHaveAttribute('target', '_blank')
   })

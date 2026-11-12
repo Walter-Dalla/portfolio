@@ -16,7 +16,7 @@ function embedSrc(url, theme) {
 const MIN_HEIGHT = 200
 const MAX_HEIGHT = 10000
 
-export function ProjectEmbed({ url, title }) {
+export function ProjectEmbed({ url, title, note = null }) {
   const { t } = useI18n()
   const { theme } = useTheme()
   const frame = useRef(null)
@@ -51,6 +51,7 @@ export function ProjectEmbed({ url, title }) {
           {t('embedFullscreen')} <span aria-hidden="true">↗</span>
         </a>
       </div>
+      {note && <p className="project__embed-note mono">{note}</p>}
       <iframe
         ref={frame}
         src={src}

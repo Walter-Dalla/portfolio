@@ -9,6 +9,7 @@ Walter builds systems that cost less, respond faster and don't go down: architec
 - [Home](https://walterdalla.uk/): introduction and impact metrics
 - [Resume](https://walterdalla.uk/resume): experience timeline, stack and education
 - [Projects](https://walterdalla.uk/projects): personal and research projects with case studies
+- [AI](https://walterdalla.uk/ai): how he works with AI agents
 - [Achievements](https://walterdalla.uk/achievements): education, research and certifications
 - [About](https://walterdalla.uk/about): how he works and how he got here
 - [Contact](https://walterdalla.uk/contact): e-mail, LinkedIn and GitHub

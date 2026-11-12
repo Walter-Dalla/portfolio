@@ -37,6 +37,17 @@
   color: var(--muted);
 }
 
+.project__demo {
+  align-self: flex-start;
+}
+
+.project__demo-note,
+.project__embed-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
 .project__cover {
   border-radius: 12px;
   background: var(--surface);
@@ -45,6 +56,42 @@
 
 .project__cover .media__label {
   font-size: 13px;
+}
+
+/* Projeto sem capa: o diagrama de arquitetura ocupa o lugar dela. */
+.project__diagram--cover {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.project__brief {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px 32px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.project__brief-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project__brief dt {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.project__brief dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .project__layout {
@@ -87,6 +134,78 @@
   font-size: 15px;
   color: var(--accent);
   margin-right: 10px;
+}
+
+.project__steps {
+  margin: 0;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.project__steps strong {
+  color: var(--text);
+}
+
+.project__excerpt {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project__excerpt figcaption {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.project__excerpt pre {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.decisions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.decision {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.decision__title {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.decision__extra .mono {
+  font-size: 12px;
+  color: var(--faint);
+  margin-right: 6px;
 }
 
 .project__gallery {

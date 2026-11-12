@@ -28,7 +28,9 @@ fazer o bloco surgir.
 |---|---|
 | Foto do retrato, disponibilidade, PDFs do currículo | `src/content/profile.js` (arquivos em `public/`) |
 | Experiências e habilidades | `src/content/experiences.js` |
-| Projetos, capas, estudos de caso, galeria | `src/content/projects.js` |
+| Projetos, capas, estudos de caso, galeria, resumo, decisões, números da ficha | `src/content/projects.js` |
+| Diagramas de arquitetura dos projetos | `src/content/diagrams.js` |
+| Página "Como trabalho com IA" (`lede` e ordem dos projetos) | `src/content/ai.js` |
 | Conquistas, diplomas, comprovantes | `src/content/achievements.js` |
 | Texto pessoal, fatos rápidos, galeria, história | `src/content/about.js` |
 | Prévia do link ao compartilhar (título, descrição, imagem 1200×630) | `index.html` (tags `og:`/`twitter:`) e `public/og.png` |

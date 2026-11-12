@@ -7,6 +7,7 @@
 // `positions` (opcional): a entrada vira um grupo de vínculos com a mesma empresa. `company` é o título
 // do grupo, `note` diz como os vínculos se ligam e cada item de `positions` é um cargo com o texto do CV.
 // Título, período e nota do grupo não vêm do CV. `stage` vale só na entrada (o marcador do trilho).
+// `ai: true` num bullet ({ pt, en, ai: true }): o bullet também aparece na página /ai (Como trabalho com IA).
 export const experiences = [
   {
     period: { pt: '09/2025 — atual', en: '09/2025 — present' },
@@ -30,10 +31,12 @@ export const experiences = [
           {
             pt: 'Projetei e implementei um harness customizado de orquestração de IA que executa skills programáticas de forma concorrente em múltiplas tarefas, viabilizando o desenvolvimento paralelizado.',
             en: 'Designed and implemented a custom AI orchestration harness that runs programmatic skills concurrently across multiple tasks, enabling parallelized development.',
+            ai: true,
           },
           {
             pt: 'Construí fluxos de engenharia orientados por IA de ponta a ponta (análise, planejamento, implementação, testes, deploy) com agentes Claude e Codex, em Azure DevOps e Azure Cloud.',
             en: 'Built end-to-end AI-driven engineering workflows (analysis, planning, implementation, testing, deployment) with Claude and Codex agents, on Azure DevOps and Azure Cloud.',
+            ai: true,
           },
         ],
         tags: [
@@ -72,6 +75,7 @@ export const experiences = [
           {
             pt: 'Estabeleci conjuntos de regras para Claude Code e Cursor (CLAUDE.md, padrões de código) adotados por um time de **mais de 20 desenvolvedores**.',
             en: 'Established Claude Code and Cursor rule sets (CLAUDE.md, coding standards) adopted by a team of **20+ developers**.',
+            ai: true,
           },
         ],
         tags: [

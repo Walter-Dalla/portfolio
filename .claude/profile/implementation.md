@@ -1,11 +1,19 @@
 # Profile of /wh:implementation
 
+## Commands
+build: `npm run build` [package.json]
+suite: `npm test` [package.json]
+typecheck: `npm run lint` [package.json]
+service: `npx vite --port <port> --strictPort` [vite.config.js]
+health: `curl -sf -o /dev/null http://localhost:<port>` [vite.config.js]
+
 ## Build
 `npm run build` (sem warning novo = verde; veredito = exit code, sem pipe) [package.json]
 
 ## Tests
 Área: `npx vitest run <filtro>` [package.json]
 Suíte: `npm test` (veredito = exit code, sem pipe; só para ler: `npm test 2>&1 | tail -30`) [package.json]
+Arquivo lido com `node:fs` no Vitest: `resolve(process.cwd(), '<caminho>')` (`import.meta.url` não é `file:` no jsdom) [retro 2026-11-11]
 Aceite de item = teste Vitest + Testing Library do componente/página tocado; teste novo quando não há [owner]
 
 ## Checks
@@ -19,7 +27,7 @@ Sem API nem banco [owner]
 — (sem API, DTO ou formato persistido; só frontend) [owner]
 
 ## Union files
-— [inferred]
+`src/i18n/strings.js` `src/content/projects.js` (só acrescentar chaves e campos) [retro 2026-11-11]
 
 ## Protected files
 `CLAUDE.md` `.claude/profile/*` `.claude/agents/*` `docs/features/*` `docs/GLOSSARIO.md` [inferred]
