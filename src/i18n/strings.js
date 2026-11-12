@@ -32,6 +32,7 @@ export const strings = {
   homeTitle: { pt: 'Início', en: 'Home' },
   downloadResume: { pt: 'Baixar currículo', en: 'Download resume' },
   seeProjects: { pt: 'ver projetos →', en: 'see projects →' },
+  heroContact: { pt: 'fale comigo →', en: 'get in touch →' },
   resumeShort: { pt: 'Currículo', en: 'Resume' },
   metricsLabel: { pt: 'Métricas de impacto', en: 'Impact metrics' },
   featuredEyebrow: { pt: '01 · projetos em destaque', en: '01 · featured projects' },

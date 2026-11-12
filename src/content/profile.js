@@ -19,8 +19,11 @@ export const profile = {
     pt: 'Construo sistemas que custam menos, respondem mais rápido e não param.',
     en: "I build systems that cost less, respond faster and don't go down.",
   },
-  // Disponibilidade mostrada em Contato, ex.: aberto a oportunidades no Brasil e no exterior.
-  availability: null,
+  // Disponibilidade mostrada no hero do Início e em Contato. `null` esconde a frase.
+  availability: {
+    pt: 'Aberto a propostas · remoto · PJ ou CLT',
+    en: 'Open to offers · remote · contractor or full-time',
+  },
 }
 
 // Empresa pela qual presto serviços como PJ. `null` esconde os blocos em Currículo e Contato.
