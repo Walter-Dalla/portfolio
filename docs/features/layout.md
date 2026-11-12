@@ -9,6 +9,7 @@ Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 40
 - O cabeçalho é fixo ao rolar (`position: sticky`, fundo translúcido). Abaixo de 760px a navegação vira um menu (`menu-toggle`, `aria-expanded`) que fecha ao trocar de rota ou com Esc; os itens vêm de `NAV_ITEMS` (`src/components/nav.js`) e se repetem no rodapé.
 - `useScrollRestoration`: rota nova abre no topo; "voltar"/"avançar" restaura a posição; trocar só a query (`?cat=`) ou abrir uma âncora não rola.
 - `BackToTop`: botão "↑" que aparece após rolar uma tela.
+- Rodapé, de cima para baixo: bloco "Fale comigo" / "Get in touch" (`h2`; e-mail, `in/walter-dalla` e `Walter-Dalla` por extenso, de `profile`, com `CopyButton` ao lado do e-mail), a navegação e a linha do ©.
 - `CopyButton`: copia um texto (e-mail) e confirma por dois segundos; usado em Contato e no rodapé.
 - `Lightbox` + `useLightbox` + `Zoom`: visualizador de imagens em tela cheia (Esc, ← →), usado nas galerias.
 - A 404 oferece atalhos para Projetos, Currículo e Contato.

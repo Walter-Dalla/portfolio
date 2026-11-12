@@ -72,13 +72,15 @@ function SectionBody({ section }) {
 function Project({ project }) {
   const { t, l } = useI18n()
   const index = projects.indexOf(project)
-  const many = projects.length > 1
+  // Projeto fora da lista (`unlistedProjects`) não tem vizinhos na navegação.
+  const many = index !== -1 && projects.length > 1
   const next = many ? projects[(index + 1) % projects.length] : null
   const prev = many ? projects[(index - 1 + projects.length) % projects.length] : null
   const sections = project.sections.filter((s) => s.paragraphs.length > 0 || s.steps?.length > 0)
   const gallery = project.gallery ?? []
   const { facts } = project
-  const demoNote = l(project.demoNote)
+  const demoUrl = l(project.demoUrl)
+  const embedUrl = l(project.embedUrl)
   const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
   const decisions = project.decisions ?? []
   const diagram = findDiagram(project.slug)
@@ -135,16 +137,15 @@ function Project({ project }) {
         </div>
         <h1 className="project__title">{l(project.title)}</h1>
         <p className="project__lede">{l(project.lede)}</p>
-        {project.demoUrl && (
+        {demoUrl && (
           <a
-            href={project.demoUrl}
+            href={demoUrl}
             className="btn btn--secondary project__demo"
-            {...(isExternal(project.demoUrl) && { target: '_blank', rel: 'noreferrer' })}
+            {...(isExternal(demoUrl) && { target: '_blank', rel: 'noreferrer' })}
           >
-            {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
+            {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
           </a>
         )}
-        {demoNote && <p className="project__demo-note mono">{demoNote}</p>}
       </div>
 
       {project.cover && (
@@ -234,7 +235,7 @@ function Project({ project }) {
           )}
         </aside>
       </div>
-      {project.embedUrl && <ProjectEmbed url={project.embedUrl} title={l(project.title)} note={demoNote} />}
+      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
       {lightbox}
     </div>
   )

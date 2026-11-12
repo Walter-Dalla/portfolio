@@ -6,7 +6,7 @@
 ## Toolchain
 Node ≥ 22.12 e npm (Linux/WSL): `npm install`, `npm run build`, `npm test` [package.json]
 HTTP local: `curl` [inferred]
-Matar o servidor de dev: `pkill -f "vite --port <porta>"` [inferred]
+Matar o servidor de dev: `pkill -f "[v]ite --port <porta>"`, numa chamada própria (sem o `[v]` o padrão casa com o próprio shell e sai 144) [retro ajustes-sessao]
 Navegador headless para print: `~/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell --no-sandbox --screenshot=<arquivo> --window-size=<W>,<H> <url>` [inferred]
 
 ## Git

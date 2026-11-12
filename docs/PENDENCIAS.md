@@ -4,7 +4,7 @@ Tarefas em aberto do dono do site. Cada uma tem um arquivo em `docs/pending/` (`
 
 ## No repo do wh-harness (fora deste repo)
 
-- Página do fluxo (`site/flow.html` no repo do wh-harness): versão em inglês que siga `wd-lang` (hoje é só em português; o portfólio avisa isso no site em inglês) e leitura no celular: rótulos do mapa com ~7 px, painel "Arquivos" cortado (P-002).
+- Página do fluxo (`site/flow.html` no repo do wh-harness): leitura no celular: rótulos do mapa com ~7 px, painel "Arquivos" cortado (P-002).
 
 ## Estudos de caso profissionais (esperam suas notas: contexto, restrições, opções, números medidos, limites de NDA)
 
@@ -22,3 +22,8 @@ Tarefas em aberto do dono do site. Cada uma tem um arquivo em `docs/pending/` (`
 - Depoimentos, com autorização (P-020).
 - Alternativa descartada e trade-off dos 7 cartões de decisão do KittyCafé e da Cartas Malfaladas (P-021).
 - Uptime medido dos projetos em produção para a ficha técnica (P-022).
+
+## Conferências e decisões suas (da execução ajustes-sessao)
+
+- Conferir ao vivo o fluxo do wh-harness embutido: sem rolagem própria e troca PT/EN sem recarregar; `curl -I` nas páginas `/pt/` e `/en/` antes do merge (P-030).
+- Confirmar o formato do Atom: página `/projects/atom` fora da lista, ligada só pelo cartão do técnico em Conquistas (P-031).

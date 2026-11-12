@@ -3,17 +3,17 @@
 // Seção: { title, paragraphs } e, opcionais, `steps: [{ label, text }]` (lista numerada),
 // `links: [{ href, label }]` (abrem em nova aba) e `excerpt: { caption, lines }` (trecho em fonte mono).
 // Em `simpleProject`, `extraSections` entra depois das duas seções padrão.
+// `role` (opcional em `simpleProject`): a linha "papel" da ficha. `links` (opcional em `simpleProject`): links da
+// seção "O projeto", no formato de `links` de uma seção.
 // `ai` (só em `simpleProject`): o texto de "Como foi feito com IA", também lido pela página /ai; null quando não há.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
-// `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
-// `demoNote`: aviso sobre a demo (ex.: idioma), sob o botão da demo e na página embutida (opcional);
-// texto vazio num idioma não mostra nada nele.
+// `demoUrl`: página que mostra o projeto funcionando (opcional; string ou `{ pt, en }`); URL externa abre em nova aba.
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
 // são opcionais (null ou ausentes não aparecem).
-// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
-// src/components/ProjectEmbed.jsx).
+// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; string ou `{ pt, en }`;
+// protocolo em src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -28,8 +28,12 @@ export const projectCategories = [
 
 // Projeto pessoal ainda sem estudo de caso completo: card, um parágrafo e, se houver, como foi feito com IA.
 // `repo` só para repositórios públicos.
-// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages.
-const WH_FLOW_URL = 'https://walter-dalla.github.io/wh-harness/flow.html'
+// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages
+// num caminho por idioma.
+const WH_FLOW_URL = {
+  pt: 'https://walter-dalla.github.io/wh-harness/pt/',
+  en: 'https://walter-dalla.github.io/wh-harness/en/',
+}
 
 const IN_DEVELOPMENT = { pt: 'Em desenvolvimento', en: 'In development' }
 
@@ -50,12 +54,13 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
-  demoNote = null,
   embedUrl = null,
   numbers = {},
   brief = null,
   decisions = [],
   extraSections = [],
+  role = null,
+  links = [],
 }) {
   return {
     slug,
@@ -72,11 +77,10 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
-    demoNote,
     embedUrl,
-    facts: { client, role: null, status, adoption: null, commits: null, tests: null, mutation: null, ...numbers },
+    facts: { client, role, status, adoption: null, commits: null, tests: null, mutation: null, ...numbers },
     sections: [
-      { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about] },
+      { title: { pt: 'O projeto', en: 'The project' }, paragraphs: [about], links },
       { title: { pt: 'Como foi feito com IA', en: 'How it was built with AI' }, paragraphs: ai ? [ai] : [] },
       ...extraSections,
     ],
@@ -108,8 +112,6 @@ export const projects = [
     tags: [{ label: 'Claude Code', accent: true }, { pt: 'Orquestração de agentes', en: 'Agent orchestration' }, 'Python'],
     repo: 'https://github.com/Walter-Dalla/wh-harness',
     demoUrl: WH_FLOW_URL,
-    // A página do fluxo só existe em português: o aviso aparece só no site em inglês.
-    demoNote: { pt: '', en: 'The interactive demo is available in Portuguese only.' },
     embedUrl: WH_FLOW_URL,
     numbers: { tests: '32' },
     brief: {
@@ -643,4 +645,48 @@ export const projects = [
   }),
 ]
 
-export const findProject = (slug) => projects.find((p) => p.slug === slug)
+// Projetos fora da lista: têm página (/projects/<slug>), mas não aparecem em Projetos, Início, /ai, na navegação
+// entre projetos nem no sitemap; só se chega a eles por link direto.
+export const unlistedProjects = [
+  simpleProject({
+    slug: 'atom',
+    title: 'Atom',
+    period: '2019',
+    kind: { pt: 'TCC · curso técnico', en: 'capstone · technical degree' },
+    categories: ['web'],
+    status: { pt: 'Concluído', en: 'Completed' },
+    role: {
+      pt: 'Gerente de projeto, líder e desenvolvedor do backend, desenvolvedor do frontend',
+      en: 'Project manager, backend lead and developer, frontend developer',
+    },
+    summary: {
+      pt: 'TCC do curso técnico em informática no COTIL/UNICAMP: questionários totalmente customizáveis, com envio e análise simples das respostas.',
+      en: 'Capstone project of my technical degree in IT at COTIL/UNICAMP: fully customizable questionnaires, with sending and simple analysis of the answers.',
+    },
+    about: {
+      pt: 'O Atom foi o trabalho de conclusão do curso técnico em informática, requisito para o certificado. Com ele dá para criar questionários totalmente customizáveis, enviá-los e analisar as respostas de forma simples. Foi feito por uma equipe de 5 pessoas; o backend é em Java com Spring Boot, o frontend em React e o banco é MySQL. A banca deu nota média 9,5. O repositório público é o do backend; o do frontend é privado.',
+      en: 'Atom was the capstone project of my technical degree in IT, required for the certificate. It lets you build fully customizable questionnaires, send them and analyze the answers in a simple way. It was built by a team of 5; the backend is Java with Spring Boot, the frontend is React and the database is MySQL. The examining board gave it an average grade of 9.5. The public repository is the backend; the frontend one is private.',
+    },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'Aplicação web de questionários feita em equipe de 5 pessoas: backend em Java com Spring Boot, frontend em React e MySQL.',
+        en: 'A questionnaire web app built by a team of 5: Java with Spring Boot backend, React frontend and MySQL.',
+      },
+      result: {
+        pt: 'Nota média 9,5 da banca.',
+        en: 'Average grade of 9.5 from the examining board.',
+      },
+    },
+    tags: ['Java', 'Spring Boot', 'React', 'MySQL'],
+    repo: 'https://github.com/Walter-Dalla/Atom',
+    links: [
+      {
+        href: 'https://www.linkedin.com/feed/update/urn:li:activity:6610003994779631616/',
+        label: { pt: 'publicação no LinkedIn', en: 'LinkedIn post' },
+      },
+    ],
+  }),
+]
+
+export const findProject = (slug) => [...projects, ...unlistedProjects].find((p) => p.slug === slug)

@@ -25,7 +25,6 @@
 | Resumo do projeto (problema, o que fiz, resultado) | `projects[].brief` | |
 | Decisões de arquitetura (cartões) | `projects[].decisions`, `Decisions` | "ADR" só como referência ao formato |
 | Diagrama de arquitetura | `diagrams`, `ArchDiagram` | |
-| Aviso de idioma da demo | `projects[].demoNote` | |
 | Números de engenharia da ficha | `facts.commits`, `facts.tests`, `facts.mutation` (`numbers` de `simpleProject`) | |
 | Categoria de projeto (filtro) | `projectCategories` | |
 | Conquista em destaque | `featuredAchievement` | |

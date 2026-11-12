@@ -27,24 +27,25 @@ describe('página Como trabalho com IA', () => {
     expect(screen.getByText(aiPage.lede.pt)).toBeInTheDocument()
   })
 
-  it('lista os bullets do currículo marcados com ai, com a empresa', () => {
+  it('lista os bullets do currículo marcados com ai, sob a empresa de cada cargo', () => {
     expect(flaggedBullets).toHaveLength(3)
     renderApp('/ai')
-    const items = document.querySelectorAll('.ai-work > li')
-    expect(items).toHaveLength(flaggedBullets.length)
+    expect(document.querySelectorAll('.ai-work__bullets > li')).toHaveLength(flaggedBullets.length)
     const companies = [...document.querySelectorAll('.ai-work .mono')].map((el) => el.textContent)
-    expect(companies.filter((c) => c === 'AgileEngine (EUA)')).toHaveLength(2)
-    expect(companies.filter((c) => c === 'Qyon')).toHaveLength(1)
+    expect(companies).toEqual(['AgileEngine (EUA)', 'Qyon'])
+    expect(document.querySelectorAll('.ai-work > li')).toHaveLength(companies.length)
     const strong = within(document.querySelector('.ai-work')).getByText('mais de 20 desenvolvedores')
     expect(strong.tagName).toBe('STRONG')
     expect(strong).toHaveClass('hl')
   })
 
-  it('mostra o resumo e o texto de IA do wh-harness', () => {
+  it('mostra o resumo do wh-harness e os parágrafos próprios da página', () => {
     const harness = findProject('wh-harness')
     renderApp('/ai')
     expect(screen.getByText(harness.summary.pt)).toBeInTheDocument()
-    expect(screen.getByText(harness.ai.pt)).toBeInTheDocument()
+    expect(screen.getByText(aiPage.harness[0].pt)).toBeInTheDocument()
+    expect(screen.getByText(aiPage.harness[1].pt)).toBeInTheDocument()
+    expect(screen.queryByText(harness.ai.pt)).not.toBeInTheDocument()
   })
 
   it('mostra os outros projetos com texto de IA, na ordem definida', () => {

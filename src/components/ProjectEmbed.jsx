@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useI18n } from '../i18n/context.js'
 import { useTheme } from '../theme/context.js'
 
 // Página de outra origem embutida no estudo de caso (`embedUrl`), ex.: o fluxo do wh-harness.
-// Protocolo com a página: `?embed=1&theme=<dark|light>` no src; `{ type: 'wh-flow:theme', theme }`
-// quando o tema muda; ela responde `{ type: 'wh-flow:height', height }` e o iframe cresce sem rolagem dupla.
-// Só aceita mensagens da origem de `url`.
+// `url` já vem no idioma atual (a página tem um caminho por idioma).
+// Protocolo com a página: `?embed=1&theme=<dark|light>` no src; `{ type: 'wh-flow:theme', theme }` e
+// `{ type: 'wh-flow:lang', lang }` na montagem, no load e a cada troca de tema ou idioma; ela responde
+// `{ type: 'wh-flow:height', height }` a cada redimensionamento e a cada mensagem, e o iframe cresce sem
+// rolagem dupla. Só aceita mensagens da origem de `url`.
 function embedSrc(url, theme) {
   const u = new URL(url)
   u.searchParams.set('embed', '1')
@@ -16,19 +18,25 @@ function embedSrc(url, theme) {
 const MIN_HEIGHT = 200
 const MAX_HEIGHT = 10000
 
-export function ProjectEmbed({ url, title, note = null }) {
-  const { t } = useI18n()
+export function ProjectEmbed({ url, title }) {
+  const { t, lang } = useI18n()
   const { theme } = useTheme()
   const frame = useRef(null)
-  // O src fica com o tema da montagem: trocar o tema depois vai por mensagem, sem recarregar.
-  // Na hidratação o tema é o do pré-render (escuro; ver src/main.jsx), então o src bate com o HTML.
+  // O src fica com o tema e o idioma da montagem: trocar depois vai por mensagem, sem recarregar.
+  // Na hidratação tema e idioma são os do pré-render (ver src/main.jsx), então o src bate com o HTML.
   const [src] = useState(() => embedSrc(url, theme))
   const [height, setHeight] = useState(null)
   const origin = new URL(url).origin
 
-  useEffect(() => {
-    frame.current?.contentWindow?.postMessage({ type: 'wh-flow:theme', theme }, origin)
-  }, [theme, origin])
+  // Mensagem enviada antes do load se perde (o `onLoad` cobre); um iframe que carregou antes da
+  // hidratação não dispara `onLoad` (a montagem cobre).
+  const sync = useCallback(() => {
+    const target = frame.current?.contentWindow
+    target?.postMessage({ type: 'wh-flow:theme', theme }, origin)
+    target?.postMessage({ type: 'wh-flow:lang', lang }, origin)
+  }, [theme, lang, origin])
+
+  useEffect(sync, [sync])
 
   useEffect(() => {
     function onMessage(event) {
@@ -51,7 +59,6 @@ export function ProjectEmbed({ url, title, note = null }) {
           {t('embedFullscreen')} <span aria-hidden="true">↗</span>
         </a>
       </div>
-      {note && <p className="project__embed-note mono">{note}</p>}
       <iframe
         ref={frame}
         src={src}
@@ -59,7 +66,7 @@ export function ProjectEmbed({ url, title, note = null }) {
         loading="lazy"
         className="project__embed-frame"
         style={height ? { height: `${height}px` } : undefined}
-        onLoad={() => frame.current?.contentWindow?.postMessage({ type: 'wh-flow:theme', theme }, origin)}
+        onLoad={sync}
       />
     </section>
   )
