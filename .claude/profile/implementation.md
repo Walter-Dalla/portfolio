@@ -12,6 +12,7 @@ health: `curl -sf -o /dev/null http://localhost:<port>` [vite.config.js]
 
 ## Tests
 Área: `npx vitest run <filtro>` [package.json]
+Aceite com arquivo de teste novo: `test -f <arquivo> && npx vitest run <arquivos>` (filtro inexistente não é erro no Vitest: sai 0 se outro filtro casar) [retro ajustes-sessao]
 Suíte: `npm test` (veredito = exit code, sem pipe; só para ler: `npm test 2>&1 | tail -30`) [package.json]
 Arquivo lido com `node:fs` no Vitest: `resolve(process.cwd(), '<caminho>')` (`import.meta.url` não é `file:` no jsdom) [retro 2026-11-11]
 Aceite de item = teste Vitest + Testing Library do componente/página tocado; teste novo quando não há [owner]
@@ -20,7 +21,7 @@ Aceite de item = teste Vitest + Testing Library do componente/página tocado; te
 `npm run lint` — por item e no QA final [package.json]
 
 ## Disposable service
-Cliente: `npx vite --port <porta> --strictPort` (health: `curl -s -o /dev/null -w "%{http_code}" http://localhost:<porta>` = `200`; parar: `pkill -f "vite --port <porta>"`) [vite.config.js]
+Cliente: `npx vite --port <porta> --strictPort` (health: `curl -s -o /dev/null -w "%{http_code}" http://localhost:<porta>` = `200`; parar: `pkill -f "[v]ite --port <porta>"`) [vite.config.js]
 Sem API nem banco [owner]
 
 ## Contract
@@ -50,3 +51,4 @@ Changelog: — · Status de features: — · Pendências do dono: `docs/PENDENCI
 
 ## Worktree commands
 O worktree não tem `node_modules`: `npx vitest` e `npm run lint` resolvem pelo do clone; `npm run build` também roda (medido 2026-11-10) [enricher retro]
+`git -C` recebe o caminho absoluto do worktree, nunca `.` (o guard recusa) [retro ajustes-sessao]
