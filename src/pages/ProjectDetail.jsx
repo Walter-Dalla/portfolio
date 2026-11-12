@@ -179,22 +179,6 @@ function Project({ project }) {
               {block.body}
             </section>
           ))}
-
-          <nav aria-label={t('allProjects')} className="project__pager mono">
-            {prev && (
-              <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
-                ← {t('prevProject')}: {l(prev.title)}
-              </Link>
-            )}
-            <Link to="/projects" className="link link--muted project__pager-all">
-              {t('allProjects')}
-            </Link>
-            {next && (
-              <Link to={`/projects/${next.slug}`} className="link project__pager-next">
-                {t('nextProject')}: {l(next.title)} →
-              </Link>
-            )}
-          </nav>
         </article>
 
         <aside aria-label={t('factSheetLabel')} className="facts">
@@ -236,6 +220,21 @@ function Project({ project }) {
         </aside>
       </div>
       {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
+      <nav aria-label={t('allProjects')} className="project__pager mono">
+        {prev && (
+          <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
+            ← {t('prevProject')}: {l(prev.title)}
+          </Link>
+        )}
+        <Link to="/projects" className="link link--muted project__pager-all">
+          {t('allProjects')}
+        </Link>
+        {next && (
+          <Link to={`/projects/${next.slug}`} className="link project__pager-next">
+            {t('nextProject')}: {l(next.title)} →
+          </Link>
+        )}
+      </nav>
       {lightbox}
     </div>
   )

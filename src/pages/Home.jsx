@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
-import { metrics, profile } from '../content/profile.js'
+import { company, metrics, profile, workedAt } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
+import { CopyButton } from '../components/CopyButton.jsx'
 import { DownloadIcon } from '../components/Icons.jsx'
 import { Media } from '../components/Media.jsx'
 import { ProjectCard } from '../components/ProjectCard.jsx'
@@ -22,6 +23,7 @@ export function Home() {
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
   const resumes = availableResumes(lang)
+  const availability = l(profile.availability)
 
   return (
     <>
@@ -31,9 +33,18 @@ export function Home() {
           <h1 className="hero__title">{profile.name}</h1>
           <p className="hero__tagline">{l(profile.tagline)}</p>
           <p className="hero__pitch">{l(profile.pitch)}</p>
+          {availability && (
+            <p className="hero__availability mono">
+              <span className="accent-dot" />
+              {availability}
+            </p>
+          )}
           <div className="btn-row">
             <Link to="/projects" className="btn btn--primary">
               {t('seeProjects')}
+            </Link>
+            <Link to="/contact" className="btn btn--secondary">
+              {t('heroContact')}
             </Link>
             {resumes.map((code) => (
               <a
@@ -76,6 +87,17 @@ export function Home() {
         </div>
       </section>
 
+      <div className="container worked">
+        <span id="worked-label" className="worked__label mono">
+          {t('workedAtLabel')}
+        </span>
+        <ul aria-labelledby="worked-label" className="worked__list">
+          {workedAt.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      </div>
+
       <section aria-label={t('metricsLabel')} className="metrics">
         <div className="container">
           <div className="metrics__grid">
@@ -116,6 +138,46 @@ export function Home() {
           ))}
         </div>
       </section>
+
+      {company && (
+        <section className="container home-section" aria-labelledby="home-contato-titulo">
+          <SectionHeading id="home-contato-titulo" eyebrow={t('homeContactEyebrow')} title={t('companyTitle')} />
+          <div className="home-company">
+            <h3 className="home-company__name">{company.name}</h3>
+            <span className="home-company__meta">
+              CNPJ <span className="mono">{company.cnpj}</span> · {company.location}
+            </span>
+            <p className="home-company__text">{l(company.text)}</p>
+            <ul className="home-company__contacts">
+              <li className="home-company__contact">
+                <span className="mono home-company__label">{t('email')}</span>
+                <span className="home-company__value">
+                  <a href={`mailto:${profile.email}`} className="link link--text home-company__email">
+                    {profile.email}
+                  </a>
+                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted copy-link" />
+                </span>
+              </li>
+              <li className="home-company__contact">
+                <span className="mono home-company__label">linkedin</span>
+                <span className="home-company__value">
+                  <a href={profile.linkedin} className="link link--text" target="_blank" rel="noreferrer">
+                    {profile.linkedinHandle}
+                  </a>
+                </span>
+              </li>
+              <li className="home-company__contact">
+                <span className="mono home-company__label">github</span>
+                <span className="home-company__value">
+                  <a href={profile.github} className="link link--text" target="_blank" rel="noreferrer">
+                    {profile.githubHandle}
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   )
 }

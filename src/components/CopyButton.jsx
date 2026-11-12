@@ -22,9 +22,19 @@ export function CopyButton({ text, label, className = 'btn btn--secondary' }) {
     timer.current = setTimeout(() => setCopied(false), FEEDBACK_MS)
   }
 
+  // Os dois textos também vão em `data-*`, lidos pelo CSS (`.copy-btn`) em camadas invisíveis:
+  // o botão fica com a largura do maior e o vizinho não se mexe na troca.
+  const idle = label ?? t('copy')
   return (
-    <button type="button" className={className} onClick={copy} aria-live="polite">
-      {copied ? t('copied') : (label ?? t('copy'))}
+    <button
+      type="button"
+      className={`copy-btn ${className}`}
+      onClick={copy}
+      aria-live="polite"
+      data-label={idle}
+      data-copied={t('copied')}
+    >
+      <span>{copied ? t('copied') : idle}</span>
     </button>
   )
 }

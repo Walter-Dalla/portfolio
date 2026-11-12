@@ -8,6 +8,7 @@
 // do grupo, `note` diz como os vínculos se ligam e cada item de `positions` é um cargo com o texto do CV.
 // Título, período e nota do grupo não vêm do CV. `stage` vale só na entrada (o marcador do trilho).
 // `ai: true` num bullet ({ pt, en, ai: true }): o bullet também aparece na página /ai (Como trabalho com IA).
+// `aiOnly: true` = o bullet aparece só na página /ai, não no currículo.
 export const experiences = [
   {
     period: { pt: '09/2025 — atual', en: '09/2025 — present' },
@@ -76,6 +77,12 @@ export const experiences = [
             pt: 'Estabeleci conjuntos de regras para Claude Code e Cursor (CLAUDE.md, padrões de código) adotados por um time de **mais de 20 desenvolvedores**.',
             en: 'Established Claude Code and Cursor rule sets (CLAUDE.md, coding standards) adopted by a team of **20+ developers**.',
             ai: true,
+          },
+          {
+            pt: 'Analisei diversos erros de latência e de memória com IA para identificar os pontos de lentidão e reestruturei a arquitetura onde a latência real ocorria.',
+            en: 'Analyzed multiple latency and memory errors with AI to pinpoint the slow spots, and restructured the architecture where the real latency occurred.',
+            ai: true,
+            aiOnly: true,
           },
         ],
         tags: [
@@ -324,4 +331,148 @@ export const certifications = [
   { pt: 'Domain Driven Design', en: 'Domain Driven Design' },
   'Spring MVC I & II',
   'Maven',
+]
+
+// Licenças e certificados completos (do LinkedIn), atrás do "mostrar mais" no cartão de certificações.
+// `issued` é 'AAAA-MM' e aparece como MM/AAAA; o título é o nome do curso, sem tradução; agrupados por
+// `issuer` na ordem em que aparecem aqui. `url` é o link "Exibir credencial".
+export const credentials = [
+  {
+    issuer: 'AWS',
+    title: 'AWS Academy Graduate — AWS Academy Introduction to Cloud Semester 1',
+    issued: '2023-12',
+    url: 'https://www.credly.com/badges/497599f5-1abb-416e-9050-32d2bdccdf16/linked_in_profile',
+  },
+  {
+    issuer: 'AWS',
+    title: 'AWS Academy Graduate — AWS Academy Cloud Foundations',
+    issued: '2023-06',
+    url: 'https://www.credly.com/badges/eba990b8-a930-4ada-81da-261e4ede07be/print',
+  },
+  {
+    issuer: 'Full Cycle',
+    title: 'Curso de Domain Driven Design',
+    issued: '2023-08',
+    url: 'https://fullcycle.com.br/certificado/1cf6c31d-a05a-4cc0-8977-53ea750e014a',
+  },
+  {
+    issuer: 'Full Cycle',
+    title: 'Curso de Fundamentos da arquitetura de software',
+    issued: '2023-03',
+    url: 'https://fullcycle.com.br/certificado/a0576640-7559-471d-93c2-726f318d807a',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 1: Primeiros passos',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/certificate/b137de01-2616-473c-8dad-bc2ef5b50a28',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 2: Introdução à orientação a objetos',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/certificate/0955f25d-0531-4035-949c-620166f203b4',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 3: Entendendo herança e interface',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/certificate/023fb869-cf2c-4884-9c51-4e2fb9bff81f',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 4: Entendendo exceções',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/java-excecoes/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 5: Pacotes e java.lang',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/java-pacotes-e-java-lang/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 6: Conhecendo o java.util',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/java-util-lambdas/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java Parte 7: Trabalhando com java.io',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/java-trabalhando-com-io/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java: Dominando as Collections',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/java-collections/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Java e JPA: Persista seus objetos com a JPA2 e Hibernate',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/persistencia-de-objetos-com-jpa-hibernate/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Servlet Parte 1: Fundamentos da programação web Java',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/servlets-fundamentos-programacao-web-java/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Servlet Parte 2: Autenticação, autorização e o padrão MVC',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/servlet-autenticacao-autorizacao-mvc/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Spring MVC I: Criando aplicações web',
+    issued: '2018-10',
+    url: 'https://cursos.alura.com.br/certificate/01549c8f-9835-4cf8-8d53-420a67eaaa60',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Spring MVC II: Integração, cache, segurança e templates',
+    issued: '2019-01',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/springmvc-2-integracao-cache-seguranca-e-templates/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Spring Boot: Agilidade no desenvolvimento Java com Spring',
+    issued: '2019-01',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/springboot/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Maven: Build do zero à web',
+    issued: '2018-12',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/maven-build-do-zero-a-web/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Modelagem de banco de dados relacional: Índices e normalização',
+    issued: '2018-02',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/modelagem-banco-relacional/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'MySQL I: Iniciando suas consultas',
+    issued: '2019-02',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/introducao-a-banco-de-dados-e-sql/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Python 3: Introdução à orientação a objetos',
+    issued: '2019-02',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/python-3-intro-orientacao-objetos/certificate',
+  },
+  {
+    issuer: 'Alura',
+    title: 'Kanban Parte 1: Fundamentos essenciais',
+    issued: '2019-03',
+    url: 'https://cursos.alura.com.br/user/walter-dalla/course/kanban-primeiros-passos/certificate',
+  },
 ]

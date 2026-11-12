@@ -205,6 +205,7 @@ export const projects = [
     period: { pt: '2026 – atual', en: '2026 – present' },
     kind: 'SaaS B2B',
     categories: ['dotnet', 'web'],
+    featured: true,
     summary: {
       pt: 'SaaS B2B feito para a Andelph Group: chamados de manutenção de impressoras, em que um prestador de serviço atende múltiplas empresas clientes.',
       en: 'B2B SaaS built for Andelph Group: printer-repair tickets, where a service provider serves multiple client companies.',
@@ -518,6 +519,14 @@ export const projects = [
           pt: 'Sorteio, pontos e fases ficam nele, e ninguém recebe a mão dos outros.',
           en: "Draws, points and phases live there, and nobody receives anyone else's hand.",
         },
+        alternative: {
+          pt: 'Deixar o navegador de cada jogador calcular sorteio e pontos e só sincronizar o resultado.',
+          en: "Letting each player's browser compute draws and points and only sync the result.",
+        },
+        tradeoff: {
+          pt: 'Sem conexão com o servidor não há jogo, e tudo que vai para o navegador passa por um filtro que esconde a mão dos outros e o dono de cada carta na votação.',
+          en: "Without a connection to the server there is no game, and everything sent to the browser goes through a filter that hides other players' hands and who owns each card during the vote.",
+        },
       },
       {
         decision: {
@@ -525,10 +534,26 @@ export const projects = [
           en: 'Rules as pure functions with injected clock and randomness',
         },
         why: { pt: 'São testadas sem rede.', en: 'They are tested without a network.' },
+        alternative: {
+          pt: 'Regras dentro dos handlers do Socket.IO, lendo a hora e sorteando direto.',
+          en: 'Rules inside the Socket.IO handlers, reading the time and drawing directly.',
+        },
+        tradeoff: {
+          pt: 'Cada regra recebe a sala e o contexto e devolve uma sala nova ou um erro; um lint barra Date.now() e Math.random() fora dos módulos de relógio e sorteio.',
+          en: 'Each rule takes the room and a context and returns a new room or an error; a lint blocks Date.now() and Math.random() outside the clock and randomness modules.',
+        },
       },
       {
         decision: { pt: 'Um pacote compartilhado de contratos', en: 'A shared contracts package' },
         why: { pt: 'Reúne os schemas Zod, os tipos e os eventos.', en: 'It holds the Zod schemas, types and events.' },
+        alternative: {
+          pt: 'Tipos e eventos escritos duas vezes, na API e na web.',
+          en: 'Types and events written twice, in the API and in the web app.',
+        },
+        tradeoff: {
+          pt: 'O pacote é compilado: mudou o contrato, ele é recompilado antes de a API e a web enxergarem, e a mudança de payload aparece num snapshot que precisa ser aceito.',
+          en: 'The package is compiled: when the contract changes it is rebuilt before the API and the web app see it, and the payload change shows up in a snapshot that has to be accepted.',
+        },
       },
       {
         decision: {
@@ -536,6 +561,14 @@ export const projects = [
           en: 'A Vite + React 19 web app packaged for Android with Capacitor',
         },
         why: { pt: 'O jogo roda no navegador ou no Android.', en: 'The game is played in the browser or on Android.' },
+        alternative: {
+          pt: 'Um app Android nativo, com uma segunda base de código.',
+          en: 'A native Android app, with a second codebase.',
+        },
+        tradeoff: {
+          pt: 'O app é o site num WebView: sem servidor mostra "Sem conexão", e o login do Google, recusado em WebView, precisou de um caminho nativo com a conta do aparelho.',
+          en: 'The app is the site in a WebView: with no server it shows "No connection", and Google sign-in, refused inside a WebView, needed a native path using the device account.',
+        },
       },
     ],
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
@@ -561,7 +594,6 @@ export const projects = [
     period: { pt: '2023 – atual', en: '2023 – present' },
     kind: { pt: 'jogo idle', en: 'idle game' },
     categories: ['games', 'dotnet'],
-    featured: true,
     status: { pt: 'No ar na web · Android e Windows em andamento', en: 'Live on the web · Android and Windows in progress' },
     summary: {
       pt: 'Jogo idle de um café com gatos, no ar na web: monte e decore o café, cozinhe receitas e os clientes comem e pagam sozinhos, inclusive com o jogo fechado.',
@@ -600,6 +632,14 @@ export const projects = [
           pt: 'Guarda timestamps e recalcula o estado a cada requisição; o progresso offline sai do tempo decorrido no próximo sync.',
           en: 'It stores timestamps and recomputes state on each request; offline progress comes from elapsed time on the next sync.',
         },
+        alternative: {
+          pt: 'Um processo em segundo plano simulando cada café o tempo todo, mesmo sem ninguém jogando.',
+          en: 'A background process simulating every café all the time, even with nobody playing.',
+        },
+        tradeoff: {
+          pt: 'O trabalho vai para a requisição: cada sync refaz a simulação do último instante salvo até agora.',
+          en: 'The work moves into the request: each sync replays the simulation from the last saved instant up to now.',
+        },
       },
       {
         decision: {
@@ -610,6 +650,14 @@ export const projects = [
           pt: 'O cliente só anima o que o servidor já decidiu.',
           en: 'The client only animates what the server has already decided.',
         },
+        alternative: {
+          pt: 'Empurrar cada chegada em tempo real por WebSocket; cada conexão custa memória e traz reconexão e heartbeat próprios.',
+          en: 'Pushing each arrival in real time over WebSocket; every connection costs memory and brings its own reconnection and heartbeat.',
+        },
+        tradeoff: {
+          pt: 'Todo sorteio da simulação usa a semente da visita, e tempo e aleatoriedade entram por parâmetro; se um escapar, previsão e execução divergem.',
+          en: "Every draw in the simulation uses the visit's seed, and time and randomness come in as parameters; if one slips, forecast and execution diverge.",
+        },
       },
       {
         decision: {
@@ -619,6 +667,14 @@ export const projects = [
         why: {
           pt: 'Roda em produção em kittycafe.walterdalla.uk desde setembro de 2026.',
           en: 'It has been live at kittycafe.walterdalla.uk since September 2026.',
+        },
+        alternative: {
+          pt: 'Servir o jogo web separado da API e publicar uma porta no servidor.',
+          en: 'Serving the web game apart from the API and publishing a port on the server.',
+        },
+        tradeoff: {
+          pt: 'Qualquer mudança no cliente web pede uma imagem nova, e ela sai da máquina de desenvolvimento, não do CI.',
+          en: 'Any change to the web client needs a new image, and it is built on the development machine, not in CI.',
         },
       },
     ],

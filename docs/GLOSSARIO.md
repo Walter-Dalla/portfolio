@@ -18,6 +18,8 @@
 | Negócio | Código | Evite / nota |
 |---|---|---|
 | Experiência (item da linha do tempo) | `experiences` | pode ser um grupo de vínculos |
+| Licenças e certificados | `credentials` | lista completa no `/resume`, atrás de "mostrar mais" |
+| Bullet só da página IA | `aiOnly` (em `experiences[].bullets[]`) | aparece em `/ai`, não no `/resume` |
 | Vínculo (cargo dentro de um grupo) | `experiences[].positions`, `Position` | "experiência" para o cargo de dentro do grupo |
 | Habilidades / stack | `skillGroups` | |
 | Métricas de impacto | `metrics` | |
@@ -38,7 +40,7 @@
 | Tema claro/escuro | `ThemeProvider`, `useTheme`, `data-theme` | "dark mode" só no tema escuro |
 | Idioma PT/EN | `LanguageProvider`, `useI18n`, `strings` | |
 | Cabeçalho / navegação | `Header`, `NAV_ITEMS` | fixo ao rolar; menu no celular |
-| Rodapé | `Footer` | repete a navegação |
+| Rodapé | `Footer` | "Fale comigo", nome e local; sem navegação nem © |
 | Visualizador de imagem (ampliar) | `Lightbox`, `useLightbox`, `Zoom` | |
 | Botão copiar e-mail | `CopyButton` | |
 | Voltar ao topo | `BackToTop` | |

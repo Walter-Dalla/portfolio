@@ -9,9 +9,9 @@ describe('Início com quatro projetos em destaque', () => {
   it('marca quatro projetos como destaque, na ordem da lista', () => {
     expect(projects.filter((p) => p.featured).map((p) => p.slug)).toEqual([
       'wh-harness',
+      'goprint',
       'nesse-capitulo',
       'insect-behavioral-analysis',
-      'kittycafe',
     ])
   })
 
@@ -21,11 +21,11 @@ describe('Início com quatro projetos em destaque', () => {
     const titles = within(grid).getAllByRole('heading', { level: 3 })
     expect(titles.map((h) => h.textContent)).toEqual([
       'wh-harness',
+      'GoPrint',
       'Nesse Capítulo',
       'Ferramenta para Análise Comportamental de Insetos',
-      'KittyCafé',
     ])
-    const slugs = ['wh-harness', 'nesse-capitulo', 'insect-behavioral-analysis', 'kittycafe']
+    const slugs = ['wh-harness', 'goprint', 'nesse-capitulo', 'insect-behavioral-analysis']
     titles.forEach((h, i) => {
       expect(within(h).getByRole('link')).toHaveAttribute('href', `/projects/${slugs[i]}`)
     })

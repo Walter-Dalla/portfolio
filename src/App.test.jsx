@@ -220,12 +220,6 @@ describe('navegação', () => {
     expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('repete a navegação no rodapé', () => {
-    renderApp('/about')
-    const footer = screen.getByRole('navigation', { name: 'Rodapé' })
-    expect(within(footer).getByRole('link', { name: 'Sobre' })).toHaveAttribute('aria-current', 'page')
-  })
-
   it('rola ao topo numa página nova, mas não ao trocar só o filtro', async () => {
     renderApp('/')
     window.scrollTo.mockClear()

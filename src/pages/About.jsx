@@ -28,13 +28,15 @@ export function About() {
           {about.paragraphs.map((p, i) => (
             <div key={i} className="about__block">
               <p className="about__p">{l(p.text)}</p>
-              <div className="link-row">
-                {p.links.map((link) => (
-                  <Link key={link.to} to={link.to} className="link">
-                    {l(link.label)}
-                  </Link>
-                ))}
-              </div>
+              {p.links.length > 0 && (
+                <div className="link-row">
+                  {p.links.map((link) => (
+                    <Link key={link.to} to={link.to} className="link">
+                      {l(link.label)}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
