@@ -50,7 +50,7 @@ export const resumePdf = {
 }
 
 // Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
-export const workedAt = ['BTG Pactual', 'Qyon', 'AgileEngine', 'UNICAMP']
+export const workedAt = ['BTG Pactual', 'Linx & Stone', 'AgileEngine', 'Act Digital']
 
 export const metrics = [
   {
