@@ -66,7 +66,11 @@ export function Ai() {
         <section className="ai__section">
           <SectionHeading eyebrow={t('aiHarnessEyebrow')} title={t('aiHarnessTitle')} />
           <p className="ai__p">{l(harness.summary)}</p>
-          {harness.ai && <p className="ai__p">{l(harness.ai)}</p>}
+          {aiPage.harness.map((paragraph, i) => (
+            <p key={i} className="ai__p">
+              {l(paragraph)}
+            </p>
+          ))}
           <Link to={`/projects/${harness.slug}`} className="link">
             {t('aiSeeProject')}
           </Link>

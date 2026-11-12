@@ -39,11 +39,13 @@ describe('página Como trabalho com IA', () => {
     expect(strong).toHaveClass('hl')
   })
 
-  it('mostra o resumo e o texto de IA do wh-harness', () => {
+  it('mostra o resumo do wh-harness e os parágrafos próprios da página', () => {
     const harness = findProject('wh-harness')
     renderApp('/ai')
     expect(screen.getByText(harness.summary.pt)).toBeInTheDocument()
-    expect(screen.getByText(harness.ai.pt)).toBeInTheDocument()
+    expect(screen.getByText(aiPage.harness[0].pt)).toBeInTheDocument()
+    expect(screen.getByText(aiPage.harness[1].pt)).toBeInTheDocument()
+    expect(screen.queryByText(harness.ai.pt)).not.toBeInTheDocument()
   })
 
   it('mostra os outros projetos com texto de IA, na ordem definida', () => {
