@@ -15,12 +15,15 @@ related: []
 2. Ajustar a linha do vínculo PJ em `experiences.js` ("pela qual atendi a Qyon e atendo a AgileEngine"), respeitando passado/presente.
 
 ## Locations
-- `src/content/profile.js:36-37` — `company.text` { pt, en } com "Clientes: Qyon e AgileEngine (EUA)" [code src/content/profile.js:36]
-- `src/content/experiences.js:16` — "pela qual atendi a Qyon e atendo a AgileEngine" [code src/content/experiences.js:16]
-- `src/resume.test.jsx` — pode citar o texto da empresa [inferred]
+- `src/content/profile.js:36-37` — `company.text` { pt, en }: "Clientes: Qyon e AgileEngine (EUA)." / "Clients: Qyon and AgileEngine (USA)." [code src/content/profile.js:36]
+- `src/content/experiences.js:16-17` — nota do grupo PJ, pt e en [code src/content/experiences.js:16]
+- `src/resume.test.jsx:24,64` — comparam a nota do grupo por texto inteiro, pt e en; mudam junto [code src/resume.test.jsx:24]
+- `public/llms.txt:5` — "Clients include BTG Pactual, Linx (Stone Group), Qyon and AgileEngine (USA)" [code public/llms.txt:5]
+- Nenhum teste cita `company.text` (grep "Clientes:" / "Clients:" em `src/*.test.jsx`: vazio) [code]
 
 ## Code references
-- `company` `src/content/profile.js:27` — dados da empresa em Currículo e Contato [code src/content/profile.js:27]
+- `company` `src/content/profile.js:27` — lido por `Resume` (`src/pages/Resume.jsx:255`) e `Contact` (`src/pages/Contact.jsx:54`; Contato mostra só nome e CNPJ) [code src/pages/Contact.jsx:54]
+- GoPrint já tem `client: 'Andelph Group'` [code src/content/projects.js:218]
 
 ## Other references
 - docs/features/contato.md, docs/features/curriculo.md [inferred]

@@ -16,14 +16,17 @@ Cadastrar o TCC do curso técnico, "Atom", como degrau, não projeto relevante: 
 3. Equipe: "equipe de 5 pessoas", sem nomes; só o papel do dono explícito.
 
 ## Locations
-- `src/content/projects.js:44-76,~640` — `simpleProject` e fim da lista [code src/content/projects.js:44]
-- `src/content/projects.js:1-30` — comentário dos campos (`featured`, `repo`, `thesisUrl`) [code src/content/projects.js:1]
-- `docs/GLOSSARIO.md:14` — "formulário" reservado ao Contato [code docs/GLOSSARIO.md:14]
-- `docs/features/projetos.md` — contagem/ordem de projetos, se citada [inferred]
-- Testes que contam projetos (App.test.jsx, home-featured.test.jsx) [inferred]
+- `src/content/projects.js:36-86` — `simpleProject` (status padrão "Em desenvolvimento"; sem `role` nem links) [code src/content/projects.js:36]
+- `src/content/projects.js:644` — fim da lista `projects` (depois do KittyCafé) [code src/content/projects.js:644]
+- `src/content/projects.js:1-17` — comentário dos campos [code src/content/projects.js:1]
+- `src/pages/ProjectDetail.jsx:37,53-61` — `links` de uma seção já são desenhados (abrem em nova aba) [code src/pages/ProjectDetail.jsx:53]
+- `docs/GLOSSARIO.md:14` — "formulário" reservado ao Contato [doc docs/GLOSSARIO.md]
+- `src/brief.test.jsx:9-25` — todo projeto precisa de `brief.action`; listas fixas de quem não tem `problem`/`result` [code src/brief.test.jsx:10]
+- Testes que contam projetos usam `projects.length` (App.test.jsx:78,84,302; project-diagram.test.jsx:54) e não quebram; `src/home-featured.test.jsx:10` fixa os 4 destaques [code]
+- `https://github.com/Walter-Dalla/Atom` responde 200 (público) [medido com curl -I, 2026-11-11]
 
 ## Code references
-- `simpleProject` `src/content/projects.js:44`; `projects`; `projectCategories`
+- `simpleProject` `src/content/projects.js:36`; `projects` `src/content/projects.js:88`; `projectCategories` `src/content/projects.js:19` (ids: research, dotnet, databases, ai, web, games, infra) [code]
 
 ## Other references
 - Relação com P-027 (minicurso, mesma instituição)

@@ -23,16 +23,19 @@ Restrição: não publicar antes de o PR 12 do wh-harness estar mergeado e o Pag
 Pronto quando: lint e testes passam e, em /projects/wh-harness, desktop e celular, nos dois temas: fluxo no idioma do site, troca com o seletor PT/EN sem recarregar, sem rolagem própria nem moldura, botão de demo e link de tela cheia abrem o caminho do idioma atual.
 
 ## Locations
-- `src/content/projects.js:32,110-113` — `WH_FLOW_URL`, `demoUrl`, `demoNote`, `embedUrl`; comentário dos campos em 9-15 [code src/content/projects.js:32]
-- `src/pages/ProjectDetail.jsx:16,138-144,237` — `isExternal`, botão de demo, `ProjectEmbed` [code src/pages/ProjectDetail.jsx:138]
-- `src/components/ProjectEmbed.jsx:11-70` — `embedSrc`, `useState` do src, efeitos de tema e altura, link de tela cheia, `onLoad` [code src/components/ProjectEmbed.jsx:11]
-- `src/pages/project-detail.css:318` — `.project__embed-frame` [code src/pages/project-detail.css:318]
-- `src/demo-button.test.jsx:16`, `src/App.test.jsx:95-117`, `src/demo-note.test.jsx:10` — testes com a URL `flow.html` e o `demoNote` [code src/App.test.jsx:98]
-- `docs/features/projetos.md:17` — protocolo e `demoNote` [code docs/features/projetos.md:17]
-- `public/wh-harness/flow.html:7-9` — redireciona para .../flow.html [code public/wh-harness/flow.html:7]
+- `src/content/projects.js:32,110-113` — `WH_FLOW_URL`, `demoUrl`, `demoNote`, `embedUrl`; comentário dos campos em 9-16; parâmetros de `simpleProject` em 52-54 e 74-76 [code src/content/projects.js:32]
+- `src/pages/ProjectDetail.jsx:16,81,138-147,237` — `isExternal`, `demoNote = l(...)`, botão de demo e aviso, `ProjectEmbed` [code src/pages/ProjectDetail.jsx:138]
+- `src/components/ProjectEmbed.jsx:9-66` — `embedSrc`, prop `note`, `useState` do src, efeitos de tema e altura, link de tela cheia, `onLoad` [code src/components/ProjectEmbed.jsx:19]
+- `src/pages/project-detail.css:338-346` — `.project__embed-frame` (borda em 343-344); `.project__demo-note, .project__embed-note` em 44-49 [code src/pages/project-detail.css:338]
+- `src/demo-button.test.jsx:16`, `src/App.test.jsx:95-113`, `src/demo-note.test.jsx` (inteiro) — testes com a URL `flow.html` e o `demoNote` [code src/App.test.jsx:98]
+- `docs/features/projetos.md:12,17`, `docs/GLOSSARIO.md:28` — protocolo e `demoNote` [doc docs/features/projetos.md]
+- `public/wh-harness/flow.html:8-9,13` — redireciona para .../flow.html; fica [code public/wh-harness/flow.html:9]
+- Publicado: `/wh-harness/pt/`, `/en/` e `/flow.html` respondem 200 e a página publicada trata `wh-flow:lang` [medido com curl, 2026-11-11]
+- A página só fala com as origens `https://walterdalla.uk` e `http://localhost:3000` [code /home/walter/walter-harness/site/flow.html:296]: nas portas dos agentes (3100+) altura e troca de idioma por mensagem não funcionam
 
 ## Code references
-- `ProjectEmbed` `src/components/ProjectEmbed.jsx:19`; `useI18n` (`l`, idioma) `src/i18n/context.js`; `useTheme` `src/theme/context.js`; `simpleProject` `src/content/projects.js:44`
+- `ProjectEmbed` `src/components/ProjectEmbed.jsx:19`; `useI18n` (`l`, `lang`) `src/i18n/context.js:8`; `pick` `src/i18n/context.js:15` (string ou `{ pt, en }`); `useTheme` `src/theme/context.js`; `simpleProject` `src/content/projects.js:36` [code]
+- Hidratação só com idioma `en` e tema `dark` salvos ou ausentes; fora disso o HTML é descartado [code src/main.jsx:23]
 
 ## Other references
 - P-002 (versão em inglês da página do fluxo, do lado do repo wh-harness)
@@ -40,4 +43,4 @@ Pronto quando: lint e testes passam e, em /projects/wh-harness, desktop e celula
 - `/home/walter/portfolio/.impl/ajustes-sessao/draft-embed.patch`
 
 ## Open questions
-- Remover `demoNote` do wh-harness quando as duas URLs existirem? Recomendado: sim; confirma pelo código/testes.
+- Remover `demoNote` do wh-harness quando as duas URLs existirem? Recomendado: sim; confirma pelo código/testes. → sim, e o campo `demoNote` sai inteiro (nenhum outro projeto usa) [doc .impl/ajustes-sessao/ANALYSIS.md] (enricher, 2026-11-11)
