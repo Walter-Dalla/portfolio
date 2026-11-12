@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { metrics, profile } from '../content/profile.js'
+import { metrics, profile, workedAt } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
 import { DownloadIcon } from '../components/Icons.jsx'
@@ -22,6 +22,7 @@ export function Home() {
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
   const resumes = availableResumes(lang)
+  const availability = l(profile.availability)
 
   return (
     <>
@@ -31,9 +32,18 @@ export function Home() {
           <h1 className="hero__title">{profile.name}</h1>
           <p className="hero__tagline">{l(profile.tagline)}</p>
           <p className="hero__pitch">{l(profile.pitch)}</p>
+          {availability && (
+            <p className="hero__availability mono">
+              <span className="accent-dot" />
+              {availability}
+            </p>
+          )}
           <div className="btn-row">
             <Link to="/projects" className="btn btn--primary">
               {t('seeProjects')}
+            </Link>
+            <Link to="/contact" className="btn btn--secondary">
+              {t('heroContact')}
             </Link>
             {resumes.map((code) => (
               <a
@@ -75,6 +85,17 @@ export function Home() {
           </span>
         </div>
       </section>
+
+      <div className="container worked">
+        <span id="worked-label" className="worked__label mono">
+          {t('workedAtLabel')}
+        </span>
+        <ul aria-labelledby="worked-label" className="worked__list">
+          {workedAt.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      </div>
 
       <section aria-label={t('metricsLabel')} className="metrics">
         <div className="container">

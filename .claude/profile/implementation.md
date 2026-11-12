@@ -39,6 +39,7 @@ Quando a tarefa toca uma área: o arquivo de `_common § Docs` correspondente [i
 
 ## Visual or e2e QA
 Print headless do Chromium (`_common § Toolchain`) contra o serviço descartável, desktop `1440x900` e mobile `390x844`, temas claro e escuro [inferred]
+Cada rota tocada × os dois tamanhos × os dois temas; combinação não rodada vai ao relatório como "não conferida" [retro pendencias-site]
 
 ## Closing docs
 Changelog: — · Status de features: — · Pendências do dono: `docs/PENDENCIAS.md` · Mapa de features: `/wh:feature-docs` [inferred]

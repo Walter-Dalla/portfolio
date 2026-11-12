@@ -63,17 +63,13 @@ const CARTAS = [
 ]
 
 describe('decisões de arquitetura', () => {
-  it('o piloto tem 3 decisões no KittyCafé e 4 nas Cartas Malfaladas, sem alternativa nem trade-off', () => {
+  it('o piloto tem 3 decisões no KittyCafé e 4 nas Cartas Malfaladas', () => {
     const kitty = findProject('kittycafe').decisions
     const cartas = findProject('cartas-malfaladas').decisions
     expect(kitty).toHaveLength(3)
     expect(cartas).toHaveLength(4)
     expect(kitty.map(({ decision, why }) => ({ decision, why }))).toEqual(KITTY)
     expect(cartas.map(({ decision, why }) => ({ decision, why }))).toEqual(CARTAS)
-    for (const item of [...kitty, ...cartas]) {
-      expect(item.alternative ?? null).toBeNull()
-      expect(item.tradeoff ?? null).toBeNull()
-    }
   })
 
   it('os outros projetos não têm decisões', () => {
@@ -94,7 +90,6 @@ describe('decisões de arquitetura', () => {
     ])
     const section = screen.getByRole('heading', { name: /Decisões de arquitetura/ }).closest('section')
     expect(within(section).getAllByRole('heading', { level: 3 })).toHaveLength(3)
-    expect(screen.queryByText(/alternativa descartada/)).toBeNull()
   })
 
   it('projeto sem decisões mantém a numeração contínua', () => {

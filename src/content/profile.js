@@ -19,8 +19,11 @@ export const profile = {
     pt: 'Construo sistemas que custam menos, respondem mais rápido e não param.',
     en: "I build systems that cost less, respond faster and don't go down.",
   },
-  // Disponibilidade mostrada em Contato, ex.: aberto a oportunidades no Brasil e no exterior.
-  availability: null,
+  // Disponibilidade mostrada no hero do Início e em Contato. `null` esconde a frase.
+  availability: {
+    pt: 'Aberto a propostas · remoto · PJ ou CLT',
+    en: 'Open to offers · remote · contractor or full-time',
+  },
 }
 
 // Empresa pela qual presto serviços como PJ. `null` esconde os blocos em Currículo e Contato.
@@ -45,6 +48,9 @@ export const resumePdf = {
   // Data da última atualização dos PDFs, ex.: { pt: '05/2026', en: '05/2026' }.
   updated: { pt: '11/2026', en: '11/2026' },
 }
+
+// Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
+export const workedAt = ['BTG Pactual', 'Qyon', 'AgileEngine', 'UNICAMP']
 
 export const metrics = [
   {
