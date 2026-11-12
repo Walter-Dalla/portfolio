@@ -308,8 +308,11 @@
   font-weight: 400;
 }
 
-/* Demonstração embutida (embedUrl): largura toda do container, abaixo do texto e da ficha. */
+/* Demonstração embutida (embedUrl): abaixo do texto e da ficha, sai da coluna do site até
+   1284px, a largura natural do fluxo (1380px − 2 × 48px), onde ele mostra as 3 colunas. */
 .project__embed {
+  align-self: center;
+  width: min(100cqi - 2 * var(--gutter), 1284px);
   display: flex;
   flex-direction: column;
   gap: 16px;
