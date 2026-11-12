@@ -1,6 +1,8 @@
 import { certifications } from './experiences.js'
 
-// Conquistas. `proofUrl` (comprovante/diploma) e `photo` são opcionais: `null` esconde o link.
+// Conquistas. `proofUrl` (comprovante/diploma/publicação) e `photo` são opcionais: `null` esconde o link.
+// `proofKind` diz o texto do link: 'diploma', 'proof' ou 'post'.
+// `projectSlug` (opcional) liga o cartão à página de um projeto.
 // Sem `photo`, o cartão mostra `mark` (sigla curta, ex.: 'UNESP') numa faixa baixa; sem os dois, só o texto.
 export const featuredAchievement = {
   label: { pt: 'adoção · 2024 – atual', en: 'adoption · 2024 – present' },
@@ -38,6 +40,20 @@ export const achievements = [
     mark: 'COTIL',
     proofUrl: null,
     proofKind: 'diploma',
+    projectSlug: 'atom',
+  },
+  {
+    label: { pt: 'minicurso · 2019', en: 'short course · 2019' },
+    title: { pt: 'Minicurso de Spring Boot no COTIL', en: 'Spring Boot short course at COTIL' },
+    text: {
+      pt: 'Ministrei um minicurso de Spring Boot no COTIL (Colégio Técnico de Limeira, UNICAMP) para 12 participantes, entre eles a minha professora Tania Basso, idealizadora do projeto.',
+      en: "I taught a Spring Boot short course at COTIL (UNICAMP's technical high school in Limeira) to 12 participants, among them my teacher Tania Basso, who conceived the project.",
+    },
+    photo: null,
+    mark: 'Spring Boot',
+    proofUrl:
+      'https://www.linkedin.com/posts/walter-dalla_nessa-ultima-sexta-eu-tive-o-prazer-inenarr%C3%A1vel-share-6584492874379874304-sEfv/',
+    proofKind: 'post',
   },
   {
     label: { pt: 'certificações', en: 'certifications' },

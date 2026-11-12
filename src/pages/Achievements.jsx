@@ -5,7 +5,7 @@ import { Media } from '../components/Media.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
 import './achievements.css'
 
-const PROOF_LABEL = { proof: 'seeProof', diploma: 'seeDiploma' }
+const PROOF_LABEL = { proof: 'seeProof', diploma: 'seeDiploma', post: 'seePost' }
 
 export function Achievements() {
   const { t, l } = useI18n()
@@ -48,7 +48,7 @@ export function Achievements() {
 
       <div className="grid achievements__grid">
         {achievements.map((item) => (
-          <article key={l(item.title)} className={`card${item.proofUrl ? ' card--link' : ''}`}>
+          <article key={l(item.title)} className={`card${item.proofUrl || item.projectSlug ? ' card--link' : ''}`}>
             {item.photo ? (
               <Media src={item.photo} alt={item.title} ratio="16 / 9" />
             ) : (
@@ -62,10 +62,19 @@ export function Achievements() {
               <span className="mono achievement__label">{l(item.label)}</span>
               <h3 className="achievement__title">{l(item.title)}</h3>
               <p className="card__text">{l(item.text)}</p>
-              {item.proofUrl && (
-                <a href={item.proofUrl} className="link card__links" target="_blank" rel="noreferrer">
-                  {t(PROOF_LABEL[item.proofKind])}
-                </a>
+              {(item.proofUrl || item.projectSlug) && (
+                <div className="link-row card__links">
+                  {item.proofUrl && (
+                    <a href={item.proofUrl} className="link" target="_blank" rel="noreferrer">
+                      {t(PROOF_LABEL[item.proofKind])}
+                    </a>
+                  )}
+                  {item.projectSlug && (
+                    <Link to={`/projects/${item.projectSlug}`} className="link link--muted">
+                      {t('aboutProject')}
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
           </article>
