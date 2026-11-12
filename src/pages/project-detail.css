@@ -41,13 +41,6 @@
   align-self: flex-start;
 }
 
-.project__demo-note,
-.project__embed-note {
-  margin: 0;
-  font-size: 13px;
-  color: var(--muted);
-}
-
 .project__cover {
   border-radius: 12px;
   background: var(--surface);

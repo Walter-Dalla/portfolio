@@ -78,7 +78,6 @@ function Project({ project }) {
   const sections = project.sections.filter((s) => s.paragraphs.length > 0 || s.steps?.length > 0)
   const gallery = project.gallery ?? []
   const { facts } = project
-  const demoNote = l(project.demoNote)
   const demoUrl = l(project.demoUrl)
   const embedUrl = l(project.embedUrl)
   const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
@@ -146,7 +145,6 @@ function Project({ project }) {
             {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
           </a>
         )}
-        {demoNote && <p className="project__demo-note mono">{demoNote}</p>}
       </div>
 
       {project.cover && (
@@ -236,7 +234,7 @@ function Project({ project }) {
           )}
         </aside>
       </div>
-      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} note={demoNote} />}
+      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
       {lightbox}
     </div>
   )
