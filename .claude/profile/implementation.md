@@ -16,6 +16,8 @@ Aceite com arquivo de teste novo: `test -f <arquivo> && npx vitest run <arquivos
 Suíte: `npm test` (veredito = exit code, sem pipe; só para ler: `npm test 2>&1 | tail -30`) [package.json]
 Arquivo lido com `node:fs` no Vitest: `resolve(process.cwd(), '<caminho>')` (`import.meta.url` não é `file:` no jsdom) [retro 2026-11-11]
 Aceite de item = teste Vitest + Testing Library do componente/página tocado; teste novo quando não há [owner]
+Testes de conteúdo comparam listas e contagens por literal: antes de fechar `Owns:`, `git grep` do valor antigo em `src/*.test.jsx` [retro pendencias]
+jsdom não aplica CSS: bloco com `hidden` e `display` próprio precisa de `[hidden] { display: none }`; CSS de componente que sobrepõe `.btn`/`.link` precisa de especificidade maior (`global.css` carrega por último) [retro pendencias]
 
 ## Checks
 `npm run lint` — por item e no QA final [package.json]
@@ -40,6 +42,7 @@ Quando a tarefa toca uma área: o arquivo de `_common § Docs` correspondente [i
 ## Visual or e2e QA
 Print headless do Chromium (`_common § Toolchain`) contra o serviço descartável, desktop `1440x900` e mobile `390x844`, temas claro e escuro [inferred]
 Cada rota tocada × os dois tamanhos × os dois temas; combinação não rodada vai ao relatório como "não conferida" [retro pendencias-site]
+Medir posições antes do print de página inteira (o print muda o layout); print por área tocada (seletor), página inteira só como arquivo [retro pendencias]
 
 ## Closing docs
 Changelog: — · Status de features: — · Pendências do dono: `pending/` (mover concluídas para `pending/done/`) · Mapa de features: `/wh:feature-docs` [inferred]
