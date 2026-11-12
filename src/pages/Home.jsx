@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
-import { metrics, profile, workedAt } from '../content/profile.js'
+import { company, metrics, profile, workedAt } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
+import { CopyButton } from '../components/CopyButton.jsx'
 import { DownloadIcon } from '../components/Icons.jsx'
 import { Media } from '../components/Media.jsx'
 import { ProjectCard } from '../components/ProjectCard.jsx'
@@ -137,6 +138,46 @@ export function Home() {
           ))}
         </div>
       </section>
+
+      {company && (
+        <section className="container home-section" aria-labelledby="home-contato-titulo">
+          <SectionHeading id="home-contato-titulo" eyebrow={t('homeContactEyebrow')} title={t('companyTitle')} />
+          <div className="home-company">
+            <h3 className="home-company__name">{company.name}</h3>
+            <span className="home-company__meta">
+              CNPJ <span className="mono">{company.cnpj}</span> · {company.location}
+            </span>
+            <p className="home-company__text">{l(company.text)}</p>
+            <ul className="home-company__contacts">
+              <li className="home-company__contact">
+                <span className="mono home-company__label">{t('email')}</span>
+                <span className="home-company__value">
+                  <a href={`mailto:${profile.email}`} className="link link--text home-company__email">
+                    {profile.email}
+                  </a>
+                  <CopyButton text={profile.email} label={t('copyEmail')} className="link link--muted site-footer__copy" />
+                </span>
+              </li>
+              <li className="home-company__contact">
+                <span className="mono home-company__label">linkedin</span>
+                <span className="home-company__value">
+                  <a href={profile.linkedin} className="link link--text" target="_blank" rel="noreferrer">
+                    {profile.linkedinHandle}
+                  </a>
+                </span>
+              </li>
+              <li className="home-company__contact">
+                <span className="mono home-company__label">github</span>
+                <span className="home-company__value">
+                  <a href={profile.github} className="link link--text" target="_blank" rel="noreferrer">
+                    {profile.githubHandle}
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   )
 }

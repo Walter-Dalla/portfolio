@@ -205,16 +205,6 @@
   color: var(--muted);
 }
 
-.site-footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 20px;
-}
-
-.site-footer__nav .link.active {
-  color: var(--text);
-}
-
 /* Bloco "Fale comigo": rótulo em cima, contato por extenso embaixo; o e-mail nunca quebra no meio. */
 .site-footer__contact {
   display: flex;
@@ -269,6 +259,36 @@
   padding: 0;
   background: none;
   cursor: pointer;
+}
+
+/* Botão de copiar com largura estável: os dois textos (rótulo e "copiado ✓") ocupam a mesma
+   célula do grid, só um visível; o botão fica com a largura do maior, em qualquer idioma.
+   `button.copy-btn` e não `.copy-btn`: global.css carrega depois deste arquivo e o
+   `display: inline-flex` de `.btn`/`.link` venceria, pondo as camadas lado a lado. */
+button.copy-btn {
+  display: inline-grid;
+  align-items: center;
+  justify-items: start;
+}
+
+button.copy-btn.btn {
+  justify-items: center;
+}
+
+.copy-btn > span,
+.copy-btn::before,
+.copy-btn::after {
+  grid-area: 1 / 1;
+}
+
+.copy-btn::before {
+  content: attr(data-label);
+  visibility: hidden;
+}
+
+.copy-btn::after {
+  content: attr(data-copied);
+  visibility: hidden;
 }
 
 #conteudo:focus {

@@ -3,7 +3,6 @@ export const strings = {
   siteName: { pt: 'Walter Dalla', en: 'Walter Dalla' },
   skipToContent: { pt: 'Pular para o conteúdo', en: 'Skip to content' },
   navLabel: { pt: 'Principal', en: 'Main' },
-  footerNavLabel: { pt: 'Rodapé', en: 'Footer' },
   navHome: { pt: 'Início', en: 'Home' },
   navResume: { pt: 'Currículo', en: 'Resume' },
   navProjects: { pt: 'Projetos', en: 'Projects' },
@@ -41,6 +40,7 @@ export const strings = {
   seeAllProjects: { pt: 'ver todos os projetos →', en: 'see all projects →' },
   exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
   exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
+  homeContactEyebrow: { pt: '03 · contato', en: '03 · contact' },
   exploreResume: {
     pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
     en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
@@ -157,8 +157,7 @@ export const strings = {
   sendEmail: { pt: 'Enviar e-mail →', en: 'Send e-mail →' },
   locationTz: { pt: 'local · fuso', en: 'location · time zone' },
   preferResume: { pt: 'Prefere o currículo direto?', en: 'Prefer the resume itself?' },
-  pdfPtLink: { pt: 'baixar PDF · PT ↓', en: 'download PDF · PT ↓' },
-  pdfEnLink: { pt: 'download PDF · EN ↓', en: 'download PDF · EN ↓' },
+  contactSeeResume: { pt: 'ver currículo online →', en: 'see resume online →' },
 
   // IA
   aiTitle: { pt: 'Como trabalho com IA', en: 'How I work with AI' },
