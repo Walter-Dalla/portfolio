@@ -33,8 +33,8 @@ export const company = {
     en: 'Development and licensing of customizable software (CNAE 6202-3/00).',
   },
   text: {
-    pt: 'Minha empresa de arquitetura de software, pela qual atendo clientes como PJ — no Brasil e no exterior — em arquitetura, backend, DevOps e engenharia orientada por IA. Clientes: Qyon e AgileEngine (EUA).',
-    en: 'My software architecture company, through which I serve clients as a contractor — in Brazil and abroad — in architecture, backend, DevOps and AI-driven engineering. Clients: Qyon and AgileEngine (USA).',
+    pt: 'Minha empresa de arquitetura de software, pela qual atendo clientes como PJ — no Brasil e no exterior — em arquitetura, backend, DevOps e engenharia orientada por IA. Clientes: Qyon, AgileEngine (EUA) e Andelph Group.',
+    en: 'My software architecture company, through which I serve clients as a contractor — in Brazil and abroad — in architecture, backend, DevOps and AI-driven engineering. Clients: Qyon, AgileEngine (USA) and Andelph Group.',
   },
 }
 

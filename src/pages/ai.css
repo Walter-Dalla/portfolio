@@ -51,6 +51,14 @@
   color: var(--accent);
 }
 
+.ai-work__bullets {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .ai-projects {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
