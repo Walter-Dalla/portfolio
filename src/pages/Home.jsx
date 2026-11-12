@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { metrics, profile } from '../content/profile.js'
+import { metrics, profile, workedAt } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
 import { DownloadIcon } from '../components/Icons.jsx'
@@ -85,6 +85,17 @@ export function Home() {
           </span>
         </div>
       </section>
+
+      <div className="container worked">
+        <span id="worked-label" className="worked__label mono">
+          {t('workedAtLabel')}
+        </span>
+        <ul aria-labelledby="worked-label" className="worked__list">
+          {workedAt.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      </div>
 
       <section aria-label={t('metricsLabel')} className="metrics">
         <div className="container">

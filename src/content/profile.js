@@ -49,6 +49,9 @@ export const resumePdf = {
   updated: { pt: '11/2026', en: '11/2026' },
 }
 
+// Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
+export const workedAt = ['BTG Pactual', 'Qyon', 'AgileEngine', 'UNICAMP']
+
 export const metrics = [
   {
     value: '−23%',

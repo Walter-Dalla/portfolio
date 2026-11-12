@@ -124,6 +124,31 @@
   }
 }
 
+/* Faixa "Onde atuei" (workedAt), entre o hero e as métricas: rótulo e nomes numa linha. */
+.worked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px 32px;
+  padding-bottom: clamp(32px, 4cqi, 48px);
+}
+
+.worked__label {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.worked__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
 .metrics {
   border-block: 1px solid var(--border);
   background: var(--surface);
