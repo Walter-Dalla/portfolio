@@ -40,6 +40,7 @@ export const strings = {
   seeAllProjects: { pt: 'ver todos os projetos →', en: 'see all projects →' },
   exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
   exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
+  homeContactEyebrow: { pt: '03 · contato', en: '03 · contact' },
   exploreResume: {
     pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
     en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
