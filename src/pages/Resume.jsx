@@ -137,6 +137,7 @@ function ResumeIndex() {
 function Position({ xp, as: Heading = 'h3', showPeriod = false }) {
   const { l } = useI18n()
   const place = l(xp.place)
+  const bullets = xp.bullets.filter((b) => !b.aiOnly)
   return (
     <>
       <Heading className="xp__role">{l(xp.role)}</Heading>
@@ -146,9 +147,9 @@ function Position({ xp, as: Heading = 'h3', showPeriod = false }) {
         {showPeriod && ` · ${l(xp.period)}`}
       </span>
       {xp.note && <span className="xp__note">{l(xp.note)}</span>}
-      {xp.bullets.length > 0 && (
+      {bullets.length > 0 && (
         <ul className="xp__bullets">
-          {xp.bullets.map((b, i) => (
+          {bullets.map((b, i) => (
             <li key={i}>
               <Rich text={l(b)} />
             </li>

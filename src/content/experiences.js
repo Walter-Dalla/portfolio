@@ -8,6 +8,7 @@
 // do grupo, `note` diz como os vínculos se ligam e cada item de `positions` é um cargo com o texto do CV.
 // Título, período e nota do grupo não vêm do CV. `stage` vale só na entrada (o marcador do trilho).
 // `ai: true` num bullet ({ pt, en, ai: true }): o bullet também aparece na página /ai (Como trabalho com IA).
+// `aiOnly: true` = o bullet aparece só na página /ai, não no currículo.
 export const experiences = [
   {
     period: { pt: '09/2025 — atual', en: '09/2025 — present' },
@@ -76,6 +77,12 @@ export const experiences = [
             pt: 'Estabeleci conjuntos de regras para Claude Code e Cursor (CLAUDE.md, padrões de código) adotados por um time de **mais de 20 desenvolvedores**.',
             en: 'Established Claude Code and Cursor rule sets (CLAUDE.md, coding standards) adopted by a team of **20+ developers**.',
             ai: true,
+          },
+          {
+            pt: 'Analisei diversos erros de latência e de memória com IA para identificar os pontos de lentidão e reestruturei a arquitetura onde a latência real ocorria.',
+            en: 'Analyzed multiple latency and memory errors with AI to pinpoint the slow spots, and restructured the architecture where the real latency occurred.',
+            ai: true,
+            aiOnly: true,
           },
         ],
         tags: [
