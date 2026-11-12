@@ -72,7 +72,8 @@ function SectionBody({ section }) {
 function Project({ project }) {
   const { t, l } = useI18n()
   const index = projects.indexOf(project)
-  const many = projects.length > 1
+  // Projeto fora da lista (`unlistedProjects`) não tem vizinhos na navegação.
+  const many = index !== -1 && projects.length > 1
   const next = many ? projects[(index + 1) % projects.length] : null
   const prev = many ? projects[(index - 1 + projects.length) % projects.length] : null
   const sections = project.sections.filter((s) => s.paragraphs.length > 0 || s.steps?.length > 0)
