@@ -4,7 +4,7 @@ Tarefas em aberto do dono do site. Cada uma tem um arquivo em `docs/pending/` (`
 
 ## No repo do wh-harness (fora deste repo)
 
-- Página do fluxo (`site/flow.html` no repo do wh-harness): versão em inglês que siga `wd-lang` (hoje é só em português; o portfólio avisa isso no site em inglês) e leitura no celular: rótulos do mapa com ~7 px, painel "Arquivos" cortado (P-002).
+- Página do fluxo (`site/flow.html` no repo do wh-harness): leitura no celular: rótulos do mapa com ~7 px, painel "Arquivos" cortado (P-002).
 
 ## Estudos de caso profissionais (esperam suas notas: contexto, restrições, opções, números medidos, limites de NDA)
 
@@ -23,12 +23,7 @@ Tarefas em aberto do dono do site. Cada uma tem um arquivo em `docs/pending/` (`
 - Alternativa descartada e trade-off dos 7 cartões de decisão do KittyCafé e da Cartas Malfaladas (P-021).
 - Uptime medido dos projetos em produção para a ficha técnica (P-022).
 
-## Ajustes do site
+## Conferências e decisões suas (da execução ajustes-sessao)
 
-- Andelph Group como cliente da minha empresa, em Currículo e Contato (P-023).
-- /ai: "AgileEngine (US)" aparece uma vez só, com os dois bullets (P-024).
-- /ai: texto do wh-harness com o uso em todos os projetos e o foco em arquitetura (P-025).
-- Rodapé: bloco "Fale comigo" com e-mail, LinkedIn e GitHub por extenso (P-026).
-- Minicurso de Spring Boot no COTIL/UNICAMP, 2019 (P-027).
-- Projeto Atom, TCC do técnico, com pouco destaque (P-028).
-- Fluxo do wh-harness embutido no idioma do site, sem moldura; só publicar depois do PR 12 do wh-harness (P-029).
+- Conferir ao vivo o fluxo do wh-harness embutido: sem rolagem própria e troca PT/EN sem recarregar; `curl -I` nas páginas `/pt/` e `/en/` antes do merge (P-030).
+- Confirmar o formato do Atom: página `/projects/atom` fora da lista, ligada só pelo cartão do técnico em Conquistas (P-031).

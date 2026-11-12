@@ -14,7 +14,7 @@ O site é uma SPA, mas o build gera um `.html` já renderizado por rota (em ingl
 
 - `npm run build` = build do cliente + `vite build --ssr src/entry-server.jsx` + `node scripts/prerender.mjs`.
 - O pré-render troca o bloco `<!-- seo:start -->…<!-- seo:end -->` de `index.html` por título, descrição, canonical e Open Graph da rota, e escreve `dist/<rota>.html` (`/` → `index.html`, `/projects/<slug>` → `projects/<slug>.html`). O GitHub Pages serve `/resume` a partir de `resume.html`.
-- `dist/404.html` é o app renderizado em "Página não encontrada", com `noindex`; `dist/sitemap.xml` lista as rotas de `seoRoutes()`.
+- `dist/404.html` é o app renderizado em "Página não encontrada", com `noindex`; `dist/sitemap.xml` lista as rotas de `sitemapRoutes()` (as de `seoRoutes()` menos as de `unlistedProjects`); a rota de projeto fora da lista é pré-renderizada com `<meta name="robots" content="noindex">`.
 - `#root` recebe `data-route`. `main.jsx` só hidrata quando a rota bate com a URL e o visitante não salvou PT nem tema claro; senão limpa e renderiza do zero.
 - `public/robots.txt` libera tudo e aponta o sitemap; `public/llms.txt` resume o site para agentes de IA; `index.html` traz JSON-LD `Person`.
 
