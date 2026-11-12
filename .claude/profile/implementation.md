@@ -42,7 +42,7 @@ Print headless do Chromium (`_common § Toolchain`) contra o serviço descartáv
 Cada rota tocada × os dois tamanhos × os dois temas; combinação não rodada vai ao relatório como "não conferida" [retro pendencias-site]
 
 ## Closing docs
-Changelog: — · Status de features: — · Pendências do dono: `docs/PENDENCIAS.md` · Mapa de features: `/wh:feature-docs` [inferred]
+Changelog: — · Status de features: — · Pendências do dono: `pending/` (mover concluídas para `pending/done/`) · Mapa de features: `/wh:feature-docs` [inferred]
 
 ## Report
 `docs/relatorios/<data>-<slug>.md` [skill default]

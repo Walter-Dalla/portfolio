@@ -29,7 +29,7 @@ Sem `.codegraph/`: `grep`/`Read` em `src/` [check.py]
 `docs/features/README.md` — mapa de features [CLAUDE.md]
 
 ## Pending
-`docs/pending/` — uma pendência por arquivo `P-NNN-*.md`; `docs/PENDENCIAS.md` é a lista curta do dono [retro 2026-11-11]
+`pending/` — uma pendência por arquivo `P-NNN-*.md`, local e gitignorado (padrão do `/wh:implementation`); concluídas em `pending/done/` [owner 2026-11-12]
 
 ## Limits
 Só frontend por enquanto: nenhum backend, API ou banco [owner]
