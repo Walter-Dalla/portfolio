@@ -262,14 +262,16 @@
 }
 
 /* Botão de copiar com largura estável: os dois textos (rótulo e "copiado ✓") ocupam a mesma
-   célula do grid, só um visível; o botão fica com a largura do maior, em qualquer idioma. */
-.copy-btn {
+   célula do grid, só um visível; o botão fica com a largura do maior, em qualquer idioma.
+   `button.copy-btn` e não `.copy-btn`: global.css carrega depois deste arquivo e o
+   `display: inline-flex` de `.btn`/`.link` venceria, pondo as camadas lado a lado. */
+button.copy-btn {
   display: inline-grid;
   align-items: center;
   justify-items: start;
 }
 
-.copy-btn.btn {
+button.copy-btn.btn {
   justify-items: center;
 }
 
