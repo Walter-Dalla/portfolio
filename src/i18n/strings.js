@@ -154,8 +154,7 @@ export const strings = {
   sendEmail: { pt: 'Enviar e-mail →', en: 'Send e-mail →' },
   locationTz: { pt: 'local · fuso', en: 'location · time zone' },
   preferResume: { pt: 'Prefere o currículo direto?', en: 'Prefer the resume itself?' },
-  pdfPtLink: { pt: 'baixar PDF · PT ↓', en: 'download PDF · PT ↓' },
-  pdfEnLink: { pt: 'download PDF · EN ↓', en: 'download PDF · EN ↓' },
+  contactSeeResume: { pt: 'ver currículo online →', en: 'see resume online →' },
 
   // IA
   aiTitle: { pt: 'Como trabalho com IA', en: 'How I work with AI' },

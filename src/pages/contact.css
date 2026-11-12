@@ -90,11 +90,31 @@ a.contact__card:hover {
   overflow-wrap: anywhere;
 }
 
+/* Caixa do currículo, logo abaixo do e-mail: texto à esquerda, PDFs e link à direita. */
 .contact__resume {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px 20px;
+  gap: 20px;
+  padding: clamp(24px, 4cqi, 40px);
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.contact__resume-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact__resume-title {
+  font-size: clamp(20px, 2.2cqi, 26px);
+  font-weight: 600;
+}
+
+.contact__resume-sub {
   font-size: 15px;
   color: var(--muted);
 }
