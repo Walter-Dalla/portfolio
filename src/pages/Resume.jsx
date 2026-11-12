@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { certifications, education, experiences, languages, skillGroups } from '../content/experiences.js'
+import { certifications, credentials, education, experiences, languages, skillGroups } from '../content/experiences.js'
 import { company, resumePdf } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
 import { DownloadIcon } from '../components/Icons.jsx'
@@ -14,7 +14,54 @@ import { usePageTitle } from '../components/usePageTitle.js'
 import './resume.css'
 
 const PDF_LABEL = { pt: 'resumePdfPt', en: 'resumePdfEn' }
-const CTA_LABEL = { pt: 'pdfPt', en: 'pdfEn' }
+const CREDENTIALS_ID = 'credenciais'
+
+/** Licenças e certificados agrupados por emissor, na ordem em que cada emissor aparece primeiro. */
+function groupByIssuer(items) {
+  const groups = []
+  items.forEach((item) => {
+    const group = groups.find((g) => g.issuer === item.issuer)
+    if (group) group.items.push(item)
+    else groups.push({ issuer: item.issuer, items: [item] })
+  })
+  return groups
+}
+
+/** 'AAAA-MM' → 'MM/AAAA', o formato de data do resto do currículo. */
+function formatIssued(issued) {
+  const [year, month] = issued.split('-')
+  return `${month}/${year}`
+}
+
+// Lista completa de licenças e certificados; fica no DOM com `hidden` enquanto recolhida.
+function Credentials({ open }) {
+  const { t } = useI18n()
+  return (
+    <div id={CREDENTIALS_ID} className="credentials" hidden={!open}>
+      <span className="eyebrow">{t('credentialsTitle')}</span>
+      <div className="credentials__groups">
+        {groupByIssuer(credentials).map((group) => (
+          <div key={group.issuer} className="skills__group">
+            <h3 className="credentials__issuer">{group.issuer}</h3>
+            <ul className="credentials__list">
+              {group.items.map((item) => (
+                <li key={item.url} className="credentials__item">
+                  <span className="credentials__title">{item.title}</span>
+                  <span className="credentials__meta">
+                    <span className="mono">{formatIssued(item.issued)}</span>
+                    <a href={item.url} className="link" target="_blank" rel="noreferrer">
+                      {t('seeCredential')}
+                    </a>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function ExperienceExtra({ extra }) {
   const { l } = useI18n()
@@ -90,6 +137,7 @@ function ResumeIndex() {
 function Position({ xp, as: Heading = 'h3', showPeriod = false }) {
   const { l } = useI18n()
   const place = l(xp.place)
+  const bullets = xp.bullets.filter((b) => !b.aiOnly)
   return (
     <>
       <Heading className="xp__role">{l(xp.role)}</Heading>
@@ -99,9 +147,9 @@ function Position({ xp, as: Heading = 'h3', showPeriod = false }) {
         {showPeriod && ` · ${l(xp.period)}`}
       </span>
       {xp.note && <span className="xp__note">{l(xp.note)}</span>}
-      {xp.bullets.length > 0 && (
+      {bullets.length > 0 && (
         <ul className="xp__bullets">
-          {xp.bullets.map((b, i) => (
+          {bullets.map((b, i) => (
             <li key={i}>
               <Rich text={l(b)} />
             </li>
@@ -146,6 +194,7 @@ export function Resume() {
   const { t, l, lang } = useI18n()
   usePageTitle(t('resumeTitle'))
   const resumes = availableResumes(lang)
+  const [credentialsOpen, setCredentialsOpen] = useState(false)
 
   return (
     <div className="container page resume">
@@ -246,10 +295,22 @@ export function Resume() {
               <div className="skills__group">
                 <span className="eyebrow">{t('certificationsLabel')}</span>
                 <Tags items={certifications} className="skills__tags" />
+                {credentials.length > 0 && (
+                  <button
+                    type="button"
+                    className="link credentials__toggle"
+                    aria-expanded={credentialsOpen}
+                    aria-controls={CREDENTIALS_ID}
+                    onClick={() => setCredentialsOpen((open) => !open)}
+                  >
+                    {t(credentialsOpen ? 'credentialsLess' : 'credentialsMore')}
+                  </button>
+                )}
               </div>
             )}
           </div>
         )}
+        {credentials.length > 0 && <Credentials open={credentialsOpen} />}
       </section>
 
       {company && (
@@ -262,27 +323,6 @@ export function Resume() {
             </span>
             <p className="company__text">{l(company.text)}</p>
             <span className="xp__note">{l(company.activity)}</span>
-          </div>
-        </section>
-      )}
-
-      {resumes.length > 0 && (
-        <section className="resume-cta">
-          <div className="resume-cta__text">
-            <span className="resume-cta__title">{t('resumeCtaTitle')}</span>
-            <span className="resume-cta__sub">{t('resumeCtaText')}</span>
-          </div>
-          <div className="btn-row">
-            {resumes.map((code, i) => (
-              <a
-                key={code}
-                href={resumeHref(code)}
-                download={resumeFileName(code)}
-                className={`btn ${i === 0 ? 'btn--primary' : 'btn--secondary'}`}
-              >
-                {t(CTA_LABEL[code])}
-              </a>
-            ))}
           </div>
         </section>
       )}

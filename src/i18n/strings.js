@@ -120,7 +120,10 @@ export const strings = {
   companyTitle: { pt: 'Atendimento como PJ', en: 'Contracting through my company' },
   companyLabel: { pt: 'empresa (PJ)', en: 'company' },
   certificationsLabel: { pt: 'certificações/', en: 'certifications/' },
-  resumeCtaTitle: { pt: 'Quer levar o currículo com você?', en: 'Want to take the resume with you?' },
+  credentialsMore: { pt: 'mostrar mais', en: 'show more' },
+  credentialsLess: { pt: 'mostrar menos', en: 'show less' },
+  credentialsTitle: { pt: 'licenças e certificados/', en: 'licenses & certifications/' },
+  seeCredential: { pt: 'ver credencial ↗', en: 'see credential ↗' },
   resumeCtaText: {
     pt: 'Versões em PDF, prontas para enviar ao seu time.',
     en: 'PDF versions, ready to share with your team.',
