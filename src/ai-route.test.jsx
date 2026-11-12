@@ -27,12 +27,6 @@ describe('rota /ai', () => {
     expect(ai).toHaveAttribute('aria-current', 'page')
   })
 
-  it('aparece também no rodapé', () => {
-    renderApp('/ai')
-    const ai = navLinks('Rodapé').find((a) => a.textContent === 'IA')
-    expect(ai).toHaveAttribute('href', '/ai')
-  })
-
   it('em inglês o link se chama AI', () => {
     localStorage.setItem('wd-lang', 'en')
     renderApp('/ai')

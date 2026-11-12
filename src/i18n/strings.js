@@ -3,7 +3,6 @@ export const strings = {
   siteName: { pt: 'Walter Dalla', en: 'Walter Dalla' },
   skipToContent: { pt: 'Pular para o conteúdo', en: 'Skip to content' },
   navLabel: { pt: 'Principal', en: 'Main' },
-  footerNavLabel: { pt: 'Rodapé', en: 'Footer' },
   navHome: { pt: 'Início', en: 'Home' },
   navResume: { pt: 'Currículo', en: 'Resume' },
   navProjects: { pt: 'Projetos', en: 'Projects' },

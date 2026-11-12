@@ -36,14 +36,6 @@ describe('rodapé: bloco "Fale comigo"', () => {
     expect(writeText).toHaveBeenCalledWith(EMAIL)
   })
 
-  it('vem antes da navegação do rodapé', () => {
-    renderApp('/about')
-    const footer = within(screen.getByRole('contentinfo'))
-    const heading = footer.getByRole('heading', { level: 2, name: 'Fale comigo' })
-    const nav = footer.getByRole('navigation', { name: 'Rodapé' })
-    expect(heading.compareDocumentPosition(nav) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
-  })
-
   it('em inglês o título é "Get in touch"', () => {
     localStorage.setItem('wd-lang', 'en')
     renderApp('/about')

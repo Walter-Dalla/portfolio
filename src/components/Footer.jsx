@@ -1,12 +1,9 @@
-import { NavLink } from 'react-router'
 import { profile } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
 import { CopyButton } from './CopyButton.jsx'
-import { NAV_ITEMS } from './nav.js'
 
 export function Footer() {
   const { t } = useI18n()
-  const year = new Date().getFullYear()
   return (
     <footer className="site-footer">
       <div className="container site-footer__inner">
@@ -42,15 +39,8 @@ export function Footer() {
             </li>
           </ul>
         </section>
-        <nav aria-label={t('footerNavLabel')} className="site-footer__nav mono">
-          {NAV_ITEMS.map((item) => (
-            <NavLink key={item.to} to={item.to} end={item.end} className="link link--muted">
-              {t(item.key)}
-            </NavLink>
-          ))}
-        </nav>
         <span>
-          © {year} {profile.name} · {t('footerRights')}
+          {profile.name} · {t('footerRights')}
         </span>
       </div>
     </footer>
