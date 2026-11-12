@@ -6,14 +6,14 @@
 // `ai` (só em `simpleProject`): o texto de "Como foi feito com IA", também lido pela página /ai; null quando não há.
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
-// `demoUrl`: página que mostra o projeto funcionando (opcional); URL externa abre em nova aba.
+// `demoUrl`: página que mostra o projeto funcionando (opcional; string ou `{ pt, en }`); URL externa abre em nova aba.
 // `demoNote`: aviso sobre a demo (ex.: idioma), sob o botão da demo e na página embutida (opcional);
 // texto vazio num idioma não mostra nada nele.
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
 // são opcionais (null ou ausentes não aparecem).
-// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; protocolo em
-// src/components/ProjectEmbed.jsx).
+// `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; string ou `{ pt, en }`;
+// protocolo em src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
 
 export const projectCategories = [
@@ -28,8 +28,12 @@ export const projectCategories = [
 
 // Projeto pessoal ainda sem estudo de caso completo: card, um parágrafo e, se houver, como foi feito com IA.
 // `repo` só para repositórios públicos.
-// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages.
-const WH_FLOW_URL = 'https://walter-dalla.github.io/wh-harness/flow.html'
+// Fluxo interativo do wh-harness: a fonte mora no repo dele (site/flow.html), publicada no GitHub Pages
+// num caminho por idioma.
+const WH_FLOW_URL = {
+  pt: 'https://walter-dalla.github.io/wh-harness/pt/',
+  en: 'https://walter-dalla.github.io/wh-harness/en/',
+}
 
 const IN_DEVELOPMENT = { pt: 'Em desenvolvimento', en: 'In development' }
 

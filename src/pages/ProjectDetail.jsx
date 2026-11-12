@@ -79,6 +79,8 @@ function Project({ project }) {
   const gallery = project.gallery ?? []
   const { facts } = project
   const demoNote = l(project.demoNote)
+  const demoUrl = l(project.demoUrl)
+  const embedUrl = l(project.embedUrl)
   const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
   const decisions = project.decisions ?? []
   const diagram = findDiagram(project.slug)
@@ -135,13 +137,13 @@ function Project({ project }) {
         </div>
         <h1 className="project__title">{l(project.title)}</h1>
         <p className="project__lede">{l(project.lede)}</p>
-        {project.demoUrl && (
+        {demoUrl && (
           <a
-            href={project.demoUrl}
+            href={demoUrl}
             className="btn btn--secondary project__demo"
-            {...(isExternal(project.demoUrl) && { target: '_blank', rel: 'noreferrer' })}
+            {...(isExternal(demoUrl) && { target: '_blank', rel: 'noreferrer' })}
           >
-            {t('demoButton')} <span aria-hidden="true">{isExternal(project.demoUrl) ? '↗' : '→'}</span>
+            {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
           </a>
         )}
         {demoNote && <p className="project__demo-note mono">{demoNote}</p>}
@@ -234,7 +236,7 @@ function Project({ project }) {
           )}
         </aside>
       </div>
-      {project.embedUrl && <ProjectEmbed url={project.embedUrl} title={l(project.title)} note={demoNote} />}
+      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} note={demoNote} />}
       {lightbox}
     </div>
   )
