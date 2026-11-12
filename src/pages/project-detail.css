@@ -333,7 +333,7 @@
   width: 100%;
   /* Sem a altura vinda da página embutida, uma altura fixa. */
   height: min(1400px, 160vh);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  /* Sem moldura: a página embutida não tem margem própria e alinha com a coluna do site. */
+  border: 0;
   background: var(--bg);
 }
