@@ -50,7 +50,7 @@ export const resumePdf = {
 }
 
 // Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
-export const workedAt = ['BTG Pactual', 'Qyon', 'AgileEngine', 'UNICAMP']
+export const workedAt = ['BTG Pactual', 'Linx & Stone', 'AgileEngine', 'Act Digital']
 
 export const metrics = [
   {
@@ -59,9 +59,9 @@ export const metrics = [
     source: 'Qyon · 2025–26',
   },
   {
-    value: '8→1',
-    label: { pt: 'microsserviços consolidados em um único serviço', en: 'microservices consolidated into a single service' },
-    source: 'Qyon · 2025–26',
+    value: '6',
+    label: { pt: 'projetos feitos com arquitetura robusta + IA coding', en: 'projects built with robust architecture + AI coding' },
+    source: 'Projetos · 2023–26',
   },
   {
     value: '7→1',

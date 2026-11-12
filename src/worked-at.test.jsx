@@ -10,9 +10,9 @@ describe('Início: faixa "Onde atuei"', () => {
     const list = screen.getByRole('list', { name: 'Onde atuei' })
     expect(within(list).getAllByRole('listitem').map((li) => li.textContent)).toEqual([
       'BTG Pactual',
-      'Qyon',
+      'Linx & Stone',
       'AgileEngine',
-      'UNICAMP',
+      'Act Digital',
     ])
     expect(within(list).queryAllByRole('link')).toHaveLength(0)
     expect(after(document.querySelector('.hero'), list)).toBe(true)
