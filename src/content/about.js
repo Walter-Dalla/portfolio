@@ -40,6 +40,13 @@ export const about = {
     },
     {
       text: {
+        pt: 'Fiz o KittyCafé de propósito como um projeto de agentes: jogos, por definição, pedem mais loop e refinamento do que backends e sites em geral, porque são mais dinâmicos, e isso faz deles um ótimo teste de estresse para os agentes. Minha ideia agora é otimizar o wh-harness para gastar o mínimo de tokens por feature implementada.',
+        en: 'I built KittyCafé on purpose as an agent project: games, by definition, need more looping and refinement than backends and websites in general, because they are more dynamic, which makes them a great stress test for the agents. My idea now is to optimize wh-harness to spend the minimum of tokens per implemented feature.',
+      },
+      links: [],
+    },
+    {
+      text: {
         pt: 'Meu TCC na UNESP virou a ferramenta de análise comportamental de insetos, hoje em uso por 3 laboratórios de farmacologia da UNICAMP.',
         en: 'My undergraduate thesis at UNESP became the insect behavioral analysis tool, now in use by 3 pharmacology labs at UNICAMP.',
       },
