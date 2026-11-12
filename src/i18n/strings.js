@@ -133,6 +133,7 @@ export const strings = {
     en: 'Education, research and certifications.',
   },
   seeProof: { pt: 'ver comprovante ↗', en: 'see proof ↗' },
+  seePost: { pt: 'ver publicação ↗', en: 'see post ↗' },
   seeDiploma: { pt: 'ver diploma ↗', en: 'see diploma ↗' },
   aboutProject: { pt: 'sobre o projeto →', en: 'about the project →' },
 

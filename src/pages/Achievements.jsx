@@ -5,7 +5,7 @@ import { Media } from '../components/Media.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
 import './achievements.css'
 
-const PROOF_LABEL = { proof: 'seeProof', diploma: 'seeDiploma' }
+const PROOF_LABEL = { proof: 'seeProof', diploma: 'seeDiploma', post: 'seePost' }
 
 export function Achievements() {
   const { t, l } = useI18n()
