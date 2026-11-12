@@ -14,6 +14,7 @@ export const strings = {
   langLabel: { pt: 'Idioma', en: 'Language' },
   themeToggle: { pt: 'Alternar tema claro/escuro', en: 'Toggle light/dark theme' },
   footerRights: { pt: 'São Paulo, Brasil', en: 'São Paulo, Brazil' },
+  footerContactTitle: { pt: 'Fale comigo', en: 'Get in touch' },
   email: { pt: 'e-mail', en: 'e-mail' },
   menuOpen: { pt: 'Abrir menu', en: 'Open menu' },
   menuClose: { pt: 'Fechar menu', en: 'Close menu' },
