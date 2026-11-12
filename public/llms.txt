@@ -2,7 +2,7 @@
 
 > Senior Software Engineer & Systems Architect based in São Paulo, Brazil. Personal portfolio: resume, projects with case studies, academic achievements and contact. Content is available in English (default) and Portuguese.
 
-Walter builds systems that cost less, respond faster and don't go down: architecture, backend (.NET), DevOps and AI-driven engineering. Clients include BTG Pactual, Linx (Stone Group), Qyon and AgileEngine (USA). He also works through his own software architecture company.
+Walter builds systems that cost less, respond faster and don't go down: architecture, backend (.NET), DevOps and AI-driven engineering. Clients include BTG Pactual, Linx (Stone Group), Qyon, AgileEngine (USA) and Andelph Group. He also works through his own software architecture company.
 
 ## Pages
 

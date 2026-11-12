@@ -13,8 +13,8 @@ export const experiences = [
     period: { pt: '09/2025 — atual', en: '09/2025 — present' },
     company: 'Walter Serviços de Arquitetura de Software LTDA',
     note: {
-      pt: 'Minha empresa (PJ), pela qual atendi a Qyon e atendo a AgileEngine.',
-      en: 'My own company, through which I served Qyon and now serve AgileEngine.',
+      pt: 'Minha empresa (PJ), pela qual atendi a Qyon e atendo a AgileEngine e a Andelph Group.',
+      en: 'My own company, through which I served Qyon and now serve AgileEngine and Andelph Group.',
     },
     stage: 'current',
     positions: [
