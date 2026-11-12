@@ -14,7 +14,6 @@ import { usePageTitle } from '../components/usePageTitle.js'
 import './resume.css'
 
 const PDF_LABEL = { pt: 'resumePdfPt', en: 'resumePdfEn' }
-const CTA_LABEL = { pt: 'pdfPt', en: 'pdfEn' }
 
 function ExperienceExtra({ extra }) {
   const { l } = useI18n()
@@ -262,27 +261,6 @@ export function Resume() {
             </span>
             <p className="company__text">{l(company.text)}</p>
             <span className="xp__note">{l(company.activity)}</span>
-          </div>
-        </section>
-      )}
-
-      {resumes.length > 0 && (
-        <section className="resume-cta">
-          <div className="resume-cta__text">
-            <span className="resume-cta__title">{t('resumeCtaTitle')}</span>
-            <span className="resume-cta__sub">{t('resumeCtaText')}</span>
-          </div>
-          <div className="btn-row">
-            {resumes.map((code, i) => (
-              <a
-                key={code}
-                href={resumeHref(code)}
-                download={resumeFileName(code)}
-                className={`btn ${i === 0 ? 'btn--primary' : 'btn--secondary'}`}
-              >
-                {t(CTA_LABEL[code])}
-              </a>
-            ))}
           </div>
         </section>
       )}

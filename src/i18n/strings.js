@@ -120,7 +120,6 @@ export const strings = {
   companyTitle: { pt: 'Atendimento como PJ', en: 'Contracting through my company' },
   companyLabel: { pt: 'empresa (PJ)', en: 'company' },
   certificationsLabel: { pt: 'certificações/', en: 'certifications/' },
-  resumeCtaTitle: { pt: 'Quer levar o currículo com você?', en: 'Want to take the resume with you?' },
   resumeCtaText: {
     pt: 'Versões em PDF, prontas para enviar ao seu time.',
     en: 'PDF versions, ready to share with your team.',

@@ -246,34 +246,6 @@ h4.xp__role {
   padding: 5px 10px;
 }
 
-.resume-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: clamp(24px, 4cqi, 40px);
-  border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-
-.resume-cta__text {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.resume-cta__title {
-  font-size: clamp(20px, 2.2cqi, 26px);
-  font-weight: 600;
-}
-
-.resume-cta__sub {
-  font-size: 15px;
-  color: var(--muted);
-}
-
 .education {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
