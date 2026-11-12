@@ -10,10 +10,12 @@ import './ai.css'
 
 const HARNESS_SLUG = 'wh-harness'
 
-// Bullets do currículo marcados com `ai`, com o cargo de onde vieram (entrada simples ou grupo de vínculos).
-const aiBullets = experiences
+// Bullets do currículo marcados com `ai`, agrupados pelo cargo de onde vieram (entrada simples ou
+// grupo de vínculos). Agrupa pelo cargo, não pelo texto da empresa, que muda com o idioma.
+const aiWork = experiences
   .flatMap((entry) => entry.positions ?? [entry])
-  .flatMap((position) => position.bullets.filter((b) => b.ai).map((bullet) => ({ position, bullet })))
+  .map((position) => ({ position, bullets: position.bullets.filter((b) => b.ai) }))
+  .filter((group) => group.bullets.length > 0)
 
 // Projetos com texto de IA, sem o wh-harness (que tem seção própria), na ordem de `aiPage.order`.
 const rank = (slug) => {
@@ -42,12 +44,16 @@ export function Ai() {
       <section className="ai__section">
         <SectionHeading eyebrow={t('aiWorkEyebrow')} title={t('aiWorkTitle')} />
         <ul className="ai-work">
-          {aiBullets.map(({ position, bullet }, i) => (
+          {aiWork.map(({ position, bullets }, i) => (
             <li key={i} className="ai-work__item">
               <span className="ai-work__company mono">{l(position.company)}</span>
-              <span>
-                <Rich text={l(bullet)} />
-              </span>
+              <ul className="ai-work__bullets">
+                {bullets.map((bullet, j) => (
+                  <li key={j}>
+                    <Rich text={l(bullet)} />
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
