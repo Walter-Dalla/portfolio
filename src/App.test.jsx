@@ -95,7 +95,7 @@ describe('projetos', () => {
   it('liga o wh-harness ao fluxo interativo no GitHub Pages, em nova aba', () => {
     renderApp('/projects/wh-harness')
     const link = screen.getByRole('link', { name: 'Ver demo' })
-    expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/flow.html')
+    expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/pt/')
     expect(link).toHaveAttribute('target', '_blank')
   })
 
@@ -103,12 +103,12 @@ describe('projetos', () => {
     renderApp('/projects/wh-harness')
     const frame = screen.getByTitle('wh-harness — Demonstração interativa')
     const src = new URL(frame.getAttribute('src'))
-    expect(src.origin + src.pathname).toBe('https://walter-dalla.github.io/wh-harness/flow.html')
+    expect(src.origin + src.pathname).toBe('https://walter-dalla.github.io/wh-harness/pt/')
     expect(src.searchParams.get('embed')).toBe('1')
     expect(src.searchParams.get('theme')).toBe('dark')
     expect(screen.getByRole('link', { name: 'abrir em tela cheia' })).toHaveAttribute(
       'href',
-      'https://walter-dalla.github.io/wh-harness/flow.html',
+      'https://walter-dalla.github.io/wh-harness/pt/',
     )
   })
 

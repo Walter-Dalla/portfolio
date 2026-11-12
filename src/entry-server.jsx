@@ -15,4 +15,4 @@ export function render(url) {
   )
 }
 
-export { absoluteUrl, seoRoutes, SITE_NAME } from './seo.js'
+export { absoluteUrl, seoRoutes, sitemapRoutes, SITE_NAME } from './seo.js'

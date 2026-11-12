@@ -13,7 +13,7 @@ describe('botão da demo no topo do projeto', () => {
     const links = screen.getAllByRole('link', { name: 'Ver demo' })
     expect(links).toHaveLength(1)
     const [link] = links
-    expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/flow.html')
+    expect(link).toHaveAttribute('href', 'https://walter-dalla.github.io/wh-harness/pt/')
     expect(link).toHaveAttribute('target', '_blank')
     expect(link.closest('.project__intro')).not.toBeNull()
 

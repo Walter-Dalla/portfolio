@@ -2,7 +2,7 @@
 // no sitemap.xml e nas tags Open Graph. O HTML pré-renderizado é em inglês (idioma padrão do site).
 import { aiPage } from './content/ai.js'
 import { profile } from './content/profile.js'
-import { projects } from './content/projects.js'
+import { projects, unlistedProjects } from './content/projects.js'
 import { strings } from './i18n/strings.js'
 
 export const SITE_URL = 'https://walterdalla.uk'
@@ -57,18 +57,28 @@ const STATIC_ROUTES = [
   },
 ]
 
-/** Todas as rotas públicas do site, com título, descrição e imagem (en). */
+const projectRoute = (p) => ({
+  path: `/projects/${p.slug}`,
+  title: `${en(p.title)} — ${SITE_NAME}`,
+  description: en(p.summary),
+  image: p.cover ?? DEFAULT_IMAGE,
+})
+
+/**
+ * Todas as rotas pré-renderizadas do site, com título, descrição e imagem (en). Os projetos fora da lista
+ * (`unlistedProjects`) entram com `noindex: true`: têm página para o link direto, mas ficam fora do sitemap.
+ */
 export function seoRoutes() {
-  const projectRoutes = projects.map((p) => ({
-    path: `/projects/${p.slug}`,
-    title: `${en(p.title)} — ${SITE_NAME}`,
-    description: en(p.summary),
-    image: p.cover ?? DEFAULT_IMAGE,
-  }))
-  return [...STATIC_ROUTES.map((r) => ({ image: DEFAULT_IMAGE, ...r })), ...projectRoutes].map((r) => ({
+  const projectRoutes = projects.map(projectRoute)
+  const unlistedRoutes = unlistedProjects.map((p) => ({ ...projectRoute(p), noindex: true }))
+  const routes = [...STATIC_ROUTES.map((r) => ({ image: DEFAULT_IMAGE, ...r })), ...projectRoutes, ...unlistedRoutes]
+  return routes.map((r) => ({
     ...r,
     description: shortDescription(r.description),
   }))
 }
+
+/** Rotas do sitemap.xml: as de `seoRoutes()` sem `noindex`. */
+export const sitemapRoutes = () => seoRoutes().filter((r) => !r.noindex)
 
 export const absoluteUrl = (path) => `${SITE_URL}${path === '/' ? '/' : path}`

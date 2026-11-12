@@ -1,6 +1,6 @@
 // Pré-render para SEO: roda depois de `vite build` (cliente) e `vite build --ssr` (dist-ssr/).
 // Para cada rota pública gera um .html em dist/ com o app já renderizado em inglês, título,
-// descrição, canonical e Open Graph próprios; também gera dist/404.html e dist/sitemap.xml.
+// descrição, canonical e Open Graph próprios; também gera dist/404.html e dist/sitemap.xml (sem as rotas `noindex`).
 // O GitHub Pages serve `/resume` a partir de `resume.html`, sem redirecionar para `/resume/`.
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
@@ -10,14 +10,14 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const ssrDir = join(root, 'dist-ssr')
 
-const { render, seoRoutes, absoluteUrl, SITE_NAME } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
+const { render, seoRoutes, sitemapRoutes, absoluteUrl, SITE_NAME } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
 
 const template = await readFile(join(dist, 'index.html'), 'utf8')
 
 const escape = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
-function page({ path, title, description, image, html, route }) {
+function page({ path, title, description, image, html, route, noindex = false }) {
   const url = absoluteUrl(path)
   const head = [
     `<title>${escape(title)}</title>`,
@@ -35,6 +35,8 @@ function page({ path, title, description, image, html, route }) {
     `<meta name="twitter:title" content="${escape(title)}" />`,
     `<meta name="twitter:description" content="${escape(description)}" />`,
     `<meta name="twitter:image" content="${absoluteUrl(image)}" />`,
+    // Página só para link direto (projeto fora da lista): pré-renderizada, mas fora dos buscadores.
+    ...(noindex ? ['<meta name="robots" content="noindex" />'] : []),
   ].join('\n    ')
   return template
     .replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/, head)
@@ -68,7 +70,7 @@ await write(
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map((r) => `  <url><loc>${absoluteUrl(r.path)}</loc></url>`).join('\n')}
+${sitemapRoutes().map((r) => `  <url><loc>${absoluteUrl(r.path)}</loc></url>`).join('\n')}
 </urlset>
 `
 await write(join(dist, 'sitemap.xml'), sitemap)
