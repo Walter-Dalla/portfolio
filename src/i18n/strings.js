@@ -63,8 +63,8 @@ export const strings = {
   repository: { pt: 'repositório ↗', en: 'repository ↗' },
   projectsTitle: { pt: 'Projetos', en: 'Projects' },
   projectsLead: {
-    pt: 'Projetos pessoais e de pesquisa — do software usado em laboratórios da UNICAMP a benchmarks de infraestrutura.',
-    en: 'Personal and research projects — from software used in UNICAMP labs to infrastructure benchmarks.',
+    pt: 'Projetos de cliente, pessoais e de pesquisa — do SaaS em produção ao software usado em laboratórios da UNICAMP.',
+    en: 'Client, personal and research projects — from a SaaS in production to the software used in UNICAMP labs.',
   },
   filterLabel: { pt: 'Filtrar por tecnologia', en: 'Filter by technology' },
   filterAll: { pt: 'todos', en: 'all' },
