@@ -30,6 +30,12 @@ export function Home() {
   const firstSystem = architectureSystems[0]
   const archPreview = firstSystem ? findDiagram(firstSystem.slug) : null
   const availability = l(profile.availability)
+  const location = (
+    <span className="hero__location mono">
+      <span className="accent-dot" />
+      {profile.location}
+    </span>
+  )
 
   return (
     <>
@@ -39,6 +45,8 @@ export function Home() {
           <h1 className="hero__title">{profile.name}</h1>
           <p className="hero__tagline">{l(profile.tagline)}</p>
           <p className="hero__pitch">{l(profile.pitch)}</p>
+          {/* Sem foto não há aside: a localização sobe para o texto, logo acima da disponibilidade. */}
+          {!profile.photo && location}
           {availability && (
             <p className="hero__availability mono">
               <span className="accent-dot" />
@@ -77,20 +85,19 @@ export function Home() {
             </a>
           </div>
         </div>
-        <div className="hero__aside">
-          <Media
-            src={profile.photo}
-            alt={profile.name}
-            ratio="4 / 5"
-            className="hero__photo"
-            label="WD"
-            priority
-          />
-          <span className="hero__location mono">
-            <span className="accent-dot" />
-            {profile.location}
-          </span>
-        </div>
+        {profile.photo && (
+          <div className="hero__aside">
+            <Media
+              src={profile.photo}
+              alt={profile.name}
+              ratio="4 / 5"
+              className="hero__photo"
+              label="WD"
+              priority
+            />
+            {location}
+          </div>
+        )}
       </section>
 
       <div className="container worked">
