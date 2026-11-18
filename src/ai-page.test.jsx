@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { about } from './content/about.js'
 import { aiPage } from './content/ai.js'
 import { experiences } from './content/experiences.js'
-import { findProject, projects } from './content/projects.js'
+import { findProject, projects, unlistedProjects } from './content/projects.js'
 import { renderApp } from './test/renderApp.jsx'
 
 const flaggedBullets = experiences.flatMap((entry) => entry.positions ?? [entry]).flatMap((p) => p.bullets.filter((b) => b.ai))
@@ -57,9 +57,9 @@ describe('página Como trabalho com IA', () => {
       'Cartas Malfaladas',
       'GoPrint',
       'Nesse Capítulo',
-      'Este portfólio',
     ])
-    const slugs = ['kittycafe', 'cartas-malfaladas', 'goprint', 'nesse-capitulo', 'portfolio']
+    expect(within(grid).queryByText('Este portfólio')).not.toBeInTheDocument()
+    const slugs = ['kittycafe', 'cartas-malfaladas', 'goprint', 'nesse-capitulo']
     const cards = within(grid).getAllByRole('article')
     cards.forEach((card, i) => {
       const project = findProject(slugs[i])
@@ -69,7 +69,7 @@ describe('página Como trabalho com IA', () => {
   })
 
   it('o texto ai de cada projeto é o parágrafo de "Como foi feito com IA"', () => {
-    const withAi = projects.filter((p) => p.ai)
+    const withAi = [...projects, ...unlistedProjects].filter((p) => p.ai)
     expect(withAi).toHaveLength(6)
     for (const project of withAi) {
       const section = project.sections.find((s) => s.title.pt === 'Como foi feito com IA')

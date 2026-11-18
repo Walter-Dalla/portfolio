@@ -259,6 +259,15 @@
   white-space: nowrap;
 }
 
+/* Colofão: como o site é feito e o código-fonte; os dois links quebram de linha no celular. */
+.site-footer__colophon {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 12px;
+}
+
 /* Botão de copiar com cara de link (rodapé e cartão da empresa no Início). */
 .copy-link {
   border: 0;

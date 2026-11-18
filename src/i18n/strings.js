@@ -187,4 +187,8 @@ export const strings = {
   },
   notFoundHint: { pt: 'Talvez você procure:', en: 'You may be looking for:' },
   backHome: { pt: '← voltar ao início', en: '← back home' },
+
+  // Colofão do rodapé
+  footerColophon: { pt: 'Como este site é feito →', en: 'How this site is built →' },
+  footerSource: { pt: 'código ↗', en: 'source ↗' },
 }

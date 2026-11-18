@@ -16,7 +16,7 @@ const LINKEDIN = 'https://www.linkedin.com/feed/update/urn:li:activity:661000399
 describe('Atom: projeto fora da lista', () => {
   it('não está em projects, só em unlistedProjects', () => {
     expect(projects.map((p) => p.slug)).not.toContain('atom')
-    expect(unlistedProjects.map((p) => p.slug)).toEqual(['atom'])
+    expect(unlistedProjects.map((p) => p.slug)).toContain('atom')
   })
 
   it('findProject encontra o Atom com o conteúdo combinado', () => {
