@@ -2,8 +2,8 @@
 import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
-import { App } from './App.jsx'
 import './styles/global.css'
+import { App } from './App.jsx'
 
 export function render(url) {
   return renderToString(

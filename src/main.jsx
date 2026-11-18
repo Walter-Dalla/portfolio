@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
+import './styles/global.css'
 import { App } from './App.jsx'
 import { readStored } from './storage.js'
-import './styles/global.css'
 
 const root = document.getElementById('root')
 const app = (

@@ -1,5 +1,4 @@
 .contact {
-  padding-top: clamp(56px, 9cqi, 128px);
   gap: clamp(40px, 5cqi, 64px);
 }
 

@@ -1,5 +1,4 @@
 .project {
-  padding-top: clamp(24px, 4cqi, 48px);
   gap: clamp(32px, 4cqi, 48px);
 }
 
@@ -52,7 +51,6 @@
 
 .project__cover {
   border-radius: 12px;
-  background: var(--surface);
   border: 1px solid var(--border);
 }
 
