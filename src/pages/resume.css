@@ -246,38 +246,7 @@ h4.xp__role {
   padding: 5px 10px;
 }
 
-/* Licenças e certificados: botão "mostrar mais" no cartão de certificações e lista por emissor. */
-.credentials__toggle {
-  align-self: flex-start;
-  border: 0;
-  padding: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.credentials {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.credentials[hidden] {
-  display: none;
-}
-
-.credentials__groups {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-  align-items: start;
-}
-
-.credentials__issuer {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-
+/* Cursos com credencial: lista no cartão de cursos, sempre aberta. */
 .credentials__list {
   margin: 0;
   padding: 0;

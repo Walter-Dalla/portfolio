@@ -10,7 +10,7 @@ Walter builds systems that cost less, respond faster and don't go down: architec
 - [Resume](https://walterdalla.uk/resume): experience timeline, stack and education
 - [Projects](https://walterdalla.uk/projects): personal and research projects with case studies; systems he designed include an interactive architecture diagram, the stack by layer and the architecture decisions
 - [AI](https://walterdalla.uk/ai): how he works with AI agents
-- [Achievements](https://walterdalla.uk/achievements): education, research and certifications
+- [Achievements](https://walterdalla.uk/achievements): education, research and courses
 - [About](https://walterdalla.uk/about): how he works and how he got here
 - [Contact](https://walterdalla.uk/contact): e-mail, LinkedIn and GitHub
 

@@ -135,10 +135,7 @@ export const strings = {
   companyEyebrow: { pt: '04 · empresa', en: '04 · company' },
   companyTitle: { pt: 'Atendimento como PJ', en: 'Contracting through my company' },
   companyLabel: { pt: 'empresa (PJ)', en: 'company' },
-  certificationsLabel: { pt: 'certificações/', en: 'certifications/' },
-  credentialsMore: { pt: 'mostrar mais', en: 'show more' },
-  credentialsLess: { pt: 'mostrar menos', en: 'show less' },
-  credentialsTitle: { pt: 'licenças e certificados/', en: 'licenses & certifications/' },
+  certificationsLabel: { pt: 'cursos/', en: 'courses/' },
   seeCredential: { pt: 'ver credencial ↗', en: 'see credential ↗' },
   resumeCtaText: {
     pt: 'Versões em PDF, prontas para enviar ao seu time.',
@@ -150,8 +147,8 @@ export const strings = {
   // Conquistas
   achievementsTitle: { pt: 'Conquistas acadêmicas', en: 'Academic achievements' },
   achievementsLead: {
-    pt: 'Formação, pesquisa e certificações.',
-    en: 'Education, research and certifications.',
+    pt: 'Formação, pesquisa e cursos.',
+    en: 'Education, research and courses.',
   },
   seeProof: { pt: 'ver comprovante ↗', en: 'see proof ↗' },
   seePost: { pt: 'ver publicação ↗', en: 'see post ↗' },
