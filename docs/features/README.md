@@ -9,7 +9,7 @@ Leia só o arquivo da feature que a tarefa toca.
 | [projetos.md](projetos.md) | Projetos e estudo de caso | projeto, projetos, estudo de caso, filtro, categoria, ficha, capa, repositório, `ProjectDetail` |
 | [arquitetura.md](arquitetura.md) | Arquitetura (dentro de cada projeto) | arquitetura, architecture, diagrama, explorador, sistema, componente, camada, stack, decisões, `ArchExplorer`, `StackList` |
 | [ia.md](ia.md) | Como trabalho com IA | IA, AI, inteligência artificial, agentes, Claude, harness, `/ai`, `Ai` |
-| [conquistas.md](conquistas.md) | Conquistas | conquista, diploma, comprovante, formação, certificação, `Achievements` |
+| [conquistas.md](conquistas.md) | Conquistas | conquista, diploma, comprovante, formação, curso, certificação, `Achievements` |
 | [sobre.md](sobre.md) | Sobre mim | sobre, história, galeria, hobby, fatos rápidos, `About` |
 | [contato.md](contato.md) | Contato | contato, e-mail, linkedin, github, disponibilidade, `Contact` |
 | [tema-idioma.md](tema-idioma.md) | Tema e idioma | tema, claro, escuro, idioma, tradução, inglês, PT, EN, i18n, `useI18n` |

@@ -1,13 +1,17 @@
 # Common profile
 
 ## Clone
-— (checkout atual em `/home/walter/portfolio`, WSL2; sem outro checkout) [inferred]
+— (checkout atual, WSL2; sem outro checkout) [inferred]
 
 ## Toolchain
 Node ≥ 22.12 e npm (Linux/WSL): `npm install`, `npm run build`, `npm test` [package.json]
 HTTP local: `curl` [inferred]
 Matar o servidor de dev: `pkill -f "[v]ite --port <porta>"`, numa chamada própria (sem o `[v]` o padrão casa com o próprio shell e sai 144) [retro ajustes-sessao]
 Navegador headless para print: `~/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell --no-sandbox --screenshot=<arquivo> --window-size=<W>,<H> <url>` [inferred]
+Print do servidor de dev pode sair em branco: somar `--virtual-time-budget=15000`; para rota com âncora ou uma área, página temporária `public/_shot.html` (mesma origem) com um iframe do tamanho alvo, fora do commit [retro pending-002-095]
+Tema no print: `--blink-settings=preferredColorScheme=0` (escuro) ou `=1` (claro); `--force-dark-mode` não muda `prefers-color-scheme` [retro pending-002-095]
+Medir ou dirigir a página (clique, largura de texto, mensagens de iframe): CDP pelo `WebSocket` global do Node 22 contra o `chrome-headless-shell --remote-debugging-port=<porta>`; não há pacote playwright no repo [retro pending-002-095]
+Páginas do Credly não carregam no headless: a conferência desses links fica com o dono [retro pending-002-095]
 
 ## Git
 Principal: `master`. Remote de PR: `origin` (github.com/Walter-Dalla/portfolio) [git remote]
