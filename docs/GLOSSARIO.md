@@ -18,7 +18,7 @@
 | Negócio | Código | Evite / nota |
 |---|---|---|
 | Experiência (item da linha do tempo) | `experiences` | pode ser um grupo de vínculos |
-| Licenças e certificados | `credentials` | lista completa no `/resume`, atrás de "mostrar mais" |
+| Cursos | `credentials` (lista com data e link no `/resume`), `certifications` (nomes no cartão de Conquistas) | "certificações" (selo de curso não é certificação) |
 | Bullet só da página IA | `aiOnly` (em `experiences[].bullets[]`) | aparece em `/ai`, não no `/resume` |
 | Vínculo (cargo dentro de um grupo) | `experiences[].positions`, `Position` | "experiência" para o cargo de dentro do grupo |
 | Habilidades / stack | `skillGroups` | |

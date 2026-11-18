@@ -4,7 +4,7 @@ aliases: [Cabeçalho, Navegação, Rodapé, Rotas]
 
 # Layout do site
 
-Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 404. A navegação tem 7 itens (Início, Projetos, IA, …); "IA"/"AI" leva a `/ai`. As rotas são em inglês nos dois idiomas; os caminhos antigos em português redirecionam para elas.
+Moldura comum: cabeçalho com navegação e toggles, rodapé, rotas e página 404. A navegação tem 6 itens (Início, Currículo, Projetos, IA, Sobre, Contato); Conquistas (`/achievements`) mantém a rota, mas fica fora do menu e dos atalhos do Início (chega-se pelos links do Sobre); "IA"/"AI" leva a `/ai`. As rotas são em inglês nos dois idiomas; os caminhos antigos em português redirecionam para elas.
 
 - O cabeçalho é fixo ao rolar (`position: sticky`, fundo translúcido). Abaixo de 760px a navegação vira um menu (`menu-toggle`, `aria-expanded`) que fecha ao trocar de rota ou com Esc; os itens vêm de `NAV_ITEMS` (`src/components/nav.js`). A marca nunca quebra nem encolhe; quando a navegação ocupa a linha toda (de 760px a ~930px), os botões de idioma e tema descem para a linha de baixo, alinhados à direita.
 - Classes comuns de interação em `global.css`: `.chips`/`.chip` (filtros em pílula de Projetos), realce de `.btn` e `.link` ao passar o mouse e `.reveal` (entrada do bloco ao rolar).
