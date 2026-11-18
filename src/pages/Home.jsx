@@ -21,6 +21,10 @@ const EXPLORE = [
   { to: '/contact', cmd: 'ping walter', title: 'navContact', text: 'exploreContact' },
 ]
 
+// Valor de métrica com mais caracteres que isto (ex.: um antes → depois) não cabe na célula na
+// fonte cheia e usa `.metric__value--long`.
+const LONG_METRIC = 5
+
 export function Home() {
   const { t, l, lang } = useI18n()
   usePageTitle(t('homeTitle'))
@@ -114,13 +118,17 @@ export function Home() {
       <section aria-label={t('metricsLabel')} className="metrics">
         <div className="container">
           <div className="metrics__grid">
-            {metrics.map((m) => (
-              <div key={m.value} className="metric">
-                <span className="metric__value">{m.value}</span>
-                <span className="metric__label">{l(m.label)}</span>
-                <span className="metric__source">{m.source}</span>
-              </div>
-            ))}
+            {metrics.map((m, i) => {
+              const value = l(m.value)
+              const long = value.length > LONG_METRIC
+              return (
+                <div key={i} className="metric">
+                  <span className={long ? 'metric__value metric__value--long' : 'metric__value'}>{value}</span>
+                  <span className="metric__label">{l(m.label)}</span>
+                  <span className="metric__source">{m.source}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
