@@ -142,13 +142,16 @@ function Project({ project }) {
         <h1 className="project__title">{l(project.title)}</h1>
         <p className="project__lede">{l(project.lede)}</p>
         {demoUrl && (
-          <a
-            href={demoUrl}
-            className="btn btn--secondary project__demo"
-            {...(isExternal(demoUrl) && { target: '_blank', rel: 'noreferrer' })}
-          >
-            {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
-          </a>
+          <div className="project__demo-row">
+            <a
+              href={demoUrl}
+              className="btn btn--secondary project__demo"
+              {...(isExternal(demoUrl) && { target: '_blank', rel: 'noreferrer' })}
+            >
+              {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
+            </a>
+            {project.demoNote && <span className="project__demo-note mono">{l(project.demoNote)}</span>}
+          </div>
         )}
       </div>
 

@@ -21,6 +21,7 @@ Site de portfólio pessoal, só frontend (sem backend): SPA React 19 + Vite, tem
 - `npm install` — dependências (Node ≥ 22.12).
 - `npm run dev` — servidor de desenvolvimento em http://localhost:3000.
 - `npm run build` — build de produção em `dist/` (inclui pré-render, `404.html` e `sitemap.xml`).
+- `npm run check:dist` — confere o `dist/` depois do build (`scripts/check-dist.mjs`; roda no CI).
 - `npm run lint` — ESLint (`eslint.config.js`).
 - `npm test` — Vitest (`vite.config.js`, ambiente jsdom).
 

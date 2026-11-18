@@ -56,7 +56,6 @@
 .hero__photo {
   border-radius: 12px;
   border: 1px dashed var(--strong);
-  background: var(--surface);
 }
 
 .hero__photo:has(img) {
@@ -178,6 +177,17 @@
   color: var(--accent);
 }
 
+/* Valor longo (antes → depois): fonte menor e numa linha só, sem estourar a célula (medido de
+   320 a 1440px: a célula mais estreita comporta até 27px). Mantém a altura do valor cheio, com o
+   texto embaixo, para os rótulos da linha ficarem alinhados. */
+.metric__value--long {
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(44px, 4.6cqi, 60px);
+  font-size: clamp(24px, 2.2cqi, 30px);
+  white-space: nowrap;
+}
+
 .metric__label {
   font-size: 15px;
   font-weight: 500;
@@ -214,7 +224,7 @@
   }
 }
 
-/* Chamada da página de arquitetura: texto e sistemas de um lado, miniatura de um diagrama do outro. */
+/* Chamada da arquitetura: texto e sistemas em cima, miniatura de um diagrama embaixo. */
 .home-arch {
   display: flex;
   flex-wrap: wrap;
@@ -268,9 +278,12 @@
   color: var(--accent);
 }
 
+/* Miniatura na linha de baixo, na largura do cartão, até a largura natural do diagrama (`max-width` vem do
+   Home.jsx), centralizada. */
 .home-arch__figure {
-  flex: 1 1 380px;
+  flex-basis: 100%;
   min-width: 0;
+  margin-inline: auto;
   display: block;
   padding: 12px;
   border: 1px solid var(--border);
@@ -287,8 +300,11 @@
   height: auto;
 }
 
-/* No celular a miniatura fica pequena demais para ler: a seção segue só com o texto e os sistemas. */
-@media (max-width: 599px) {
+/* Abaixo de 904px de janela o rótulo dos nós (13px no viewBox) cairia de 11px na tela: a seção segue só com
+   o texto e os sistemas. O limiar sai de `diagramSize` do primeiro sistema (828px de largura), do gutter do
+   container, do padding e da borda do cartão e da figura (889px de raiz do site), mais os 15px da barra de
+   rolagem, que a media query conta e o cqi não; o cálculo está em src/home-arch-figure.test.jsx. */
+@media (max-width: 903px) {
   .home-arch__figure {
     display: none;
   }

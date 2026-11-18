@@ -50,9 +50,21 @@ export const resumePdf = {
 }
 
 // Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
-export const workedAt = ['BTG Pactual', 'Linx & Stone', 'AgileEngine', 'Act Digital']
+// Um nome é texto ou `{ pt, en }` quando muda com o idioma.
+export const workedAt = ['BTG Pactual', { pt: 'Linx (Grupo Stone)', en: 'Linx (Stone Group)' }, 'AgileEngine', 'Qyon']
 
+// `value` é texto ou `{ pt, en }` quando a notação do número muda com o idioma.
+// `long: true`: valor comprido (ex.: antes → depois), mostrado em fonte menor para caber na célula.
 export const metrics = [
+  {
+    value: { pt: '~7s → ~4,5s', en: '~7s → ~4.5s' },
+    long: true,
+    label: {
+      pt: 'P95 do antifraude do PIX, dentro do limite de 5s do Banco Central',
+      en: "PIX fraud-screening P95, within the Central Bank's 5s limit",
+    },
+    source: 'BTG Pactual · 2023–25',
+  },
   {
     value: '−23%',
     label: { pt: 'custos de AWS', en: 'AWS costs' },
@@ -66,11 +78,6 @@ export const metrics = [
   {
     value: '7→1',
     label: { pt: 'dias de SLA de entrega do time', en: 'days of team delivery SLA' },
-    source: 'BTG Pactual · 2023–25',
-  },
-  {
-    value: '~36%',
-    label: { pt: 'menos latência P95 na análise antifraude do PIX (~7s → ~4,5s)', en: 'lower P95 fraud-screening latency on PIX (~7s → ~4.5s)' },
     source: 'BTG Pactual · 2023–25',
   },
 ]

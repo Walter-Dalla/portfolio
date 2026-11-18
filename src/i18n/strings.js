@@ -48,10 +48,6 @@ export const strings = {
     pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
     en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
   },
-  exploreAchievements: {
-    pt: 'Software adotado por laboratórios da UNICAMP, formação na UNESP e no COTIL e certificações.',
-    en: 'Software adopted by UNICAMP labs, education at UNESP and COTIL, and certifications.',
-  },
   exploreAbout: {
     pt: 'Como trabalho, como cheguei aqui e como meus projetos se conectam.',
     en: 'How I work, how I got here and how my projects connect.',
@@ -63,8 +59,8 @@ export const strings = {
   repository: { pt: 'repositório ↗', en: 'repository ↗' },
   projectsTitle: { pt: 'Projetos', en: 'Projects' },
   projectsLead: {
-    pt: 'Projetos pessoais e de pesquisa — do software usado em laboratórios da UNICAMP a benchmarks de infraestrutura.',
-    en: 'Personal and research projects — from software used in UNICAMP labs to infrastructure benchmarks.',
+    pt: 'Projetos de cliente, pessoais e de pesquisa — do SaaS em produção ao software usado em laboratórios da UNICAMP.',
+    en: 'Client, personal and research projects — from a SaaS in production to the software used in UNICAMP labs.',
   },
   filterLabel: { pt: 'Filtrar por tecnologia', en: 'Filter by technology' },
   filterAll: { pt: 'todos', en: 'all' },
@@ -135,10 +131,7 @@ export const strings = {
   companyEyebrow: { pt: '04 · empresa', en: '04 · company' },
   companyTitle: { pt: 'Atendimento como PJ', en: 'Contracting through my company' },
   companyLabel: { pt: 'empresa (PJ)', en: 'company' },
-  certificationsLabel: { pt: 'certificações/', en: 'certifications/' },
-  credentialsMore: { pt: 'mostrar mais', en: 'show more' },
-  credentialsLess: { pt: 'mostrar menos', en: 'show less' },
-  credentialsTitle: { pt: 'licenças e certificados/', en: 'licenses & certifications/' },
+  certificationsLabel: { pt: 'cursos/', en: 'courses/' },
   seeCredential: { pt: 'ver credencial ↗', en: 'see credential ↗' },
   resumeCtaText: {
     pt: 'Versões em PDF, prontas para enviar ao seu time.',
@@ -150,8 +143,8 @@ export const strings = {
   // Conquistas
   achievementsTitle: { pt: 'Conquistas acadêmicas', en: 'Academic achievements' },
   achievementsLead: {
-    pt: 'Formação, pesquisa e certificações.',
-    en: 'Education, research and certifications.',
+    pt: 'Formação, pesquisa e cursos.',
+    en: 'Education, research and courses.',
   },
   seeProof: { pt: 'ver comprovante ↗', en: 'see proof ↗' },
   seePost: { pt: 'ver publicação ↗', en: 'see post ↗' },
@@ -194,4 +187,11 @@ export const strings = {
   },
   notFoundHint: { pt: 'Talvez você procure:', en: 'You may be looking for:' },
   backHome: { pt: '← voltar ao início', en: '← back home' },
+
+  // Colofão do rodapé
+  footerColophon: { pt: 'Como este site é feito →', en: 'How this site is built →' },
+  footerSource: { pt: 'código ↗', en: 'source ↗' },
+
+  // Aviso de rolagem do explorador de arquitetura
+  archScrollHint: { pt: 'arraste para o lado para ver o resto', en: 'swipe sideways to see the rest' },
 }

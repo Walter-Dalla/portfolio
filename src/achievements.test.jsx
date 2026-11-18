@@ -33,12 +33,12 @@ describe('conquista: minicurso de Spring Boot no COTIL', () => {
     expect(link).toHaveAttribute('target', '_blank')
   })
 
-  it('fica entre o curso técnico e os cursos e certificações', () => {
+  it('fica entre o curso técnico e os cursos', () => {
     const { container } = renderApp('/achievements')
     const titles = [...container.querySelectorAll('.achievements__grid h3')].map((h) => h.textContent)
     const i = titles.indexOf('Minicurso de Spring Boot no COTIL')
     expect(titles[i - 1]).toBe('Curso Técnico em Informática (Software)')
-    expect(titles[i + 1]).toBe('Cursos e certificações')
+    expect(titles[i + 1]).toBe('Cursos')
   })
 
   it('em inglês mostra o título e o link traduzidos', () => {

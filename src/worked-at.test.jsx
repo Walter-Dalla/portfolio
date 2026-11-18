@@ -10,9 +10,9 @@ describe('Início: faixa "Onde atuei"', () => {
     const list = screen.getByRole('list', { name: 'Onde atuei' })
     expect(within(list).getAllByRole('listitem').map((li) => li.textContent)).toEqual([
       'BTG Pactual',
-      'Linx & Stone',
+      'Linx (Grupo Stone)',
       'AgileEngine',
-      'Act Digital',
+      'Qyon',
     ])
     expect(within(list).queryAllByRole('link')).toHaveLength(0)
     expect(after(document.querySelector('.hero'), list)).toBe(true)
@@ -22,6 +22,7 @@ describe('Início: faixa "Onde atuei"', () => {
   it('em EN o nome da lista é "Where I\'ve worked"', () => {
     renderApp('/')
     fireEvent.click(screen.getByRole('button', { name: 'EN' }))
-    expect(screen.getByRole('list', { name: "Where I've worked" })).toBeInTheDocument()
+    const list = screen.getByRole('list', { name: "Where I've worked" })
+    expect(within(list).getByText('Linx (Stone Group)')).toBeInTheDocument()
   })
 })

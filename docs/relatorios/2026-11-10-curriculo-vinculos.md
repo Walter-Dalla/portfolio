@@ -26,7 +26,7 @@ Final (Gates: yes) e um reteste. Corrigidos e retestados: QA-final-01 (medium, f
 | # | Severity | Category | Evidence (lanes) | Proposal | Who applies |
 |---|---|---|---|---|---|
 | 1 | medium | Automatic check | enricher: `cvdiff.mjs` comparava por substring e deixou passar a formação (`miss 2` → `miss 6` comparando linha inteira) | regra do `impl-enrich` (analyze): comparação de campo inteiro; o que o script não cobre vira Acceptance própria | repo (plugin) |
-| 2 | medium | Information access | orquestrador, enricher: PDFs fora do repo (`/mnt/c/...`), copiados à mão para `.impl/`; sem `pdftotext` | `_common.md` § Toolchain: fonte do CV = `.txt` ao lado do PDF, ou instalar `poppler-utils` | owner |
+| 2 | medium | Information access | orquestrador, enricher: PDFs fora do repo, copiados à mão para `.impl/`; sem `pdftotext` | `_common.md` § Toolchain: fonte do CV = `.txt` ao lado do PDF, ou instalar `poppler-utils` | owner |
 | 3 | medium | Steering doc | enricher: perguntas Q1–Q5 não persistidas no `ANALYSIS.md`; orquestrador: restart matou o enricher | `impl-enrich` (analyze): seção `Questions` no `ANALYSIS.md` antes de responder | repo (plugin) |
 | 4 | medium | Tool economy | enricher, QA: o hook RTK reescreveu `cat` e o auto mode recusou; `pkill -f "vite --port"` matou o próprio shell (QA, orquestrador) | `ENVIRONMENT.md` § RTK: ler com `Read`; `_common.md` § Toolchain: parar o vite por PID (`pgrep -f "vite --port <porta>" \| grep -v $$`) | repo (plugin) / owner |
 | 5 | medium | Steering doc | orquestrador: o 1º run parou nas pré-condições (branch de feature, docs não commitados) | `implementation/SKILL.md` §1: caminho "stash → env → aplicar no INTWT como 1º commit" | repo (plugin) |

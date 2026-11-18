@@ -36,6 +36,7 @@ export function ArchExplorer({ diagram, side = false }) {
         <figcaption className="arch-explorer__foot mono">
           <span className="arch-explorer__caption">{l(diagram.title)}</span>
           <span className="arch-explorer__hint">{t('archHint')}</span>
+          <span className="arch-explorer__scroll-hint">{t('archScrollHint')}</span>
         </figcaption>
       </figure>
 

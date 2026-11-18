@@ -55,7 +55,9 @@
         document.documentElement.dataset.theme = t
         var meta = document.querySelector('meta[name="theme-color"]')
         if (meta) meta.content = t === 'light' ? '#f7f6f2' : '#0b0d10'
+        // Idioma: o salvo ou, sem escolha, português quando o navegador está em português.
         var l = localStorage.getItem('wd-lang')
+        if (l !== 'pt' && l !== 'en' && /^pt/i.test(navigator.language || '')) l = 'pt'
         if (l === 'pt') document.documentElement.lang = 'pt-BR'
       } catch (e) {}
     </script>

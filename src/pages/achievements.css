@@ -47,12 +47,6 @@
 
 .achievements__grid {
   grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-  gap: 20px;
-}
-
-.achievement__body {
-  padding: 22px;
-  gap: 10px;
 }
 
 /* Sem foto: faixa baixa com a sigla da instituição, em vez de um bloco vazio repetindo o texto. */

@@ -19,7 +19,7 @@ describe('resumo em três tópicos no topo do projeto', () => {
         .map((p) => p.slug)
         .sort()
     expect(without('problem')).toEqual(
-      ['cartas-malfaladas', 'kittycafe', 'nesse-capitulo', 'portfolio', 'wh-harness'].sort(),
+      ['cartas-malfaladas', 'kittycafe', 'nesse-capitulo', 'wh-harness'].sort(),
     )
     expect(without('result')).toEqual(['cartas-malfaladas', 'goprint'])
     expect(without('action')).toEqual([])

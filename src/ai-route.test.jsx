@@ -18,7 +18,6 @@ describe('rota /ai', () => {
       'Currículo',
       'Projetos',
       'IA',
-      'Conquistas',
       'Sobre',
       'Contato',
     ])
