@@ -5,6 +5,10 @@ on:
     branches: [master]
   pull_request:
 
+# Só leitura por padrão; o job deploy pede as permissões que usa.
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
