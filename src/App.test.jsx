@@ -180,10 +180,10 @@ describe('conteúdo pendente', () => {
     }
   })
 
-  it('mostra a adoção em destaque e as certificações em Conquistas', () => {
+  it('mostra a adoção em destaque e os cursos em Conquistas', () => {
     renderApp('/achievements')
     expect(screen.getByRole('heading', { name: 'Software adotado por 3 laboratórios da UNICAMP' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Cursos e certificações' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Cursos' })).toBeInTheDocument()
   })
 
   it('destaca o PDF do idioma atual no currículo', () => {

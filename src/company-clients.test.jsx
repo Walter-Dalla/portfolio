@@ -13,9 +13,11 @@ describe('Andelph Group como cliente da empresa', () => {
   })
 
   it('cita a Andelph Group na nota do grupo da empresa', () => {
-    expect(experiences[0].note.pt).toBe('Minha empresa (PJ), pela qual atendi a Qyon e atendo a AgileEngine e a Andelph Group.')
+    expect(experiences[0].note.pt).toBe(
+      'Pela minha empresa, a Walter Serviços de Arquitetura de Software LTDA, atendi a Qyon e atendo a AgileEngine e a Andelph Group.',
+    )
     expect(experiences[0].note.en).toBe(
-      'My own company, through which I served Qyon and now serve AgileEngine and Andelph Group.',
+      'Through my own company, Walter Serviços de Arquitetura de Software LTDA, I served Qyon and now serve AgileEngine and Andelph Group.',
     )
   })
 
