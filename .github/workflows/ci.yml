@@ -23,6 +23,8 @@ jobs:
       - run: npm test
       # O build pré-renderiza cada rota (SEO) e gera 404.html e sitemap.xml (scripts/prerender.mjs).
       - run: npm run build
+      # Falha se o build levar source map, caminho local, segredo, e-mail estranho ou pasta de trabalho.
+      - run: npm run check:dist
       - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
         with:
