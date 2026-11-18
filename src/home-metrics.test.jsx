@@ -31,6 +31,7 @@ describe('Início: métrica de projetos com IA', () => {
   })
 
   it('o valor do PIX segue o idioma e usa a fonte menor', () => {
+    expect(metrics.filter((m) => m.long).map((m) => pick(m.value, 'pt'))).toEqual(['~7s → ~4,5s'])
     renderApp('/')
     expect(within(document.querySelector('.metrics')).getByText('~7s → ~4,5s')).toHaveClass('metric__value--long')
     expect(within(document.querySelector('.metrics')).getByText('6')).not.toHaveClass('metric__value--long')

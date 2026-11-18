@@ -54,9 +54,11 @@ export const resumePdf = {
 export const workedAt = ['BTG Pactual', { pt: 'Linx (Grupo Stone)', en: 'Linx (Stone Group)' }, 'AgileEngine', 'Qyon']
 
 // `value` é texto ou `{ pt, en }` quando a notação do número muda com o idioma.
+// `long: true`: valor comprido (ex.: antes → depois), mostrado em fonte menor para caber na célula.
 export const metrics = [
   {
     value: { pt: '~7s → ~4,5s', en: '~7s → ~4.5s' },
+    long: true,
     label: {
       pt: 'P95 do antifraude do PIX, dentro do limite de 5s do Banco Central',
       en: "PIX fraud-screening P95, within the Central Bank's 5s limit",
