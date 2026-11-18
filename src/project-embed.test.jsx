@@ -42,6 +42,11 @@ describe('fluxo embutido: tema e idioma por mensagem', () => {
     expect(frame.style.height).toBe('900px')
   })
 
+  it('o iframe roda em sandbox com só o que a página usa', () => {
+    const { frame } = renderFlow()
+    expect(frame.getAttribute('sandbox')).toBe('allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox')
+  })
+
   it('o iframe não tem moldura', () => {
     const css = readFileSync(resolve(process.cwd(), 'src/pages/project-detail.css'), 'utf8')
     const block = css.match(/\.project__embed-frame\s*\{([^}]*)\}/)[1]

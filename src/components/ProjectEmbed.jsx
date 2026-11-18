@@ -8,6 +8,8 @@ import { useTheme } from '../theme/context.js'
 // `{ type: 'wh-flow:lang', lang }` na montagem, no load e a cada troca de tema ou idioma; ela responde
 // `{ type: 'wh-flow:height', height }` a cada redimensionamento e a cada mensagem, e o iframe cresce sem
 // rolagem dupla. Só aceita mensagens da origem de `url`.
+// `sandbox` libera só o que a página usa: scripts; a própria origem (localStorage, e o postMessage da
+// altura chega com a origem dela, não `null`); e popups fora do sandbox (link `target="_blank"` do rodapé).
 function embedSrc(url, theme) {
   const u = new URL(url)
   u.searchParams.set('embed', '1')
@@ -64,6 +66,7 @@ export function ProjectEmbed({ url, title }) {
         src={src}
         title={`${title} — ${t('embedTitle')}`}
         loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
         className="project__embed-frame"
         style={height ? { height: `${height}px` } : undefined}
         onLoad={sync}

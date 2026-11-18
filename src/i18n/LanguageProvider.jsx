@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { LANGS, LanguageContext, pick } from './context.js'
+import { LANG_KEY, LANGS, LanguageContext, pick } from './context.js'
+import { detectLang } from './detect.js'
 import { strings } from './strings.js'
-import { readStored, writeStored } from '../storage.js'
+import { writeStored } from '../storage.js'
 
-export const LANG_KEY = 'wd-lang'
+export { LANG_KEY }
 
+// A escolha salva ou, sem ela, o idioma do navegador (português ou inglês).
 function initialLang() {
-  const stored = readStored(LANG_KEY)
-  // Sem escolha salva, o site abre em inglês.
-  return LANGS.includes(stored) ? stored : 'en'
+  return detectLang()
 }
 
 export function LanguageProvider({ children }) {

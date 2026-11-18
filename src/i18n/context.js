@@ -2,6 +2,9 @@ import { createContext, useContext } from 'react'
 
 export const LANGS = ['pt', 'en']
 
+// Chave do idioma escolhido no localStorage (o script inline do index.html lê a mesma).
+export const LANG_KEY = 'wd-lang'
+
 export const LanguageContext = createContext(null)
 
 /** Idioma atual, troca de idioma, `t(chave)` para textos de interface e `l(valor)` para conteúdo. */
