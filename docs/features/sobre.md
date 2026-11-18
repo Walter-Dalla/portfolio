@@ -4,7 +4,7 @@ aliases: [About, Sobre mim]
 
 # Sobre mim
 
-Texto pessoal ligado ao currículo, aos projetos e às conquistas, fatos rápidos, galeria de fotos (só com fotos) e linha da história com links. Os fatos seguem `experiences`, `projects` e o LinkedIn: ao mudar o CV ou um projeto, confira o texto aqui.
+Texto pessoal ligado ao currículo, aos projetos e às conquistas, fatos rápidos, galeria de fotos (só com fotos) e linha da história com links ("Como cheguei aqui", 8 marcos em sequência). Um parágrafo trata o KittyCafé como teste de estresse dos agentes e o objetivo de gastar o mínimo de tokens por feature no wh-harness; parágrafo sem `links` não mostra a linha de links. Os fatos seguem `experiences`, `projects` e o LinkedIn: ao mudar o CV ou um projeto, confira o texto aqui.
 
 A galeria (quando houver fotos) abre no `Lightbox`.
 

@@ -31,7 +31,8 @@ describe('arquitetura dentro de cada projeto', () => {
       'Sobre',
       'Contato',
     ])
-    expect(navLinks('Rodapé').map((a) => a.textContent)).not.toContain('Arquitetura')
+    // O rodapé não tem navegação, só os contatos.
+    expect(within(screen.getByRole('contentinfo')).queryByRole('link', { name: 'Arquitetura' })).toBeNull()
     expect(screen.getByRole('navigation', { name: 'Talvez você procure:' })).toBeInTheDocument()
   })
 

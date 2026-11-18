@@ -26,3 +26,6 @@ yarn-error.log*
 
 # codegraph
 .codegraph/
+
+# pendências locais do /wh:implementation
+/pending/

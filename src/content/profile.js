@@ -19,8 +19,11 @@ export const profile = {
     pt: 'Construo sistemas que custam menos, respondem mais rápido e não param.',
     en: "I build systems that cost less, respond faster and don't go down.",
   },
-  // Disponibilidade mostrada em Contato, ex.: aberto a oportunidades no Brasil e no exterior.
-  availability: null,
+  // Disponibilidade mostrada no hero do Início e em Contato. `null` esconde a frase.
+  availability: {
+    pt: 'Aberto a propostas · remoto · PJ ou CLT',
+    en: 'Open to offers · remote · contractor or full-time',
+  },
 }
 
 // Empresa pela qual presto serviços como PJ. `null` esconde os blocos em Currículo e Contato.
@@ -46,6 +49,9 @@ export const resumePdf = {
   updated: { pt: '11/2026', en: '11/2026' },
 }
 
+// Faixa "Onde atuei" do Início, abaixo do hero: só os nomes, sem logos nem links.
+export const workedAt = ['BTG Pactual', 'Linx & Stone', 'AgileEngine', 'Act Digital']
+
 export const metrics = [
   {
     value: '−23%',
@@ -53,9 +59,9 @@ export const metrics = [
     source: 'Qyon · 2025–26',
   },
   {
-    value: '8→1',
-    label: { pt: 'microsserviços consolidados em um único serviço', en: 'microservices consolidated into a single service' },
-    source: 'Qyon · 2025–26',
+    value: '6',
+    label: { pt: 'projetos feitos com arquitetura robusta + IA coding', en: 'projects built with robust architecture + AI coding' },
+    source: 'Projetos · 2023–26',
   },
   {
     value: '7→1',

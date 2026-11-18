@@ -246,31 +246,62 @@ h4.xp__role {
   padding: 5px 10px;
 }
 
-.resume-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: clamp(24px, 4cqi, 40px);
-  border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+/* Licenças e certificados: botão "mostrar mais" no cartão de certificações e lista por emissor. */
+.credentials__toggle {
+  align-self: flex-start;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
 }
 
-.resume-cta__text {
+.credentials {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 14px;
 }
 
-.resume-cta__title {
-  font-size: clamp(20px, 2.2cqi, 26px);
+.credentials[hidden] {
+  display: none;
+}
+
+.credentials__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.credentials__issuer {
+  margin: 0;
+  font-size: 18px;
   font-weight: 600;
 }
 
-.resume-cta__sub {
+.credentials__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.credentials__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   font-size: 15px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.credentials__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 16px;
+  font-size: 13px;
   color: var(--muted);
 }
 

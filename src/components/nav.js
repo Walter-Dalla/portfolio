@@ -1,4 +1,4 @@
-// Itens da navegação principal (cabeçalho e rodapé). `key` é o texto em strings.js.
+// Itens da navegação principal (cabeçalho). `key` é o texto em strings.js.
 export const NAV_ITEMS = [
   { to: '/', key: 'navHome', end: true },
   { to: '/resume', key: 'navResume' },

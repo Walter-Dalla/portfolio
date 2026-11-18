@@ -79,17 +79,28 @@ describe('decisões de arquitetura', () => {
     expect(withDecisions.toSorted()).toEqual(Object.keys(diagrams).toSorted())
   })
 
-  it('cada decisão tem título e porquê nos dois idiomas, sem alternativa nem trade-off', () => {
+  it('cada decisão tem título e porquê nos dois idiomas; alternativa e trade-off só nas 7 do piloto', () => {
+    const withExtras = []
     for (const project of projects) {
-      for (const item of project.decisions ?? []) {
+      for (const [i, item] of (project.decisions ?? []).entries()) {
         for (const text of [item.decision, item.why]) {
           expect(text.pt.length, project.slug).toBeGreaterThan(10)
           expect(text.en.length, project.slug).toBeGreaterThan(10)
         }
-        expect(item.alternative ?? null).toBeNull()
-        expect(item.tradeoff ?? null).toBeNull()
+        // Alternativa e trade-off andam juntos.
+        expect(Boolean(item.alternative), project.slug).toBe(Boolean(item.tradeoff))
+        if (item.alternative) withExtras.push(`${project.slug}-${i}`)
       }
     }
+    expect(withExtras.toSorted()).toEqual([
+      'cartas-malfaladas-0',
+      'cartas-malfaladas-1',
+      'cartas-malfaladas-2',
+      'cartas-malfaladas-3',
+      'kittycafe-0',
+      'kittycafe-1',
+      'kittycafe-2',
+    ])
   })
 
   it('no KittyCafé as decisões ficam no bloco "Arquitetura", numeradas', () => {
@@ -101,7 +112,8 @@ describe('decisões de arquitetura', () => {
     expect([...block.querySelectorAll('.decision__num')].map((n) => n.textContent)).toEqual(['01', '02', '03', '04', '05'])
     // Dentro do bloco as decisões não têm seção numerada própria.
     expect(screen.queryByRole('heading', { level: 2, name: /Decisões de arquitetura/ })).toBeNull()
-    expect(screen.queryByText(/alternativa descartada/)).toBeNull()
+    // Só as 3 decisões do piloto trazem alternativa descartada e trade-off.
+    expect(within(block).getAllByText('alternativa descartada')).toHaveLength(3)
   })
 
   it('projeto sem decisões mantém a numeração contínua', () => {

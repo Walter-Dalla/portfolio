@@ -246,6 +246,7 @@ function Project({ project }) {
         </section>
       )}
 
+      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
       <nav aria-label={t('allProjects')} className="project__pager mono">
         {prev && (
           <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
@@ -261,7 +262,6 @@ function Project({ project }) {
           </Link>
         )}
       </nav>
-      {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
       {lightbox}
     </div>
   )

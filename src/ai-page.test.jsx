@@ -28,7 +28,7 @@ describe('página Como trabalho com IA', () => {
   })
 
   it('lista os bullets do currículo marcados com ai, sob a empresa de cada cargo', () => {
-    expect(flaggedBullets).toHaveLength(3)
+    expect(flaggedBullets).toHaveLength(4)
     renderApp('/ai')
     expect(document.querySelectorAll('.ai-work__bullets > li')).toHaveLength(flaggedBullets.length)
     const companies = [...document.querySelectorAll('.ai-work .mono')].map((el) => el.textContent)
