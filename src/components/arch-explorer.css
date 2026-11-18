@@ -48,6 +48,16 @@
   color: var(--faint);
 }
 
+/* Aviso de rolagem: só quando o diagrama não cabe na moldura (`data-overflow`, posto pelo `ArchDiagram`). */
+.arch-explorer__scroll-hint {
+  display: none;
+  color: var(--accent);
+}
+
+.arch-explorer__diagram:has(.arch-diagram__scroll[data-overflow]) .arch-explorer__scroll-hint {
+  display: inline;
+}
+
 .arch-panel {
   min-width: 0;
   display: flex;

@@ -144,6 +144,20 @@ export function ArchDiagram({ diagram, compact = false, selected = null, onSelec
     scroll.scrollTo({ left: center - scroll.clientWidth / 2, behavior: 'smooth' })
   }, [interactive, selected])
 
+  // Moldura que estoura a largura ganha `data-overflow`: o `ArchExplorer` mostra o aviso de arrastar para o lado.
+  // Recalcula na montagem e a cada `resize` da janela.
+  useEffect(() => {
+    const scroll = scrollRef.current
+    if (!interactive || !scroll) return
+    const update = () => {
+      if (scroll.scrollWidth > scroll.clientWidth) scroll.dataset.overflow = 'true'
+      else delete scroll.dataset.overflow
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [interactive])
+
   const svgProps = compact
     ? { 'aria-hidden': 'true' }
     : {

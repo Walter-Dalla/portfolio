@@ -191,4 +191,7 @@ export const strings = {
   // Colofão do rodapé
   footerColophon: { pt: 'Como este site é feito →', en: 'How this site is built →' },
   footerSource: { pt: 'código ↗', en: 'source ↗' },
+
+  // Aviso de rolagem do explorador de arquitetura
+  archScrollHint: { pt: 'arraste para o lado para ver o resto', en: 'swipe sideways to see the rest' },
 }
