@@ -45,7 +45,7 @@
 | Tema claro/escuro | `ThemeProvider`, `useTheme`, `data-theme` | "dark mode" só no tema escuro |
 | Idioma PT/EN | `LanguageProvider`, `useI18n`, `strings` | |
 | Cabeçalho / navegação | `Header`, `NAV_ITEMS` | fixo ao rolar; menu no celular |
-| Rodapé | `Footer` | "Fale comigo", nome e local; sem navegação nem © |
+| Rodapé | `Footer` | "Fale comigo", nome e local e o colofão (como o site é feito, código); sem navegação nem © |
 | Visualizador de imagem (ampliar) | `Lightbox`, `useLightbox`, `Zoom` | |
 | Explorador do diagrama | `ArchExplorer` | diagrama clicável com o painel do componente escolhido |
 | Filtro em pílula | `.chips`, `.chip` (`global.css`) | categorias em Projetos |
