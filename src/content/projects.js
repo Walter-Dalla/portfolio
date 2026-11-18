@@ -579,50 +579,6 @@ export const projects = [
     ],
   },
   simpleProject({
-    slug: 'portfolio',
-    title: { pt: 'Este portfólio', en: 'This portfolio' },
-    period: '2026',
-    kind: { pt: 'site pessoal', en: 'personal site' },
-    categories: ['web'],
-    status: { pt: 'No ar', en: 'Live' },
-    summary: {
-      pt: 'O site que você está vendo: SPA em React 19 + Vite, bilíngue PT/EN, tema claro/escuro e deploy no GitHub Pages com domínio próprio.',
-      en: "The site you're looking at: a React 19 + Vite SPA, bilingual PT/EN, light/dark theme and deployed to GitHub Pages on a custom domain.",
-    },
-    about: {
-      pt: 'Só frontend, sem backend: todo o conteúdo fica em arquivos bilíngues { pt, en }, separados dos textos de interface, e um campo vazio simplesmente esconde o bloco. Testes com Vitest e CI no GitHub Actions (lint, testes, build) que publica em walterdalla.uk a cada push na master.',
-      en: 'Frontend only, no backend: all content lives in bilingual { pt, en } files, kept apart from the interface strings, and an empty field simply hides its block. Vitest tests and GitHub Actions CI (lint, tests, build) that publishes to walterdalla.uk on every push to master.',
-    },
-    ai: {
-      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado por um agente independente e aprovado por mim.',
-      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a pull request reviewed by an independent agent and approved by me.',
-    },
-    brief: {
-      problem: null,
-      action: {
-        pt: 'SPA em React 19 + Vite com todo o conteúdo em arquivos bilíngues { pt, en }, testes com Vitest e CI no GitHub Actions.',
-        en: 'A React 19 + Vite SPA with all content in bilingual { pt, en } files, Vitest tests and GitHub Actions CI.',
-      },
-      result: {
-        pt: 'Publicado em walterdalla.uk a cada push na master.',
-        en: 'Published to walterdalla.uk on every push to master.',
-      },
-    },
-    tags: ['React', 'Vite', 'Vitest', 'GitHub Actions'],
-    repo: 'https://github.com/Walter-Dalla/portfolio',
-    cover: '/img/projects/portfolio/cover.webp',
-    gallery: [
-      {
-        src: '/img/projects/portfolio/projects-light.webp',
-        alt: { pt: 'Lista de projetos no tema claro', en: 'The project list in the light theme' },
-      },
-      {
-        src: '/img/projects/portfolio/case-study-en.webp',
-        alt: { pt: 'Página de projeto em inglês', en: 'A project page in English' },
-      },
-    ],
-  }),
-  simpleProject({
     slug: 'homelab',
     title: 'Homelab',
     period: { pt: '2026 – atual', en: '2026 – present' },
@@ -962,8 +918,52 @@ export const projects = [
 ]
 
 // Projetos fora da lista: têm página (/projects/<slug>), mas não aparecem em Projetos, Início, /ai, na navegação
-// entre projetos nem no sitemap; só se chega a eles por link direto.
+// entre projetos nem no sitemap; só se chega a eles por link direto (o portfólio também pelo colofão do rodapé).
 export const unlistedProjects = [
+  simpleProject({
+    slug: 'portfolio',
+    title: { pt: 'Este portfólio', en: 'This portfolio' },
+    period: '2026',
+    kind: { pt: 'site pessoal', en: 'personal site' },
+    categories: ['web'],
+    status: { pt: 'No ar', en: 'Live' },
+    summary: {
+      pt: 'O site que você está vendo: SPA em React 19 + Vite, bilíngue PT/EN, tema claro/escuro e deploy no GitHub Pages com domínio próprio.',
+      en: "The site you're looking at: a React 19 + Vite SPA, bilingual PT/EN, light/dark theme and deployed to GitHub Pages on a custom domain.",
+    },
+    about: {
+      pt: 'Só frontend, sem backend: todo o conteúdo fica em arquivos bilíngues { pt, en }, separados dos textos de interface, e um campo vazio simplesmente esconde o bloco. Testes com Vitest e CI no GitHub Actions (lint, testes, build) que publica em walterdalla.uk a cada push na master.',
+      en: 'Frontend only, no backend: all content lives in bilingual { pt, en } files, kept apart from the interface strings, and an empty field simply hides its block. Vitest tests and GitHub Actions CI (lint, tests, build) that publishes to walterdalla.uk on every push to master.',
+    },
+    ai: {
+      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado por um agente independente e aprovado por mim.',
+      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a pull request reviewed by an independent agent and approved by me.',
+    },
+    brief: {
+      problem: null,
+      action: {
+        pt: 'SPA em React 19 + Vite com todo o conteúdo em arquivos bilíngues { pt, en }, testes com Vitest e CI no GitHub Actions.',
+        en: 'A React 19 + Vite SPA with all content in bilingual { pt, en } files, Vitest tests and GitHub Actions CI.',
+      },
+      result: {
+        pt: 'Publicado em walterdalla.uk a cada push na master.',
+        en: 'Published to walterdalla.uk on every push to master.',
+      },
+    },
+    tags: ['React', 'Vite', 'Vitest', 'GitHub Actions'],
+    repo: 'https://github.com/Walter-Dalla/portfolio',
+    cover: '/img/projects/portfolio/cover.webp',
+    gallery: [
+      {
+        src: '/img/projects/portfolio/projects-light.webp',
+        alt: { pt: 'Lista de projetos no tema claro', en: 'The project list in the light theme' },
+      },
+      {
+        src: '/img/projects/portfolio/case-study-en.webp',
+        alt: { pt: 'Página de projeto em inglês', en: 'A project page in English' },
+      },
+    ],
+  }),
   simpleProject({
     slug: 'atom',
     title: 'Atom',

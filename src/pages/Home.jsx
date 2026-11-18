@@ -4,7 +4,7 @@ import { findDiagram } from '../content/diagrams.js'
 import { company, metrics, profile, workedAt } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
-import { ArchDiagram } from '../components/ArchDiagram.jsx'
+import { ArchDiagram, diagramSize } from '../components/ArchDiagram.jsx'
 import { CopyButton } from '../components/CopyButton.jsx'
 import { DownloadIcon } from '../components/Icons.jsx'
 import { Media } from '../components/Media.jsx'
@@ -149,7 +149,13 @@ export function Home() {
                 ))}
               </ul>
             </div>
-            <Link to={architectureHref(firstSystem.slug)} className="home-arch__figure" tabIndex={-1} aria-hidden="true">
+            <Link
+              to={architectureHref(firstSystem.slug)}
+              className="home-arch__figure"
+              style={{ maxWidth: diagramSize(archPreview).width }}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               <ArchDiagram diagram={archPreview} compact />
             </Link>
           </div>

@@ -19,5 +19,5 @@ export const aiPage = {
       en: "Before the AI writes a line, I design the architecture: which database, how the parts communicate, the overall code structure and which tests matter most. Only then do I put the agents to work. My focus is architecture; writing the code is the AI's job.",
     },
   ],
-  order: ['kittycafe', 'cartas-malfaladas', 'goprint', 'nesse-capitulo', 'portfolio'],
+  order: ['kittycafe', 'cartas-malfaladas', 'goprint', 'nesse-capitulo'],
 }

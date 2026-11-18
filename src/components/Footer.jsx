@@ -1,5 +1,6 @@
-import { useLocation } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { company, profile } from '../content/profile.js'
+import { findProject } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
 import { CopyButton } from './CopyButton.jsx'
 
@@ -47,6 +48,14 @@ export function Footer() {
         <span>
           {profile.name} · {t('footerRights')}
         </span>
+        <p className="site-footer__colophon">
+          <Link to="/projects/portfolio" className="link link--muted">
+            {t('footerColophon')}
+          </Link>
+          <a href={findProject('portfolio').repo} className="link link--muted" target="_blank" rel="noreferrer">
+            {t('footerSource')}
+          </a>
+        </p>
       </div>
     </footer>
   )
