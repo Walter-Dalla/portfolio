@@ -590,8 +590,8 @@ export const projects = [
       en: 'Frontend only, no backend: all content lives in bilingual { pt, en } files, kept apart from the interface strings, and an empty field simply hides its block. Vitest tests and GitHub Actions CI (lint, tests, build) that publishes to walterdalla.uk on every push to master.',
     },
     ai: {
-      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado.',
-      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a reviewed pull request.',
+      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado por um agente independente e aprovado por mim.',
+      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a pull request reviewed by an independent agent and approved by me.',
     },
     brief: {
       problem: null,
