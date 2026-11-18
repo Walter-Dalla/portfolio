@@ -48,10 +48,6 @@ export const strings = {
     pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
     en: '6 roles since 2018 — from intern to architect, including BTG Pactual and Linx (Stone Group).',
   },
-  exploreAchievements: {
-    pt: 'Software adotado por laboratórios da UNICAMP, formação na UNESP e no COTIL e certificações.',
-    en: 'Software adopted by UNICAMP labs, education at UNESP and COTIL, and certifications.',
-  },
   exploreAbout: {
     pt: 'Como trabalho, como cheguei aqui e como meus projetos se conectam.',
     en: 'How I work, how I got here and how my projects connect.',

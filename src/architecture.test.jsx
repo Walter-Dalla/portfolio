@@ -27,7 +27,6 @@ describe('arquitetura dentro de cada projeto', () => {
       'Currículo',
       'Projetos',
       'IA',
-      'Conquistas',
       'Sobre',
       'Contato',
     ])

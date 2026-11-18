@@ -16,7 +16,6 @@ import './home.css'
 
 const EXPLORE = [
   { to: '/resume', cmd: 'cat resume.md', title: 'navResume', text: 'exploreResume' },
-  { to: '/achievements', cmd: 'ls achievements/', title: 'navAchievements', text: 'exploreAchievements' },
   { to: '/about', cmd: 'open about-me', title: 'navAbout', text: 'exploreAbout' },
   { to: '/contact', cmd: 'ping walter', title: 'navContact', text: 'exploreContact' },
 ]

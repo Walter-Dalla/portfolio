@@ -4,7 +4,6 @@ export const NAV_ITEMS = [
   { to: '/resume', key: 'navResume' },
   { to: '/projects', key: 'navProjects' },
   { to: '/ai', key: 'navAi' },
-  { to: '/achievements', key: 'navAchievements' },
   { to: '/about', key: 'navAbout' },
   { to: '/contact', key: 'navContact' },
 ]
