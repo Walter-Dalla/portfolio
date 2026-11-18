@@ -9,6 +9,7 @@
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional; string ou `{ pt, en }`); URL externa abre em nova aba.
+// `demoNote`: aviso curto ao lado do botão da demo, `{ pt, en }` (opcional em `simpleProject`; ex.: a demo pede login).
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
 // são opcionais (null ou ausentes não aparecem).
@@ -75,6 +76,7 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
+  demoNote = null,
   embedUrl = null,
   numbers = {},
   brief = null,
@@ -99,6 +101,7 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
+    demoNote,
     embedUrl,
     facts: { client, role, status, adoption: null, commits: null, tests: null, mutation: null, ...numbers },
     sections: [
@@ -287,8 +290,8 @@ export const projects = [
       en: 'Each client opens tickets, attaches photos, videos or PDFs as evidence and follows the ten lifecycle statuses with a history of every change; the provider registers companies, users and printers (with a QR code from the serial number) and follows a dashboard by phase. ASP.NET Core (.NET 10) API with Dapper and PostgreSQL, S3 attachments (MinIO) and email through SendGrid; tenant isolation comes from the company in the token. The React + Vite + TypeScript front end is served by the API itself in a single Docker image, with integration tests in xUnit and Testcontainers.',
     },
     ai: {
-      pt: 'Desenvolvido com o Claude Code sob o wh-harness: o trabalho é planejado como uma lista de pendências numeradas, executada por agentes em worktrees paralelas e integrada depois — 30 dos 43 commits têm o Claude como coautor e 12 são merges dessas worktrees.',
-      en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 30 of the 43 commits have Claude as co-author and 12 are merges of those worktrees.',
+      pt: 'Desenvolvido com o Claude Code sob o wh-harness: o trabalho é planejado como uma lista de pendências numeradas, executada por agentes em worktrees paralelas e integrada depois — 109 dos 133 commits têm o Claude como coautor e 24 são merges dessas worktrees.',
+      en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 109 of the 133 commits have Claude as co-author and 24 are merges of those worktrees.',
     },
     client: 'Andelph Group',
     brief: {
@@ -448,6 +451,7 @@ export const projects = [
     ],
     tags: ['React', 'TypeScript', 'Hono', 'SQLite', 'PWA'],
     repo: 'https://github.com/Walter-Dalla/nesse-capitulo',
+    demoUrl: 'https://nesse-capitulo.walterdalla.uk',
     cover: '/img/projects/nesse-capitulo/cover.webp',
     gallery: [
       {
@@ -590,8 +594,8 @@ export const projects = [
       en: 'Frontend only, no backend: all content lives in bilingual { pt, en } files, kept apart from the interface strings, and an empty field simply hides its block. Vitest tests and GitHub Actions CI (lint, tests, build) that publishes to walterdalla.uk on every push to master.',
     },
     ai: {
-      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado.',
-      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a reviewed pull request.',
+      pt: 'Reescrito em novembro de 2026 com o Claude Code sob o wh-harness: um CLAUDE.md como mapa, perfis com a fonte de cada fato, glossário e mapa de features. Todo commit tem o Claude como coautor e chega à master por pull request revisado por um agente independente e aprovado por mim.',
+      en: 'Rewritten in November 2026 with Claude Code under wh-harness: a CLAUDE.md as the map, profiles that cite the source of every fact, a glossary and a feature map. Every commit has Claude as co-author and reaches master through a pull request reviewed by an independent agent and approved by me.',
     },
     brief: {
       problem: null,
@@ -624,13 +628,14 @@ export const projects = [
     period: { pt: '2026 – atual', en: '2026 – present' },
     kind: { pt: 'infra · self-hosted', en: 'infra · self-hosted' },
     categories: ['infra'],
+    status: { pt: 'Em produção', en: 'In production' },
     summary: {
       pt: 'Servidor self-hosted que roda meus projetos em produção, exposto apenas por um túnel, sem portas abertas.',
       en: 'Self-hosted server running my projects in production, exposed only through a tunnel with no open ports.',
     },
     about: {
-      pt: 'O hardware é um kit com processador Xeon egresso de datacenter. Como a revenda entrega esses processadores com a frequência limitada, fiz a ressolda para restaurar o clock completo, o que aumenta a capacidade de processamento sem sair das especificações do fabricante. Cada aplicação é uma stack Docker gerida pelo Komodo, com imagens no registry Zot; ambos ficam restritos à rede interna. As imagens são construídas na máquina de desenvolvimento e passam por scan de vulnerabilidades com Trivy antes do push: falha HIGH/CRITICAL com correção disponível bloqueia a publicação. A comunicação com a internet passa somente pelo Cloudflare Tunnel: os containers rodam sem usuário root e sem porta publicada, e só o cloudflared os alcança pela rede Docker. Os bancos SQLite têm backup diário com cópia fora do servidor e ensaio de restauração. Hoje hospeda o KittyCafé e o GoPrint.',
-      en: 'The hardware is a Xeon kit with a processor retired from a datacenter. Resellers ship these processors with their frequency limited, so I reworked the soldering to restore the full clock, which increases processing capacity while staying within the manufacturer\'s specifications. Each application is a Docker stack managed by Komodo, with images in a Zot registry; both are restricted to the internal network. Images are built on the development machine and scanned with Trivy before the push: a HIGH/CRITICAL finding with an available fix blocks the release. Internet traffic flows only through Cloudflare Tunnel: containers run as non-root users with no published ports, and only cloudflared reaches them over the Docker network. The SQLite databases get daily backups with an off-host copy and restore rehearsals. It currently hosts KittyCafé and GoPrint.',
+      pt: 'Cada aplicação é uma stack Docker gerida pelo Komodo, com imagens no registry Zot; ambos ficam restritos à rede interna. As imagens são construídas na máquina de desenvolvimento e passam por scan de vulnerabilidades com Trivy antes do push: falha HIGH/CRITICAL com correção disponível bloqueia a publicação. A comunicação com a internet passa somente pelo Cloudflare Tunnel: os containers rodam sem usuário root e sem porta publicada, e só o cloudflared os alcança pela rede Docker. Os bancos SQLite têm backup diário com cópia fora do servidor e ensaio de restauração. Hoje hospeda o KittyCafé e o GoPrint. O hardware é um kit com processador Xeon egresso de datacenter. Como a revenda entrega esses processadores com a frequência limitada, fiz a ressolda para restaurar o clock completo, o que aumenta a capacidade de processamento sem sair das especificações do fabricante.',
+      en: 'Each application is a Docker stack managed by Komodo, with images in a Zot registry; both are restricted to the internal network. Images are built on the development machine and scanned with Trivy before the push: a HIGH/CRITICAL finding with an available fix blocks the release. Internet traffic flows only through Cloudflare Tunnel: containers run as non-root users with no published ports, and only cloudflared reaches them over the Docker network. The SQLite databases get daily backups with an off-host copy and restore rehearsals. It currently hosts KittyCafé and GoPrint. The hardware is a Xeon kit with a processor retired from a datacenter. Resellers ship these processors with their frequency limited, so I reworked the soldering to restore the full clock, which increases processing capacity while staying within the manufacturer\'s specifications.',
     },
     brief: {
       problem: {
@@ -690,11 +695,11 @@ export const projects = [
       en: "NestJS + Socket.IO API with SQLite (Drizzle), a Vite + React 19 web app packaged for Android with Capacitor, and a shared contracts package (Zod schemas, types and events). The server is the source of truth — draws, points and phases live there, and nobody receives anyone else's hand — and the rules are pure functions with injected clock and randomness, tested without a network. It has reconnection, four decks, rematches, Google accounts with custom decks and the moderation Google Play requires (reporting, blocking, age rating). Built with JPBeckner.",
     },
     ai: {
-      pt: 'São 717 commits em três semanas, 628 com o Claude como coautor. O trabalho correu em faixas paralelas (assinatura, moderação, release e CI), cada uma num agente em worktree própria, com relatório de cada rodada. A qualidade é checada pela máquina: o CI falha se a documentação citar código que não existe ou se um arquivo passar de 400 linhas, e testes de mutação (Stryker) rodam toda noite nos módulos críticos.',
-      en: 'It has 717 commits in three weeks, 628 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
+      pt: 'São 723 commits em três semanas, 632 com o Claude como coautor. O trabalho correu em faixas paralelas (assinatura, moderação, release e CI), cada uma num agente em worktree própria, com relatório de cada rodada. A qualidade é checada pela máquina: o CI falha se a documentação citar código que não existe ou se um arquivo passar de 400 linhas, e testes de mutação (Stryker) rodam toda noite nos módulos críticos.',
+      en: 'It has 723 commits in three weeks, 632 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
     },
     numbers: {
-      commits: { pt: '717 · 628 com o Claude como coautor', en: '717 · 628 with Claude as co-author' },
+      commits: { pt: '723 · 632 com o Claude como coautor', en: '723 · 632 with Claude as co-author' },
       mutation: { pt: 'Stryker, toda noite nos módulos críticos', en: 'Stryker, nightly on the critical modules' },
     },
     brief: {
@@ -822,11 +827,11 @@ export const projects = [
       en: 'A .NET 10 backend (REST, SQLite, Google login) and an isometric 3D Godot 4 client. The backend is the source of truth and runs nothing in the background: it stores timestamps and recomputes state on each request, and customer arrivals are predicted deterministically — offline progress comes from elapsed time on the next sync, and the client only animates what the server has already decided. Beyond the core loop it has a cat staff that automates the kitchen, quests, reputation, a farm, minigames, a weekly league among friends, ads (AdMob), Play Billing and an admin MCP server. It has been live at kittycafe.walterdalla.uk since September 2026, as a single Docker image behind Cloudflare Tunnel.',
     },
     ai: {
-      pt: 'É o projeto onde nasceu meu fluxo com agentes: 1.594 dos 1.822 commits têm o Claude como coautor. Cada tarefa vira um plano com itens numerados; um orquestrador distribui faixas a agentes em worktrees próprias, cada um com um backend descartável numa porta reservada e um commit por item; QA de código e QA visual devolvem achados; uma etapa de limpeza atualiza changelog e docs. O CI barra o que o agente erraria em silêncio: docs que citam símbolos inexistentes, traduções órfãs, padrões proibidos, e um job noturno de testes de mutação. Agentes nunca acessam o servidor de produção.',
-      en: 'This is where my agent workflow was born: 1,594 of its 1,822 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
+      pt: 'É o projeto onde nasceu meu fluxo com agentes: 1.599 dos 1.829 commits têm o Claude como coautor. Cada tarefa vira um plano com itens numerados; um orquestrador distribui faixas a agentes em worktrees próprias, cada um com um backend descartável numa porta reservada e um commit por item; QA de código e QA visual devolvem achados; uma etapa de limpeza atualiza changelog e docs. O CI barra o que o agente erraria em silêncio: docs que citam símbolos inexistentes, traduções órfãs, padrões proibidos, e um job noturno de testes de mutação. Agentes nunca acessam o servidor de produção.',
+      en: 'This is where my agent workflow was born: 1,599 of its 1,829 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
     },
     numbers: {
-      commits: { pt: '1.822 · 1.594 com o Claude como coautor', en: '1,822 · 1,594 with Claude as co-author' },
+      commits: { pt: '1.829 · 1.599 com o Claude como coautor', en: '1,829 · 1,599 with Claude as co-author' },
       mutation: { pt: 'job noturno no CI', en: 'nightly CI job' },
     },
     brief: {
@@ -932,6 +937,8 @@ export const projects = [
       },
     ],
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
+    demoUrl: 'https://kittycafe.walterdalla.uk',
+    demoNote: { pt: 'pede login com Google', en: 'requires Google sign-in' },
     cover: '/img/projects/kittycafe/cover.webp',
     gallery: [
       {
