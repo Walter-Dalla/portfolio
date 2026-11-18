@@ -13,12 +13,12 @@ describe('números de engenharia na ficha', () => {
       return { commits, tests, mutation }
     }
     expect(numbers('cartas-malfaladas')).toEqual({
-      commits: { pt: '717 · 628 com o Claude como coautor', en: '717 · 628 with Claude as co-author' },
+      commits: { pt: '723 · 632 com o Claude como coautor', en: '723 · 632 with Claude as co-author' },
       tests: null,
       mutation: { pt: 'Stryker, toda noite nos módulos críticos', en: 'Stryker, nightly on the critical modules' },
     })
     expect(numbers('kittycafe')).toEqual({
-      commits: { pt: '1.822 · 1.594 com o Claude como coautor', en: '1,822 · 1,594 with Claude as co-author' },
+      commits: { pt: '1.829 · 1.599 com o Claude como coautor', en: '1,829 · 1,599 with Claude as co-author' },
       tests: null,
       mutation: { pt: 'job noturno no CI', en: 'nightly CI job' },
     })
@@ -42,7 +42,7 @@ describe('números de engenharia na ficha', () => {
     renderApp('/projects/cartas-malfaladas')
     const facts = screen.getByRole('complementary', { name: 'Ficha do projeto' })
     expect(within(facts).getByText('commits')).toBeInTheDocument()
-    expect(within(facts).getByText('717 · 628 com o Claude como coautor')).toBeInTheDocument()
+    expect(within(facts).getByText('723 · 632 com o Claude como coautor')).toBeInTheDocument()
     expect(within(facts).getByText('testes de mutação')).toBeInTheDocument()
     expect(within(facts).getByText('Stryker, toda noite nos módulos críticos')).toBeInTheDocument()
   })

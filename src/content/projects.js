@@ -287,8 +287,8 @@ export const projects = [
       en: 'Each client opens tickets, attaches photos, videos or PDFs as evidence and follows the ten lifecycle statuses with a history of every change; the provider registers companies, users and printers (with a QR code from the serial number) and follows a dashboard by phase. ASP.NET Core (.NET 10) API with Dapper and PostgreSQL, S3 attachments (MinIO) and email through SendGrid; tenant isolation comes from the company in the token. The React + Vite + TypeScript front end is served by the API itself in a single Docker image, with integration tests in xUnit and Testcontainers.',
     },
     ai: {
-      pt: 'Desenvolvido com o Claude Code sob o wh-harness: o trabalho é planejado como uma lista de pendências numeradas, executada por agentes em worktrees paralelas e integrada depois — 30 dos 43 commits têm o Claude como coautor e 12 são merges dessas worktrees.',
-      en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 30 of the 43 commits have Claude as co-author and 12 are merges of those worktrees.',
+      pt: 'Desenvolvido com o Claude Code sob o wh-harness: o trabalho é planejado como uma lista de pendências numeradas, executada por agentes em worktrees paralelas e integrada depois — 109 dos 133 commits têm o Claude como coautor e 24 são merges dessas worktrees.',
+      en: 'Built with Claude Code under wh-harness: work is planned as a numbered punch list, carried out by agents on parallel worktrees and merged afterwards — 109 of the 133 commits have Claude as co-author and 24 are merges of those worktrees.',
     },
     client: 'Andelph Group',
     brief: {
@@ -690,11 +690,11 @@ export const projects = [
       en: "NestJS + Socket.IO API with SQLite (Drizzle), a Vite + React 19 web app packaged for Android with Capacitor, and a shared contracts package (Zod schemas, types and events). The server is the source of truth — draws, points and phases live there, and nobody receives anyone else's hand — and the rules are pure functions with injected clock and randomness, tested without a network. It has reconnection, four decks, rematches, Google accounts with custom decks and the moderation Google Play requires (reporting, blocking, age rating). Built with JPBeckner.",
     },
     ai: {
-      pt: 'São 717 commits em três semanas, 628 com o Claude como coautor. O trabalho correu em faixas paralelas (assinatura, moderação, release e CI), cada uma num agente em worktree própria, com relatório de cada rodada. A qualidade é checada pela máquina: o CI falha se a documentação citar código que não existe ou se um arquivo passar de 400 linhas, e testes de mutação (Stryker) rodam toda noite nos módulos críticos.',
-      en: 'It has 717 commits in three weeks, 628 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
+      pt: 'São 723 commits em três semanas, 632 com o Claude como coautor. O trabalho correu em faixas paralelas (assinatura, moderação, release e CI), cada uma num agente em worktree própria, com relatório de cada rodada. A qualidade é checada pela máquina: o CI falha se a documentação citar código que não existe ou se um arquivo passar de 400 linhas, e testes de mutação (Stryker) rodam toda noite nos módulos críticos.',
+      en: 'It has 723 commits in three weeks, 632 with Claude as co-author. Work ran in parallel lanes (subscriptions, moderation, release and CI), each in an agent on its own worktree, with a report for every round. Quality is checked by the machine: CI fails if the docs cite code that does not exist or a file grows past 400 lines, and mutation tests (Stryker) run nightly on the critical modules.',
     },
     numbers: {
-      commits: { pt: '717 · 628 com o Claude como coautor', en: '717 · 628 with Claude as co-author' },
+      commits: { pt: '723 · 632 com o Claude como coautor', en: '723 · 632 with Claude as co-author' },
       mutation: { pt: 'Stryker, toda noite nos módulos críticos', en: 'Stryker, nightly on the critical modules' },
     },
     brief: {
@@ -822,11 +822,11 @@ export const projects = [
       en: 'A .NET 10 backend (REST, SQLite, Google login) and an isometric 3D Godot 4 client. The backend is the source of truth and runs nothing in the background: it stores timestamps and recomputes state on each request, and customer arrivals are predicted deterministically — offline progress comes from elapsed time on the next sync, and the client only animates what the server has already decided. Beyond the core loop it has a cat staff that automates the kitchen, quests, reputation, a farm, minigames, a weekly league among friends, ads (AdMob), Play Billing and an admin MCP server. It has been live at kittycafe.walterdalla.uk since September 2026, as a single Docker image behind Cloudflare Tunnel.',
     },
     ai: {
-      pt: 'É o projeto onde nasceu meu fluxo com agentes: 1.594 dos 1.822 commits têm o Claude como coautor. Cada tarefa vira um plano com itens numerados; um orquestrador distribui faixas a agentes em worktrees próprias, cada um com um backend descartável numa porta reservada e um commit por item; QA de código e QA visual devolvem achados; uma etapa de limpeza atualiza changelog e docs. O CI barra o que o agente erraria em silêncio: docs que citam símbolos inexistentes, traduções órfãs, padrões proibidos, e um job noturno de testes de mutação. Agentes nunca acessam o servidor de produção.',
-      en: 'This is where my agent workflow was born: 1,594 of its 1,822 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
+      pt: 'É o projeto onde nasceu meu fluxo com agentes: 1.599 dos 1.829 commits têm o Claude como coautor. Cada tarefa vira um plano com itens numerados; um orquestrador distribui faixas a agentes em worktrees próprias, cada um com um backend descartável numa porta reservada e um commit por item; QA de código e QA visual devolvem achados; uma etapa de limpeza atualiza changelog e docs. O CI barra o que o agente erraria em silêncio: docs que citam símbolos inexistentes, traduções órfãs, padrões proibidos, e um job noturno de testes de mutação. Agentes nunca acessam o servidor de produção.',
+      en: 'This is where my agent workflow was born: 1,599 of its 1,829 commits have Claude as co-author. Each task becomes a plan with numbered items; an orchestrator hands lanes to agents on their own worktrees, each with a disposable backend on a reserved port and one commit per item; code QA and visual QA report findings; a cleanup step updates the changelog and docs. CI blocks what an agent would get wrong silently: docs citing symbols that do not exist, orphan translations, banned patterns, plus a nightly mutation-testing job. Agents never touch the production server.',
     },
     numbers: {
-      commits: { pt: '1.822 · 1.594 com o Claude como coautor', en: '1,822 · 1,594 with Claude as co-author' },
+      commits: { pt: '1.829 · 1.599 com o Claude como coautor', en: '1,829 · 1,599 with Claude as co-author' },
       mutation: { pt: 'job noturno no CI', en: 'nightly CI job' },
     },
     brief: {
