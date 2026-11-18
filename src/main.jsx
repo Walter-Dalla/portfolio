@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import './styles/global.css'
 import { App } from './App.jsx'
+import { detectLang } from './i18n/detect.js'
 import { readStored } from './storage.js'
 
 const root = document.getElementById('root')
@@ -15,15 +16,15 @@ const app = (
 )
 
 // O build pré-renderiza cada rota em inglês e tema escuro (scripts/prerender.mjs) e marca a rota em
-// data-route. Só hidrata quando o HTML pronto bate com a página pedida e com as preferências salvas;
-// nos outros casos descarta o HTML e renderiza do zero, como uma SPA comum.
+// data-route. Só hidrata quando o HTML pronto bate com a página pedida, o idioma inicial é inglês
+// (escolha salva ou, sem ela, navegador fora do português) e o tema salvo é escuro ou nenhum; nos
+// outros casos descarta o HTML e renderiza do zero, como uma SPA comum.
 const path = window.location.pathname.replace(/\/+$/, '') || '/'
-const lang = readStored('wd-lang')
 const theme = readStored('wd-theme')
 const canHydrate =
   root.hasChildNodes() &&
   root.dataset.route === path &&
-  (lang === null || lang === 'en') &&
+  detectLang() === 'en' &&
   (theme === null || theme === 'dark')
 
 if (canHydrate) {
