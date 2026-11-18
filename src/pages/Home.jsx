@@ -105,8 +105,8 @@ export function Home() {
           {t('workedAtLabel')}
         </span>
         <ul aria-labelledby="worked-label" className="worked__list">
-          {workedAt.map((name) => (
-            <li key={name}>{name}</li>
+          {workedAt.map((name, i) => (
+            <li key={i}>{l(name)}</li>
           ))}
         </ul>
       </div>
