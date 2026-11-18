@@ -286,7 +286,8 @@ export const skillGroups = [
 ]
 
 // Formação do currículo, da mais recente para a mais antiga.
-// `noteLink` (opcional): { href, label: { pt, en } } — link depois da nota.
+// `noteLink` (opcional): link depois da nota; `{ href, label: { pt, en } }` externo (abre em outra aba)
+// ou `{ to, label: { pt, en } }` rota do site.
 export const education = [
   {
     period: '01/2020 — 12/2024',
@@ -313,7 +314,11 @@ export const education = [
       en: 'COTIL / UNICAMP (State University of Campinas)',
     },
     place: 'Limeira-SP',
-    note: null,
+    note: {
+      pt: 'TCC: Atom, questionários totalmente customizáveis, com envio e análise simples das respostas.',
+      en: 'Capstone project: Atom, fully customizable questionnaires, with sending and simple analysis of the answers.',
+    },
+    noteLink: { to: '/projects/atom', label: { pt: 'Ver projeto', en: 'View project' } },
   },
 ]
 

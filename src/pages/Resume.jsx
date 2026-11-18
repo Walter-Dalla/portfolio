@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { credentials, education, experiences, languages, skillGroups } from '../content/experiences.js'
 import { company, resumePdf } from '../content/profile.js'
 import { useI18n } from '../i18n/context.js'
@@ -224,9 +225,15 @@ export function Resume() {
                   {ed.noteLink && (
                     <>
                       {' '}
-                      <a href={ed.noteLink.href} className="link link--text" target="_blank" rel="noreferrer">
-                        {l(ed.noteLink.label)} ↗
-                      </a>
+                      {ed.noteLink.to ? (
+                        <Link to={ed.noteLink.to} className="link link--text">
+                          {l(ed.noteLink.label)} →
+                        </Link>
+                      ) : (
+                        <a href={ed.noteLink.href} className="link link--text" target="_blank" rel="noreferrer">
+                          {l(ed.noteLink.label)} ↗
+                        </a>
+                      )}
                     </>
                   )}
                 </span>
