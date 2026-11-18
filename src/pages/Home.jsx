@@ -16,7 +16,6 @@ import './home.css'
 
 const EXPLORE = [
   { to: '/resume', cmd: 'cat resume.md', title: 'navResume', text: 'exploreResume' },
-  { to: '/achievements', cmd: 'ls achievements/', title: 'navAchievements', text: 'exploreAchievements' },
   { to: '/about', cmd: 'open about-me', title: 'navAbout', text: 'exploreAbout' },
   { to: '/contact', cmd: 'ping walter', title: 'navContact', text: 'exploreContact' },
 ]
@@ -25,11 +24,17 @@ export function Home() {
   const { t, l, lang } = useI18n()
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
-  const resumes = availableResumes(lang)
+  const [resume] = availableResumes(lang)
   // A chamada de arquitetura mostra a miniatura do primeiro sistema da lista; cada link abre o projeto já na arquitetura.
   const firstSystem = architectureSystems[0]
   const archPreview = firstSystem ? findDiagram(firstSystem.slug) : null
   const availability = l(profile.availability)
+  const location = (
+    <span className="hero__location mono">
+      <span className="accent-dot" />
+      {profile.location}
+    </span>
+  )
 
   return (
     <>
@@ -39,6 +44,8 @@ export function Home() {
           <h1 className="hero__title">{profile.name}</h1>
           <p className="hero__tagline">{l(profile.tagline)}</p>
           <p className="hero__pitch">{l(profile.pitch)}</p>
+          {/* Sem foto não há aside: a localização sobe para o texto, logo acima da disponibilidade. */}
+          {!profile.photo && location}
           {availability && (
             <p className="hero__availability mono">
               <span className="accent-dot" />
@@ -52,18 +59,13 @@ export function Home() {
             <Link to="/contact" className="btn btn--secondary">
               {t('heroContact')}
             </Link>
-            {resumes.map((code) => (
-              <a
-                key={code}
-                href={resumeHref(code)}
-                download={resumeFileName(code)}
-                className="btn btn--secondary"
-              >
+            {/* Só o PDF do idioma da interface (ou o que existir); o outro fica na página Currículo. */}
+            {resume && (
+              <a href={resumeHref(resume)} download={resumeFileName(resume)} className="btn btn--secondary">
                 <DownloadIcon />
-                {code === 'en' ? 'Resume' : t('downloadResume')}{' '}
-                <span className="btn__hint">{code.toUpperCase()}</span>
+                {t('downloadResume')} <span className="btn__hint">{resume.toUpperCase()}</span>
               </a>
-            ))}
+            )}
           </div>
           <div className="hero__social mono">
             <a href={profile.linkedin} className="link link--text" target="_blank" rel="noreferrer">
@@ -77,20 +79,19 @@ export function Home() {
             </a>
           </div>
         </div>
-        <div className="hero__aside">
-          <Media
-            src={profile.photo}
-            alt={profile.name}
-            ratio="4 / 5"
-            className="hero__photo"
-            label="WD"
-            priority
-          />
-          <span className="hero__location mono">
-            <span className="accent-dot" />
-            {profile.location}
-          </span>
-        </div>
+        {profile.photo && (
+          <div className="hero__aside">
+            <Media
+              src={profile.photo}
+              alt={profile.name}
+              ratio="4 / 5"
+              className="hero__photo"
+              label="WD"
+              priority
+            />
+            {location}
+          </div>
+        )}
       </section>
 
       <div className="container worked">
@@ -98,8 +99,8 @@ export function Home() {
           {t('workedAtLabel')}
         </span>
         <ul aria-labelledby="worked-label" className="worked__list">
-          {workedAt.map((name) => (
-            <li key={name}>{name}</li>
+          {workedAt.map((name, i) => (
+            <li key={i}>{l(name)}</li>
           ))}
         </ul>
       </div>
@@ -107,9 +108,9 @@ export function Home() {
       <section aria-label={t('metricsLabel')} className="metrics">
         <div className="container">
           <div className="metrics__grid">
-            {metrics.map((m) => (
-              <div key={m.value} className="metric">
-                <span className="metric__value">{m.value}</span>
+            {metrics.map((m, i) => (
+              <div key={i} className="metric">
+                <span className={m.long ? 'metric__value metric__value--long' : 'metric__value'}>{l(m.value)}</span>
                 <span className="metric__label">{l(m.label)}</span>
                 <span className="metric__source">{m.source}</span>
               </div>

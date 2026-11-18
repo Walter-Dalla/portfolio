@@ -56,7 +56,6 @@
 .hero__photo {
   border-radius: 12px;
   border: 1px dashed var(--strong);
-  background: var(--surface);
 }
 
 .hero__photo:has(img) {
@@ -176,6 +175,17 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--accent);
+}
+
+/* Valor longo (antes → depois): fonte menor e numa linha só, sem estourar a célula (medido de
+   320 a 1440px: a célula mais estreita comporta até 27px). Mantém a altura do valor cheio, com o
+   texto embaixo, para os rótulos da linha ficarem alinhados. */
+.metric__value--long {
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(44px, 4.6cqi, 60px);
+  font-size: clamp(24px, 2.2cqi, 30px);
+  white-space: nowrap;
 }
 
 .metric__label {
