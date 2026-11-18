@@ -1,4 +1,5 @@
 import { useI18n } from '../i18n/context.js'
+import './decisions.css'
 
 // Cartões de decisões de arquitetura do projeto (`decisions`): a decisão, o porquê e, quando
 // preenchidos, a alternativa descartada e o trade-off.
@@ -7,8 +8,11 @@ export function Decisions({ items }) {
 
   return (
     <ul className="decisions">
-      {items.map((item) => (
+      {items.map((item, i) => (
         <li key={l(item.decision)} className="decision">
+          <span className="decision__num mono" aria-hidden="true">
+            {String(i + 1).padStart(2, '0')}
+          </span>
           <h3 className="decision__title">{l(item.decision)}</h3>
           <p>{l(item.why)}</p>
           {item.alternative && (

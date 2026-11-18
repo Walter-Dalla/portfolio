@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { Decisions } from './components/Decisions.jsx'
+import { diagrams } from './content/diagrams.js'
 import { findProject, projects } from './content/projects.js'
 import { LanguageProvider } from './i18n/LanguageProvider.jsx'
 import { renderApp } from './test/renderApp.jsx'
@@ -63,42 +64,48 @@ const CARTAS = [
 ]
 
 describe('decisões de arquitetura', () => {
-  it('o piloto tem 3 decisões no KittyCafé e 4 nas Cartas Malfaladas, sem alternativa nem trade-off', () => {
+  it('o KittyCafé tem 5 decisões e as Cartas Malfaladas 6, começando pelas do piloto', () => {
     const kitty = findProject('kittycafe').decisions
     const cartas = findProject('cartas-malfaladas').decisions
-    expect(kitty).toHaveLength(3)
-    expect(cartas).toHaveLength(4)
-    expect(kitty.map(({ decision, why }) => ({ decision, why }))).toEqual(KITTY)
-    expect(cartas.map(({ decision, why }) => ({ decision, why }))).toEqual(CARTAS)
-    for (const item of [...kitty, ...cartas]) {
-      expect(item.alternative ?? null).toBeNull()
-      expect(item.tradeoff ?? null).toBeNull()
+    expect(kitty).toHaveLength(5)
+    expect(cartas).toHaveLength(6)
+    expect(kitty.slice(0, 3).map(({ decision, why }) => ({ decision, why }))).toEqual(KITTY)
+    expect(cartas.slice(0, 4).map(({ decision, why }) => ({ decision, why }))).toEqual(CARTAS)
+  })
+
+  it('todo projeto com diagrama tem decisões; os demais não', () => {
+    const withDecisions = projects.filter((p) => (p.decisions ?? []).length > 0).map((p) => p.slug)
+    expect(withDecisions).toEqual(['wh-harness', 'goprint', 'nesse-capitulo', 'homelab', 'cartas-malfaladas', 'kittycafe'])
+    expect(withDecisions.toSorted()).toEqual(Object.keys(diagrams).toSorted())
+  })
+
+  it('cada decisão tem título e porquê nos dois idiomas, sem alternativa nem trade-off', () => {
+    for (const project of projects) {
+      for (const item of project.decisions ?? []) {
+        for (const text of [item.decision, item.why]) {
+          expect(text.pt.length, project.slug).toBeGreaterThan(10)
+          expect(text.en.length, project.slug).toBeGreaterThan(10)
+        }
+        expect(item.alternative ?? null).toBeNull()
+        expect(item.tradeoff ?? null).toBeNull()
+      }
     }
   })
 
-  it('os outros projetos não têm decisões', () => {
-    const others = projects.filter((p) => !['kittycafe', 'cartas-malfaladas'].includes(p.slug))
-    for (const project of others) {
-      expect(project.decisions ?? [], project.slug).toEqual([])
-    }
-  })
-
-  it('no KittyCafé a seção vem numerada entre o texto e a galeria', () => {
+  it('no KittyCafé as decisões ficam no bloco "Arquitetura", numeradas', () => {
     renderApp('/projects/kittycafe')
-    expect(headings()).toEqual([
-      '01O projeto',
-      '02Como foi feito com IA',
-      '03Arquitetura',
-      '04Decisões de arquitetura',
-      '05Galeria',
-    ])
-    const section = screen.getByRole('heading', { name: /Decisões de arquitetura/ }).closest('section')
-    expect(within(section).getAllByRole('heading', { level: 3 })).toHaveLength(3)
+    expect(headings()).toEqual(['01O projeto', '02Como foi feito com IA', '03Galeria'])
+    const block = document.getElementById('architecture')
+    expect(within(block).getByText('// decisões de arquitetura')).toBeInTheDocument()
+    expect(within(block).getAllByRole('heading', { level: 3 })).toHaveLength(5)
+    expect([...block.querySelectorAll('.decision__num')].map((n) => n.textContent)).toEqual(['01', '02', '03', '04', '05'])
+    // Dentro do bloco as decisões não têm seção numerada própria.
+    expect(screen.queryByRole('heading', { level: 2, name: /Decisões de arquitetura/ })).toBeNull()
     expect(screen.queryByText(/alternativa descartada/)).toBeNull()
   })
 
   it('projeto sem decisões mantém a numeração contínua', () => {
-    renderApp('/projects/goprint')
+    renderApp('/projects/portfolio')
     expect(headings()).toEqual(['01O projeto', '02Como foi feito com IA', '03Galeria'])
     expect(screen.queryByText('Decisões de arquitetura')).toBeNull()
   })

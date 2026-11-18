@@ -1,19 +1,22 @@
 import { Link, useParams } from 'react-router'
+import { ARCHITECTURE_ID } from '../content/architecture.js'
 import { findDiagram } from '../content/diagrams.js'
 import { findProject, projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
-import { ArchDiagram } from '../components/ArchDiagram.jsx'
+import { ArchExplorer } from '../components/ArchExplorer.jsx'
 import { Decisions } from '../components/Decisions.jsx'
 import { Zoom } from '../components/Lightbox.jsx'
 import { useLightbox } from '../components/useLightbox.jsx'
 import { Media } from '../components/Media.jsx'
 import { ProjectEmbed } from '../components/ProjectEmbed.jsx'
+import { StackList } from '../components/StackList.jsx'
 import { Tags } from '../components/Tags.jsx'
 import { usePageTitle } from '../components/usePageTitle.js'
 import { NotFound } from './NotFound.jsx'
 import './project-detail.css'
 
 const isExternal = (url) => /^https?:\/\//.test(url)
+const twoDigits = (n) => String(n).padStart(2, '0')
 
 // Tópicos do resumo do topo (`brief`), na ordem em que aparecem, com a chave do rótulo.
 const BRIEF_ITEMS = [
@@ -83,7 +86,11 @@ function Project({ project }) {
   const embedUrl = l(project.embedUrl)
   const brief = BRIEF_ITEMS.filter(([key]) => project.brief?.[key])
   const decisions = project.decisions ?? []
+  const stack = project.stack ?? []
   const diagram = findDiagram(project.slug)
+  // Com capa, a arquitetura é um bloco de largura total depois do texto: explorador, stack por camada e decisões.
+  // Sem capa, o explorador ocupa o lugar da capa, e a stack e as decisões seguem como seções do texto.
+  const archBlock = Boolean(project.cover && diagram)
   const { open, lightbox } = useLightbox(gallery)
 
   // Blocos numerados do texto, na ordem da página; o número sai da posição na lista.
@@ -93,22 +100,19 @@ function Project({ project }) {
       title: l(section.title),
       body: <SectionBody section={section} />,
     })),
-    // Com capa, o diagrama vira a seção "Arquitetura"; sem capa, ele ocupa o lugar da capa.
-    project.cover &&
-      diagram && {
-        key: 'diagram',
-        title: t('diagramTitle'),
-        body: (
-          <div className="project__diagram">
-            <ArchDiagram diagram={diagram} />
-          </div>
-        ),
+    // Sem o bloco "Arquitetura" (diagrama na capa, ou projeto sem diagrama), stack e decisões são seções do texto.
+    !archBlock &&
+      stack.length > 0 && {
+        key: 'stack',
+        title: t('stackTitle'),
+        body: <StackList items={stack} />,
       },
-    decisions.length > 0 && {
-      key: 'decisions',
-      title: t('decisionsTitle'),
-      body: <Decisions items={decisions} />,
-    },
+    !archBlock &&
+      decisions.length > 0 && {
+        key: 'decisions',
+        title: t('decisionsTitle'),
+        body: <Decisions items={decisions} />,
+      },
     gallery.length > 0 && {
       key: 'gallery',
       title: t('gallery'),
@@ -152,8 +156,8 @@ function Project({ project }) {
         <Media src={project.cover} alt={project.title} ratio="21 / 9" className="project__cover" priority />
       )}
       {!project.cover && diagram && (
-        <div className="project__diagram project__diagram--cover">
-          <ArchDiagram diagram={diagram} />
+        <div id={ARCHITECTURE_ID} className="project__diagram project__diagram--cover">
+          <ArchExplorer diagram={diagram} side />
         </div>
       )}
 
@@ -173,28 +177,12 @@ function Project({ project }) {
           {blocks.map((block, i) => (
             <section key={block.key} className="project__section">
               <h2 className="project__h2">
-                <span className="project__num mono">{String(i + 1).padStart(2, '0')}</span>
+                <span className="project__num mono">{twoDigits(i + 1)}</span>
                 {block.title}
               </h2>
               {block.body}
             </section>
           ))}
-
-          <nav aria-label={t('allProjects')} className="project__pager mono">
-            {prev && (
-              <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
-                ← {t('prevProject')}: {l(prev.title)}
-              </Link>
-            )}
-            <Link to="/projects" className="link link--muted project__pager-all">
-              {t('allProjects')}
-            </Link>
-            {next && (
-              <Link to={`/projects/${next.slug}`} className="link project__pager-next">
-                {t('nextProject')}: {l(next.title)} →
-              </Link>
-            )}
-          </nav>
         </article>
 
         <aside aria-label={t('factSheetLabel')} className="facts">
@@ -235,6 +223,44 @@ function Project({ project }) {
           )}
         </aside>
       </div>
+
+      {archBlock && (
+        <section id={ARCHITECTURE_ID} className="project__arch">
+          <h2 className="project__h2">
+            <span className="project__num mono">{twoDigits(blocks.length + 1)}</span>
+            {t('diagramTitle')}
+          </h2>
+          <ArchExplorer diagram={diagram} side />
+          {stack.length > 0 && (
+            <div className="project__arch-block">
+              <span className="eyebrow">{t('stackEyebrow')}</span>
+              <StackList items={stack} />
+            </div>
+          )}
+          {decisions.length > 0 && (
+            <div className="project__arch-block">
+              <span className="eyebrow">{t('decisionsEyebrow')}</span>
+              <Decisions items={decisions} />
+            </div>
+          )}
+        </section>
+      )}
+
+      <nav aria-label={t('allProjects')} className="project__pager mono">
+        {prev && (
+          <Link to={`/projects/${prev.slug}`} className="link project__pager-prev">
+            ← {t('prevProject')}: {l(prev.title)}
+          </Link>
+        )}
+        <Link to="/projects" className="link link--muted project__pager-all">
+          {t('allProjects')}
+        </Link>
+        {next && (
+          <Link to={`/projects/${next.slug}`} className="link project__pager-next">
+            {t('nextProject')}: {l(next.title)} →
+          </Link>
+        )}
+      </nav>
       {embedUrl && <ProjectEmbed url={embedUrl} title={l(project.title)} />}
       {lightbox}
     </div>

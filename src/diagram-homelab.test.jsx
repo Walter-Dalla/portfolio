@@ -58,7 +58,7 @@ describe('diagrama do Homelab', () => {
   })
 
   it('não tem diagrama para projeto sem um', () => {
-    expect(findDiagram('goprint')).toBeNull()
+    expect(findDiagram('portfolio')).toBeNull()
   })
 
   it('desenha o Homelab com os 10 nós na grade', () => {

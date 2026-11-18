@@ -179,6 +179,86 @@
   }
 }
 
+/* Chamada da página de arquitetura: texto e sistemas de um lado, miniatura de um diagrama do outro. */
+.home-arch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px clamp(32px, 5cqi, 64px);
+  padding: clamp(24px, 4cqi, 48px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.home-arch__text {
+  flex: 1 1 360px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.home-arch__lede {
+  margin: 0;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.home-arch__systems {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-arch__system {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  border: 1px solid transparent;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.home-arch__system:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.home-arch__figure {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: block;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  transition: border-color 0.15s;
+}
+
+.home-arch__figure:hover {
+  border-color: var(--accent);
+}
+
+.home-arch__figure .arch-diagram__svg--compact {
+  height: auto;
+}
+
+/* No celular a miniatura fica pequena demais para ler: a seção segue só com o texto e os sistemas. */
+@media (max-width: 599px) {
+  .home-arch__figure {
+    display: none;
+  }
+}
+
 .explore {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -194,11 +274,16 @@
   border-radius: 12px;
   background: var(--bg);
   color: var(--text);
-  transition: border-color 0.15s;
+  transition:
+    border-color 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
 .explore__card:hover {
   border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .explore__cmd {

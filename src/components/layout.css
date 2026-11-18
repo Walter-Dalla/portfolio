@@ -25,12 +25,17 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--accent);
+  /* A marca nunca quebra nem encolhe: quem cede espaço é a navegação. */
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .site-header__tools {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  /* Quando a navegação ocupa a linha toda, os botões descem alinhados à direita. */
+  justify-content: flex-end;
   gap: 4px 20px;
 }
 

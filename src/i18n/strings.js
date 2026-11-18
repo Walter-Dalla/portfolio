@@ -37,7 +37,10 @@ export const strings = {
   featuredEyebrow: { pt: '01 · projetos em destaque', en: '01 · featured projects' },
   featuredTitle: { pt: 'Coisas que eu construí', en: 'Things I built' },
   seeAllProjects: { pt: 'ver todos os projetos →', en: 'see all projects →' },
-  exploreEyebrow: { pt: '02 · explore', en: '02 · explore' },
+  homeArchEyebrow: { pt: '02 · arquitetura', en: '02 · architecture' },
+  homeArchTitle: { pt: 'Como eu desenho sistemas', en: 'How I design systems' },
+  homeArchSystemsLabel: { pt: 'Arquitetura por sistema', en: 'Architecture by system' },
+  exploreEyebrow: { pt: '03 · explore', en: '03 · explore' },
   exploreTitle: { pt: 'Mais sobre mim', en: 'More about me' },
   exploreResume: {
     pt: '6 cargos desde 2018 — de estágio a arquiteto, passando por BTG Pactual e Linx (Grupo Stone).',
@@ -95,6 +98,19 @@ export const strings = {
   decisionAlternative: { pt: 'alternativa descartada', en: 'discarded alternative' },
   decisionTradeoff: { pt: 'trade-off', en: 'trade-off' },
   projectNotFound: { pt: 'Projeto não encontrado.', en: 'Project not found.' },
+
+  // Arquitetura na página do projeto (explorador do diagrama, stack por camada e decisões)
+  archHint: {
+    pt: 'clique em um componente para ver o papel dele na arquitetura',
+    en: 'click a component to see its role in the architecture',
+  },
+  archPanelLabel: { pt: 'Componente selecionado', en: 'Selected component' },
+  archConnects: { pt: 'conecta com', en: 'connects to' },
+  archPrev: { pt: 'Componente anterior', en: 'Previous component' },
+  archNext: { pt: 'Próximo componente', en: 'Next component' },
+  stackTitle: { pt: 'Stack por camada', en: 'Stack by layer' },
+  stackEyebrow: { pt: '// stack por camada', en: '// stack by layer' },
+  decisionsEyebrow: { pt: '// decisões de arquitetura', en: '// architecture decisions' },
 
   // Currículo
   resumeTitle: { pt: 'Currículo', en: 'Resume' },

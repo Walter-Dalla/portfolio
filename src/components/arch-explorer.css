@@ -1,0 +1,219 @@
+/* Explorador de arquitetura (ArchExplorer): moldura do diagrama e painel do nó escolhido; e a lista de
+   tecnologias por camada (StackList). */
+.arch-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Moldura do diagrama: a área de desenho, com uma grade de pontos discreta, e o pé com a legenda. */
+.arch-explorer__diagram {
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  /* O mesmo chão do rótulo dos grupos do diagrama (`arch-diagram__group-label-bg`). */
+  background: var(--bg);
+}
+
+.arch-explorer__canvas {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.arch-explorer__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.arch-explorer__caption {
+  color: var(--muted);
+}
+
+.arch-explorer__hint {
+  color: var(--faint);
+}
+
+.arch-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.arch-panel p {
+  margin: 0;
+}
+
+.arch-panel__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.arch-panel__layer {
+  color: var(--accent);
+}
+
+.arch-panel__count {
+  color: var(--faint);
+}
+
+.arch-panel__name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.arch-panel .arch-panel__title {
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.arch-panel .arch-panel__sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.arch-panel .arch-panel__text {
+  color: var(--muted);
+}
+
+.arch-panel__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.arch-panel__links-label {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.arch-panel__links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.arch-panel__link {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--strong);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.arch-panel__link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.arch-panel__nav {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.arch-panel__step {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--strong);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.arch-panel__step:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Painel ao lado do diagrama só quando o diagrama cabe inteiro (701px + moldura) junto do painel.
+   A medida é a da raiz do site (`.site`, o contêiner mais próximo). */
+@container (min-width: 1190px) {
+  .arch-explorer--side {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .arch-explorer--side .arch-explorer__diagram {
+    flex: 1 1 0;
+  }
+
+  .arch-explorer--side .arch-panel {
+    flex: 0 0 300px;
+  }
+}
+
+/* Tecnologias por camada: rótulo da camada à esquerda, tags à direita. */
+.stack-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.stack-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+
+.stack-list__row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-list dt {
+  flex: 0 0 132px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.stack-list dd {
+  flex: 1 1 280px;
+  margin: 0;
+}

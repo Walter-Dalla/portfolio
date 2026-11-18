@@ -21,7 +21,7 @@ O site é uma SPA, mas o build gera um `.html` já renderizado por rota (em ingl
 ## Ao mudar o site
 
 - Nova rota pública: adicione em `STATIC_ROUTES` (`src/seo.js`). Projetos entram sozinhos pelo `slug`.
-- Texto só de interface que o pré-render usa como descrição: `resumeLead`, `projectsLead`, `achievementsLead`, `exploreAbout` (`src/i18n/strings.js`).
+- Texto só de interface que o pré-render usa como descrição: `resumeLead`, `projectsLead`, `achievementsLead`, `exploreAbout` (`src/i18n/strings.js`). A descrição de `/ai` é o `lede` de `aiPage`.
 - Componente que leia `window`/`document` fora de `useEffect` quebra o pré-render (`src/seo.test.jsx` cobre a hidratação de cada rota).
 
 ## Interações
@@ -29,3 +29,4 @@ O site é uma SPA, mas o build gera um `.html` já renderizado por rota (em ingl
 - [layout.md](layout.md): 404 e rotas antigas passam pelo `404.html`.
 - [tema-idioma.md](tema-idioma.md): preferências salvas decidem se o HTML pronto é hidratado ou descartado.
 - [projetos.md](projetos.md): `cover` do projeto vira `og:image`; `summary`, a descrição.
+- [arquitetura.md](arquitetura.md): a página de cada projeto sai pré-renderizada com a arquitetura (diagrama, painel e stack já no HTML); não há rota `/architecture`.

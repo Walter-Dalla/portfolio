@@ -1,7 +1,10 @@
 import { Link } from 'react-router'
+import { architectureHref, architectureIntro, architectureSystems } from '../content/architecture.js'
+import { findDiagram } from '../content/diagrams.js'
 import { metrics, profile } from '../content/profile.js'
 import { projects } from '../content/projects.js'
 import { useI18n } from '../i18n/context.js'
+import { ArchDiagram } from '../components/ArchDiagram.jsx'
 import { DownloadIcon } from '../components/Icons.jsx'
 import { Media } from '../components/Media.jsx'
 import { ProjectCard } from '../components/ProjectCard.jsx'
@@ -22,6 +25,9 @@ export function Home() {
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
   const resumes = availableResumes(lang)
+  // A chamada de arquitetura mostra a miniatura do primeiro sistema da lista; cada link abre o projeto já na arquitetura.
+  const firstSystem = architectureSystems[0]
+  const archPreview = firstSystem ? findDiagram(firstSystem.slug) : null
 
   return (
     <>
@@ -90,7 +96,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="container home-section">
+      <section className="container home-section reveal">
         <div className="home-section__head">
           <SectionHeading eyebrow={t('featuredEyebrow')} title={t('featuredTitle')} />
           <Link to="/projects" className="link">
@@ -104,7 +110,30 @@ export function Home() {
         </div>
       </section>
 
-      <section className="container home-section">
+      {archPreview && (
+        <section className="container home-section reveal">
+          <div className="home-arch">
+            <div className="home-arch__text">
+              <SectionHeading eyebrow={t('homeArchEyebrow')} title={t('homeArchTitle')} />
+              <p className="home-arch__lede">{l(architectureIntro.lede)}</p>
+              <ul className="home-arch__systems" aria-label={t('homeArchSystemsLabel')}>
+                {architectureSystems.map((p) => (
+                  <li key={p.slug}>
+                    <Link to={architectureHref(p.slug)} className="tag home-arch__system">
+                      {l(p.title)} <span aria-hidden="true">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link to={architectureHref(firstSystem.slug)} className="home-arch__figure" tabIndex={-1} aria-hidden="true">
+              <ArchDiagram diagram={archPreview} compact />
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <section className="container home-section reveal">
         <SectionHeading eyebrow={t('exploreEyebrow')} title={t('exploreTitle')} />
         <div className="explore">
           {EXPLORE.map((item) => (

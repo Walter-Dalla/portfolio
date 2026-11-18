@@ -36,6 +36,11 @@
   stroke: var(--strong);
 }
 
+/* Serviço de fora do sistema (login, e-mail, fontes de dados): contorno tracejado. */
+.arch-diagram__item--external .arch-diagram__node {
+  stroke-dasharray: 5 4;
+}
+
 .arch-diagram__label {
   fill: var(--text);
 }
@@ -70,6 +75,76 @@
 
 .arch-diagram__edge-label {
   fill: var(--muted);
+}
+
+/* Modo interativo (ArchExplorer): o nó é um botão; o escolhido e as ligações dele ganham destaque. */
+.arch-diagram__item.is-interactive {
+  cursor: pointer;
+  outline: none;
+}
+
+.arch-diagram__item.is-interactive .arch-diagram__node {
+  transition:
+    stroke 0.15s,
+    fill 0.15s;
+}
+
+.arch-diagram__item.is-interactive:hover .arch-diagram__node,
+.arch-diagram__item.is-linked .arch-diagram__node {
+  stroke: var(--faint);
+}
+
+.arch-diagram__item.is-interactive:hover .arch-diagram__node {
+  fill: var(--surface2);
+}
+
+.arch-diagram__item.is-selected .arch-diagram__node,
+.arch-diagram__item.is-selected:hover .arch-diagram__node {
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+
+/* Contorno de foco próprio: `outline` em <g> não é desenhado igual em todos os navegadores. */
+.arch-diagram__focus {
+  fill: none;
+  stroke: none;
+}
+
+.arch-diagram__item:focus-visible .arch-diagram__focus {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.arch-diagram__link {
+  transition: opacity 0.2s;
+}
+
+.arch-diagram__link.is-dim {
+  opacity: 0.35;
+}
+
+.arch-diagram__link.is-active .arch-diagram__edge {
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  animation: arch-flow 0.9s linear infinite;
+}
+
+.arch-diagram__link.is-active .arch-diagram__edge-label {
+  fill: var(--text);
+}
+
+/* Os traços correm da origem para o destino da seta. */
+@keyframes arch-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-diagram__link.is-active .arch-diagram__edge {
+    animation: none;
+  }
 }
 
 /* Miniatura do diagrama no lugar da capa do card (projeto sem capa). */

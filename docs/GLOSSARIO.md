@@ -25,6 +25,11 @@
 | Resumo do projeto (problema, o que fiz, resultado) | `projects[].brief` | |
 | Decisões de arquitetura (cartões) | `projects[].decisions`, `Decisions` | "ADR" só como referência ao formato |
 | Diagrama de arquitetura | `diagrams`, `ArchDiagram` | |
+| Componente do diagrama | `diagrams[slug].nodes` | "componente" na tela, "nó" no código |
+| Camada do componente | `diagramLayers`, `nodes[].layer` | não é a camada da stack (`stack[].layer`) |
+| Stack por camada | `projects[].stack`, `StackList` | "tecnologias" é a linha de tags da ficha (`tags`) |
+| Bloco "Arquitetura" do projeto | `ARCHITECTURE_ID`, `architectureHref` | explorador, stack por camada e decisões na página do projeto; não é uma página |
+| Sistema (na chamada do Início) | `architectureSystems` | é um projeto com diagrama; no resto do site, "projeto" |
 | Números de engenharia da ficha | `facts.commits`, `facts.tests`, `facts.mutation` (`numbers` de `simpleProject`) | |
 | Categoria de projeto (filtro) | `projectCategories` | |
 | Conquista em destaque | `featuredAchievement` | |
@@ -40,6 +45,8 @@
 | Cabeçalho / navegação | `Header`, `NAV_ITEMS` | fixo ao rolar; menu no celular |
 | Rodapé | `Footer` | repete a navegação |
 | Visualizador de imagem (ampliar) | `Lightbox`, `useLightbox`, `Zoom` | |
+| Explorador do diagrama | `ArchExplorer` | diagrama clicável com o painel do componente escolhido |
+| Filtro em pílula | `.chips`, `.chip` (`global.css`) | categorias em Projetos |
 | Botão copiar e-mail | `CopyButton` | |
 | Voltar ao topo | `BackToTop` | |
 | Prévia do link (LinkedIn, WhatsApp) | tags Open Graph em `index.html`, `public/og.png` | |

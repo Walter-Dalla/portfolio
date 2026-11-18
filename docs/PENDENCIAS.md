@@ -20,7 +20,7 @@ Tarefas em aberto do dono do site. Cada uma tem um arquivo em `docs/pending/` (`
 - Faixa "Onde atuei": BTG Pactual, Qyon, AgileEngine, UNICAMP; permissão de uso dos logos (P-018).
 - Comprovantes das conquistas, `proofUrl` (P-019).
 - Depoimentos, com autorização (P-020).
-- Alternativa descartada e trade-off dos 7 cartões de decisão do KittyCafé e da Cartas Malfaladas (P-021).
+- Alternativa descartada e trade-off dos cartões de decisão: os 7 do piloto (KittyCafé e Cartas Malfaladas, P-021) e os que entraram depois em todos os projetos com diagrama, hoje 26 cartões, todos só com a decisão e o porquê.
 - Uptime medido dos projetos em produção para a ficha técnica (P-022).
 
 ## Conferências e decisões suas (da execução ajustes-sessao)

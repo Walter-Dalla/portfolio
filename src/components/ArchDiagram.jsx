@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useEffect, useId, useRef } from 'react'
 import { useI18n } from '../i18n/context.js'
 import './arch-diagram.css'
 
@@ -13,6 +13,8 @@ const STEP_Y = GRID.nodeH + GRID.gapY
 const GROUP_PAD = 12
 // Largura aproximada de um caractere da fonte mono a 11px (0,6em).
 const MONO_CHAR_11 = 7.2
+// Folga do contorno de foco em volta do nó (modo interativo).
+const FOCUS_PAD = 4
 
 /** Tamanho do viewBox: colunas e linhas contadas pelo maior `col`/`row`. */
 // eslint-disable-next-line react-refresh/only-export-components
@@ -31,8 +33,18 @@ function box(node) {
   return { x, y, cx: x + GRID.nodeW / 2, cy: y + GRID.nodeH / 2 }
 }
 
-// Pontos da linha: reta na mesma linha ou coluna; senão cotovelo (horizontal até o x do alvo, depois vertical).
-function edgePoints(source, target) {
+/** Caixa do nó no viewBox: canto superior esquerdo (`x`, `y`) e centro (`cx`, `cy`). */
+// eslint-disable-next-line react-refresh/only-export-components
+export function nodeBox(node) {
+  return box(node)
+}
+
+// Pontos da linha: reta na mesma linha ou coluna; senão cotovelo. O cotovelo padrão sai pelo lado do nó de
+// origem (horizontal até o x do alvo, depois vertical); com `bend: 'v'` sai por cima ou por baixo (vertical
+// até a linha do alvo, depois horizontal) e entra no alvo pelo lado.
+// Exportada para o teste dos dados conferir que nenhuma linha passa por cima de um nó.
+// eslint-disable-next-line react-refresh/only-export-components
+export function edgePoints(source, target, bend) {
   const a = box(source)
   const b = box(target)
   if (source.row === target.row) {
@@ -43,11 +55,19 @@ function edgePoints(source, target) {
     ]
   }
   const down = b.cy > a.cy
+  const sourceY = down ? a.y + GRID.nodeH : a.y
   const targetY = down ? b.y : b.y + GRID.nodeH
   if (source.col === target.col) {
     return [
-      [a.cx, down ? a.y + GRID.nodeH : a.y],
+      [a.cx, sourceY],
       [b.cx, targetY],
+    ]
+  }
+  if (bend === 'v') {
+    return [
+      [a.cx, sourceY],
+      [a.cx, b.cy],
+      [b.cx > a.cx ? b.x : b.x + GRID.nodeW, b.cy],
     ]
   }
   const sourceX = b.cx > a.cx ? a.x + GRID.nodeW : a.x
@@ -82,14 +102,20 @@ function groupRect(group, byId) {
   return { x, y, width: right - x, height: bottom - y }
 }
 
+const classes = (...names) => names.filter(Boolean).join(' ')
+
 /**
  * Diagrama de arquitetura em SVG inline, desenhado a partir dos dados de src/content/diagrams.js.
  * As cores vêm só das classes do CSS (tokens do tema), então o desenho acompanha o tema claro/escuro.
  * `compact`: miniatura decorativa para o card, sem moldura, legenda nem nome acessível.
+ * `onSelect` (com `selected`, o id do nó escolhido): modo interativo, usado pelo `ArchExplorer`. Cada nó vira um
+ * botão (clique, Enter ou espaço), o escolhido e as ligações dele ganham destaque e as demais linhas esmaecem.
  */
-export function ArchDiagram({ diagram, compact = false }) {
+export function ArchDiagram({ diagram, compact = false, selected = null, onSelect = null }) {
   const { l } = useI18n()
   const reactId = useId()
+  const scrollRef = useRef(null)
+  const interactive = !compact && typeof onSelect === 'function'
   // Ids do React trazem caracteres fora de [A-Za-z0-9]; o url(#…) do marcador fica mais seguro sem eles.
   const baseId = `arch-diagram-${reactId.replace(/[^A-Za-z0-9]/g, '')}`
   const markerId = `${baseId}-arrow`
@@ -97,18 +123,41 @@ export function ArchDiagram({ diagram, compact = false }) {
   const { width, height } = diagramSize(diagram)
   const byId = Object.fromEntries(diagram.nodes.map((n) => [n.id, n]))
   const title = l(diagram.title)
+  const highlight = interactive && selected != null
+  const touches = (edge) => edge.from === selected || edge.to === selected
+  const linked = new Set(
+    highlight ? diagram.edges.filter(touches).map((e) => (e.from === selected ? e.to : e.from)) : [],
+  )
+
+  // Em tela estreita o diagrama rola na horizontal: o nó escolhido (pelo painel, por exemplo) vem para o centro
+  // da moldura. Só a moldura rola, nunca a página.
+  useEffect(() => {
+    const scroll = scrollRef.current
+    if (!interactive || !scroll || typeof scroll.scrollTo !== 'function') return
+    if (scroll.scrollWidth <= scroll.clientWidth) return
+    const node = [...scroll.querySelectorAll('[data-node]')].find((el) => el.dataset.node === selected)
+    if (!node) return
+    const frame = scroll.getBoundingClientRect()
+    const rect = node.getBoundingClientRect()
+    if (rect.left >= frame.left && rect.right <= frame.right) return
+    const center = rect.left - frame.left + scroll.scrollLeft + rect.width / 2
+    scroll.scrollTo({ left: center - scroll.clientWidth / 2, behavior: 'smooth' })
+  }, [interactive, selected])
+
+  const svgProps = compact
+    ? { 'aria-hidden': 'true' }
+    : {
+        // Com nós clicáveis o svg é um grupo: `img` esconderia os botões de quem usa leitor de tela.
+        role: interactive ? 'group' : 'img',
+        'aria-labelledby': titleId,
+        style: { minWidth: Math.ceil((width * 11) / 13), maxWidth: width },
+      }
 
   const svg = (
     <svg
       className={compact ? 'arch-diagram__svg arch-diagram__svg--compact' : 'arch-diagram__svg'}
       viewBox={`0 0 ${width} ${height}`}
-      {...(compact
-        ? { 'aria-hidden': 'true' }
-        : {
-            role: 'img',
-            'aria-labelledby': titleId,
-            style: { minWidth: Math.ceil((width * 11) / 13), maxWidth: width },
-          })}
+      {...svgProps}
     >
       {!compact && <title id={titleId}>{title}</title>}
       <defs>
@@ -146,11 +195,14 @@ export function ArchDiagram({ diagram, compact = false }) {
       })}
 
       {diagram.edges.map((edge) => {
-        const points = edgePoints(byId[edge.from], byId[edge.to])
+        const points = edgePoints(byId[edge.from], byId[edge.to], edge.bend)
         const mid = midpoint(points)
         const label = l(edge.label)
         return (
-          <g key={`${edge.from}-${edge.to}`}>
+          <g
+            key={`${edge.from}-${edge.to}`}
+            className={classes('arch-diagram__link', highlight && (touches(edge) ? 'is-active' : 'is-dim'))}
+          >
             <polyline
               className="arch-diagram__edge"
               points={points.map((p) => p.join(',')).join(' ')}
@@ -175,9 +227,46 @@ export function ArchDiagram({ diagram, compact = false }) {
 
       {diagram.nodes.map((node) => {
         const b = box(node)
+        const label = l(node.label)
         const sub = l(node.sub)
+        const isSelected = highlight && node.id === selected
+        const buttonProps = interactive
+          ? {
+              role: 'button',
+              tabIndex: 0,
+              'aria-pressed': isSelected,
+              'aria-label': sub ? `${label}: ${sub}` : label,
+              'data-node': node.id,
+              onClick: () => onSelect(node.id),
+              onKeyDown: (event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return
+                event.preventDefault()
+                onSelect(node.id)
+              },
+            }
+          : {}
         return (
-          <g key={node.id}>
+          <g
+            key={node.id}
+            className={classes(
+              'arch-diagram__item',
+              node.layer && `arch-diagram__item--${node.layer}`,
+              interactive && 'is-interactive',
+              isSelected && 'is-selected',
+              linked.has(node.id) && 'is-linked',
+            )}
+            {...buttonProps}
+          >
+            {interactive && (
+              <rect
+                className="arch-diagram__focus"
+                x={b.x - FOCUS_PAD}
+                y={b.y - FOCUS_PAD}
+                width={GRID.nodeW + 2 * FOCUS_PAD}
+                height={GRID.nodeH + 2 * FOCUS_PAD}
+                rx="11"
+              />
+            )}
             <rect className="arch-diagram__node" x={b.x} y={b.y} width={GRID.nodeW} height={GRID.nodeH} rx="8" />
             <text
               className="arch-diagram__label"
@@ -187,7 +276,7 @@ export function ArchDiagram({ diagram, compact = false }) {
               dominantBaseline="central"
               fontSize="13"
             >
-              {l(node.label)}
+              {label}
             </text>
             {sub && (
               <text
@@ -208,6 +297,14 @@ export function ArchDiagram({ diagram, compact = false }) {
   )
 
   if (compact) return svg
+  // No modo interativo a moldura e a legenda são do `ArchExplorer`; os nós já são focáveis pelo teclado.
+  if (interactive) {
+    return (
+      <div className="arch-diagram__scroll" ref={scrollRef}>
+        {svg}
+      </div>
+    )
+  }
   return (
     <figure className="arch-diagram">
       <div className="arch-diagram__scroll" role="group" aria-label={title} tabIndex={0}>

@@ -12,6 +12,8 @@
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
 // são opcionais (null ou ausentes não aparecem).
+// `stack`: tecnologias por camada, [{ layer, items }]; `layer` é { pt, en } e `items` é uma lista de tags
+// (string ou { pt, en }). Aparece no bloco "Arquitetura" do projeto (ou em seção própria, sem esse bloco).
 // `embedUrl`: página de outra origem embutida por iframe abaixo do estudo de caso (opcional; string ou `{ pt, en }`;
 // protocolo em src/components/ProjectEmbed.jsx).
 // `slug` é a URL (/projects/<slug>), em inglês; ao renomear, registre o antigo em LEGACY_PROJECT_SLUGS (src/App.jsx).
@@ -37,6 +39,25 @@ const WH_FLOW_URL = {
 
 const IN_DEVELOPMENT = { pt: 'Em desenvolvimento', en: 'In development' }
 
+// Rótulos das camadas de `stack`, na ordem em que costumam aparecer.
+const LAYER = {
+  front: 'Front-end',
+  client: { pt: 'Cliente', en: 'Client' },
+  api: 'API',
+  data: { pt: 'Dados', en: 'Data' },
+  integrations: { pt: 'Integrações', en: 'Integrations' },
+  infra: 'Infra',
+  quality: { pt: 'Qualidade', en: 'Quality' },
+  platform: { pt: 'Plataforma', en: 'Platform' },
+  automation: { pt: 'Automação', en: 'Automation' },
+  context: { pt: 'Contexto', en: 'Context' },
+  distribution: { pt: 'Distribuição', en: 'Distribution' },
+  hardware: 'Hardware',
+  orchestration: { pt: 'Orquestração', en: 'Orchestration' },
+  supplyChain: { pt: 'Imagens', en: 'Images' },
+  network: { pt: 'Rede', en: 'Network' },
+}
+
 function simpleProject({
   slug,
   title,
@@ -58,6 +79,7 @@ function simpleProject({
   numbers = {},
   brief = null,
   decisions = [],
+  stack = [],
   extraSections = [],
   role = null,
   links = [],
@@ -85,6 +107,7 @@ function simpleProject({
       ...extraSections,
     ],
     decisions,
+    stack,
     gallery,
   }
 }
@@ -125,6 +148,55 @@ export const projects = [
         en: 'Extracted from KittyCafé, it now also runs in GoPrint, Nesse Capítulo and this portfolio.',
       },
     },
+    decisions: [
+      {
+        decision: {
+          pt: 'A skill tem o procedimento, o perfil tem os fatos',
+          en: 'The skill holds the procedure, the profile holds the facts',
+        },
+        why: {
+          pt: 'O plugin nunca cita um comando de projeto; cada repositório versiona só os seus fatos. O mesmo fluxo roda num jogo em .NET + Godot, numa API Node ou num site estático.',
+          en: 'The plugin never names a project command; each repository versions only its facts. The same flow runs on a .NET + Godot game, a Node API or a static site.',
+        },
+      },
+      {
+        decision: { pt: 'Faixas paralelas em worktrees isoladas', en: 'Parallel lanes on isolated worktrees' },
+        why: {
+          pt: 'Cada faixa é dona de arquivos disjuntos e trabalha em worktree e branch próprias, com um commit por item: agentes em paralelo sem conflito.',
+          en: 'Each lane owns disjoint files and works on its own worktree and branch, one commit per item: parallel agents without conflicts.',
+        },
+      },
+      {
+        decision: { pt: 'Revisão independente antes do merge', en: 'Independent review before the merge' },
+        why: {
+          pt: 'Um revisor sem o contexto de quem implementou confere cada diff, e um QA final roda a suíte na branch integrada.',
+          en: "A reviewer without the implementer's context checks each diff, and a final QA runs the suite on the integrated branch.",
+        },
+      },
+      {
+        decision: { pt: 'Contexto determinístico, sem LLM', en: 'Deterministic context, no LLM' },
+        why: {
+          pt: 'O hook que enriquece cada prompt é Python puro, sem rede: o mesmo prompt com as mesmas fontes produz sempre a mesma saída.',
+          en: 'The hook that enriches each prompt is pure Python with no network: the same prompt with the same sources always produces the same output.',
+        },
+      },
+    ],
+    stack: [
+      {
+        layer: LAYER.platform,
+        items: ['Claude Code', 'Skills', { pt: 'Subagentes', en: 'Subagents' }, 'Hooks'],
+      },
+      { layer: LAYER.automation, items: ['Python 3', 'Bash', 'git worktree', 'GitHub CLI'] },
+      {
+        layer: LAYER.context,
+        items: [{ pt: 'Glossário', en: 'Glossary' }, { pt: 'Mapa de features', en: 'Feature map' }, 'CodeGraph'],
+      },
+      { layer: LAYER.quality, items: ['unittest', 'ShellCheck', 'GitHub Actions'] },
+      {
+        layer: LAYER.distribution,
+        items: [{ pt: 'Marketplace de plugins', en: 'Plugin marketplace' }, 'GitHub Pages'],
+      },
+    ],
     extraSections: [
       {
         title: { pt: 'Como eu planejo', en: 'How I plan' },
@@ -229,6 +301,47 @@ export const projects = [
       },
       result: null,
     },
+    decisions: [
+      {
+        decision: {
+          pt: 'Isolamento entre empresas no escopo de toda consulta',
+          en: 'Tenant isolation in the scope of every query',
+        },
+        why: {
+          pt: 'A empresa vem do token, nunca do corpo da requisição, e todo acesso a dados de cliente é filtrado por ela; o operador é o único papel sem filtro.',
+          en: 'The company comes from the token, never from the request body, and every read of client data is filtered by it; the operator is the only role without a filter.',
+        },
+      },
+      {
+        decision: { pt: 'Anexos sobem direto para o storage', en: 'Attachments upload straight to storage' },
+        why: {
+          pt: 'A API assina um formulário de upload com tamanho e tipo travados e confere o objeto antes de registrá-lo: arquivos grandes não passam pelo servidor de aplicação.',
+          en: 'The API signs an upload form with size and type locked and checks the object before recording it: large files never go through the application server.',
+        },
+      },
+      {
+        decision: { pt: 'SQL explícito com migrations versionadas', en: 'Explicit SQL with versioned migrations' },
+        why: {
+          pt: 'O Dapper mantém cada consulta visível e ajustável; as migrations rodam na subida, e a aplicação não sobe com o esquema fora de versão.',
+          en: 'Dapper keeps every query visible and tunable; migrations run at startup, and the application does not start on an out-of-date schema.',
+        },
+      },
+      {
+        decision: { pt: 'Uma única imagem entrega a API e o front', en: 'A single image ships the API and the front end' },
+        why: {
+          pt: 'Mesma origem em produção: sem CORS, um artefato por versão e um deploy só.',
+          en: 'Same origin in production: no CORS, one artifact per version and a single deploy.',
+        },
+      },
+    ],
+    stack: [
+      { layer: LAYER.front, items: ['React 18', 'Vite', 'TypeScript'] },
+      { layer: LAYER.api, items: ['ASP.NET Core', '.NET 10', 'JWT', 'ProblemDetails', 'OpenAPI'] },
+      { layer: LAYER.data, items: ['PostgreSQL 16', 'Dapper', 'DbUp', 'MinIO (S3)'] },
+      { layer: LAYER.integrations, items: ['SendGrid'] },
+      { layer: LAYER.infra, items: ['Docker', 'Docker Compose', 'Cloudflare Tunnel'] },
+      { layer: LAYER.quality, items: ['xUnit', 'Testcontainers', 'Vitest', 'ESLint', 'GitHub Actions'] },
+    ],
     tags: [
       { label: { pt: 'Projeto de cliente', en: 'Client project' }, accent: true },
       '.NET 10',
@@ -282,6 +395,56 @@ export const projects = [
         en: 'Installable as an app and ready for the Play Store via TWA.',
       },
     },
+    decisions: [
+      {
+        decision: {
+          pt: 'Um único processo Node serve a API e o front',
+          en: 'A single Node process serves the API and the front end',
+        },
+        why: {
+          pt: 'Menos peças para operar: um processo, um arquivo de banco e uma imagem Docker.',
+          en: 'Fewer moving parts to operate: one process, one database file and one Docker image.',
+        },
+      },
+      {
+        decision: {
+          pt: 'Banco enxuto: capas e imagens nunca são armazenadas',
+          en: 'Lean database: covers and images are never stored',
+        },
+        why: {
+          pt: 'Cada livro guarda só uma referência curta; a capa é derivada da fonte externa e fica no cache do navegador.',
+          en: 'Each book keeps just a short reference; the cover is derived from the external source and cached by the browser.',
+        },
+      },
+      {
+        decision: {
+          pt: 'Busca com fonte de reserva, cache e limite por usuário',
+          en: 'Search with a fallback source, caching and a per-user limit',
+        },
+        why: {
+          pt: 'O Google Books é a fonte principal e a Open Library assume quando ele falha; cache e limite de taxa protegem as cotas externas.',
+          en: 'Google Books is the primary source and Open Library takes over when it fails; caching and rate limiting protect the external quotas.',
+        },
+      },
+      {
+        decision: { pt: 'Regras de acesso garantidas no backend', en: 'Access rules enforced by the backend' },
+        why: {
+          pt: 'O que a interface esconde o servidor também recusa: a privacidade entre amigos, o aceite dos termos e o anúncio recompensado opcional.',
+          en: 'What the interface hides the server also refuses: privacy between friends, terms acceptance and the optional rewarded ad.',
+        },
+      },
+    ],
+    stack: [
+      {
+        layer: LAYER.front,
+        items: ['React 19', 'Vite', 'Tailwind CSS', 'React Router', 'TanStack Query', 'PWA'],
+      },
+      { layer: LAYER.api, items: ['Hono', 'Node.js', 'TypeScript'] },
+      { layer: LAYER.data, items: ['SQLite', 'node:sqlite'] },
+      { layer: LAYER.integrations, items: ['Google OAuth 2.0', 'Google Books API', 'Open Library'] },
+      { layer: LAYER.infra, items: ['Docker', 'Trusted Web Activity'] },
+      { layer: LAYER.quality, items: ['node:test', 'GitHub Actions'] },
+    ],
     tags: ['React', 'TypeScript', 'Hono', 'SQLite', 'PWA'],
     repo: 'https://github.com/Walter-Dalla/nesse-capitulo',
     cover: '/img/projects/nesse-capitulo/cover.webp',
@@ -479,6 +642,36 @@ export const projects = [
       },
       result: { pt: 'Hoje hospeda o KittyCafé e o GoPrint.', en: 'It currently hosts KittyCafé and GoPrint.' },
     },
+    decisions: [
+      {
+        decision: { pt: 'Nenhuma porta aberta para a internet', en: 'No port open to the internet' },
+        why: {
+          pt: 'Todo o tráfego entra por um túnel de saída; só o conector alcança os containers, pela rede Docker.',
+          en: 'All traffic comes in through an outbound tunnel; only the connector reaches the containers, over the Docker network.',
+        },
+      },
+      {
+        decision: { pt: 'Scan de vulnerabilidades antes de publicar', en: 'Vulnerability scan before publishing' },
+        why: {
+          pt: 'Uma falha HIGH ou CRITICAL com correção disponível bloqueia o push da imagem.',
+          en: 'A HIGH or CRITICAL finding with an available fix blocks the image push.',
+        },
+      },
+      {
+        decision: { pt: 'Backup com ensaio de restauração', en: 'Backups with restore rehearsals' },
+        why: {
+          pt: 'Backup diário com cópia fora do servidor; a restauração é ensaiada, não presumida.',
+          en: 'Daily backups with an off-host copy; the restore is rehearsed, not assumed.',
+        },
+      },
+    ],
+    stack: [
+      { layer: LAYER.hardware, items: ['Xeon', 'Linux'] },
+      { layer: LAYER.orchestration, items: ['Docker', 'Komodo'] },
+      { layer: LAYER.supplyChain, items: ['Zot', 'Trivy'] },
+      { layer: LAYER.network, items: ['Cloudflare Tunnel'] },
+      { layer: LAYER.data, items: ['SQLite', { pt: 'Backup diário', en: 'Daily backups' }] },
+    ],
     tags: ['Docker', 'Komodo', 'Zot', 'Cloudflare Tunnel', 'Trivy', 'Linux', 'Xeon'],
   }),
   simpleProject({
@@ -537,6 +730,31 @@ export const projects = [
         },
         why: { pt: 'O jogo roda no navegador ou no Android.', en: 'The game is played in the browser or on Android.' },
       },
+      {
+        decision: {
+          pt: 'O estado da sala é enviado inteiro a cada mudança',
+          en: 'The whole room state is pushed on every change',
+        },
+        why: {
+          pt: 'Sem eventos parciais para reconciliar: cada jogador recebe a sua visão da mesa, sem a mão dos outros.',
+          en: "No partial events to reconcile: each player gets their own view of the table, without anyone else's hand.",
+        },
+      },
+      {
+        decision: { pt: 'As salas sobrevivem a um restart', en: 'Rooms survive a restart' },
+        why: {
+          pt: 'Cada mudança grava um snapshot; na subida as mesas voltam e os jogadores reconectam com o próprio token.',
+          en: 'Every change writes a snapshot; on startup the tables come back and players reconnect with their own token.',
+        },
+      },
+    ],
+    stack: [
+      { layer: LAYER.front, items: ['React 19', 'Vite', 'TypeScript', 'Capacitor'] },
+      { layer: LAYER.api, items: ['NestJS', 'Socket.IO', 'Node.js', 'Zod'] },
+      { layer: LAYER.data, items: ['SQLite', 'Drizzle ORM'] },
+      { layer: LAYER.integrations, items: ['Google Sign-In'] },
+      { layer: LAYER.infra, items: ['Docker', 'pnpm workspaces', 'GitHub Actions'] },
+      { layer: LAYER.quality, items: ['Vitest', 'Playwright', 'Stryker', 'Biome'] },
     ],
     tags: ['NestJS', 'Socket.IO', 'React', 'TypeScript'],
     cover: '/img/projects/cartas-malfaladas/cover.webp',
@@ -620,6 +838,41 @@ export const projects = [
           pt: 'Roda em produção em kittycafe.walterdalla.uk desde setembro de 2026.',
           en: 'It has been live at kittycafe.walterdalla.uk since September 2026.',
         },
+      },
+      {
+        decision: {
+          pt: 'Sincronização incremental por versão de seção',
+          en: 'Incremental sync by section version',
+        },
+        why: {
+          pt: 'A sync devolve um contador por seção do estado, e o cliente relê só o que mudou.',
+          en: 'The sync returns a counter per section of the state, and the client re-reads only what changed.',
+        },
+      },
+      {
+        decision: { pt: 'Contrato da API verificado por snapshot', en: 'API contract verified by snapshot' },
+        why: {
+          pt: 'Toda mudança de payload aparece num diff antes de chegar ao cliente.',
+          en: 'Every payload change shows up in a diff before it reaches the client.',
+        },
+      },
+    ],
+    stack: [
+      { layer: LAYER.client, items: ['Godot 4', 'GDScript', 'WebAssembly'] },
+      { layer: LAYER.api, items: ['.NET 10', 'ASP.NET Core', 'REST', 'JWT'] },
+      { layer: LAYER.data, items: ['SQLite', 'JSON'] },
+      {
+        layer: LAYER.integrations,
+        items: ['Google Sign-In', 'OAuth 2.0 + PKCE', 'AdMob', 'Google Play Billing', 'MCP'],
+      },
+      { layer: LAYER.infra, items: ['Docker', 'Cloudflare Tunnel', 'Trivy', 'GitHub Actions'] },
+      {
+        layer: LAYER.quality,
+        items: [
+          'xUnit',
+          { pt: 'Testes de contrato por snapshot', en: 'Snapshot contract tests' },
+          { pt: 'Testes de mutação', en: 'Mutation testing' },
+        ],
       },
     ],
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],

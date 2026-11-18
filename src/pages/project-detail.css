@@ -51,12 +51,15 @@
   font-size: 13px;
 }
 
-/* Projeto sem capa: o diagrama de arquitetura ocupa o lugar dela. */
+/* Projeto sem capa: o explorador do diagrama de arquitetura ocupa o lugar dela (ele traz as próprias molduras). */
 .project__diagram--cover {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  padding: 16px;
+  min-width: 0;
+}
+
+/* A âncora da arquitetura (#architecture) para abaixo do cabeçalho fixo. */
+.project__diagram--cover,
+.project__arch {
+  scroll-margin-top: 88px;
 }
 
 .project__brief {
@@ -166,39 +169,25 @@
   overflow-wrap: anywhere;
 }
 
-.decisions {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.decision {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  padding: 20px;
+/* Bloco "Arquitetura" (projeto com capa e diagrama): largura toda do container, abaixo do texto e da ficha.
+   Explorador do diagrama (painel ao lado em tela larga), stack por camada e decisões. */
+.project__arch {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 15px;
-  line-height: 1.6;
+  gap: 32px;
+  padding-top: clamp(32px, 4cqi, 48px);
+  border-top: 1px solid var(--border);
 }
 
-.decision__title {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.35;
-  font-weight: 600;
-  color: var(--text);
+.project__arch-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.decision__extra .mono {
-  font-size: 12px;
-  color: var(--faint);
-  margin-right: 6px;
+/* Duas colunas largas: quatro decisões fecham em 2×2, sem um cartão sozinho na última linha. */
+.project__arch .decisions {
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
 }
 
 .project__gallery {

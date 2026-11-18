@@ -1,7 +1,7 @@
 # Portfólio — Walter Dalla
 
-Site de portfólio de Walter Dalla Torre Neto: início, currículo, projetos (com estudos de caso),
-conquistas, sobre e contato. Tema escuro/claro e idioma PT/EN. Só frontend: SPA estática.
+Site de portfólio de Walter Dalla Torre Neto: início, currículo, projetos (com estudos de caso e a
+arquitetura de cada sistema em diagrama interativo), conquistas, sobre e contato. Tema escuro/claro e idioma PT/EN. Só frontend: SPA estática.
 
 Stack: React 19, React Router 8, Vite 8, Vitest + Testing Library, ESLint.
 
@@ -28,8 +28,9 @@ fazer o bloco surgir.
 |---|---|
 | Foto do retrato, disponibilidade, PDFs do currículo | `src/content/profile.js` (arquivos em `public/`) |
 | Experiências e habilidades | `src/content/experiences.js` |
-| Projetos, capas, estudos de caso, galeria, resumo, decisões, números da ficha | `src/content/projects.js` |
-| Diagramas de arquitetura dos projetos | `src/content/diagrams.js` |
+| Projetos, capas, estudos de caso, galeria, resumo, decisões, stack por camada, números da ficha | `src/content/projects.js` |
+| Diagramas de arquitetura dos projetos (componentes, o detalhe e as tecnologias de cada um) | `src/content/diagrams.js` |
+| Chamada "Como eu desenho sistemas" do Início (texto e ordem dos sistemas) | `src/content/architecture.js` |
 | Página "Como trabalho com IA" (`lede` e ordem dos projetos) | `src/content/ai.js` |
 | Conquistas, diplomas, comprovantes | `src/content/achievements.js` |
 | Texto pessoal, fatos rápidos, galeria, história | `src/content/about.js` |

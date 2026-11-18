@@ -203,6 +203,39 @@ a {
   color: var(--accent);
 }
 
+/* Filtros em pílula (categorias em Projetos): o escolhido fica invertido. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--strong);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
 /* Botões */
 .btn {
   display: inline-flex;
@@ -218,6 +251,19 @@ a {
   background: transparent;
   color: inherit;
   cursor: pointer;
+  transition:
+    transform 0.15s,
+    border-color 0.15s,
+    color 0.15s,
+    filter 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: none;
 }
 
 .btn--primary {
@@ -225,9 +271,18 @@ a {
   color: var(--btn-fg);
 }
 
+.btn--primary:hover {
+  filter: brightness(1.08);
+}
+
 .btn--secondary {
   border-color: var(--strong);
   color: var(--text);
+}
+
+.btn--secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .btn--block {
@@ -263,8 +318,17 @@ a {
   color: var(--accent);
 }
 
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .link--muted {
   color: var(--muted);
+}
+
+.link--muted:hover {
+  color: var(--text);
 }
 
 .link--text {
@@ -420,6 +484,26 @@ a {
 .not-found__hint {
   margin-top: 16px;
   font-size: 15px;
+}
+
+/* Entrada suave de um bloco ao rolar a página. Só onde o navegador liga a animação à rolagem
+   (`animation-timeline`) e a pessoa não pediu menos movimento; nos demais o bloco aparece direto,
+   sem depender de JavaScript. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
 }
 
 .visually-hidden {
