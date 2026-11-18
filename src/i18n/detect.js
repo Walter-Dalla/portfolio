@@ -1,4 +1,4 @@
-import { LANGS } from './context.js'
+import { LANG_KEY, LANGS } from './context.js'
 import { readStored } from '../storage.js'
 
 /**
@@ -7,7 +7,7 @@ import { readStored } from '../storage.js'
  * global do Node segue o locale da máquina, por isso só se lê `window.navigator`.
  */
 export function detectLang() {
-  const stored = readStored('wd-lang')
+  const stored = readStored(LANG_KEY)
   if (LANGS.includes(stored)) return stored
   try {
     if (typeof window !== 'undefined' && /^pt/i.test(window.navigator.language ?? '')) return 'pt'
