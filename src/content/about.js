@@ -61,7 +61,7 @@ export const about = {
   ],
   facts: [
     { label: { pt: 'base', en: 'based in' }, value: 'São Paulo, BR' },
-    { label: { pt: '1º emprego', en: '1st job' }, value: { pt: '2018, Assertiva', en: '2018, Assertiva' } },
+    { label: { pt: '1º estágio', en: '1st internship' }, value: { pt: '2018, Assertiva', en: '2018, Assertiva' } },
     { label: { pt: 'formação', en: 'education' }, value: 'UNESP · COTIL' },
     { label: { pt: 'agora', en: 'now' }, value: { pt: 'agentes de IA', en: 'AI agents' } },
     { label: { pt: 'atuação', en: 'works' }, value: { pt: 'remoto · BR e EUA', en: 'remote · BR and US' } },

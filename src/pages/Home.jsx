@@ -29,7 +29,7 @@ export function Home() {
   const { t, l, lang } = useI18n()
   usePageTitle(t('homeTitle'))
   const featured = projects.filter((p) => p.featured)
-  const resumes = availableResumes(lang)
+  const [resume] = availableResumes(lang)
   // A chamada de arquitetura mostra a miniatura do primeiro sistema da lista; cada link abre o projeto já na arquitetura.
   const firstSystem = architectureSystems[0]
   const archPreview = firstSystem ? findDiagram(firstSystem.slug) : null
@@ -64,18 +64,13 @@ export function Home() {
             <Link to="/contact" className="btn btn--secondary">
               {t('heroContact')}
             </Link>
-            {resumes.map((code) => (
-              <a
-                key={code}
-                href={resumeHref(code)}
-                download={resumeFileName(code)}
-                className="btn btn--secondary"
-              >
+            {/* Só o PDF do idioma da interface (ou o que existir); o outro fica na página Currículo. */}
+            {resume && (
+              <a href={resumeHref(resume)} download={resumeFileName(resume)} className="btn btn--secondary">
                 <DownloadIcon />
-                {code === 'en' ? 'Resume' : t('downloadResume')}{' '}
-                <span className="btn__hint">{code.toUpperCase()}</span>
+                {t('downloadResume')} <span className="btn__hint">{resume.toUpperCase()}</span>
               </a>
-            ))}
+            )}
           </div>
           <div className="hero__social mono">
             <a href={profile.linkedin} className="link link--text" target="_blank" rel="noreferrer">
