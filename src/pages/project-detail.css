@@ -41,6 +41,13 @@
   align-self: flex-start;
 }
 
+/* Aviso da demo (ex.: pede login), colado ao botão: anula parte do `gap` da introdução. */
+.project__demo-note {
+  margin-top: -10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
 .project__cover {
   border-radius: 12px;
   background: var(--surface);

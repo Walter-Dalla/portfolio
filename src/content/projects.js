@@ -9,6 +9,7 @@
 // `cover`: imagem 16:10 em public/, ex.: '/img/projects/<slug>/cover.webp'; o site recorta ao centro (21:9 no projeto, 16:9 no Início).
 // `gallery`: [{ src, alt: { pt, en } }], imagens 4:3. `thesisUrl`: link do TCC (opcional).
 // `demoUrl`: página que mostra o projeto funcionando (opcional; string ou `{ pt, en }`); URL externa abre em nova aba.
+// `demoNote`: aviso curto ao lado do botão da demo, `{ pt, en }` (opcional em `simpleProject`; ex.: a demo pede login).
 // `brief`: resumo em três tópicos no topo, { problem, action, result }, cada um { pt, en } ou null (opcional).
 // `decisions`: decisões de arquitetura, [{ decision, why, alternative, tradeoff }]; `alternative` e `tradeoff`
 // são opcionais (null ou ausentes não aparecem).
@@ -75,6 +76,7 @@ function simpleProject({
   cover = null,
   gallery = [],
   demoUrl = null,
+  demoNote = null,
   embedUrl = null,
   numbers = {},
   brief = null,
@@ -99,6 +101,7 @@ function simpleProject({
     cover,
     repo,
     demoUrl,
+    demoNote,
     embedUrl,
     facts: { client, role, status, adoption: null, commits: null, tests: null, mutation: null, ...numbers },
     sections: [
@@ -448,6 +451,7 @@ export const projects = [
     ],
     tags: ['React', 'TypeScript', 'Hono', 'SQLite', 'PWA'],
     repo: 'https://github.com/Walter-Dalla/nesse-capitulo',
+    demoUrl: 'https://nesse-capitulo.walterdalla.uk',
     cover: '/img/projects/nesse-capitulo/cover.webp',
     gallery: [
       {
@@ -933,6 +937,8 @@ export const projects = [
       },
     ],
     tags: ['.NET 10', 'Godot', 'SQLite', 'Docker'],
+    demoUrl: 'https://kittycafe.walterdalla.uk',
+    demoNote: { pt: 'pede login com Google', en: 'requires Google sign-in' },
     cover: '/img/projects/kittycafe/cover.webp',
     gallery: [
       {

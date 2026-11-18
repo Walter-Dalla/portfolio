@@ -150,6 +150,7 @@ function Project({ project }) {
             {t('demoButton')} <span aria-hidden="true">{isExternal(demoUrl) ? '↗' : '→'}</span>
           </a>
         )}
+        {demoUrl && project.demoNote && <span className="project__demo-note mono">{l(project.demoNote)}</span>}
       </div>
 
       {project.cover && (
